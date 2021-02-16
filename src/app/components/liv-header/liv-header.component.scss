@@ -2,8 +2,9 @@
     display: flex;
     justify-content: space-between;
     min-height: 80px;
+    align-items: baseline;
 
-    &-logo {
+    &-left_logo {
 
     }
 
@@ -11,7 +12,7 @@
 
     }
 
-    &-painel {
+    &-right_painel {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -23,10 +24,27 @@
             font-size: 0.8em;
             cursor: pointer;
             padding: 3px;
+
+            &-login {
+
+            }
+
+            &-account {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            mat-icon {
+                transform: rotate(90deg);
+            }
         }
 
         &-account:hover {
+            position: relative;
             border: 1px solid #fac515;
+            overflow: hidden;
+            outline: 0;
         }
 
         &-cart {
@@ -48,7 +66,7 @@
     }
 }
 
-.container-absolute {
+.dialog-absolute {
     width: 100%;
     position: absolute;
     flex-direction: row;
@@ -57,6 +75,13 @@
     justify-content: flex-end;
 
     &-item {
-        margin-right: 180px;
+        padding: 5px;
+        margin-right: 30px;
+        border: 1px solid #696969;
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
