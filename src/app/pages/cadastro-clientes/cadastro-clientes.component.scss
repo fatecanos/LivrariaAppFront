@@ -1,0 +1,14 @@
+.client {
+    margin: 0 auto;
+    max-width: 800px;
+
+    &-form {
+
+        &-input_group {
+            
+            &-input {
+                margin-left: 10px;
+            }
+        }
+    }
+}

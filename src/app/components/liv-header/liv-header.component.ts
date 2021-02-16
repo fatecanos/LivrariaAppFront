@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'liv-header',
   templateUrl: './liv-header.component.html',
   styleUrls: ['./liv-header.component.scss']
 })
-export class LivHeaderComponent implements OnInit {
+export class LivHeaderComponent {
+  showPainel: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) {
 
-  ngOnInit(): void {
+  }
+
+  navigateToClientRegister() {
+    this.router.navigate(['/novo-cliente']);
+    this.showPainel = !this.showPainel;
   }
 
 }

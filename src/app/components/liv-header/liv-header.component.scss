@@ -2,10 +2,12 @@
     display: flex;
     justify-content: space-between;
     min-height: 80px;
-    align-items: baseline;
 
     &-left_logo {
 
+        &-image {
+            max-width: 200px;
+        }
     }
 
     &-search-bar {
@@ -83,5 +85,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        a {
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     }
 }

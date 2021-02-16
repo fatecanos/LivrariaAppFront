@@ -1,11 +1,12 @@
 <mat-toolbar class="liv-header">
     <div class="liv-header-left_logo">
-        <span>logo</span>
+        <img class="liv-header-left_logo-image"
+            src="../../../assets/img/logo-2.jpeg" alt="">
     </div>
     <!-- <div class="liv-header-search_bar">
         search-bar
     </div> -->
-    <div class="liv-header-right_painel">
+    <div class="liv-header-right_painel" (click)="showPainel = !showPainel">
         <a class="liv-header-right_painel-account">
             <span class="liv-header-right_painel-account-login">
                 Olá, Faça seu login 
@@ -24,7 +25,7 @@
     </div>
 </mat-toolbar>
 
-<div class="dialog-absolute">
+<div class="dialog-absolute" *ngIf="showPainel">
     <div class="dialog-absolute-item">
         <button 
             mat-raised-button
@@ -32,7 +33,7 @@
             Entrar
         </button>
         <span>ou</span>
-        <a href="">
+        <a (click)="navigateToClientRegister()">
             Cadastre-se aqui!
         </a>
     </div>

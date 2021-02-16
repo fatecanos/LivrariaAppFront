@@ -6,6 +6,15 @@
     min-height: 250px;
     color: #fff;
 
+    &-content {
+
+        &-logo{
+
+            img {max-width: 200px;}
+        }
+    }
+
+
     .liv-footer-copyrights {
         position: fixed;
         bottom: 0;
