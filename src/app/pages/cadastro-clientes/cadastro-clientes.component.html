@@ -1,26 +1,60 @@
 <div class="client">
 
-    <h2>Cadastro de Cliente</h2>
+    <div class="client-header">
+        <h2>Cadastre-se</h2>
+        <mat-divider></mat-divider>
+    </div>
 
-    <form action="" 
+
+    <form [formGroup]="formularioCliente"
         class="client-form-input">
+
         <div class="client-form-input_group">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Nome:</mat-label>
-                <input matInput value="Sushi">
+                <input matInput value="" formControlName="nome">
             </mat-form-field>
     
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Sobrenome:</mat-label>
-                <input matInput value="Sushi">
+                <input matInput value="" formControlName="sobrenome">
             </mat-form-field>
         </div>
 
         <div class="client-form-input_group">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Aniversário:</mat-label>
-                <input matInput value="Sushi">
+                <input matInput value="" type="date" formControlName="dataNascimento">
             </mat-form-field>
+
+            <mat-form-field class="client-form-input_group-input">
+                <mat-label>CPF:</mat-label>
+                <input mask="000.000.000-00" matInput type="text" formControlName="cpf">
+            </mat-form-field>
+        </div>
+
+        <div class="client-form-input_group">
+            <mat-form-field class="client-form-input_group-input">
+                <mat-label>E-mail:</mat-label>
+                <input matInput value="" type="email" formControlName="email">
+                <!-- <mat-error *ngIf="email.hasError('required')">
+                    Email está <strong>vazio</strong>
+                </mat-error> -->
+            </mat-form-field>
+            <br>
+            <mat-form-field class="client-form-input_group-input">
+                <mat-label>Senha:</mat-label>
+                <input matInput value="" type="password" formControlName="senha">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="client-form-input_group-input">
+                <mat-label>Repita a senha:</mat-label>
+                <input matInput value="" type="password" formControlName="confirmacaoSenha">
+            </mat-form-field>
+        </div>
+
+        <div class="client-form-input_group client-form-button">
+            <button mat-button (click)="submitCustomer()">Enviar</button>
         </div>
 
     </form>
