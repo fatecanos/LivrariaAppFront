@@ -43,8 +43,8 @@ export class CadastroClientesComponent {
       cpf: this.formBuilder.control('',{
         validators: [
           Validators.required,
-          Validators.minLength(17), // digits + word characters
-          Validators.maxLength(17), // digits + word characters
+          Validators.minLength(11), // digits + word characters
+          Validators.maxLength(11), // digits + word characters
         ]
       }),
 

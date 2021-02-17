@@ -13,23 +13,37 @@
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Nome:</mat-label>
                 <input matInput value="" formControlName="nome">
+                <mat-error *ngIf="formularioCliente.get('cpf').hasError('required')">
+                    O nome está <strong>incompleto.</strong>
+                </mat-error>
             </mat-form-field>
     
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Sobrenome:</mat-label>
                 <input matInput value="" formControlName="sobrenome">
+                <mat-error *ngIf="formularioCliente.get('sobrenome').hasError('required')">
+                    O sobrenome está <strong>incompleto.</strong>
+                </mat-error>
             </mat-form-field>
         </div>
 
         <div class="client-form-input_group">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Aniversário:</mat-label>
-                <input matInput value="" type="date" formControlName="dataNascimento">
+                <input matInput value="" type="date" 
+                    formControlName="dataNascimento">
+                <mat-error *ngIf="formularioCliente.get('cpf').hasError('required')">
+                    Data de nascimento está <strong>incompleta.</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>CPF:</mat-label>
-                <input mask="000.000.000-00" matInput type="text" formControlName="cpf">
+                <input mask="000.000.000-00" 
+                    matInput type="text" formControlName="cpf">
+                <mat-error *ngIf="formularioCliente.get('cpf').hasError('required')">
+                    O cpf está <strong>incompleto.</strong>
+                </mat-error>
             </mat-form-field>
         </div>
 
@@ -37,19 +51,30 @@
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>E-mail:</mat-label>
                 <input matInput value="" type="email" formControlName="email">
-                <!-- <mat-error *ngIf="email.hasError('required')">
-                    Email está <strong>vazio</strong>
-                </mat-error> -->
+                <mat-error *ngIf="formularioCliente.get('email').hasError('required')">
+                    O e-mail está <strong>incompleto.</strong>
+                </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Senha:</mat-label>
                 <input matInput value="" type="password" formControlName="senha">
+                <mat-error *ngIf="formularioCliente.get('senha').hasError('required')">
+                    A senha está <strong>incompleta.</strong>
+                </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Repita a senha:</mat-label>
-                <input matInput value="" type="password" formControlName="confirmacaoSenha">
+                <input matInput value="" 
+                    type="password" 
+                    formControlName="confirmacaoSenha">
+                <mat-error *ngIf="formularioCliente.get('confirmacaoSenha').hasError('required')">
+                    Favor, <strong>redigite sua senha.</strong>
+                </mat-error>
+                <mat-error *ngIf="formularioCliente.get('confirmacaoSenha').hasError('mismatch')">
+                    Senhas <strong> não estão iguais.</strong>
+                </mat-error>
             </mat-form-field>
         </div>
 
