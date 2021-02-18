@@ -1,0 +1,27 @@
+.liv-footer {
+    bottom: 0;
+    background-color: #232F3E;
+    width: 100%;
+    min-height: 250px;
+    color: #fff;
+
+    &-content {
+
+        &-logo{
+
+            img {max-width: 200px;}
+        }
+    }
+}
+
+.liv-footer-copyrights {
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    background-color: #131A22;
+    min-height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
