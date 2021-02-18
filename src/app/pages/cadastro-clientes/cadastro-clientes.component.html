@@ -58,7 +58,8 @@
             <br>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Senha:</mat-label>
-                <input matInput value="" type="password" formControlName="senha">
+                <input mask="AAAAAAAAAAAA" placeholder="insira até 12 caracteres"
+                    matInput value="" type="password" formControlName="senha">
                 <mat-error *ngIf="formularioCliente.get('senha').hasError('required')">
                     A senha está <strong>incompleta.</strong>
                 </mat-error>
@@ -66,8 +67,8 @@
             <br>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Repita a senha:</mat-label>
-                <input matInput value="" 
-                    type="password" 
+                <input matInput value="" mask="AAAAAAAAAAAA" 
+                    placeholder="insira até 12 caracteres" type="password" 
                     formControlName="confirmacaoSenha">
                 <mat-error *ngIf="formularioCliente.get('confirmacaoSenha').hasError('required')">
                     Favor, <strong>redigite sua senha.</strong>

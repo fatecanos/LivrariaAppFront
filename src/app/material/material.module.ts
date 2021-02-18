@@ -5,7 +5,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
 
 
 const material_components = [
@@ -14,7 +15,8 @@ const material_components = [
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatDividerModule
+  MatDividerModule,
+  MatRippleModule
 ];
 
 @NgModule({
