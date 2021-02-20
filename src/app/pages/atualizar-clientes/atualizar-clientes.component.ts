@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { ClientInterface } from 'src/app/models/interfaces/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClientService } from 'src/app/services/client-service/client-service.service';
@@ -32,72 +33,31 @@ export class AtualizarClientesComponent implements OnInit {
   formAlterarSenha: FormGroup = new FormGroup({});
 
   clientData?: ClientInterface;
+  clientServiceResponse?: Observable<ClientInterface>;
 
   constructor(
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private service: ClientService) { 
-      this.initForm();
-  }
-
-  ngOnInit(): void {
-    this.service.getClientById(1)
-      .subscribe(response =>{
-        console.log('Response', response);
-        
-        this.clientData = response;
-
-        console.log('Cliente: ', this.clientData);
-    });
-  }
-
-  enviarDadosCliente() {
-    this.isLoading = true;
-    if(this.formDadosCliente.valid) {
-      console.log('atualizando cliente...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
-    }
-
-    this.isLoading = false;
     
   }
 
-  enviarEndereco() {
-    this.isLoading = true;
-    if(this.formEndereco.valid) {
-      console.log('atualizando endereco do cliente...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
-    }
+  ngOnInit(): void {
+    this.clientServiceResponse = this.service.getClientById(1);
 
-    this.isLoading = false;
-  }
+    this.clientServiceResponse      
+      .subscribe(response =>{
+        this.clientData = response;
+        console.log('Cliente: ', this.clientData);
+        this.initForm(this.clientData);
+    });
+  } 
 
-  enviarEmail() {
-    this.isLoading = true;
-    if(this.formAlterarEmail.valid) {
-      console.log('atualizando email...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
-    }
-  }
-
-  enviarSenha() {
-    if(this.formAlterarSenha.valid) {
-      console.log('atualizando senha...')
-    }
-  }
-
-  initForm() {
+  initForm(clientData: ClientInterface) {
+    console.log('Nome Cliente ', clientData.nome);
+    
     this.formDadosCliente = this.formBuilder.group({
-      nome: [this.clientData?.nome, {validators: [Validators.required]}],
+      nome: ['', {validators: [Validators.required]}],
       sobrenome: ['', {validators: [Validators.required]}],
       dataNascimento: ['', {validators: [Validators.required]}],
       cpf: this.formBuilder.control('', {
@@ -146,6 +106,52 @@ export class AtualizarClientesComponent implements OnInit {
       estado: ['', {validators: [Validators.required, Validators.maxLength(5)]}],
       lote: ['', {validators: [Validators.required]}],
     });
+  }
+
+  enviarDadosCliente() {
+    console.log(this.formDadosCliente);
+    
+    this.isLoading = true;
+    if(this.formDadosCliente.valid) {
+      console.log('atualizando cliente...')
+      setTimeout(()=> {
+        this.isLoading = false;
+        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
+      }, 2000);
+    }
+
+    this.isLoading = false;
+    
+  }
+
+  enviarEndereco() {
+    this.isLoading = true;
+    if(this.formEndereco.valid) {
+      console.log('atualizando endereco do cliente...')
+      setTimeout(()=> {
+        this.isLoading = false;
+        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
+      }, 2000);
+    }
+
+    this.isLoading = false;
+  }
+
+  enviarEmail() {
+    this.isLoading = true;
+    if(this.formAlterarEmail.valid) {
+      console.log('atualizando email...')
+      setTimeout(()=> {
+        this.isLoading = false;
+        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
+      }, 2000);
+    }
+  }
+
+  enviarSenha() {
+    if(this.formAlterarSenha.valid) {
+      console.log('atualizando senha...')
+    }
   }
 
 }

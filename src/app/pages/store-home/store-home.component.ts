@@ -11,7 +11,7 @@ export class StoreHomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/atualizar-clientes'])
+    this.router.navigate(['/consulta-clientes'])
   }
 
 }

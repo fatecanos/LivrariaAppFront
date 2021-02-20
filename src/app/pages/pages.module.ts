@@ -33,7 +33,7 @@ const maskConfig: Partial<IConfig> = {
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(maskConfig),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {

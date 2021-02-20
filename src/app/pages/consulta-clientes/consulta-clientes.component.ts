@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClientInterface } from 'src/app/models/interfaces/client.interface';
+import { ClientService } from 'src/app/services/client-service/client-service.service';
 
 @Component({
   selector: 'app-consulta-clientes',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultaClientesComponent implements OnInit {
 
-  constructor() { }
+  dataSource: ClientInterface[] = [];
+  displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
+
+  constructor(
+    private _snackBar: MatSnackBar,
+    private service: ClientService) { }
 
   ngOnInit(): void {
+    this.service.getClients()
+      .subscribe(response => {
+        this.dataSource = response;
+    }, error => {
+      console.log('Erro ao consultar clientes')
+    },()=> {
+      this._snackBar.open("lista de clientes carregada", 'fechar', {duration: 2000})
+    })
+  }
+
+  inativarClientePorId(id: number) {
+    console.log('inativando cliente: ', id)
   }
 
 }

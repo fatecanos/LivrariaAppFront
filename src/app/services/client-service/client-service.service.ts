@@ -31,6 +31,10 @@ export class ClientService {
     return this.http.get<ClientInterface>(`${this.baseUrl}/clientes/${id}`, httpOptions)
   }
 
+  getClients(): Observable<ClientInterface[]> {
+    return this.http.get<ClientInterface[]>(`${this.baseUrl}/clientes`, httpOptions)
+  }
+
   updateClientById(id: number, clientData: ClientInterface): Observable<ClientInterface> {
     return this.http.put<ClientInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
   }

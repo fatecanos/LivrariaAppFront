@@ -36,31 +36,28 @@ export class CadastroClientesComponent {
 
   submitCustomer() {
       console.log(this.formularioCliente);
-      
+      this.isLoading = true;
+
       if(this.formularioCliente.valid) {
-        this.isLoading = true;
-        // this.clientService.saveClient(this.formularioCliente.value)
-        //   .subscribe(response => {
-        //       this.isSuccess = true;
-        //   }, error => {
-        //     this.isSuccess = false;
-        //   }, ()=> {
-        //     this.showMessage = true;
-        //     this.isLoading = false;
-        //   })
-        setTimeout(()=> {
-          console.log('creating...');
-          this.isLoading = false;
-          this.showMessage = true;
-          this.isSuccess = true;
-          this.title = 'Sucesso!'
-          this.message = 'Cliente foi cadastrado!';
-        }, 2000);
+        this.clientService.saveClient(this.formularioCliente.value)
+          .subscribe(response => {
+              setTimeout(()=> {
+                this.title = 'Sucesso!'
+                this.message = 'Cliente foi cadastrado!';
+                this.isSuccess = true;
+              }, 1000);
+          }, error => {
+            this.title = 'Erro!'
+            this.message = 'Cliente não foi cadastrado!';
+            this.showMessage = true;
+          }, ()=> {
+            setTimeout(()=> {
+              this.showMessage = true;
+              this.isLoading = false
+            }, 2000)
+          });
       } else {
-        this.isSuccess = false;
-        this.showMessage = true;
-        this.title = 'Erro!'
-        this.message = 'Erro ao cadastrar cliente!';
+        this.isLoading = false;
       }
   }
 
