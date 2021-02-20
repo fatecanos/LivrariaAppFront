@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ValidatorService } from 'src/app/services/validator/validator-service.service';
+import { ClientService } from 'src/app/services/client-service/client-service.service';
 
 function passwordMatchValidator(password: string): ValidatorFn {
   return (control: AbstractControl) => {
@@ -20,31 +20,62 @@ function passwordMatchValidator(password: string): ValidatorFn {
 export class CadastroClientesComponent {
 
   formularioCliente: FormGroup = new FormGroup({});
+  
+  isLoading: boolean = false;
+  isSuccess = false;
+  showMessage: boolean = false;
+
+  message: string = '';
+  title: string = '';
 
   constructor(
+    private clientService: ClientService,
     private formBuilder: FormBuilder) {
     this.initForm();
   }
 
   submitCustomer() {
-      console.log('creating a new customer...')
-      let value = this.formularioCliente.get('cpf')?.value;
-      console.log('cpf:', value);
+      console.log(this.formularioCliente);
+      
+      if(this.formularioCliente.valid) {
+        this.isLoading = true;
+        // this.clientService.saveClient(this.formularioCliente.value)
+        //   .subscribe(response => {
+        //       this.isSuccess = true;
+        //   }, error => {
+        //     this.isSuccess = false;
+        //   }, ()=> {
+        //     this.showMessage = true;
+        //     this.isLoading = false;
+        //   })
+        setTimeout(()=> {
+          console.log('creating...');
+          this.isLoading = false;
+          this.showMessage = true;
+          this.isSuccess = true;
+          this.title = 'Sucesso!'
+          this.message = 'Cliente foi cadastrado!';
+        }, 2000);
+      } else {
+        this.isSuccess = false;
+        this.showMessage = true;
+        this.title = 'Erro!'
+        this.message = 'Erro ao cadastrar cliente!';
+      }
   }
 
 
   initForm(): void {
-
     this.formularioCliente = this.formBuilder.group({
       nome: ['', {validators: [Validators.required]}],
       sobrenome: ['', {validators: [Validators.required]}],
       dataNascimento: ['', {validators: [Validators.required]}],
 
-      cpf: this.formBuilder.control('',{
+      cpf: this.formBuilder.control('', {
         validators: [
           Validators.required,
-          Validators.minLength(11), // digits + word characters
-          Validators.maxLength(11), // digits + word characters
+          Validators.minLength(11),
+          Validators.maxLength(11),
         ]
       }),
 

@@ -1,7 +1,7 @@
 .client {
     margin: 0 auto;
     max-width: 800px;
-    height: 500px;
+    min-height: 500px;
     
     &-header {
 
@@ -38,5 +38,17 @@
                 width: 120px;
             }
         }
+
+        &-spinner {
+            left: 100%;
+        }
+    }
+}
+
+.message_container {
+    
+    &-header {
+        display: flex;
+        align-items: baseline;
     }
 }

@@ -12,6 +12,8 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ValidatorService } from '../services/validator/validator-service.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientService } from '../services/client-service/client-service.service';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -30,7 +32,8 @@ const maskConfig: Partial<IConfig> = {
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot(maskConfig)
+    NgxMaskModule.forRoot(maskConfig),
+    HttpClientModule
   ],
   providers: [
     {
@@ -41,7 +44,8 @@ const maskConfig: Partial<IConfig> = {
       provide: ErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher
     },
-    ValidatorService
+    ValidatorService,
+    ClientService
   ]
 })
 export class PagesModule { }

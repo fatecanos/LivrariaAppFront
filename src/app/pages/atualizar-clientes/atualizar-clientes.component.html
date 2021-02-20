@@ -1,1 +1,151 @@
-<p>atualizar-clientes works!</p>
+<div class="client_update">
+
+    <div class="client_update-header">
+        <h2>Dados do Cliente</h2>
+        <mat-divider></mat-divider>
+    </div>
+
+    <mat-tab-group mat-align-tabs="start" class="client_update-tabs_container">
+        <mat-tab label="Dados do Cliente">
+            <form [formGroup]="formDadosCliente"
+                class="client_update-tabs_container-form">
+                <mat-form-field>
+                    <mat-label>Nome: </mat-label>
+                    <input matInput formControlName="nome" 
+                        placeholder="Primeiro Nome">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Sobrenome:</mat-label>
+                    <input matInput formControlName="sobrenome" 
+                        placeholder="Segundo nome">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Data de Nascimento:</mat-label>
+                    <input matInput formControlName="dataNascimento" 
+                        type="date">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>CPF:</mat-label>
+                    <input matInput formControlName="cpf"
+                        type="text" mask="000.000.000-00">
+                </mat-form-field>
+            </form>
+            <div class="client_update-option_container">
+                <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
+                <mat-progress-spinner *ngIf="isLoading"
+                    class="client-form-spinner"
+                    color="primary" diameter="50"
+                    mode="indeterminate">
+                </mat-progress-spinner>
+            </div>
+        </mat-tab>
+        <mat-tab label="Endereço">
+            <form action="" class="client_update-tabs_container-form">
+                <mat-form-field >
+                    <mat-label>Endereço: </mat-label>
+                    <input matInput placeholder="rua, logradouro, avenida..." type="text">
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Bairro:</mat-label>
+                    <input matInput placeholder="nome do seu bairro" type="text">
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Complemento:</mat-label>
+                    <input matInput placeholder="casa 1, ao lado de..." type="text">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Numero:</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Cidade:</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Estado:</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let estado of estados" [value]="estado">
+                            {{estado}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Tipo de Endereço:</mat-label>
+                    <mat-select>
+                        <mat-option value="casa">
+                            Casa
+                        </mat-option>
+                        <mat-option value="apartamento">
+                            Apartamento
+                        </mat-option>
+                        <mat-option value="lote">
+                            Lote
+                        </mat-option>
+                        <mat-option value="condominio">
+                            Condomínio
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+            <div class="client_update-option_container">
+                <mat-progress-spinner *ngIf="isLoading"
+                    class="client-form-spinner"
+                    color="primary" diameter="50"
+                    mode="indeterminate">
+                </mat-progress-spinner>
+                <button mat-button (click)="enviarEndereco()">Atualizar Dados</button>
+            </div>
+        </mat-tab>
+        <mat-tab label="Alterar E-mail">
+            <form action="" class="client_update-tabs_container-form">
+                <mat-form-field>
+                    <mat-label>E-mail: </mat-label>
+                    <input matInput
+                        type="email" disabled="true">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Novo e-mail: </mat-label>
+                    <input matInput placeholder="Endereço de e-mail válido" 
+                        type="email">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Repita o e-mail: </mat-label>
+                    <input matInput placeholder="Endereço de e-mail válido" 
+                        type="email">
+                </mat-form-field>
+            </form>
+            <div class="client_update-option_container">
+                <mat-progress-spinner *ngIf="isLoading"
+                    class="client-form-spinner"
+                    color="primary" diameter="50"
+                    mode="indeterminate">
+                </mat-progress-spinner>
+                <button mat-button (click)="enviarEmail()">Atualizar Dados</button>
+            </div>
+        </mat-tab>
+        <mat-tab label="Alterar Senha">
+            <form action="" class="client_update-tabs_container-form">
+                <mat-form-field >
+                    <mat-label>Senha: </mat-label>
+                    <input matInput type="password">
+                </mat-form-field>
+                <mat-form-field >
+                    <mat-label>Repita a senha: </mat-label>
+                    <input matInput type="password">
+                </mat-form-field>
+            </form>
+            <div class="client_update-option_container">
+                <mat-progress-spinner *ngIf="isLoading"
+                    class="client-form-spinner"
+                    color="primary" diameter="50"
+                    mode="indeterminate">
+                </mat-progress-spinner>
+                <button mat-button (click)="enviarSenha()">Atualizar Dados</button>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,0 +1,24 @@
+{
+  "clientes": [
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-02-03",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas123",
+      "confirmacaoSenha": "lucas123",
+      "id": 1
+    },
+    {
+      "nome": "Maria",
+      "sobrenome": "Silva",
+      "dataNascimento": "1998-06-02",
+      "cpf": "47126964862",
+      "email": "aria@hotmail.com",
+      "senha": "lucas123",
+      "confirmacaoSenha": "lucas123",
+      "id": 2
+    }
+  ]
+}
