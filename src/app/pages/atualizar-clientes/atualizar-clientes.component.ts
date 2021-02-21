@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { ClientInterface } from 'src/app/models/interfaces/client.interface';
+import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
-import { ClientService } from 'src/app/services/client-service/client-service.service';
+import { ClienteService } from 'src/app/services/client-service/client-service.service';
 import { ValidatorService } from 'src/app/services/validator/validator-service.service';
 
 function matchValidator(controlName: string): ValidatorFn {
@@ -28,32 +28,33 @@ export class AtualizarClientesComponent implements OnInit {
   estados: Array<string> = UFs;
 
   formDadosCliente: FormGroup = new FormGroup({});
-  formEndereco: FormGroup = new FormGroup({});
+  formArrayEnderecos: FormArray = new FormArray([]);
   formAlterarEmail: FormGroup = new FormGroup({});
   formAlterarSenha: FormGroup = new FormGroup({});
 
-  clientData?: ClientInterface;
-  clientServiceResponse?: Observable<ClientInterface>;
+  dadosCliente?: ClienteInterface;
+  
+  clienteServiceResponse?: Observable<ClienteInterface>;
 
   constructor(
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private service: ClientService) { 
+    private service: ClienteService) { 
     
   }
 
   ngOnInit(): void {
-    this.clientServiceResponse = this.service.getClientById(1);
+    this.clienteServiceResponse = this.service.getClientById(1);
 
-    this.clientServiceResponse      
+    this.clienteServiceResponse      
       .subscribe(response =>{
-        this.clientData = response;
-        console.log('Cliente: ', this.clientData);
-        this.initForm(this.clientData);
+        this.dadosCliente = response;
+        console.log('Cliente: ', this.dadosCliente);
+        this.initForm(this.dadosCliente);
     });
   } 
 
-  initForm(clientData: ClientInterface) {
+  initForm(clientData: ClienteInterface) {
     console.log('Nome Cliente ', clientData.nome);
     
     this.formDadosCliente = this.formBuilder.group({
@@ -69,14 +70,16 @@ export class AtualizarClientesComponent implements OnInit {
       }),
     });
 
-    this.formEndereco = this.formBuilder.group({
-      endereco: ['', { validators: [Validators.required]}],
-      bairro: ['', { validators: [Validators.required]}],
-      complemento: ['', { validators: [Validators.maxLength(30)]}],
-      cidade: ['', { validators: [Validators.maxLength(30)]}],
-      estado: ['', { validators: [Validators.required]}],
-      tipoEndereco: ['', { validators: [Validators.required]}],
-    });
+    // this.formEndereco = this.formBuilder.group({
+    //   endereco: ['', { validators: [Validators.required]}],
+    //   bairro: ['', { validators: [Validators.required]}],
+    //   complemento: ['', { validators: [Validators.maxLength(30)]}],
+    //   cidade: ['', { validators: [Validators.maxLength(30)]}],
+    //   estado: ['', { validators: [Validators.required]}],
+    //   tipoEndereco: ['', { validators: [Validators.required]}],
+    // });
+
+    // this.formArrayEnderecos = this.formBuilder.array(this.dadosCliente.)
 
     this.formAlterarSenha = this.formBuilder.group({
       senha: this.formBuilder
@@ -98,14 +101,14 @@ export class AtualizarClientesComponent implements OnInit {
         }),
     });
 
-    this.formEndereco = this.formBuilder.group({
-      endereco: ['', {validators: [Validators.required]}],
-      cidade: ['', {validators: [Validators.required]}],
-      bairro: ['', {validators: [Validators.required]}],
-      complemento: ['', {validators: [Validators.maxLength(30)]}],
-      estado: ['', {validators: [Validators.required, Validators.maxLength(5)]}],
-      lote: ['', {validators: [Validators.required]}],
-    });
+    // this.formEndereco = this.formBuilder.group({
+    //   endereco: ['', {validators: [Validators.required]}],
+    //   cidade: ['', {validators: [Validators.required]}],
+    //   bairro: ['', {validators: [Validators.required]}],
+    //   complemento: ['', {validators: [Validators.maxLength(30)]}],
+    //   estado: ['', {validators: [Validators.required, Validators.maxLength(5)]}],
+    //   lote: ['', {validators: [Validators.required]}],
+    // });
   }
 
   enviarDadosCliente() {
@@ -125,16 +128,18 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   enviarEndereco() {
-    this.isLoading = true;
-    if(this.formEndereco.valid) {
-      console.log('atualizando endereco do cliente...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
-    }
+    // this.isLoading = true;
+    // if(this.formEndereco.valid) {
+    //   console.log('atualizando endereco do cliente...')
+    //   setTimeout(()=> {
+    //     this.isLoading = false;
+    //     this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
+    //   }, 2000);
+    // }
 
-    this.isLoading = false;
+    // this.isLoading = false;
+    console.log('atualizando endereco...');
+    
   }
 
   enviarEmail() {

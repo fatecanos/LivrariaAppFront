@@ -1,4 +1,4 @@
-export interface ClientInterface {
+export interface ClienteInterface {
     id?: number,
     nome: string,
     sobrenome: string,
@@ -7,10 +7,30 @@ export interface ClientInterface {
     email: string,
     senha?: string,
     confirmacaoSenha?: string,
-    endereco?: string,
-    bairro?: string,
-    cidade?: string,
-    estado?: string,
-    complemento?: string,
-    tipoEndereco?: string
+}
+
+export interface EnderecoInterface {
+    id: number,
+    logradouro: string,
+    cep: string,
+    numero: string,
+    complemento: string,
+    tipoEndereco: TipoEnderecoInterface,
+    cidade: CidadeInterface
+}
+
+export interface CidadeInterface {
+    id: number,
+    descricao: string,
+    estado: EstadoInterface
+}
+
+export interface EstadoInterface {
+    id: number,
+    descricao: string
+}
+
+export interface TipoEnderecoInterface {
+    id: number,
+    descricao: string
 }

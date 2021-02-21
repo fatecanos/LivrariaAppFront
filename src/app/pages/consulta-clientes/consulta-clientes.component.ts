@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ClientInterface } from 'src/app/models/interfaces/client.interface';
-import { ClientService } from 'src/app/services/client-service/client-service.service';
+import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
+import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 @Component({
   selector: 'app-consulta-clientes',
@@ -10,12 +10,12 @@ import { ClientService } from 'src/app/services/client-service/client-service.se
 })
 export class ConsultaClientesComponent implements OnInit {
 
-  dataSource: ClientInterface[] = [];
+  dataSource: ClienteInterface[] = [];
   displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
 
   constructor(
     private _snackBar: MatSnackBar,
-    private service: ClientService) { }
+    private service: ClienteService) { }
 
   ngOnInit(): void {
     this.service.getClients()
