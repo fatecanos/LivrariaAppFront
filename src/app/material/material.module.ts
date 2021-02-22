@@ -28,7 +28,8 @@ const material_components = [
   MatSelectModule,
   MatSnackBarModule,
   MatTableModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDialogModule
 ];
 
 @NgModule({

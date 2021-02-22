@@ -24,6 +24,11 @@
                 margin-left: 10px;
             }
         }
+
+        &-message {
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     &-option_container {

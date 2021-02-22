@@ -18,17 +18,22 @@ export class LivEnderecoFormComponent implements OnInit {
   isLoading: boolean = false;
   estados: Array<string> = UFs;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    console.log("Formulario endereco:", this.endereco);
+    
     this.formEndereco = this.formBuilder.group({
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],
       complemento: [this.endereco?.complemento, { validators: [Validators.required] }],
+      bairro: [this.endereco?.bairro, { validators: [Validators.required] }],
       tipoEndereco: this.formBuilder.group({
         id: ['', { validators: [Validators.required] }],
-        descricao: ['', { validators: [Validators.required] }]
+        descricao: [this.endereco?.tipoEndereco, { validators: [Validators.required] }]
       }),
       cidade: this.formBuilder.group({
         id: ['', { validators: [Validators.required] }],
@@ -48,8 +53,6 @@ export class LivEnderecoFormComponent implements OnInit {
   removerEndereco() {
 
   }
-  
-
 }
 
 

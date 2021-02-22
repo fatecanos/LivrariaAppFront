@@ -43,13 +43,19 @@
 
         <mat-tab label="Endereço">
             <liv-endereco-form [endereco]="endereco" [index]="i+1"
-                *ngFor="let endereco of (clienteResponse$ | async).enderecos; let i=index">
+                *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
             </liv-endereco-form>
-            <button mat-button>+ Endereco</button>
+            <div class="client_update-tabs_container-message">
+                <span *ngIf="!(clienteResponse$ | async)?.enderecos">
+                    Nenhum endereço foi associado para este cliente.
+                </span>
+                <button mat-button (click)="addEndereco()">+ Endereco</button>
+            </div>
+            
         </mat-tab>
 
         <mat-tab label="Alterar E-mail">
-            <form [formGroup]="formDadosCliente"
+            <form [formGroup]="formAlterarEmail"
                 class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>E-mail: </mat-label>
@@ -93,12 +99,12 @@
                     color="primary" diameter="50"
                     mode="indeterminate">
                 </mat-progress-spinner>
-                <button mat-button (click)="enviarEmail()">Atualizar Dados</button>
+                <button mat-button (click)="atualizarEmail()">Atualizar Dados</button>
             </div>
         </mat-tab>
 
         <mat-tab label="Alterar Senha">
-            <form [formGroup]="formDadosCliente"
+            <form [formGroup]="formAlterarSenha"
                 class="client_update-tabs_container-form">
                 <mat-form-field >
                     <mat-label>Nova senha: </mat-label>
@@ -117,7 +123,7 @@
                     color="primary" diameter="50"
                     mode="indeterminate">
                 </mat-progress-spinner>
-                <button mat-button (click)="enviarSenha()">Atualizar Dados</button>
+                <button mat-button (click)="atualizarSenha()">Atualizar Dados</button>
             </div>
         </mat-tab>
     </mat-tab-group>

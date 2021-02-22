@@ -16,6 +16,7 @@
           "cep": "08744103",
           "numero": "234",
           "complemento": "",
+          "bairro": "Vila Cintra",
           "tipoEndereco": {
             "id": 1,
             "descricao": "Casa"
@@ -35,6 +36,7 @@
           "cep": "08744102",
           "numero": "2344",
           "complemento": "casa 3",
+          "bairro": "Vila Cintra",
           "tipoEndereco": {
             "id": 2,
             "descricao": "Lote"
@@ -58,7 +60,49 @@
       "email": "lucasnogueiratdm@hotmail.com",
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
-      "id": 2
+      "id": 2,
+      "enderecos": [
+        {
+          "id": 2,
+          "logradouro": "Rua Anita Garibaldi",
+          "cep": "08744102",
+          "numero": "2344",
+          "complemento": "casa 3",
+          "bairro": "Vila Cintra",
+          "tipoEndereco": {
+            "id": 2,
+            "descricao": "Lote"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "Tiago",
+      "sobrenome": "Lim",
+      "dataNascimento": "1998-02-09",
+      "cpf": "47882993211",
+      "email": "tiago@gmail.com",
+      "senha": "tiago",
+      "confirmacaoSenha": "tiago",
+      "id": 3
+    },
+    {
+      "nome": "Denis",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "id": 4
     }
   ]
 }

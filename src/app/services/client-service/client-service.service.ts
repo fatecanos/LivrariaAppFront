@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
 import { environment } from 'src/environments/environment';
+import { EnderecoService } from '../endereco-service/endereco.service';
 
 
 const httpOptions = {

@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
-import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
-import { ValidatorService } from 'src/app/services/validator/validator-service.service';
 
 function matchValidator(controlName: string): ValidatorFn {
   return (control: AbstractControl) => {
@@ -32,7 +30,7 @@ export class AtualizarClientesComponent implements OnInit {
   formAlterarEmail: FormGroup = new FormGroup({});
   formAlterarSenha: FormGroup = new FormGroup({});
 
-  dadosCliente?: ClienteInterface;
+  dadosCliente: ClienteInterface;
   enderecosCliente: EnderecoInterface[] = [];
 
   clienteResponse$?: Observable<ClienteInterface>;
@@ -44,12 +42,14 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clienteResponse$ = this.clienteService.getClientById(1);
+    this.clienteResponse$ = this.clienteService.getClientById(2);
     this.initForm();
   }
 
   initForm() {
     this.clienteResponse$?.subscribe(response => {
+      this.dadosCliente = response;
+
       this.formDadosCliente = this.formBuilder.group({
         nome: [response.nome, { validators: [Validators.required] }],
         sobrenome: [response.sobrenome, { validators: [Validators.required]}],
@@ -60,34 +60,42 @@ export class AtualizarClientesComponent implements OnInit {
             Validators.minLength(11),
             Validators.maxLength(11),
           ]
-        }),
+        })
+      });
+
+      this.formAlterarEmail = this.formBuilder.group({
         email: ['', {validators: [Validators.required, Validators.email]}],
         confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
+      })
+
+      this.formAlterarSenha = this.formBuilder.group({
         senha: this.formBuilder
-          .control('', {
-            validators: [
-              Validators.required,
-              Validators.minLength(4),
-              Validators.maxLength(12)
-            ]
-          }),
+        .control('', {
+          validators: [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(12)
+          ]
+        }),
         confirmacaoSenha: this.formBuilder
-          .control('', {
-            validators: [
-              Validators.required,
-              Validators.minLength(4),
-              Validators.maxLength(12),
-              matchValidator('senha')
-            ]
-          }),
-      });
+        .control('', {
+          validators: [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(12),
+            matchValidator('senha')
+          ]
+        }),
+      })
+
+
     });
   }
 
   enviarDadosCliente() {
     console.log(this.formDadosCliente);
-    
     this.isLoading = true;
+
     if(this.formDadosCliente.valid) {
       console.log('atualizando cliente...')
       setTimeout(()=> {
@@ -97,36 +105,28 @@ export class AtualizarClientesComponent implements OnInit {
     }
 
     this.isLoading = false;
-    
   }
 
-  enviarEndereco() {
-    // this.isLoading = true;
-    // if(this.formEndereco.valid) {
-    //   console.log('atualizando endereco do cliente...')
-    //   setTimeout(()=> {
-    //     this.isLoading = false;
-    //     this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-    //   }, 2000);
-    // }
-
-    // this.isLoading = false;
-    console.log('atualizando endereco...');
-    
-  }
-
-  enviarEmail() {
+  atualizarEmail() {
     this.isLoading = true;
+    console.log(this.formAlterarEmail)
+
     if(this.formAlterarEmail.valid) {
       console.log('atualizando email...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
+      console.log('Dados Cliente', this.dadosCliente);
+
+      this.dadosCliente?.email = this.formAlterarEmail.get('email')?.value();
+
+      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente);
+      // setTimeout(()=> {
+      //   this.isLoading = false;
+      //   this._snackBar.open("email do cliente foi atualizado", 'fechar', {duration: 5000});
+      // }, 2000);
     }
+    this.isLoading = false;
   }
 
-  enviarSenha() {
+  atualizarSenha() {
     if(this.formAlterarSenha.valid) {
       console.log('atualizando senha...')
     }

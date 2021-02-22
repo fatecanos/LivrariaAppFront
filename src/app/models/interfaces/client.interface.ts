@@ -17,6 +17,7 @@ export interface EnderecoInterface {
     logradouro: string,
     cep: string,
     numero: string,
+    bairro: string,
     complemento: string,
     tipoEndereco: string,
     cidade: CidadeInterface
