@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
+import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
+import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
 import { ValidatorService } from 'src/app/services/validator/validator-service.service';
 
 function matchValidator(controlName: string): ValidatorFn {
@@ -28,87 +29,59 @@ export class AtualizarClientesComponent implements OnInit {
   estados: Array<string> = UFs;
 
   formDadosCliente: FormGroup = new FormGroup({});
-  formArrayEnderecos: FormArray = new FormArray([]);
   formAlterarEmail: FormGroup = new FormGroup({});
   formAlterarSenha: FormGroup = new FormGroup({});
 
   dadosCliente?: ClienteInterface;
-  
-  clienteServiceResponse?: Observable<ClienteInterface>;
+  enderecosCliente: EnderecoInterface[] = [];
+
+  clienteResponse$?: Observable<ClienteInterface>;
 
   constructor(
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private service: ClienteService) { 
-    
-  }
+    private clienteService: ClienteService
+  ) {}
 
   ngOnInit(): void {
-    this.clienteServiceResponse = this.service.getClientById(1);
+    this.clienteResponse$ = this.clienteService.getClientById(1);
+    this.initForm();
+  }
 
-    this.clienteServiceResponse      
-      .subscribe(response =>{
-        this.dadosCliente = response;
-        console.log('Cliente: ', this.dadosCliente);
-        this.initForm(this.dadosCliente);
-    });
-  } 
-
-  initForm(clientData: ClienteInterface) {
-    console.log('Nome Cliente ', clientData.nome);
-    
-    this.formDadosCliente = this.formBuilder.group({
-      nome: ['', {validators: [Validators.required]}],
-      sobrenome: ['', {validators: [Validators.required]}],
-      dataNascimento: ['', {validators: [Validators.required]}],
-      cpf: this.formBuilder.control('', {
-        validators: [
-          Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
-        ]
-      }),
-    });
-
-    // this.formEndereco = this.formBuilder.group({
-    //   endereco: ['', { validators: [Validators.required]}],
-    //   bairro: ['', { validators: [Validators.required]}],
-    //   complemento: ['', { validators: [Validators.maxLength(30)]}],
-    //   cidade: ['', { validators: [Validators.maxLength(30)]}],
-    //   estado: ['', { validators: [Validators.required]}],
-    //   tipoEndereco: ['', { validators: [Validators.required]}],
-    // });
-
-    // this.formArrayEnderecos = this.formBuilder.array(this.dadosCliente.)
-
-    this.formAlterarSenha = this.formBuilder.group({
-      senha: this.formBuilder
-        .control('', {
+  initForm() {
+    this.clienteResponse$?.subscribe(response => {
+      this.formDadosCliente = this.formBuilder.group({
+        nome: [response.nome, { validators: [Validators.required] }],
+        sobrenome: [response.sobrenome, { validators: [Validators.required]}],
+        dataNascimento: [response.dataNascimento, { validators: [Validators.required] }],
+        cpf: this.formBuilder.control(response.cpf, {
           validators: [
             Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(12)
-          ]
-      }),
-      confirmacaoSenha: this.formBuilder
-        .control('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(12),
-            matchValidator('senha')
+            Validators.minLength(11),
+            Validators.maxLength(11),
           ]
         }),
+        email: ['', {validators: [Validators.required, Validators.email]}],
+        confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
+        senha: this.formBuilder
+          .control('', {
+            validators: [
+              Validators.required,
+              Validators.minLength(4),
+              Validators.maxLength(12)
+            ]
+          }),
+        confirmacaoSenha: this.formBuilder
+          .control('', {
+            validators: [
+              Validators.required,
+              Validators.minLength(4),
+              Validators.maxLength(12),
+              matchValidator('senha')
+            ]
+          }),
+      });
     });
-
-    // this.formEndereco = this.formBuilder.group({
-    //   endereco: ['', {validators: [Validators.required]}],
-    //   cidade: ['', {validators: [Validators.required]}],
-    //   bairro: ['', {validators: [Validators.required]}],
-    //   complemento: ['', {validators: [Validators.maxLength(30)]}],
-    //   estado: ['', {validators: [Validators.required, Validators.maxLength(5)]}],
-    //   lote: ['', {validators: [Validators.required]}],
-    // });
   }
 
   enviarDadosCliente() {

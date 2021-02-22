@@ -1,3 +1,5 @@
+import { EnderecoService } from "src/app/services/endereco-service/endereco.service";
+
 export interface ClienteInterface {
     id?: number,
     nome: string,
@@ -5,8 +7,9 @@ export interface ClienteInterface {
     dataNascimento: Date,
     cpf: string,
     email: string,
-    senha?: string,
-    confirmacaoSenha?: string,
+    senha: string,
+    confirmacaoSenha: string,
+    enderecos: EnderecoInterface[]
 }
 
 export interface EnderecoInterface {
@@ -15,7 +18,7 @@ export interface EnderecoInterface {
     cep: string,
     numero: string,
     complemento: string,
-    tipoEndereco: TipoEnderecoInterface,
+    tipoEndereco: string,
     cidade: CidadeInterface
 }
 

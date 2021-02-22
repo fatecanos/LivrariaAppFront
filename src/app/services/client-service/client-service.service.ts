@@ -42,8 +42,4 @@ export class ClienteService {
   deleteClientById(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/clientes/${id}`, httpOptions);
   }
-
-  getAddressById(id: number): Observable<EnderecoInterface[]> {
-    return this.http.get<EnderecoInterface[]>(`${this.baseUrl}/enderecos/${id}`, httpOptions);
-  }
 }

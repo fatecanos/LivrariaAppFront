@@ -11,52 +11,54 @@
       "id": 1,
       "enderecos": [
         {
-          "id": 1
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "08744103",
+          "numero": "234",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "Casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
         },
         {
-          "id": 2
+          "id": 2,
+          "logradouro": "Rua Anita Garibaldi",
+          "cep": "08744102",
+          "numero": "2344",
+          "complemento": "casa 3",
+          "tipoEndereco": {
+            "id": 2,
+            "descricao": "Lote"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
         }
       ]
-    }
-  ],
-  "enderecos": [
-    {
-      "id": 1,
-      "logradouro": "Rua Gilberto Gagliard",
-      "cep": "08744103",
-      "numero": "266",
-      "complemento": "",
-      "tipoEndereco": {
-        "id": 1,
-        "descricao": "Casa"
-      },
-      "cidade": {
-        "id": 1,
-        "descricao": "Mogi das Cruzes",
-        "estado": {
-          "id": 1,
-          "descricao": "SP"
-        }
-      }
     },
     {
-      "id": 2,
-      "logradouro": "Rua Anita Garibaldi",
-      "cep": "08744102",
-      "numero": "111",
-      "complemento": "",
-      "tipoEndereco": {
-        "id": 1,
-        "descricao": "Casa"
-      },
-      "cidade": {
-        "id": 1,
-        "descricao": "Mogi das Cruzes",
-        "estado": {
-          "id": 1,
-          "descricao": "SP"
-        }
-      }
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-02-16",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 2
     }
   ]
 }

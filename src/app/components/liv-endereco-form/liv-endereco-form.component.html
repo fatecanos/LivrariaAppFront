@@ -1,0 +1,66 @@
+<div class="endereco-form">
+    <h3>Endereço {{index}}</h3>
+    <form action="" 
+        class="endereco-form-tabs_container-form">
+        <mat-form-field>
+            <mat-label>CEP:</mat-label>
+            <input matInput placeholder="00000-000" mask="00000-000" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Endereço: </mat-label>
+            <input matInput placeholder="rua, logradouro, avenida..." type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Bairro:</mat-label>
+            <input matInput placeholder="nome do seu bairro" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Complemento:</mat-label>
+            <input matInput placeholder="casa 1, ao lado de..." type="text">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Numero:</mat-label>
+            <input matInput type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Cidade:</mat-label>
+            <input matInput type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Estado:</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let estado of estados" [value]="estado">
+                    {{estado}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Tipo de Endereço:</mat-label>
+            <mat-select>
+                <mat-option value="casa">
+                    Casa
+                </mat-option>
+                <mat-option value="apartamento">
+                    Apartamento
+                </mat-option>
+                <mat-option value="lote">
+                    Lote
+                </mat-option>
+                <mat-option value="condominio">
+                    Condomínio
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <div class="endereco-form-option_container">
+        <mat-progress-spinner *ngIf="isLoading"
+            class="client-form-spinner"
+            color="primary" diameter="50"
+            mode="indeterminate">
+        </mat-progress-spinner>
+        <button mat-button (click)="enviarEndereco()">Atualizar Dados</button>
+        <button mat-button color="warn" (click)="removerEndereco()">Remover Endereço</button>
+    </div>
+</div>
+<mat-divider></mat-divider>
