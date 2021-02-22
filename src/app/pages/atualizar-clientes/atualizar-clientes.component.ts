@@ -98,10 +98,26 @@ export class AtualizarClientesComponent implements OnInit {
 
     if(this.formDadosCliente.valid) {
       console.log('atualizando cliente...')
-      setTimeout(()=> {
-        this.isLoading = false;
-        this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      }, 2000);
+
+      let dados = this.dadosCliente;
+      this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
+
+      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+        .subscribe(response => {
+          this.isLoading = false;
+          this._snackBar.open("dados do cliente foram atualizados", 'fechar', {duration: 5000});
+        }, error => {
+          this.isLoading = false;
+          this._snackBar.open("erro ao atualizar cliente", 'fechar', {duration: 5000});
+        }, ()=> {
+          this.atualizarEstado();
+          this.isLoading = false;
+        });
+
+      // setTimeout(()=> {
+      //   this.isLoading = false;
+      //   this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
+      // }, 2000);
     }
 
     this.isLoading = false;
@@ -109,27 +125,38 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarEmail() {
     this.isLoading = true;
-    console.log(this.formAlterarEmail)
 
     if(this.formAlterarEmail.valid) {
-      console.log('atualizando email...')
-      console.log('Dados Cliente', this.dadosCliente);
+      this.dadosCliente.email = this.formAlterarEmail.get('email')?.value;
 
-      this.dadosCliente?.email = this.formAlterarEmail.get('email')?.value();
-
-      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente);
-      // setTimeout(()=> {
-      //   this.isLoading = false;
-      //   this._snackBar.open("email do cliente foi atualizado", 'fechar', {duration: 5000});
-      // }, 2000);
+      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+        .subscribe(response => {
+          this.isLoading = false;
+          this._snackBar.open("email do cliente foi atualizado", 'fechar', {duration: 5000});
+        }, error=> {
+          this.isLoading = false;
+          this._snackBar.open("erro ao atualizar", 'fechar', {duration: 5000});
+        }, ()=> {
+          this.atualizarEstado();
+          this.isLoading = false;
+        });
     }
-    this.isLoading = false;
+    
   }
 
   atualizarSenha() {
     if(this.formAlterarSenha.valid) {
       console.log('atualizando senha...')
     }
+  }
+
+  atualizarEstado() {
+    this.clienteResponse$ = this.clienteService.getClientById(this.dadosCliente?.id);
+    this.clienteResponse$.subscribe(response => { this.dadosCliente = response });
+  }
+
+  addEndereco() {
+
   }
 
 }
