@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { InativarDialogComponent } from 'src/app/components/dialogs/inativar-dialog/inativar-dialog.component';
 import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
@@ -14,6 +16,7 @@ export class ConsultaClientesComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
 
   constructor(
+    public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private service: ClienteService) { }
 
@@ -30,7 +33,12 @@ export class ConsultaClientesComponent implements OnInit {
 
   inativarClientePorId(id: number) {
     console.log('inativando cliente: ', id)
-    
+    this.dialog.open(InativarDialogComponent, {
+      width: '250px',
+      data: {
+        entity: 'cliente'
+      }
+    })
   }
 
 }
