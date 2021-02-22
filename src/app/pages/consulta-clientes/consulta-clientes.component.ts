@@ -33,11 +33,18 @@ export class ConsultaClientesComponent implements OnInit {
 
   inativarClientePorId(id: number) {
     console.log('inativando cliente: ', id)
-    this.dialog.open(InativarDialogComponent, {
+    const dialogRef = this.dialog.open(InativarDialogComponent, {
       width: '250px',
       data: {
-        entity: 'cliente'
+        entity: 'cliente',
+        idCliente: id,
       }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.service.getClients()
+        .subscribe(response => {
+          this.dataSource = response;
+      })
     })
   }
 

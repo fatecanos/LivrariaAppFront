@@ -113,11 +113,6 @@ export class AtualizarClientesComponent implements OnInit {
           this.atualizarEstado();
           this.isLoading = false;
         });
-
-      // setTimeout(()=> {
-      //   this.isLoading = false;
-      //   this._snackBar.open("cliente foi atualizado", 'fechar', {duration: 5000});
-      // }, 2000);
     }
 
     this.isLoading = false;

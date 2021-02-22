@@ -1,100 +1,7 @@
 {
   "clientes": [
     {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-02-03",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas123",
-      "confirmacaoSenha": "lucas123",
       "id": 1,
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "08744103",
-          "numero": "234",
-          "complemento": "",
-          "bairro": "Vila Cintra",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "Casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "SP"
-            }
-          }
-        },
-        {
-          "id": 2,
-          "logradouro": "Rua Anita Garibaldi",
-          "cep": "08744102",
-          "numero": "2344",
-          "complemento": "casa 3",
-          "bairro": "Vila Cintra",
-          "tipoEndereco": {
-            "id": 2,
-            "descricao": "Lote"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "SP"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "nome": "Kelvin",
-      "sobrenome": "Marques",
-      "dataNascimento": "1998-02-06",
-      "cpf": "47126964862",
-      "email": "lucas@gmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 2,
-      "enderecos": [
-        {
-          "id": 2,
-          "logradouro": "Rua Anita Garibaldi",
-          "cep": "08744102",
-          "numero": "2344",
-          "complemento": "casa 3",
-          "bairro": "Vila Cintra",
-          "tipoEndereco": {
-            "id": 2,
-            "descricao": "Lote"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "SP"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "nome": "Tiago",
-      "sobrenome": "Lim",
-      "dataNascimento": "1998-02-09",
-      "cpf": "47882993211",
-      "email": "tiago@gmail.com",
-      "senha": "tiago",
-      "confirmacaoSenha": "tiago",
-      "id": 3
-    },
-    {
       "nome": "Denis",
       "sobrenome": "Snider",
       "dataNascimento": "2001-08-09",
@@ -102,7 +9,176 @@
       "email": "denis222@gmail.com",
       "senha": "denis",
       "confirmacaoSenha": "denis",
-      "id": 4
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "nome": "João",
+      "sobrenome": "Cleber",
+      "dataNascimento": "1998-02-10",
+      "cpf": "12312444242",
+      "email": "cleber@gmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 2,
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "logradouro": "Rua Anita Gabibaldo",
+          "cep": "49345809",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Maria",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis222@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Anderson",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis222@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Josimar",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis222@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ]
     }
   ]
 }
