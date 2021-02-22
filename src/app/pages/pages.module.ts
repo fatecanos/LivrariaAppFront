@@ -13,7 +13,8 @@ import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ValidatorService } from '../services/validator/validator-service.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ClientService } from '../services/client-service/client-service.service';
+import { ClienteService } from '../services/client-service/client-service.service';
+import { ComponentsModule } from '../components/components.module';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -34,6 +35,7 @@ const maskConfig: Partial<IConfig> = {
     ReactiveFormsModule,
     NgxMaskModule.forRoot(maskConfig),
     HttpClientModule,
+    ComponentsModule
   ],
   providers: [
     {
@@ -45,7 +47,7 @@ const maskConfig: Partial<IConfig> = {
       useClass: ShowOnDirtyErrorStateMatcher
     },
     ValidatorService,
-    ClientService
+    ClienteService,
   ]
 })
 export class PagesModule { }

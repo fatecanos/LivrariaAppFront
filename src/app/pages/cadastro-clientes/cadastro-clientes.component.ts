@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { ClientService } from 'src/app/services/client-service/client-service.service';
+import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 function passwordMatchValidator(password: string): ValidatorFn {
   return (control: AbstractControl) => {
@@ -29,7 +29,7 @@ export class CadastroClientesComponent {
   title: string = '';
 
   constructor(
-    private clientService: ClientService,
+    private clientService: ClienteService,
     private formBuilder: FormBuilder) {
     this.initForm();
   }

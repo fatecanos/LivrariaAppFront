@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClientInterface } from 'src/app/models/interfaces/client.interface';
+import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
 import { environment } from 'src/environments/environment';
 
 
@@ -16,27 +16,27 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class ClienteService {
 
   baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
-  saveClient(client: ClientInterface): Observable<ClientInterface> {
+  saveClient(client: ClienteInterface): Observable<ClienteInterface> {
     let payload = JSON.stringify(client);
-    return this.http.post<ClientInterface>(`${this.baseUrl}/clientes`, payload, httpOptions);
+    return this.http.post<ClienteInterface>(`${this.baseUrl}/clientes`, payload, httpOptions);
   }
 
-  getClientById(id: number): Observable<ClientInterface> {
-    return this.http.get<ClientInterface>(`${this.baseUrl}/clientes/${id}`, httpOptions)
+  getClientById(id: number): Observable<ClienteInterface> {
+    return this.http.get<ClienteInterface>(`${this.baseUrl}/clientes/${id}`, httpOptions)
   }
 
-  getClients(): Observable<ClientInterface[]> {
-    return this.http.get<ClientInterface[]>(`${this.baseUrl}/clientes`, httpOptions)
+  getClients(): Observable<ClienteInterface[]> {
+    return this.http.get<ClienteInterface[]>(`${this.baseUrl}/clientes`, httpOptions)
   }
 
-  updateClientById(id: number, clientData: ClientInterface): Observable<ClientInterface> {
-    return this.http.put<ClientInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
+  updateClientById(id: number, clientData: ClienteInterface): Observable<ClienteInterface> {
+    return this.http.put<ClienteInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
   }
 
   deleteClientById(id: number): Observable<any> {

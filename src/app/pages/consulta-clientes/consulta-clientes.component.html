@@ -6,6 +6,7 @@
     </div>
 
     <div class="consulta-clientes-table">
+        <span *ngIf="!dataSource.length">Nenhum cliente encontrado</span>
         <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
             <!-- Position Column -->
             <ng-container matColumnDef="nome">

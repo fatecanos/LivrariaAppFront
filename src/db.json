@@ -8,47 +8,57 @@
       "email": "lucasnogueiratdm@hotmail.com",
       "senha": "lucas123",
       "confirmacaoSenha": "lucas123",
-      "id": 1
-    },
-    {
-      "nome": "Maria",
-      "sobrenome": "Silva",
-      "dataNascimento": "1998-06-02",
-      "cpf": "47126964862",
-      "email": "aria@hotmail.com",
-      "senha": "lucas123",
-      "confirmacaoSenha": "lucas123",
-      "id": 2
-    },
-    {
-      "nome": "Kelvin",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-02-09",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 3
+      "id": 1,
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "08744103",
+          "numero": "234",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "Casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "logradouro": "Rua Anita Garibaldi",
+          "cep": "08744102",
+          "numero": "2344",
+          "complemento": "casa 3",
+          "tipoEndereco": {
+            "id": 2,
+            "descricao": "Lote"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
+        }
+      ]
     },
     {
       "nome": "Lucas",
       "sobrenome": "Nogueira",
-      "dataNascimento": "2021-02-10",
+      "dataNascimento": "2021-02-16",
       "cpf": "47126964862",
       "email": "lucasnogueiratdm@hotmail.com",
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
-      "id": 4
-    },
-    {
-      "nome": "Matheus",
-      "sobrenome": "Silva",
-      "dataNascimento": "2021-02-25",
-      "cpf": "84779962623",
-      "email": "matheus@gmail.com",
-      "senha": "matheus",
-      "confirmacaoSenha": "matheus",
-      "id": 5
+      "id": 2
     }
   ]
 }
