@@ -8,8 +8,10 @@
     &-content {
 
         &-logo{
+            display: flex;
+            justify-content: flex-end;
 
-            img {max-width: 200px;}
+            img { width: 10%;}
         }
     }
 }

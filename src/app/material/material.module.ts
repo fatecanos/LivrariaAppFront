@@ -7,6 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const material_components = [
@@ -16,7 +22,14 @@ const material_components = [
   MatFormFieldModule,
   MatInputModule,
   MatDividerModule,
-  MatRippleModule
+  MatRippleModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatSelectModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatDividerModule,
+  MatDialogModule
 ];
 
 @NgModule({
