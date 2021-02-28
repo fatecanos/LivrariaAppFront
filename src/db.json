@@ -36,8 +36,8 @@
       "nome": "João",
       "sobrenome": "Cleber",
       "dataNascimento": "1998-02-10",
-      "cpf": "12312444242",
-      "email": "cleber@gmail.com",
+      "cpf": "47823872373",
+      "email": "lucas@gmail.com",
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
       "id": 2,
@@ -179,6 +179,110 @@
           }
         }
       ]
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "cpf": "47126964862",
+      "email": "lucas@gmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 6
+    },
+    {
+      "nome": "Rodrigo",
+      "sobrenome": "Oliveira",
+      "dataNascimento": "1998-02-06",
+      "cpf": "47142555535",
+      "email": "lucas@gmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 7
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "cpf": "47478148818",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 8
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-02-11",
+      "cpf": "12323242441",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 9
+    },
+    {
+      "nome": "Denis",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis222@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ],
+      "id": 10
+    },
+    {
+      "nome": "Breno",
+      "sobrenome": "Snider",
+      "dataNascimento": "2001-08-09",
+      "cpf": "33443141241",
+      "email": "denis222@gmail.com",
+      "senha": "denis",
+      "confirmacaoSenha": "denis",
+      "enderecos": [
+        {
+          "id": 1,
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "",
+          "tipoEndereco": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "São Paulo"
+            }
+          }
+        }
+      ],
+      "id": 11
     }
   ]
 }

@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class EnderecoService {
 
-  baseUrl: string = environment.baseUrl;
+  baseUrl: string = environment.baseUrlMock;
 
   constructor(private http: HttpClient) { }
 

@@ -1,5 +1,3 @@
-import { EnderecoService } from "src/app/services/endereco-service/endereco.service";
-
 export interface ClienteInterface {
     id?: number,
     nome: string,

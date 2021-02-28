@@ -30,7 +30,7 @@ export class AtualizarClientesComponent implements OnInit {
   formAlterarEmail: FormGroup = new FormGroup({});
   formAlterarSenha: FormGroup = new FormGroup({});
 
-  dadosCliente: ClienteInterface;
+  dadosCliente: ClienteInterface | any;
   enderecosCliente: EnderecoInterface[] = [];
 
   clienteResponse$?: Observable<ClienteInterface>;
@@ -42,7 +42,7 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clienteResponse$ = this.clienteService.getClientById(2);
+    this.clienteResponse$ = this.clienteService.getClientById(1);
     this.initForm();
   }
 

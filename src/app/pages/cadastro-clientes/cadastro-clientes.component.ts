@@ -41,20 +41,14 @@ export class CadastroClientesComponent {
       if(this.formularioCliente.valid) {
         this.clientService.saveClient(this.formularioCliente.value)
           .subscribe(response => {
-              setTimeout(()=> {
-                this.title = 'Sucesso!'
-                this.message = 'Cliente foi cadastrado!';
-                this.isSuccess = true;
-              }, 1000);
-          }, error => {
-            this.title = 'Erro!'
-            this.message = 'Cliente não foi cadastrado!';
-            this.showMessage = true;
+            this.title = response.title
+            this.message = response.description;
+            this.isSuccess = true;
+          }, (error)=> {
+            console.log(error);
           }, ()=> {
-            setTimeout(()=> {
-              this.showMessage = true;
-              this.isLoading = false
-            }, 2000)
+            this.showMessage = true;
+            this.isLoading = false
           });
       } else {
         this.isLoading = false;
