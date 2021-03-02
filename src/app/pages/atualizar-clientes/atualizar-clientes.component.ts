@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { EnderecoSubmitterComponent } from 'src/app/components/dialogs/endereco-submitter/endereco-submitter.component';
 import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
@@ -36,6 +38,7 @@ export class AtualizarClientesComponent implements OnInit {
   clienteResponse$?: Observable<ClienteInterface>;
 
   constructor(
+    public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private clienteService: ClienteService
@@ -102,10 +105,11 @@ export class AtualizarClientesComponent implements OnInit {
       let dados = this.dadosCliente;
       this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
 
+
       this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
         .subscribe(response => {
           this.isLoading = false;
-          this._snackBar.open("dados do cliente foram atualizados", 'fechar', {duration: 5000});
+          this._snackBar.open(response.description, 'fechar', {duration: 5000});
         }, error => {
           this.isLoading = false;
           this._snackBar.open("erro ao atualizar cliente", 'fechar', {duration: 5000});
@@ -150,8 +154,14 @@ export class AtualizarClientesComponent implements OnInit {
     this.clienteResponse$.subscribe(response => { this.dadosCliente = response });
   }
 
-  addEndereco() {
-
+  abrirModalNovoEndereco() {
+    const dialogRef = this.dialog.open(EnderecoSubmitterComponent, {
+      width: '700px',
+      data: 'ola'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.clienteResponse$ = this.clienteService.getClientById(1);
+    })
   }
 
 }

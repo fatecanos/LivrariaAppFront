@@ -1,4 +1,26 @@
 {
+  "enderecos": [
+    {
+      "id": 1,
+      "logradouro": "Rua Gilberto Gagliard",
+      "cep": "49345109",
+      "numero": "233",
+      "bairro": "Vila Boa",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi das Cruzes",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      }
+    }
+  ],
   "clientes": [
     {
       "id": 1,

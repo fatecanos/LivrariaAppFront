@@ -35,8 +35,8 @@ export class ClienteService {
     return this.http.get<ClienteInterface[]>(`${this.baseUrl}/clientes`, httpOptions)
   }
 
-  updateClientById(id: number | undefined, clientData: ClienteInterface): Observable<ClienteInterface> {
-    return this.http.put<ClienteInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
+  updateClientById(id: number | undefined, clientData: ClienteInterface): Observable<MessageInterface> {
+    return this.http.put<MessageInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
   }
 
   deleteClientById(id: number): Observable<any> {

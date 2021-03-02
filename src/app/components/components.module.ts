@@ -8,6 +8,7 @@ import { LivEnderecoFormComponent } from './liv-endereco-form/liv-endereco-form.
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InativarDialogComponent } from './dialogs/inativar-dialog/inativar-dialog.component';
+import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -17,7 +18,7 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     LivHeaderComponent, 
     LivFooterComponent, 
-    LivEnderecoFormComponent, InativarDialogComponent, 
+    LivEnderecoFormComponent, InativarDialogComponent, EnderecoSubmitterComponent, 
   ],
   imports: [
     CommonModule,

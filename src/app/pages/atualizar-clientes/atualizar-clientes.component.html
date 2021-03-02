@@ -49,7 +49,7 @@
                 <span *ngIf="!(clienteResponse$ | async)?.enderecos">
                     Nenhum endereço foi associado para este cliente.
                 </span>
-                <button mat-button (click)="addEndereco()">+ Endereco</button>
+                <button mat-button (click)="abrirModalNovoEndereco()">+ Endereco</button>
             </div>
             
         </mat-tab>
@@ -99,7 +99,7 @@
                     color="primary" diameter="50"
                     mode="indeterminate">
                 </mat-progress-spinner>
-                <button mat-button (click)="atualizarEmail()">Atualizar Dados</button>
+                <button mat-button [disabled]="formAlterarEmail.invalid" (click)="atualizarEmail()">Atualizar Dados</button>
             </div>
         </mat-tab>
 
