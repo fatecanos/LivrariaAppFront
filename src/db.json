@@ -305,6 +305,16 @@
         }
       ],
       "id": 11
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-03-11",
+      "cpf": "47142555535",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 12
     }
   ]
 }
