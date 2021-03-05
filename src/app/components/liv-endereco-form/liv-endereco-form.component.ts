@@ -25,11 +25,10 @@ export class LivEnderecoFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("Formulario endereco:", this.endereco);
     
     this.formEndereco = this.formBuilder.group({
       tipoEndereco: [this.endereco?.tipoEndereco, { validators: [Validators.required] }],
-      tipoLogradouro: [this.endereco?.tipoLogradouro, { validators: [Validators.required] }],
+      tipoLogradouro: [this.endereco?.tipoLogradouro.id, { validators: [Validators.required] }],
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],

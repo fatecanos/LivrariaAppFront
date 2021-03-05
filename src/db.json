@@ -1,4 +1,27 @@
 {
+  "cartoes": [
+    {
+      "id": 1,
+      "numero": "09873948394853928",
+      "nome": "Lucas M Nogueira",
+      "bandeira": "Mastercard",
+      "isPrincipal": false
+    },
+    {
+      "numero": "09873948394853928",
+      "nome": "Maria N Silva",
+      "bandeira": "Mastercard",
+      "isPrincipal": false,
+      "id": 2
+    },
+    {
+      "numero": "09873948394853928",
+      "nome": "Lucas M Nogueira",
+      "bandeira": "Visa",
+      "isPrincipal": true,
+      "id": 3
+    }
+  ],
   "enderecos": [
     {
       "id": 1,
@@ -320,6 +343,16 @@
       "senha": "lucas",
       "confirmacaoSenha": "lucas",
       "id": 12
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-03-19",
+      "cpf": "54344343434",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 13
     }
   ]
 }

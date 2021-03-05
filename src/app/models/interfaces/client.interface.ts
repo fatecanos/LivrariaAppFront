@@ -44,3 +44,16 @@ export interface TipoLogradouroInterface {
     id: number,
     descricao: string
 }
+
+export interface BandeiraCartaoInterface {
+    id: number,
+    descricao: string,
+}
+
+export interface CartaoInterface {
+    id: number,
+    numero: string,
+    nome: string,
+    bandeira: string,
+    isPrincipal: boolean
+}

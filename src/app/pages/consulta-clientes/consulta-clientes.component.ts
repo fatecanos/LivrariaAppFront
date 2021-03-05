@@ -32,7 +32,6 @@ export class ConsultaClientesComponent implements OnInit {
   }
 
   inativarClientePorId(id: number) {
-    console.log('inativando cliente: ', id)
     const dialogRef = this.dialog.open(InativarDialogComponent, {
       width: '250px',
       data: {

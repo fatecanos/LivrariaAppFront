@@ -35,7 +35,6 @@ export class CadastroClientesComponent {
   }
 
   submitCustomer() {
-      console.log(this.formularioCliente);
       this.isLoading = true;
 
       if(this.formularioCliente.valid) {

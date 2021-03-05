@@ -10,7 +10,6 @@ import { ClienteService } from 'src/app/services/client-service/client-service.s
 
 function matchValidator(controlName: string): ValidatorFn {
   return (control: AbstractControl) => {
-    console.log(control)
     if (!control || !control.parent) {
       return null;
     }
@@ -96,11 +95,9 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   enviarDadosCliente() {
-    console.log(this.formDadosCliente);
     this.isLoading = true;
 
     if(this.formDadosCliente.valid) {
-      console.log('atualizando cliente...')
 
       let dados = this.dadosCliente;
       this.dadosCliente = { ...dados, ...this.formDadosCliente.value };

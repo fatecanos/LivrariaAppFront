@@ -1,0 +1,79 @@
+<div class="cartoes_form">
+
+    <div class="cartoes_form-novo" *ngIf="isNovoCartaoForm">
+        <h3>Novo Cartão</h3>
+        <form>
+            <mat-form-field class="cartoes_form-novo-nome">
+                <mat-label>Nome no cartão:</mat-label>
+                <input matInput
+                    placeholder="Nome Completo" type="text">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Número cartão:</mat-label>
+                <input matInput
+                    placeholder="0000.0000.0000.0000" 
+                    mask="0000.0000.0000.0000" type="text">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Bandeira:</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let bandeiraCartao of bandeirasCartao" 
+                        [value]="bandeiraCartao">
+                        {{ bandeiraCartao.descricao }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Código de segurança:</mat-label>
+                <input matInput placeholder="000" mask="000" type="text">
+            </mat-form-field>
+        </form>
+
+        <div class="cartoes_form-novo-options">
+            <button mat-button color="primary">Enviar</button>
+            <button mat-button (click)="isNovoCartaoForm=false">Cancelar</button>
+        </div>
+    </div>
+
+
+    <div class="cartoes_form-cadastrados">
+        <div class="cartoes_form-cadastrados-vazio" *ngIf="!(cartoes$ | async).length">
+            <span>Nenhum cartão encontrado.</span>
+        </div>
+
+        <div class="cartoes_form-cadastrados-lista"
+            *ngFor="let cartao of cartoes$ | async">
+
+            <div class="cartoes_form-cadastrados-lista-preferencial">
+                <mat-icon (click)="idCartaoSelecionado = cartao.id">
+                    {{ idCartaoSelecionado === cartao.id? 'radio_button_checked': 'radio_button_unchecked'}}
+                </mat-icon>
+                <span>{{ idCartaoSelecionado === cartao.id? 'Preferencial': ''}}</span>
+            </div>
+
+            <mat-form-field class="cartoes_form-novo-nome">
+                <mat-label>Nome no cartão:</mat-label>
+                <input matInput type="text" value="{{cartao.nome}}" disabled>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Número cartão:</mat-label>
+                <input matInput disabled value="{{cartao.numero}}" type="text">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Bandeira:</mat-label>
+                <input matInput disabled type="text" value="{{cartao.bandeira}}">
+            </mat-form-field>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+
+    <div class="cartoes_form-button">
+        <button mat-button (click)="isNovoCartaoForm=true">+ Cartão</button>
+        <button mat-button>Atualizar</button>
+    </div>
+</div>
