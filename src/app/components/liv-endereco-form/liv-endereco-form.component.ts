@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { EnderecoInterface } from 'src/app/models/interfaces/client.interface';
+import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/client.interface';
+import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 
 @Component({
@@ -17,6 +18,7 @@ export class LivEnderecoFormComponent implements OnInit {
 
   isLoading: boolean = false;
   estados: Array<string> = UFs;
+  tiposLogradouros: Array<TipoLogradouroInterface> = tiposLogradourosMock;
 
   constructor(
     private formBuilder: FormBuilder
@@ -26,21 +28,23 @@ export class LivEnderecoFormComponent implements OnInit {
     console.log("Formulario endereco:", this.endereco);
     
     this.formEndereco = this.formBuilder.group({
+      tipoEndereco: [this.endereco?.tipoEndereco, { validators: [Validators.required] }],
+      tipoLogradouro: [this.endereco?.tipoLogradouro, { validators: [Validators.required] }],
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],
       complemento: [this.endereco?.complemento, { validators: [Validators.required] }],
       bairro: [this.endereco?.bairro, { validators: [Validators.required] }],
-      tipoEndereco: this.formBuilder.group({
+      tipoResidencia: this.formBuilder.group({
         id: ['', { validators: [Validators.required] }],
-        descricao: [this.endereco?.tipoEndereco, { validators: [Validators.required] }]
+        descricao: [this.endereco?.tipoResidencia, { validators: [Validators.required] }]
       }),
       cidade: this.formBuilder.group({
-        id: ['', { validators: [Validators.required] }],
-        descricao: ['', { validators: [Validators.required] }],
+        id: [this.endereco?.cidade.id, { validators: [Validators.required] }],
+        descricao: [this.endereco?.cidade.descricao, { validators: [Validators.required] }],
         estado: this.formBuilder.group({
-          id: ['', { validators: [Validators.required] }],
-          descricao: ['', { validators: [Validators.required] }]
+          id: [this.endereco?.cidade.estado.id, { validators: [Validators.required] }],
+          descricao: [this.endereco?.cidade.estado.descricao, { validators: [Validators.required] }]
         })
       })
     });

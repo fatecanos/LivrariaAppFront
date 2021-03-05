@@ -12,13 +12,16 @@ export interface ClienteInterface {
 
 export interface EnderecoInterface {
     id: number,
+    tipoEndereco: string,
+    tipoLogradouro: TipoLogradouroInterface,
     logradouro: string,
     cep: string,
     numero: string,
     bairro: string,
     complemento: string,
-    tipoEndereco: string,
-    cidade: CidadeInterface
+    tipoResidencia: string,
+    cidade: CidadeInterface,
+    pais: string,
 }
 
 export interface CidadeInterface {
@@ -33,6 +36,11 @@ export interface EstadoInterface {
 }
 
 export interface TipoEnderecoInterface {
+    id: number,
+    descricao: string
+}
+
+export interface TipoLogradouroInterface {
     id: number,
     descricao: string
 }

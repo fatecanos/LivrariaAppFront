@@ -28,18 +28,23 @@
       "sobrenome": "Snider",
       "dataNascimento": "2001-08-09",
       "cpf": "33443141241",
-      "email": "denis222@gmail.com",
+      "email": "lucas@gmail.com",
       "senha": "denis",
       "confirmacaoSenha": "denis",
       "enderecos": [
         {
           "id": 1,
+          "tipoEndereco": "cobranca",
+          "tipoLogradouro": {
+            "id": 1,
+            "descricao": "Rua"
+          },
           "logradouro": "Rua Gilberto Gagliard",
           "cep": "49345109",
           "numero": "233",
           "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
+          "complemento": "casa 1",
+          "tipoResidencia": {
             "id": 1,
             "descricao": "casa"
           },
@@ -48,7 +53,7 @@
             "descricao": "Mogi das Cruzes",
             "estado": {
               "id": 1,
-              "descricao": "São Paulo"
+              "descricao": "SP"
             }
           }
         }
