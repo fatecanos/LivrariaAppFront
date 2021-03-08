@@ -3,25 +3,25 @@
     {
       "id": 1,
       "numero": "983774934454",
-      "data": "12/02",
+      "data": "02-12-2020",
       "status": "ANDAMENTO"
     },
     {
       "id": 2,
       "numero": "099494883444",
-      "data": "09/03",
+      "data": "02-12-2020",
       "status": "ENTREGUE"
     },
     {
       "id": 3,
       "numero": "099494883444",
-      "data": "09/03",
+      "data": "02-12-2020",
       "status": "ENTREGUE"
     },
     {
       "id": 3,
       "numero": "099494883444",
-      "data": "09/03",
+      "data": "02-12-2020",
       "status": "ENTREGUE"
     }
   ],

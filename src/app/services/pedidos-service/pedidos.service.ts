@@ -12,7 +12,7 @@ export class PedidosService {
 
     constructor(private http: HttpClient) { }
 
-    getPedidos(): Observable<PerdidoInterface> {
-        return this.http.get<PerdidoInterface>(`${this.baseUrl}/pedidos`);
+    getPedidos(): Observable<PerdidoInterface[]> {
+        return this.http.get<PerdidoInterface[]>(`${this.baseUrl}/pedidos`);
     }
 }
