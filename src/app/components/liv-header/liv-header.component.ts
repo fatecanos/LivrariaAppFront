@@ -14,7 +14,7 @@ export class LivHeaderComponent {
   }
 
   navigateToClientRegister() {
-    this.router.navigate(['/novo-cliente']);
+    this.router.navigate(['/livraria/novo-cliente']);
     this.showPainel = !this.showPainel;
   }
 

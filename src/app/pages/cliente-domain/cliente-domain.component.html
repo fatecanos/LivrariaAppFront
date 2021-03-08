@@ -1,0 +1,17 @@
+<mat-sidenav-container class="cliente-domain">
+    <mat-sidenav mode="side" opened>
+      <ul>
+        <li>
+            <a routerLink="/clientes">Meus Dados</a>
+        </li>
+        <li>
+            <a routerLink="/clientes/pedidos">Pedidos</a>
+        </li>
+      </ul>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>

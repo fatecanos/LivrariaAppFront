@@ -6,9 +6,6 @@
     </div>
 
     <mat-tab-group mat-align-tabs="start" class="client_update-tabs_container">
-        <mat-tab label="Cartão de Crédito" isActive>
-            <liv-cartoes-form></liv-cartoes-form>
-        </mat-tab>
 
         <mat-tab label="Dados do Cliente">
             <form [formGroup]="formDadosCliente"
@@ -129,6 +126,10 @@
                 </mat-progress-spinner>
                 <button mat-button (click)="atualizarSenha()">Atualizar Dados</button>
             </div>
+        </mat-tab>
+
+        <mat-tab label="Cartão de Crédito" isActive>
+            <liv-cartoes-form></liv-cartoes-form>
         </mat-tab>
 
     </mat-tab-group>

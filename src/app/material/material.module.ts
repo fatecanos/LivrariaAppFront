@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 const material_components = [
@@ -31,7 +32,8 @@ const material_components = [
   MatTableModule,
   MatDividerModule,
   MatDialogModule,
-  MatRadioModule
+  MatRadioModule,
+  MatSidenavModule
 ];
 
 @NgModule({

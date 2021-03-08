@@ -13,7 +13,7 @@ export class EnderecoSubmitterComponent implements OnInit {
 
   formEndereco: FormGroup = new FormGroup({});
   estados: Array<any> = UFs;
-  tiposLogradouro: Array<TipoLogradouroInterface> = tiposLogradourosMock;
+  tiposLogradouros: Array<TipoLogradouroInterface> = tiposLogradourosMock;
 
   constructor(
     private formBuilder: FormBuilder,

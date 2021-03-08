@@ -18,7 +18,6 @@ function matchValidator(controlName: string): ValidatorFn {
 }
 
 @Component({
-  selector: 'app-atualizar-clientes',
   templateUrl: './atualizar-clientes.component.html',
   styleUrls: ['./atualizar-clientes.component.scss']
 })
