@@ -1,0 +1,57 @@
+.estoque {
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 800px;
+
+    &-amount {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &-container {
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 15px;
+
+        &-card {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            max-width: 200px;
+
+            img {
+                max-width: 200px;
+            }
+
+            &-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                width: 100%;
+
+
+                &-title {
+                    margin-top: 5px;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                }
+            }
+
+            &-price {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                width: 100%;
+
+                span {
+                    font-size: 1.8em;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}

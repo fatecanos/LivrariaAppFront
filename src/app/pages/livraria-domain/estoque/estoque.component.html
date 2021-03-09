@@ -1,0 +1,28 @@
+<div class="estoque">
+    
+    <div class="estoque-amount">
+        <span>{{(livros$ | async).length}} items encontrados</span>
+    </div>
+
+    <div class="estoque-container">
+        <mat-card class="estoque-container-card"
+            *ngFor="let livro of livros$ | async">
+            <img [src]="livro.url" 
+                alt="imagem">
+            <div class="estoque-container-card-content">
+                <span class="estoque-container-card-content-title">
+                    {{livro.nomeLivro}}
+                </span>
+                <span>{{livro.autor}}</span>
+            </div>
+            <div class="estoque-container-card-price">
+                <span>{{livro.valor | currency:'BRL':true:'1.2-2'}}</span>
+            </div>
+            <div class="estoque-container-card-button">
+                <button mat-button color="primary">Comprar</button>
+            </div>
+        </mat-card>
+            
+    </div>
+
+</div>

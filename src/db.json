@@ -1,4 +1,46 @@
 {
+  "estoque": [
+    {
+      "id": 1,
+      "nomeLivro": "Harry Potter",
+      "autor": "J.K R",
+      "ano": "2008",
+      "valor": 81.98,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+    },
+    {
+      "id": 2,
+      "nomeLivro": "Harry Potter",
+      "autor": "J.K R",
+      "ano": "2008",
+      "valor": 81.98,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+    },
+    {
+      "id": 3,
+      "nomeLivro": "Harry Potter",
+      "autor": "J.K R",
+      "ano": "2008",
+      "valor": 81.98,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+    },
+    {
+      "id": 4,
+      "nomeLivro": "Harry Potter",
+      "autor": "J.K R",
+      "ano": "2008",
+      "valor": 81.98,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+    },
+    {
+      "id": 5,
+      "nomeLivro": "Harry Potter",
+      "autor": "J.K R",
+      "ano": "2008",
+      "valor": 81.98,
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+    }
+  ],
   "pedidos": [
     {
       "id": 1,
@@ -379,6 +421,16 @@
       "senha": "lucas",
       "confirmacaoSenha": "lucas",
       "id": 13
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-03-10",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 14
     }
   ]
 }
