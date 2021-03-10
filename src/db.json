@@ -30,12 +30,12 @@
     },
     {
       "id": 3,
-      "nomeLivro": "Harry Potter",
-      "autor": "J.K R",
+      "nomeLivro": "Clube da Luta",
+      "autor": "Chuck Palahnuik",
       "ano": "2008",
-      "valor": 81.98,
+      "valor": 78.87,
       "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/415EtggWPDL._SX342_BO1,204,203,200_.jpg",
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
@@ -44,12 +44,12 @@
     },
     {
       "id": 4,
-      "nomeLivro": "Harry Potter",
-      "autor": "J.K R",
+      "nomeLivro": "Codigo Limpo",
+      "autor": "Tio Bob",
       "ano": "2008",
-      "valor": 81.98,
+      "valor": 120.98,
       "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "url": "https://www.altabooks.com.br/wp-content/uploads/2019/07/Codigo_Limpo.jpg",
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
@@ -58,18 +58,32 @@
     },
     {
       "id": 5,
-      "nomeLivro": "Harry Potter",
-      "autor": "J.K R",
+      "nomeLivro": "Arquitetura Limpa",
+      "autor": "Tio Bob",
       "ano": "2008",
-      "valor": 81.98,
+      "valor": 90.99,
       "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81yxCySs1hL.jpg",
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.50
+        }
+      },
+      {
+        "id": 6,
+        "nomeLivro": "Arquitetura Limpa",
+        "autor": "Tio Bob",
+        "ano": "2008",
+        "valor": 90.99,
+        "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+        "url": "https://images-na.ssl-images-amazon.com/images/I/81yxCySs1hL.jpg",
+        "dimensoes": {
+          "largura": 17.04,
+          "altura": 30.03,
+          "profundidade": 0.50
+        }
       }
-    }
   ],
   "pedidos": [
     {
