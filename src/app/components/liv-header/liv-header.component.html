@@ -1,6 +1,6 @@
 <mat-toolbar class="liv-header">
     <div class="liv-header-left_logo">
-        <img class="liv-header-left_logo-image"
+        <img class="liv-header-left_logo-image" (click)="navigateToHome()"
             src="../../../assets/img/logo-2.svg" alt="logotipo">
     </div>
     <div class="liv-header-search_bar">
@@ -20,7 +20,7 @@
         </a>
 
         <div class="liv-header-right_painel-cart">
-            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon (click)="navigateToCart()">shopping_cart</mat-icon>
         </div>
     </div>
 </mat-toolbar>

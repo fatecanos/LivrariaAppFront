@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
+import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
-  selector: 'app-estoque',
   templateUrl: './estoque.component.html',
   styleUrls: ['./estoque.component.scss']
 })
 export class EstoqueComponent implements OnInit {
 
-  livros$?: Observable<EstoqueInterface[]>;
+  livros$?: Observable<LivroEstoqueInterface[]>;
 
   constructor(
-    private service: EstoqueService
+    private service: EstoqueService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.livros$ = this.service.getEstoque();
+  }
+
+  goToDetails(livroId: number) {
+    this.router.navigate([`/livraria/detalhes/${livroId}`]);
   }
 
 }

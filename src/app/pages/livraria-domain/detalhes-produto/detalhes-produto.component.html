@@ -1,0 +1,38 @@
+<div class="detalhes-produto">
+    <div class="detalhes-produto-header">
+        <h3>{{ (livro$ | async).nomeLivro }}</h3>
+    </div>
+    <div class="detalhes-produto-display">
+        <div class="detalhes-produto-display-foto">
+            <img [src]="(livro$ | async).url" alt="">
+            <span>Autor: {{ (livro$ | async).autor }}, {{ (livro$ | async).ano }}</span>
+        </div>
+        <div class="detalhes-produto-display-valor">
+            <span class="detalhes-produto-display-valor-content">
+                {{ (livro$ | async).valor | currency:'BRL':true:'1.2-2'}}
+            </span>
+            <div class="detalhes-produto-display-valor-button">
+                <button mat-raised-button color="primary">
+                    + Carrinho
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="detalhes-produto-content">
+
+        <div class="detalhes-produto-content-block">
+            <h3>Sinopse:</h3>
+            <span>{{ (livro$ | async).sinopse }}</span>
+        </div>
+
+        <div class="detalhes-produto-content-block">
+            <h3>Dimensões:</h3>
+            <span>
+                {{ (livro$ | async).dimensoes.largura}}cm x
+                {{ (livro$ | async).dimensoes.altura}}cm x
+                {{ (livro$ | async).dimensoes.profundidade}}cm 
+            </span>
+        </div>
+        
+    </div>
+</div>

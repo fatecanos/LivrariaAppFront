@@ -1,0 +1,30 @@
+<div class="carrinho">
+    <div class="carrinho-header">
+        <h2>Carrinho</h2>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div class="carrinho-table">
+        <table>
+            <tr>
+                <th>ITEM</th>
+                <th>VALOR</th>
+                <th>QTDE</th>
+            </tr>
+            <tr class="carrinho-table-item_line">
+                <td class="carrinho-table-item_line-item">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" 
+                        alt="item">
+                    <span>Harry Potter e as reliquias da morte</span>
+                </td>
+                <td class="carrinho-table-item_line-valor">R$ 20,09</td>
+                <td>
+                    <button>-</button>
+                    <input class="carrinho-table-item_line-amount_input" 
+                        type="text" [value]="0">
+                    <button>+</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -2,19 +2,31 @@
   "estoque": [
     {
       "id": 1,
-      "nomeLivro": "Harry Potter",
+      "nomeLivro": "Harry Potter e as Reliquias da Morte",
       "autor": "J.K R",
       "ano": "2008",
       "valor": 81.98,
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.50
+      }
     },
     {
       "id": 2,
-      "nomeLivro": "Harry Potter",
-      "autor": "J.K R",
-      "ano": "2008",
-      "valor": 81.98,
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+      "nomeLivro": "1984",
+      "autor": "George Owell",
+      "ano": "1948",
+      "valor": 53.98,
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "http://provoca.com.br/wp-content/uploads/2017/05/1984Livro.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.50
+      }
     },
     {
       "id": 3,
@@ -22,7 +34,13 @@
       "autor": "J.K R",
       "ano": "2008",
       "valor": 81.98,
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.50
+      }
     },
     {
       "id": 4,
@@ -30,7 +48,13 @@
       "autor": "J.K R",
       "ano": "2008",
       "valor": 81.98,
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.50
+      }
     },
     {
       "id": 5,
@@ -38,7 +62,13 @@
       "autor": "J.K R",
       "ano": "2008",
       "valor": 81.98,
-      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg"
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.50
+      }
     }
   ],
   "pedidos": [
@@ -431,6 +461,16 @@
       "senha": "lucas",
       "confirmacaoSenha": "lucas",
       "id": 14
+    },
+    {
+      "nome": "LUCAS",
+      "sobrenome": "NOGUEIRA",
+      "dataNascimento": "2021-03-17",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 15
     }
   ]
 }

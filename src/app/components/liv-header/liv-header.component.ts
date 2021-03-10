@@ -18,4 +18,11 @@ export class LivHeaderComponent {
     this.showPainel = !this.showPainel;
   }
 
+  navigateToCart() {
+    this.router.navigate(['/livraria/carrinho']);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/livraria']);
+  }
 }

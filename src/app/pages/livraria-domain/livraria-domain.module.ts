@@ -12,6 +12,8 @@ import { EstoqueComponent } from './estoque/estoque.component';
 import { IConfig, NgxMaskModule } from "ngx-mask";
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from "@angular/material/core";
 import { EstoqueService } from "src/app/services/estoque-service/estoque.service";
+import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -32,7 +34,9 @@ const maskConfig: Partial<IConfig> = {
         LivrariaDomainComponent,
         StoreHomeComponent,
         CadastroClientesComponent,
-        EstoqueComponent
+        EstoqueComponent,
+        DetalhesProdutoComponent,
+        CarrinhoComponent
     ],
     providers: [
         {

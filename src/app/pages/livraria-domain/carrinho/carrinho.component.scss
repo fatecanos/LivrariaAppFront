@@ -1,0 +1,40 @@
+.carrinho {
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 600px;
+
+    &-header {
+        margin-top: 16px;
+    }
+
+    &-table {
+        width: 100%;
+
+        table {
+            width: 100%;
+
+            th {
+                text-align: left;
+            }
+        }
+
+        &-item_line {
+            border-bottom: 1px solid #696969;
+
+            &-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                img {
+                    width: 90px;
+                    height: 100px;
+                }
+            }
+
+            &-amount_input {
+                width: 35px;
+            }
+        }
+    }    
+}
