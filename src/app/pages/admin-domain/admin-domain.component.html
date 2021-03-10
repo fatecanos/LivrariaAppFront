@@ -1,23 +1,41 @@
 <mat-sidenav-container class="admin-domain">
     <mat-sidenav mode="side" opened>
-      <ul>
+      <ul class="admin-domain-options">
         <li>
-          <a routerLink="/admin">Nossos Clientes</a>
+          <span>Livros</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>add</mat-icon>
+            <a routerLink="/admin">Novo Livro</a>
+          </div>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin">Consulta</a>
+          </div>
         </li>
         <li>
-          <a routerLink="/admin">Livros</a>
+          <span>Clientes</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin">Consulta</a>
+          </div>
         </li>
         <li>
-          <a routerLink="/admin">Resultados</a>
+          <span>Vendas</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin">Consulta</a>
+          </div>
         </li>
         <li>
-          <a routerLink="/admin">Trocas</a>
-        </li>
-        <li>
-          <a routerLink="/admin">Cancelamento</a>
-        </li>
-        <li>
-          <a routerLink="/admin">Estoque</a>
+          <span>Estoque</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>add</mat-icon>
+            <a routerLink="/admin">Entrada</a>
+          </div>
+          <div class="admin-domain-options-item">
+            <mat-icon>remove</mat-icon>
+            <a routerLink="/admin">Baixa</a>
+          </div>
         </li>
       </ul>
     </mat-sidenav>
