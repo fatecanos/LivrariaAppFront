@@ -10,8 +10,21 @@
         }
     }
 
-    &-search-bar {
+    &-search_bar {
+        display: flex;
+        align-items: center;
 
+        input {
+            width: 40vw;
+            height: 24px;
+            font-size: 0.9em;
+            border: 1px solid #696969;
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            height: 30px;
+        }
     }
 
     &-right_painel {
