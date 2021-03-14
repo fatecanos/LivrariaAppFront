@@ -12,6 +12,7 @@ import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/enderec
 import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
 import { LivSidenavClienteComponent } from './liv-sidenav-cliente/liv-sidenav-cliente.component';
 import { LivSidenavAdminComponent } from './liv-sidenav-admin/liv-sidenav-admin.component';
+import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -26,7 +27,7 @@ const maskConfig: Partial<IConfig> = {
     EnderecoSubmitterComponent, 
     LivCartoesFormComponent, 
     LivSidenavClienteComponent, 
-    LivSidenavAdminComponent, 
+    LivSidenavAdminComponent, CarrinhoFinalizacaoComponent, 
   ],
   imports: [
     CommonModule,

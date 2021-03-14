@@ -1,0 +1,28 @@
+<div class="painel_login">
+    <form [formGroup]="formulario"
+        class="painel_login-container">
+        <div class="painel_login-container-header">
+            <h3>Acesse sua conta</h3>
+        </div>
+        <mat-form-field class="painel_login-container-form">
+            <mat-label>E-mail:</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="formulario.get('email')?.hasError('required')">
+                O e-mail está <strong>incompleto.</strong>
+            </mat-error>
+            <mat-error *ngIf="formulario.get('email')?.hasError('email')">
+                Endereço de email <strong>inválido.</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="painel_login-container-form">
+            <mat-label>Senha:</mat-label>
+            <input matInput formControlName="senha" type="password">
+        </mat-form-field>
+        <div class="painel_login-container-form">
+            <button mat-button (click)="enviar()">Entrar</button>
+        </div>
+    </form>
+    <div class="painel_login-spinner" *ngIf="isLoading">
+        <mat-spinner diameter="50"></mat-spinner>
+    </div>
+</div>

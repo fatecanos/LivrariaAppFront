@@ -1,5 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
+import { CarrinhoService } from "./carrinho-service/carrinho-service.service";
 import { CartoesService } from "./cartoes-service/cartoes-service.service";
 import { ClienteService } from "./client-service/client-service.service";
 import { EnderecoService } from "./endereco-service/endereco.service";
@@ -17,7 +18,8 @@ import { ValidatorService } from "./validator/validator-service.service";
         PedidosService,
         EnderecoService,
         ValidatorService,
-        CartoesService
+        CartoesService,
+        CarrinhoService
     ]
 })
 export class ServiceModule {

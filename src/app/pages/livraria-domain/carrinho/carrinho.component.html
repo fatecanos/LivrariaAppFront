@@ -11,13 +11,14 @@
                 <th>VALOR</th>
                 <th>QTDE</th>
             </tr>
-            <tr class="carrinho-table-item_line">
+            <tr class="carrinho-table-item_line" 
+                *ngFor="let item of carrinho$ | async">
                 <td class="carrinho-table-item_line-item">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" 
+                    <img src="{{item.produto.url}}" 
                         alt="item">
-                    <span>Harry Potter e as reliquias da morte</span>
+                    <span>{{item.produto.nome}}</span>
                 </td>
-                <td class="carrinho-table-item_line-valor">R$ 20,09</td>
+                <td class="carrinho-table-item_line-valor">R$ {{item.produto.valor}}</td>
                 <td>
                     <button>-</button>
                     <input class="carrinho-table-item_line-amount_input" 
@@ -27,14 +28,47 @@
             </tr>
         </table>
 
-        <div class="carrinho-content">
+        <div>
             <div class="carrinho-content-subtotal">
-                <span>Sub-total: </span><span>R$ 160.00</span>
+                <div>
+                    <span>Sub-total:</span><span>R$ 160.00</span>
+                </div>
+                <br>
+                <div>
+                    <span>Total: </span><span>R$ 180.00</span>
+                </div>
             </div>
+        </div>
+
+        <div class="carrinho-content">
 
             <div class="carrinho-content-adress_selector">
+                <h3>Endereço de entrega:</h3>
 
+                <div class="carrinho-content-adress_selector-item">
+                    <mat-icon class="carrinho-content-adress_selector-item-selected">
+                        radio_button_checked
+                    </mat-icon>
+                    <!-- <mat-icon>radio_button_unchecked</mat-icon> -->
+                    <span>Rua Gilberto Gagliard, 266</span><span> - 08744103</span>
+                </div>
+
+                <div class="carrinho-content-adress_selector-item">
+                    <mat-icon>radio_button_unchecked</mat-icon>
+                    <span>Rua Antonio Lima, 1098</span><span> - 0847663</span>
+                </div>
             </div>
+
+            <div class="carrinho-content-action">
+                <button mat-button color="accent"
+                    (click)="finalizarCompra()">
+                    Finalizar
+                </button>
+            </div>
+        </div>
+
+        <div class="carrinho-valor_frete">
+            <span>Frete:</span><span> R$ 20.00</span>
         </div>
     </div>
 </div>

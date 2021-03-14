@@ -14,4 +14,8 @@ export class StoreHomeComponent implements OnInit {
     this.router.navigate(['/atualizar-clientes'])
   }
 
+  navegarEstoque() {
+    this.router.navigate(['/livraria/estoque'])
+  }
+
 }

@@ -7,6 +7,7 @@ import { ServiceModule } from "src/app/services/services.module";
 import { AdminDomainComponent } from "./admin-domain.component";
 import { AdminDomainRouting } from "./admin-domain.routing";
 import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes.component";
+import { ConsultaVendasComponent } from './consulta-vendas/consulta-vendas.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes
     ],
     declarations: [
         ConsultaClientesComponent,
-        AdminDomainComponent
+        AdminDomainComponent,
+        ConsultaVendasComponent
     ]
 })
 export class AdminDomainModule {

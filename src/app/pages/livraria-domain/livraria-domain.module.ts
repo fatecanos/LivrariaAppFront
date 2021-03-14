@@ -14,6 +14,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from "@angular/materi
 import { EstoqueService } from "src/app/services/estoque-service/estoque.service";
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { PainelLoginComponent } from './painel-login/painel-login.component';
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -36,7 +37,8 @@ const maskConfig: Partial<IConfig> = {
         CadastroClientesComponent,
         EstoqueComponent,
         DetalhesProdutoComponent,
-        CarrinhoComponent
+        CarrinhoComponent,
+        PainelLoginComponent
     ],
     providers: [
         {

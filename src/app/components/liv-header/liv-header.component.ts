@@ -25,4 +25,22 @@ export class LivHeaderComponent {
   navigateToHome() {
     this.router.navigate(['/livraria']);
   }
+
+  navigateToLoginPage() {
+    this.router.navigate(['/livraria/login']);
+    this.showPainel = false;
+  }
+
+  get isLogado() {
+    let isLogado = sessionStorage.getItem('isLogado');
+    return isLogado;
+  }
+
+  navegaCliente() {
+    this.router.navigate(['/clientes'])
+  }
+
+  logout(){
+    sessionStorage.clear();
+  }
 }

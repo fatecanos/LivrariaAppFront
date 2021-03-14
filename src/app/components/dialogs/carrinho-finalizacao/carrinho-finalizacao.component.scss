@@ -1,0 +1,41 @@
+.carrinho_finalizacao {
+
+    &-header {
+        margin-bottom: 15px;
+        h3 {
+            font-weight: bold;
+        }
+    }
+
+    &-forma_pagto {
+        width: 100%;
+
+        &-cartoes {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: row;
+            width: 40%;
+            justify-content: space-between;
+
+            &-descricao-title {
+                font-weight: bold;
+            }
+
+            mat-icon {
+                cursor: pointer;
+            }
+        }
+    
+        &-parcelas {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            &-options {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

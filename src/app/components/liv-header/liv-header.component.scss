@@ -67,6 +67,11 @@
             margin-left: 30px;
             margin-right: 25px;
             margin-top: 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 25px;
+
             
             mat-icon {
                 cursor: pointer;
@@ -78,6 +83,17 @@
                 color: #fac515;
             }
 
+            a {
+                text-decoration: none;
+                text-transform: none;
+                text-transform: none;
+                color: #000;
+            }
+
+            a:hover {
+                color: #fac515;
+            }
+    
         }
     }
 }

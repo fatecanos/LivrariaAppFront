@@ -1,0 +1,37 @@
+<div class="carrinho_finalizacao">
+    <div class="carrinho_finalizacao-header">
+        <h3>Forma de Pagamento</h3> 
+        <mat-divider></mat-divider>
+    </div>
+    <div class="carrinho_finalizacao-forma_pagto">
+        <h4>Selecione um Cartão de Crédito:</h4>
+
+        <div class="carrinho_finalizacao-forma_pagto-cartoes">
+            <div class="carrinho_finalizacao-forma_pagto-cartoes-descricao">
+                <span class="carrinho_finalizacao-forma_pagto-cartoes-descricao-title">
+                    MasterCard
+                </span>
+                <span>*********8908</span>
+            </div>
+            <mat-icon>radio_button_unchecked</mat-icon>
+        </div>
+
+        <div class="carrinho_finalizacao-forma_pagto-parcelas">
+            <mat-form-field appearance="fill">
+                <mat-label>Parcelas</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let parcela of ['1x de R$ 200,00', '2x de R$100,00', '3x de R$75.00', '4x de R$50,00']" 
+                        [value]="parcela">
+                        {{parcela}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="carrinho_finalizacao-forma_pagto-parcelas-options">
+                <button mat-raised-button color="primary">Comprar</button>
+                <span>Cupom:</span>
+                <input type="text">
+            </div>
+
+        </div>
+    </div>
+</div>

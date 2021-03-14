@@ -36,5 +36,58 @@
                 width: 35px;
             }
         }
-    }    
+    }  
+    
+    &-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        
+        &-subtotal {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+        }
+
+        &-subtotal {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            
+            span {
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+        }
+
+        &-adress_selector {
+            span {
+                font-weight: bold;
+                margin-bottom: 15px;
+                margin-left: 8px;
+                align-items: baseline;
+            }
+
+            &-item {
+                display: flex;
+                flex-direction: row;
+                margin-top: 15px;
+
+
+                &-selected {
+                    color: #7a7808;
+                }
+            }
+        }
+
+        &-action {
+
+            button {
+                width: 87px;
+                height: 35px;
+            }
+        }
+    }
 }

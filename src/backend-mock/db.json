@@ -1,4 +1,26 @@
 {
+  "carrinho": [
+    {
+      "id": 1,
+      "produto": {
+        "nome": "Harry Potter",
+        "url": "https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg",
+        "valor": 20.09
+      },
+      "quantidade": 1,
+      "quantidadeMaxima": 10
+    },
+    {
+      "id": 2,
+      "produto": {
+        "nome": "1984",
+        "url": "http://provoca.com.br/wp-content/uploads/2017/05/1984Livro.jpg",
+        "valor": 60.09
+      },
+      "quantidade": 1,
+      "quantidadeMaxima": 10
+    }
+  ],
   "estoque": [
     {
       "id": 1,
@@ -11,7 +33,7 @@
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
-        "profundidade": 0.50
+        "profundidade": 0.5
       }
     },
     {
@@ -25,7 +47,7 @@
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
-        "profundidade": 0.50
+        "profundidade": 0.5
       }
     },
     {
@@ -39,7 +61,7 @@
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
-        "profundidade": 0.50
+        "profundidade": 0.5
       }
     },
     {
@@ -53,7 +75,7 @@
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
-        "profundidade": 0.50
+        "profundidade": 0.5
       }
     },
     {
@@ -67,23 +89,23 @@
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
-        "profundidade": 0.50
-        }
-      },
-      {
-        "id": 6,
-        "nomeLivro": "Arquitetura Limpa",
-        "autor": "Tio Bob",
-        "ano": "2008",
-        "valor": 90.99,
-        "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
-        "url": "https://images-na.ssl-images-amazon.com/images/I/81yxCySs1hL.jpg",
-        "dimensoes": {
-          "largura": 17.04,
-          "altura": 30.03,
-          "profundidade": 0.50
-        }
+        "profundidade": 0.5
       }
+    },
+    {
+      "id": 6,
+      "nomeLivro": "Arquitetura Limpa",
+      "autor": "Tio Bob",
+      "ano": "2008",
+      "valor": 90.99,
+      "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
+      "url": "https://images-na.ssl-images-amazon.com/images/I/81yxCySs1hL.jpg",
+      "dimensoes": {
+        "largura": 17.04,
+        "altura": 30.03,
+        "profundidade": 0.5
+      }
+    }
   ],
   "pedidos": [
     {
