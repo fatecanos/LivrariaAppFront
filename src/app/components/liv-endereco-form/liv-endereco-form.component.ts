@@ -52,12 +52,13 @@ export class LivEnderecoFormComponent implements OnInit {
   }
 
   enviarEndereco() {
-    
+    console.log('oi')
   }
 
   removerEndereco() {
-
+    console.log('oi')
   }
+  
 }
 
 

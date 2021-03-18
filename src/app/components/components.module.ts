@@ -27,7 +27,8 @@ const maskConfig: Partial<IConfig> = {
     EnderecoSubmitterComponent, 
     LivCartoesFormComponent, 
     LivSidenavClienteComponent, 
-    LivSidenavAdminComponent, CarrinhoFinalizacaoComponent, 
+    LivSidenavAdminComponent, 
+    CarrinhoFinalizacaoComponent, 
   ],
   imports: [
     CommonModule,

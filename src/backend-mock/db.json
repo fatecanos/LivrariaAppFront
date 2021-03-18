@@ -507,6 +507,16 @@
       "senha": "lucas",
       "confirmacaoSenha": "lucas",
       "id": 15
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-09",
+      "cpf": "47127858453",
+      "email": "lucas@gmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 16
     }
   ]
 }

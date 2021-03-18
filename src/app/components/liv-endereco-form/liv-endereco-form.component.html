@@ -6,17 +6,17 @@
         <div class="endereco-form-tabs_container-form-tipo_residencia">
             <mat-label>Tipo de Endereço:</mat-label>
             <mat-radio-group aria-label="Tipo de Endereço">
-                <mat-radio-button [formControl]="tipoEndereco" 
-                    [value]="{{ id: 1, descricao: 'cobranca' }}">Cobrança</mat-radio-button>
-                <mat-radio-button [formControl]="tipoEndereco" 
-                    [value]="{{ id: 1, descricao: 'entrega' }}">Entrega</mat-radio-button>
+                <mat-radio-button >Cobrança</mat-radio-button>
+                <mat-radio-button >Entrega</mat-radio-button>
             </mat-radio-group><br>
         </div>
         
         <mat-form-field>
             <mat-label>CEP:</mat-label>
             <input matInput formControlName="cep"
-                placeholder="00000-000" mask="00000-000" type="text">
+                placeholder="00000-000" 
+                mask="00000-000" 
+                type="text">
         </mat-form-field>
 
         <mat-form-field>
@@ -97,8 +97,8 @@
             color="primary" diameter="50"
             mode="indeterminate">
         </mat-progress-spinner>
-        <button mat-button (click)="enviarEndereco()">Atualizar Dados</button>
-        <button mat-button color="warn" (click)="removerEndereco()">Remover Endereço</button>
+        <button mat-button>Atualizar Dados</button>
+        <button mat-button color="warn">Remover Endereço</button>
     </div>
 </div>
 <mat-divider></mat-divider>
