@@ -12,7 +12,7 @@ export interface ClienteInterface {
 
 export interface EnderecoInterface {
     id: number,
-    tipoEndereco: string,
+    tipoEndereco: TipoEnderecoInterface,
     tipoLogradouro: TipoLogradouroInterface,
     logradouro: string,
     cep: string,

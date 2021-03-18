@@ -6,10 +6,10 @@
         <div class="endereco-form-tabs_container-form-tipo_residencia">
             <mat-label>Tipo de Endereço:</mat-label>
             <mat-radio-group aria-label="Tipo de Endereço">
-                <mat-radio-button formControlName="tipoEndereco" 
-                    value="cobranca">Cobrança</mat-radio-button>
-                <mat-radio-button formControlName="tipoEndereco"
-                    value="entrega">Entrega</mat-radio-button>
+                <mat-radio-button [formControl]="tipoEndereco" 
+                    [value]="{{ id: 1, descricao: 'cobranca' }}">Cobrança</mat-radio-button>
+                <mat-radio-button [formControl]="tipoEndereco" 
+                    [value]="{{ id: 1, descricao: 'entrega' }}">Entrega</mat-radio-button>
             </mat-radio-group><br>
         </div>
         

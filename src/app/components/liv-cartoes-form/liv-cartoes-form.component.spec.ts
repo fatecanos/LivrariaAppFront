@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 
 import { LivCartoesFormComponent } from './liv-cartoes-form.component';
 
@@ -8,7 +11,14 @@ describe('LivCartoesFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LivCartoesFormComponent ]
+      declarations: [ LivCartoesFormComponent ],
+      imports: [
+        MatSnackBarModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        CartoesService
+      ]
     })
     .compileComponents();
   });

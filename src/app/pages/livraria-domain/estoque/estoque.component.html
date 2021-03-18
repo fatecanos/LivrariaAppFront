@@ -1,7 +1,7 @@
 <div class="estoque">
     
     <div class="estoque-amount">
-        <span>{{(livros$ | async).length || 'Nenhum'}} items encontrados</span>
+        <span>{{(livros$ | async)?.length || 'Nenhum'}} items encontrados</span>
     </div>
 
     <div class="estoque-container">

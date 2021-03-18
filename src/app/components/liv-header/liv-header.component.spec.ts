@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LivHeaderComponent } from './liv-header.component';
 
@@ -8,7 +9,10 @@ describe('LivHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LivHeaderComponent ]
+      declarations: [ LivHeaderComponent ],
+      imports: [
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   });

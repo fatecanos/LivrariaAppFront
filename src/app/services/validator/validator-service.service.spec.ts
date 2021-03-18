@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ValidatorService } from './validator-service.service';
 
-describe('ValidatorServiceService', () => {
+describe('ValidatorService', () => {
   let service: ValidatorService;
 
   beforeEach(() => {

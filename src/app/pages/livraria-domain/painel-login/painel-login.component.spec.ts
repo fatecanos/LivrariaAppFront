@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { PainelLoginComponent } from './painel-login.component';
 
@@ -8,7 +11,11 @@ describe('PainelLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PainelLoginComponent ]
+      declarations: [ PainelLoginComponent ],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+      ]
     })
     .compileComponents();
   });

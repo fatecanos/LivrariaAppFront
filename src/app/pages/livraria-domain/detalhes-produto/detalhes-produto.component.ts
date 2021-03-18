@@ -15,14 +15,12 @@ export class DetalhesProdutoComponent implements OnInit {
   routeData$?: Observable<Params>;
 
   livro$?: Observable<LivroEstoqueInterface>;
-  livro?: LivroEstoqueInterface;
 
   constructor(
     private service: EstoqueService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
     this.routeData$ = this.activatedRoute.params;
 
     this.routeData$.subscribe(data => {

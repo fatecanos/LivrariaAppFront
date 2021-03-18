@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 
 import { CarrinhoComponent } from './carrinho.component';
 
@@ -8,7 +11,14 @@ describe('CarrinhoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CarrinhoComponent ]
+      declarations: [ CarrinhoComponent ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule
+      ],
+      providers: [
+        CarrinhoService
+      ]
     })
     .compileComponents();
   });

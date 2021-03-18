@@ -15,7 +15,7 @@ const routes: Routes = [
             },
             {
                 path: 'vendas',
-                component: ConsultaVendasComponent
+                component: ConsultaVendasComponent  
             }
         ]
     }

@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CadastroClientesComponent } from './cadastro-clientes.component';
 
@@ -8,7 +11,12 @@ describe('CadastroClientesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CadastroClientesComponent ]
+      declarations: [ CadastroClientesComponent ],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
   });

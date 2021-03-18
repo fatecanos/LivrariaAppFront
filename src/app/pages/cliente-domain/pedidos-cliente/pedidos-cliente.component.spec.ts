@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
 
 import { PedidosClienteComponent } from './pedidos-cliente.component';
 
@@ -8,7 +10,13 @@ describe('PedidosClienteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PedidosClienteComponent ]
+      declarations: [ PedidosClienteComponent ],
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        PedidosService
+      ]
     })
     .compileComponents();
   });

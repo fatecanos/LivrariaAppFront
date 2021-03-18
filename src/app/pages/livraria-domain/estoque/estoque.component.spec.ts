@@ -1,4 +1,9 @@
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 import { EstoqueComponent } from './estoque.component';
 
@@ -8,7 +13,15 @@ describe('EstoqueComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EstoqueComponent ]
+      declarations: [ EstoqueComponent ],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        EstoqueService
+      ]
     })
     .compileComponents();
   });
