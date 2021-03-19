@@ -40,7 +40,7 @@
 
 
     <div class="cartoes_form-cadastrados">
-        <div class="cartoes_form-cadastrados-vazio" *ngIf="!(cartoes$ | async).length">
+        <div class="cartoes_form-cadastrados-vazio" *ngIf="!(cartoes$ | async)?.length">
             <span>Nenhum cartão encontrado.</span>
         </div>
 

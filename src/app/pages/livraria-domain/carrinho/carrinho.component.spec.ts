@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 
@@ -14,7 +15,8 @@ describe('CarrinhoComponent', () => {
       declarations: [ CarrinhoComponent ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        MatDialogModule
       ],
       providers: [
         CarrinhoService

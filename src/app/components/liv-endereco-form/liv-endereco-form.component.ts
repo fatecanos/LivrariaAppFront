@@ -30,7 +30,10 @@ export class LivEnderecoFormComponent implements OnInit {
         id: ['', { validators: [Validators.required] }],
         descricao: ['', { validators: [Validators.required] }]
       }),
-      tipoLogradouro: [this.endereco?.tipoLogradouro.id, { validators: [Validators.required] }],
+      tipoLogradouro: this.formBuilder.group({
+        id: [this.endereco?.tipoLogradouro.id, { validators: [Validators.required] }],
+        descricao: [this.endereco?.tipoLogradouro.descricao, { validators: [Validators.required] }]
+      }),
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],

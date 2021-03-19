@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AdminDomainComponent } from "./admin-domain.component";
 import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes.component";
 import { ConsultaVendasComponent } from "./consulta-vendas/consulta-vendas.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 const routes: Routes = [
     {
@@ -11,11 +12,15 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component: ConsultaClientesComponent
+                component: DashboardComponent
             },
             {
-                path: 'vendas',
+                path: 'venda',
                 component: ConsultaVendasComponent  
+            },
+            {
+                path: 'cliente',
+                component: ConsultaClientesComponent
             }
         ]
     }

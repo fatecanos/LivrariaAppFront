@@ -5,7 +5,6 @@ import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interfa
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
-  selector: 'app-detalhes-produto',
   templateUrl: './detalhes-produto.component.html',
   styleUrls: ['./detalhes-produto.component.scss']
 })

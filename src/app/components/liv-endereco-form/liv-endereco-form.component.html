@@ -22,8 +22,9 @@
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
             <mat-select>
-                <mat-option formControlName="tipoLogradouro"
-                    *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog.id">
+                <mat-option [formControl]="formEndereco.get('tipoLogradouro')"
+                    *ngFor="let tipoLog of tiposLogradouros" 
+                    [value]="tipoLog" #tipo_logradouro>
                     {{ tipoLog.descricao }}
                 </mat-option>
             </mat-select>
