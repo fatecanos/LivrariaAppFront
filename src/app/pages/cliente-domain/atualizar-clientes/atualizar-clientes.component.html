@@ -12,7 +12,7 @@
                 class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>Nome: </mat-label>
-                    <input matInput [formControl]="formDadosCliente.get('nome')"
+                    <input matInput formControlName="nome"
                         placeholder="Primeiro Nome">
                 </mat-form-field>
                 <mat-form-field>
@@ -56,7 +56,7 @@
         </mat-tab>
 
         <mat-tab label="Alterar E-mail">
-            <form [formGroup]="formAlterarEmail"
+            <form [formGroup]="formEmail"
                 class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>E-mail: </mat-label>
@@ -69,10 +69,10 @@
                     <input matInput formControlName="email" 
                         placeholder="Endereço de e-mail válido" 
                         type="email">
-                    <mat-error *ngIf="formDadosCliente.get('email')?.hasError('required')">
+                    <mat-error *ngIf="formEmail?.get('email')?.hasError('required')">
                         Email, <strong>incompleto.</strong>
                     </mat-error>
-                    <mat-error *ngIf="formDadosCliente.get('email')?.hasError('email')">
+                    <mat-error *ngIf="formEmail?.get('email')?.hasError('email')">
                         Não é um <strong> e-mail válido.</strong>
                     </mat-error>
                 </mat-form-field>
@@ -83,13 +83,13 @@
                         placeholder="Endereço de e-mail válido" 
                         type="email">
 
-                    <mat-error *ngIf="formDadosCliente.get('confirmacaoEmail')?.hasError('required')">
+                    <mat-error *ngIf="formEmail?.get('confirmacaoEmail')?.hasError('required')">
                         Favor, <strong>redigite o e-mail.</strong>
                     </mat-error>
-                    <mat-error *ngIf="formDadosCliente.get('confirmacaoEmail')?.hasError('mismatch')">
+                    <mat-error *ngIf="formEmail?.get('confirmacaoEmail')?.hasError('mismatch')">
                         E-mails <strong> não estão iguais.</strong>
                     </mat-error>
-                    <mat-error *ngIf="formDadosCliente.get('confirmacaoEmail')?.hasError('email')">
+                    <mat-error *ngIf="formEmail?.get('confirmacaoEmail')?.hasError('email')">
                         Não é um <strong> e-mail válido.</strong>
                     </mat-error>
                 </mat-form-field>
@@ -100,12 +100,12 @@
                     color="primary" diameter="50"
                     mode="indeterminate">
                 </mat-progress-spinner>
-                <button mat-button [disabled]="formAlterarEmail.invalid" (click)="atualizarEmail()">Atualizar Dados</button>
+                <button mat-button [disabled]="formEmail?.invalid" (click)="atualizarEmail()">Atualizar Dados</button>
             </div>
         </mat-tab>
 
         <mat-tab label="Alterar Senha">
-            <form [formGroup]="formAlterarSenha"
+            <form [formGroup]="formSenha"
                 class="client_update-tabs_container-form">
                 <mat-form-field >
                     <mat-label>Nova senha: </mat-label>

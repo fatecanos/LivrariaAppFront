@@ -5,9 +5,21 @@
 
         <div class="endereco-form-tabs_container-form-tipo_residencia">
             <mat-label>Tipo de Endereço:</mat-label>
-            <mat-radio-group aria-label="Tipo de Endereço">
-                <mat-radio-button >Cobrança</mat-radio-button>
-                <mat-radio-button >Entrega</mat-radio-button>
+            <mat-radio-group
+                aria-label="Tipo de Endereço">
+                <mat-radio-button value="1" #inputCobranca 
+                    [checked]="endereco?.tipoEnderecoId === inputCobranca.value"
+                    (click)="updateTipoEndereco(inputCobranca.value)">
+                    Cobrança
+                </mat-radio-button>
+                
+                <mat-radio-button 
+                    value="2" #inputEntrega
+                    [checked]="endereco?.tipoEnderecoId === inputEntrega.value"
+                    (click)="updateTipoEndereco(inputEntrega.value)">
+                    Entrega
+                </mat-radio-button>
+
             </mat-radio-group><br>
         </div>
         
@@ -22,9 +34,10 @@
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
             <mat-select>
-                <mat-option [formControl]="formEndereco.get('tipoLogradouro')"
-                    *ngFor="let tipoLog of tiposLogradouros" 
-                    [value]="tipoLog" #tipo_logradouro>
+                <mat-option 
+                    *ngFor="let tipoLog of tiposLogradouros"
+                    [value]="tipoLog.id" 
+                    (click)="updateTipoLogradouro(tipoLog.id)">
                     {{ tipoLog.descricao }}
                 </mat-option>
             </mat-select>
@@ -98,8 +111,13 @@
             color="primary" diameter="50"
             mode="indeterminate">
         </mat-progress-spinner>
-        <button mat-button>Atualizar Dados</button>
-        <button mat-button color="warn">Remover Endereço</button>
+        <button mat-button (click)="atualizarEndereco()">
+            Atualizar Dados
+        </button>
+        <button mat-button color="warn"
+            (click)="removerEndereco()">
+            Remover Endereço
+        </button>
     </div>
 </div>
 <mat-divider></mat-divider>

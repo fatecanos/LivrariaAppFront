@@ -22,18 +22,12 @@ export class LivEnderecoFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.formEndereco = this.formBuilder.group({
-      tipoEndereco: this.formBuilder.group({
-        id: ['', { validators: [Validators.required] }],
-        descricao: ['', { validators: [Validators.required] }]
-      }),
-      tipoLogradouro: this.formBuilder.group({
-        id: [this.endereco?.tipoLogradouro.id, { validators: [Validators.required] }],
-        descricao: [this.endereco?.tipoLogradouro.descricao, { validators: [Validators.required] }]
-      }),
+      tipoEnderecoId: [this.endereco?.tipoEnderecoId, Validators.required],
+      tipoLogradouroId: [this.endereco?.tipoLogradouroId, Validators.required],
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],
@@ -54,26 +48,28 @@ export class LivEnderecoFormComponent implements OnInit {
     });
   }
 
-  enviarEndereco() {
+  atualizarEndereco() {
     console.log('oi')
   }
 
   removerEndereco() {
     console.log('oi')
   }
+
+  updateTipoEndereco(id: string) {
+    console.log(id);
+    
+    this.formEndereco.patchValue({
+      tipoEnderecoId: id
+    })
+  }
+
+  updateTipoLogradouro(id: number) {
+    this.formEndereco.patchValue({
+      tipoLogradouroId: id
+    })
+  }
+
+
   
 }
-
-
-// this.clienteResponse$?.subscribe(response => {
-//   this.formArrayEnderecos = this.formBuilder.array(
-//       response.enderecos.map(endereco => {
-//         return this.formBuilder.group({
-//           logradrouro: ['', {validators: [Validators.required]}],
-//           numero: ['', {validators: [Validators.required]}],
-//           cep: ['', {validators: [Validators.required]}],
-//           complemento: ['', {validators: [Validators.required]}],
-//         })
-//       })
-//   )
-// })

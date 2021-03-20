@@ -26,9 +26,9 @@ export class AtualizarClientesComponent implements OnInit {
   isLoading: boolean = false;
   estados: Array<string> = UFs;
 
-  formDadosCliente: FormGroup = new FormGroup({});
-  formAlterarEmail: FormGroup = new FormGroup({});
-  formAlterarSenha: FormGroup = new FormGroup({});
+  formDadosCliente?: FormGroup;
+  formEmail?: FormGroup;
+  formSenha?: FormGroup;
 
   dadosCliente: ClienteInterface | any;
   enderecosCliente: EnderecoInterface[] = [];
@@ -43,60 +43,63 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //TODO: integrar busca do cliente a partir da sessao de usuario
     this.clienteResponse$ = this.clienteService.getClientById(1);
+
+    this.clienteResponse$.subscribe(response => {
+      this.dadosCliente = response;
+    }, err => {
+      console.log('Erro ao carregar cliente'); 
+    });
+
     this.initForm();
+
+    this.formDadosCliente = this.formBuilder.group({
+      nome: [this.dadosCliente?.nome, [Validators.required]],
+      sobrenome: [this.dadosCliente?.sobrenome, Validators.required],
+      dataNascimento: [this.dadosCliente?.dataNascimento, [Validators.required]],
+      cpf: this.formBuilder.control(this.dadosCliente?.cpf, 
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ]
+      )
+    });
   }
 
   initForm() {
-    this.clienteResponse$?.subscribe(response => {
-      this.dadosCliente = response;
 
-      this.formDadosCliente = this.formBuilder.group({
-        nome: [response.nome, { validators: [Validators.required] }],
-        sobrenome: [response.sobrenome, { validators: [Validators.required]}],
-        dataNascimento: [response.dataNascimento, { validators: [Validators.required] }],
-        cpf: this.formBuilder.control(response.cpf, {
-          validators: [
-            Validators.required,
-            Validators.minLength(11),
-            Validators.maxLength(11),
-          ]
-        })
-      });
+    this.formEmail = this.formBuilder.group({
+      email: ['', {validators: [Validators.required, Validators.email]}],
+      confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
+    })
 
-      this.formAlterarEmail = this.formBuilder.group({
-        email: ['', {validators: [Validators.required, Validators.email]}],
-        confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
-      })
-
-      this.formAlterarSenha = this.formBuilder.group({
-        senha: this.formBuilder
-        .control('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(12)
-          ]
-        }),
-        confirmacaoSenha: this.formBuilder
-        .control('', {
-          validators: [
-            Validators.required,
-            Validators.minLength(4),
-            Validators.maxLength(12),
-            matchValidator('senha')
-          ]
-        }),
-      })
-
-
-    });
+    this.formSenha = this.formBuilder.group({
+      senha: this.formBuilder
+      .control('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(12)
+        ]
+      }),
+      confirmacaoSenha: this.formBuilder
+      .control('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(12),
+          matchValidator('senha')
+        ]
+      }),
+    })
   }
 
   enviarDadosCliente() {
     this.isLoading = true;
 
-    if(this.formDadosCliente.valid) {
+    if(this.formDadosCliente?.valid) {
 
       let dados = this.dadosCliente;
       this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
@@ -121,8 +124,8 @@ export class AtualizarClientesComponent implements OnInit {
   atualizarEmail() {
     this.isLoading = true;
 
-    if(this.formAlterarEmail.valid) {
-      this.dadosCliente.email = this.formAlterarEmail.get('email')?.value;
+    if(this.formEmail?.valid) {
+      this.dadosCliente.email = this.formEmail.get('email')?.value;
 
       this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
         .subscribe(response => {
@@ -140,7 +143,7 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   atualizarSenha() {
-    if(this.formAlterarSenha.valid) {
+    if(this.formSenha?.valid) {
       console.log('atualizando senha...')
     }
   }

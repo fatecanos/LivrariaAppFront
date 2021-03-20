@@ -164,10 +164,8 @@
       "numero": "233",
       "bairro": "Vila Boa",
       "complemento": "",
-      "tipoEndereco": {
-        "id": 1,
-        "descricao": "casa"
-      },
+      "tipoEnderecoId": 1,
+      "tipoLogradouroId": 1,
       "cidade": {
         "id": 1,
         "descricao": "Mogi das Cruzes",

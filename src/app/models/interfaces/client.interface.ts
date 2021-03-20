@@ -1,5 +1,5 @@
 export interface ClienteInterface {
-    id?: number,
+    id: number,
     nome: string,
     sobrenome: string,
     dataNascimento: Date,
@@ -12,8 +12,8 @@ export interface ClienteInterface {
 
 export interface EnderecoInterface {
     id: number,
-    tipoEndereco: TipoEnderecoInterface,
-    tipoLogradouro: TipoLogradouroInterface,
+    tipoEnderecoId: number,
+    tipoLogradouroId: number,
     logradouro: string,
     cep: string,
     numero: string,
