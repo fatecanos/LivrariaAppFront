@@ -1,3 +1,36 @@
 <div class="detalhes-pedido">
-    <p>detalhes-pedido works!</p>
+    <div class="detalhes-pedido-header">
+        <h2>Pedido #099918823</h2>
+        <mat-icon (click)="dialogRef.close()">close</mat-icon>
+    </div>
+    <h3>Produtos Comprados:</h3>
+    <mat-divider></mat-divider>
+    <div class="detalhes-pedido-content">
+        <div class="detalhes-pedido-content-item" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+            <div class="detalhes-pedido-content-item-image">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt="">
+                <span>Harry potter e a pedra filosofal</span>
+            </div>
+            <div class="detalhes-pedido-content-item-quantidade">
+                <span>10 unidades</span>
+            </div>
+            <div class="detalhes-pedido-content-item-valor">
+                <span>R$ 30.00</span>
+            </div>
+        </div>
+    </div>
+    <div class="detalhes-pedido-descriptions">
+        <div class="detalhes-pedido-descriptions-content">
+            <span>Total: 120,00</span>
+            <span>Valor frete: 40,00</span>
+            <span>Data do Pedido: 12/03/2021</span>
+        </div>
+        <div class="detalhes-pedido-descriptions-status">
+            <span>Status: Em Transporte</span>
+        </div>
+    </div>
+
+    <div class="detalhes-pedido-descriptions">
+
+    </div>
 </div>

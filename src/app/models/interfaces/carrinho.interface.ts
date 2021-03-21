@@ -2,7 +2,7 @@ export interface ItemCarrinhoInterface {
     id: number,
     produto: LivroInterface,
     quantidade: number,
-    quantidadeMaxima: number
+    quantidadeMaxima?: number
 }
 
 export interface LivroInterface {
