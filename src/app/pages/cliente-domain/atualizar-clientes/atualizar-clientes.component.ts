@@ -52,7 +52,8 @@ export class AtualizarClientesComponent implements OnInit {
       console.log('Erro ao carregar cliente'); 
     });
 
-    this.initForm();
+    console.log("Dados do cliente", this.dadosCliente);
+    
 
     this.formDadosCliente = this.formBuilder.group({
       nome: [this.dadosCliente?.nome, [Validators.required]],
@@ -66,10 +67,11 @@ export class AtualizarClientesComponent implements OnInit {
         ]
       )
     });
+
+    this.initForm();
   }
 
   initForm() {
-
     this.formEmail = this.formBuilder.group({
       email: ['', {validators: [Validators.required, Validators.email]}],
       confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
@@ -100,10 +102,8 @@ export class AtualizarClientesComponent implements OnInit {
     this.isLoading = true;
 
     if(this.formDadosCliente?.valid) {
-
       let dados = this.dadosCliente;
       this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
-
 
       this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
         .subscribe(response => {
@@ -138,8 +138,7 @@ export class AtualizarClientesComponent implements OnInit {
           this.atualizarEstado();
           this.isLoading = false;
         });
-    }
-    
+    } 
   }
 
   atualizarSenha() {

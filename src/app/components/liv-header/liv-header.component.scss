@@ -41,10 +41,6 @@
             cursor: pointer;
             padding: 3px;
 
-            &-login {
-
-            }
-
             &-account {
                 display: flex;
                 align-items: center;
@@ -88,6 +84,7 @@
                 text-transform: none;
                 text-transform: none;
                 color: #000;
+                cursor: pointer;
             }
 
             a:hover {

@@ -14,7 +14,7 @@
       "id": 2,
       "produto": {
         "nome": "1984",
-        "url": "http://provoca.com.br/wp-content/uploads/2017/05/1984Livro.jpg",
+        "url": "https://1.bp.blogspot.com/-VL7lCsOD2Yw/Xh37I7asHAI/AAAAAAAAllA/mNJK_MIK5CMFMjNbkA0XKe7eQKJxHUtwQCNcBGAsYHQ/s1600/1984.jpg",
         "valor": 60.09
       },
       "quantidade": 1,
@@ -43,7 +43,7 @@
       "ano": "1948",
       "valor": 53.98,
       "sinopse": "Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si num tem leite então bota uma pinga aí cumpadi! Atirei o pau no gatis, per gatis num morreus.",
-      "url": "http://provoca.com.br/wp-content/uploads/2017/05/1984Livro.jpg",
+      "url": "https://1.bp.blogspot.com/-VL7lCsOD2Yw/Xh37I7asHAI/AAAAAAAAllA/mNJK_MIK5CMFMjNbkA0XKe7eQKJxHUtwQCNcBGAsYHQ/s1600/1984.jpg",
       "dimensoes": {
         "largura": 17.04,
         "altura": 30.03,
@@ -166,14 +166,9 @@
       "complemento": "",
       "tipoEnderecoId": 1,
       "tipoLogradouroId": 1,
-      "cidade": {
-        "id": 1,
-        "descricao": "Mogi das Cruzes",
-        "estado": {
-          "id": 1,
-          "descricao": "SP"
-        }
-      }
+      "cidade": "Mogi das Cruzes",
+      "estado": "São Paulo",
+      "pais": "Brasil"
     }
   ],
   "clientes": [

@@ -10,9 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InativarDialogComponent } from './dialogs/inativar-dialog/inativar-dialog.component';
 import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
 import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
-import { LivSidenavClienteComponent } from './liv-sidenav-cliente/liv-sidenav-cliente.component';
-import { LivSidenavAdminComponent } from './liv-sidenav-admin/liv-sidenav-admin.component';
 import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
+import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -26,9 +25,7 @@ const maskConfig: Partial<IConfig> = {
     InativarDialogComponent, 
     EnderecoSubmitterComponent, 
     LivCartoesFormComponent, 
-    LivSidenavClienteComponent, 
-    LivSidenavAdminComponent, 
-    CarrinhoFinalizacaoComponent, 
+    CarrinhoFinalizacaoComponent, DetalhesPedidoComponent, 
   ],
   imports: [
     CommonModule,
@@ -44,9 +41,7 @@ const maskConfig: Partial<IConfig> = {
     LivEnderecoFormComponent, 
     InativarDialogComponent, 
     EnderecoSubmitterComponent, 
-    LivCartoesFormComponent, 
-    LivSidenavClienteComponent, 
-    LivSidenavAdminComponent, 
+    LivCartoesFormComponent
   ]
 })
 export class ComponentsModule { }

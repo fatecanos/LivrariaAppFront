@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LivSidenavClienteComponent } from './liv-sidenav-cliente.component';
+import { DetalhesPedidoComponent } from './detalhes-pedido.component';
 
-describe('LivSidenavClienteComponent', () => {
-  let component: LivSidenavClienteComponent;
-  let fixture: ComponentFixture<LivSidenavClienteComponent>;
+describe('DetalhesPedidoComponent', () => {
+  let component: DetalhesPedidoComponent;
+  let fixture: ComponentFixture<DetalhesPedidoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LivSidenavClienteComponent ]
+      declarations: [ DetalhesPedidoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LivSidenavClienteComponent);
+    fixture = TestBed.createComponent(DetalhesPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
