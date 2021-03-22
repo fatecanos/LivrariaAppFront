@@ -1,5 +1,11 @@
-describe('Gestão de Clientes - Modulo', ()=> {
-    it('Deve renderizar tela de cadastro', ()=> {
-        visit('/livraria/cadastro-clientes')
+describe('Gestão de Clientes - Modulo', function() {
+    it('Deve renderizar tela de cadastro', function() {
+        cy.visit('http://localhost:4200/livraria/novo-cliente');
+    }),
+    it('Deve renderizar tela de atualização de dados cliente', function() {
+        cy.visit('http://localhost:4200/http://localhost:4200/clientes');
+    }),
+    it('Deve renderizar tela de consulta de pedidos', function() {
+        cy.visit('http://localhost:4200/http://localhost:4200/clientes/pedidos')
     })
 })

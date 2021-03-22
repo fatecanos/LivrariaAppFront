@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 import { ConsultaVendasComponent } from './consulta-vendas.component';
@@ -12,10 +14,16 @@ describe('ConsultaVendasComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ConsultaVendasComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatDialogModule,
+        MatSnackBarModule
       ],
       providers: [
-        ClienteService
+        ClienteService,
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
       ]
     })
     .compileComponents();

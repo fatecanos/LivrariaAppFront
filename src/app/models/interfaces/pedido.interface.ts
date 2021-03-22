@@ -16,3 +16,8 @@ export interface DetalhesPedidoInterface {
     data: Date,
     status: string
 }
+
+export interface PedidosModalInterface {
+    idPedido: number,
+    idCliente: number
+}

@@ -1,4 +1,30 @@
 {
+  "vendas": [
+    {
+      "id":"49982737",
+      "data":"12/02/2021",
+      "status": "AGUARDANDO CANCELAMENTO",
+      "isCancelamentoSoliciado": true,
+      "isTrocaSocilidado": false,
+      "isEntregaConcluida": false
+    },
+    {
+      "id":"05949934",
+      "data":"13/02/2021",
+      "status": "AGUARDANDO TROCA",
+      "isCancelamentoSoliciado": false,
+      "isTrocaSocilidado": true,
+      "isEntregaConcluida": false
+    },
+    {
+      "id":"05949934",
+      "data":"13/02/2021",
+      "status": "AGUARDANDO ENTREGA",
+      "isCancelamentoSoliciado": false,
+      "isTrocaSocilidado": false,
+      "isEntregaConcluida": false
+    }
+  ],
   "carrinho": [
     {
       "id": 1,

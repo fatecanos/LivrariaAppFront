@@ -1,5 +1,8 @@
-export interface VendasInterface {
-    numero: string,
+export interface VendaInterface {
+    id: string,
     data: string,
-    valor: number
+    status: string,
+    isCancelamentoSoliciado: boolean,
+    isTrocaSocilidado: boolean,
+    isEntregaConcluida: boolean
 }

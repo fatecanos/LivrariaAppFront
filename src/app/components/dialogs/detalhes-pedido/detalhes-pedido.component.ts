@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { DetalhesPedidoInterface, PerdidoInterface } from 'src/app/models/interfaces/pedido.interface';
+import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
+import { DetalhesPedidoInterface, PedidosModalInterface, PerdidoInterface } from 'src/app/models/interfaces/pedido.interface';
+import { ClienteService } from 'src/app/services/client-service/client-service.service';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
 
 @Component({
@@ -11,15 +13,18 @@ import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service
 export class DetalhesPedidoComponent implements OnInit {
 
   detalhes$?: Observable<DetalhesPedidoInterface>;
+  cliente$?: Observable<ClienteInterface>;
 
   constructor(
-    public dialogRef: MatDialogRef<number>,
-    @Inject(MAT_DIALOG_DATA) public data: number,
-    private pedidoSerice: PedidosService
+    public dialogRef: MatDialogRef<PedidosModalInterface>,
+    @Inject(MAT_DIALOG_DATA) public data: PedidosModalInterface,
+    private pedidoSerice: PedidosService,
+    private clienteService: ClienteService
   ) { }
 
   ngOnInit(): void {
-    this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data);
+    this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data.idPedido);
+    this.cliente$ = this.clienteService.getClientById(this.data.idCliente);
   }
 
 }

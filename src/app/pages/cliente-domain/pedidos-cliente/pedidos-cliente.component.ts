@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PerdidoInterface } from 'src/app/models/interfaces/pedido.interface';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
+import {PedidosModalInterface} from 'src/app/models/interfaces/pedido.interface';
 
 @Component({
   templateUrl: './pedidos-cliente.component.html',
@@ -30,9 +31,15 @@ export class PedidosClienteComponent implements OnInit {
   }
 
   abrirDetalhesPedido(idPedido: number) {
+    //TODO: integrar isso
+    let modalData: PedidosModalInterface = {
+      idCliente: 1, //falta obter o id do cliente autenticado no sistema
+      idPedido: idPedido
+    }
+
     const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
       width: '700px',
-      data: idPedido
+      data: modalData
     });
     dialogRef.afterClosed().subscribe(result => {
       this.pedidos$ = this.service.getPedidos();

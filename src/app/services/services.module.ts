@@ -7,6 +7,7 @@ import { EnderecoService } from "./endereco-service/endereco.service";
 import { EstoqueService } from "./estoque-service/estoque.service";
 import { PedidosService } from "./pedidos-service/pedidos.service";
 import { ValidatorService } from "./validator/validator-service.service";
+import { VendasService } from "./vendas-service/vendas.service";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { ValidatorService } from "./validator/validator-service.service";
         EnderecoService,
         ValidatorService,
         CartoesService,
-        CarrinhoService
+        CarrinhoService,
+        VendasService
     ]
 })
 export class ServiceModule {

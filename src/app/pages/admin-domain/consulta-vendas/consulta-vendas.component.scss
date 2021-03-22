@@ -1,6 +1,6 @@
 .consulta_vendas {
     margin: 0 auto;
-    max-width: 800px;
+    padding: 15px;
     min-height: 600px;
 
     &-header {
@@ -12,6 +12,13 @@
 
         mat-divider {
             margin-bottom: 35px;
+        }
+    }
+
+    &-content {
+       
+        table {
+            width: 100%;
         }
     }
 }

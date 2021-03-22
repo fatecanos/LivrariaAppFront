@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
 
 import { PedidosClienteComponent } from './pedidos-cliente.component';
@@ -12,10 +13,15 @@ describe('PedidosClienteComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ PedidosClienteComponent ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatDialogModule
       ],
       providers: [
-        PedidosService
+        PedidosService,
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
       ]
     })
     .compileComponents();
