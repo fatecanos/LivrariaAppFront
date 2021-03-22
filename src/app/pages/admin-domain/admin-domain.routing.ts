@@ -2,8 +2,10 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AdminDomainComponent } from "./admin-domain.component";
 import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes.component";
+import { ConsultaLivrosComponent } from "./consulta-livros/consulta-livros.component";
 import { ConsultaVendasComponent } from "./consulta-vendas/consulta-vendas.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { NovoLivroComponent } from "./novo-livro/novo-livro.component";
 
 const routes: Routes = [
     {
@@ -21,6 +23,14 @@ const routes: Routes = [
             {
                 path: 'cliente',
                 component: ConsultaClientesComponent
+            },
+            {
+                path: 'novo-livro',
+                component: NovoLivroComponent
+            },
+            {
+                path: 'consulta-livros',
+                component: ConsultaLivrosComponent
             }
         ]
     }

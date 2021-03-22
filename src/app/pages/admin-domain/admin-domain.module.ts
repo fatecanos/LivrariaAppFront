@@ -9,6 +9,8 @@ import { AdminDomainRouting } from "./admin-domain.routing";
 import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes.component";
 import { ConsultaVendasComponent } from './consulta-vendas/consulta-vendas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NovoLivroComponent } from './novo-livro/novo-livro.component';
+import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ConsultaClientesComponent,
         AdminDomainComponent,
         ConsultaVendasComponent,
-        DashboardComponent
+        DashboardComponent,
+        NovoLivroComponent,
+        ConsultaLivrosComponent
     ]
 })
 export class AdminDomainModule {
