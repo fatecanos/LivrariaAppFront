@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
-import { ItemCarrinhoInterface } from 'src/app/models/interfaces/carrinho.interface';
+import { ItemCarrinhoInterface, LivroInterface } from 'src/app/models/interfaces/carrinho.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
@@ -15,7 +15,6 @@ import { EstoqueService } from 'src/app/services/estoque-service/estoque.service
 })
 export class CarrinhoComponent implements OnInit {
 
-  livro?: LivroEstoqueInterface;
   livrosLocalStorage: LivroEstoqueInterface[] = [];
 
   livroId: number = 0;
@@ -38,6 +37,11 @@ export class CarrinhoComponent implements OnInit {
       width: '900px',
       data: 'ola'
     });
+  }
+
+  removerItemCarrinho(item: LivroEstoqueInterface) {
+    console.log('Removendo livro...', item);
+    
   }
 
 }

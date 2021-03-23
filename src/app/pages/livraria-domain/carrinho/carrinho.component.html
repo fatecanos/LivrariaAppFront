@@ -25,6 +25,9 @@
                         type="text" [value]="0">
                     <button>+</button>
                 </td>
+                <td class="carrinho-table-item_line-option">
+                    <span (click)="removerItemCarrinho(item)">Remover</span>
+                </td>
             </tr>
         </table>
 
@@ -68,6 +71,7 @@
         </div>
 
         <div class="carrinho-valor_frete">
+            <button mat-button>Calcular</button>
             <span>Frete:</span><span> R$ 20.00</span>
         </div>
     </div>

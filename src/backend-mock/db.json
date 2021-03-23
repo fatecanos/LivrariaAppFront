@@ -138,25 +138,41 @@
       "id": 1,
       "numero": "983774934454",
       "data": "02-12-2020",
-      "status": "ANDAMENTO"
+      "status": "ANDAMENTO",
+      "isPodeTrocar": true,
+      "isPodeCancelar": false
     },
     {
       "id": 2,
       "numero": "099494883444",
       "data": "02-12-2020",
-      "status": "ENTREGUE"
+      "status": "ENTREGUE",
+      "isPodeTrocar": false,
+      "isPodeCancelar": false
     },
     {
       "id": 3,
       "numero": "099494883444",
       "data": "02-12-2020",
-      "status": "ENTREGUE"
+      "status": "ENTREGUE",
+      "isPodeTrocar": false,
+      "isPodeCancelar": false
     },
     {
       "id": 3,
       "numero": "099494883444",
       "data": "02-12-2020",
-      "status": "ENTREGUE"
+      "status": "ENTREGUE",
+      "isPodeTrocar": false,
+      "isPodeCancelar": false
+    },
+    {
+      "id": 4,
+      "numero": "04939491394935",
+      "data": "02-03-2021",
+      "status": "AGUARDANDO PAGAMENTO",
+      "isPodeTrocar": false,
+      "isPodeCancelar": true
     }
   ],
   "cartoes": [

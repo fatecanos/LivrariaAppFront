@@ -35,6 +35,17 @@
             &-amount_input {
                 width: 35px;
             }
+
+            &-option {
+                
+                span {
+                    cursor: pointer;
+                }
+
+                span:hover {
+                    color:#fac515; 
+                }
+            }
         }
     }  
     

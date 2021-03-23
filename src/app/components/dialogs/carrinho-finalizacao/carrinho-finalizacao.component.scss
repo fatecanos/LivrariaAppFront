@@ -2,12 +2,14 @@
 
     &-header {
         margin-bottom: 15px;
+        
         h3 {
             font-weight: bold;
         }
     }
 
     &-forma_pagto {
+        margin-top: 15px;
         width: 100%;
 
         &-cartoes {
@@ -15,7 +17,8 @@
             display: flex;
             flex-direction: row;
             width: 40%;
-            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
 
             &-descricao-title {
                 font-weight: bold;
@@ -23,6 +26,20 @@
 
             mat-icon {
                 cursor: pointer;
+            }
+
+            &-novo {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+
+                &-footer {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
             }
         }
     
@@ -35,7 +52,34 @@
             &-options {
                 display: flex;
                 flex-direction: column;
+            
+                &-content {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    
+                    span {
+                        cursor: pointer;
+                    }
+
+                    span:hover {
+                        color: #fac515;
+                    }
+                }
             }
+        }
+    }
+
+    &-totais {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        &-content {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
         }
     }
 }

@@ -26,11 +26,11 @@
             <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef>Opções</th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-button 
+                    <button mat-button *ngIf="element.isPodeCancelar"
                         color="warn">
                         CANCELAR
                     </button>
-                    <button mat-button 
+                    <button mat-button *ngIf="element.isPodeTrocar"
                         color="primary">
                         TROCAR
                     </button>

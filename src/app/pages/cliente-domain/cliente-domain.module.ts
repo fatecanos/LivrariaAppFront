@@ -8,6 +8,7 @@ import { AtualizarClientesComponent } from "./atualizar-clientes/atualizar-clien
 import { ClienteDomainComponent } from "./cliente-domain.component";
 import { ClienteDomainRouting } from "./cliente-domain.routing";
 import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
+import { MeusCuponsComponent } from './meus-cupons/meus-cupons.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.compo
     declarations: [
         ClienteDomainComponent,
         AtualizarClientesComponent,
-        PedidosClienteComponent
+        PedidosClienteComponent,
+        MeusCuponsComponent
     ]
 })
 export class ClienteDomainModule {
