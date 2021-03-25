@@ -1,24 +1,24 @@
 {
   "vendas": [
     {
-      "id":"49982737",
-      "data":"12/02/2021",
+      "id": "49982737",
+      "data": "12/02/2021",
       "status": "AGUARDANDO CANCELAMENTO",
       "isCancelamentoSoliciado": true,
       "isTrocaSocilidado": false,
       "isEntregaConcluida": false
     },
     {
-      "id":"05949934",
-      "data":"13/02/2021",
+      "id": "05949934",
+      "data": "13/02/2021",
       "status": "AGUARDANDO TROCA",
       "isCancelamentoSoliciado": false,
       "isTrocaSocilidado": true,
       "isEntregaConcluida": false
     },
     {
-      "id":"05949934",
-      "data":"13/02/2021",
+      "id": "05949934",
+      "data": "13/02/2021",
       "status": "AGUARDANDO ENTREGA",
       "isCancelamentoSoliciado": false,
       "isTrocaSocilidado": false,
@@ -552,6 +552,46 @@
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
       "id": 16
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-03-09",
+      "cpf": "47172637232",
+      "email": "lucas@gmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 17
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-09",
+      "cpf": "23748023089",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 18
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "cpf": "47712814818",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 19
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1990-02-09",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 20
     }
   ]
 }
