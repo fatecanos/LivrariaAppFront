@@ -4,9 +4,11 @@
         <div class="painel_login-container-header">
             <h3>Acesse sua conta</h3>
         </div>
-        <mat-form-field class="painel_login-container-form">
+        <mat-form-field 
+            class="painel_login-container-input_email
+                painel_login-container-form">
             <mat-label>E-mail:</mat-label>
-            <input matInput formControlName="email">
+            <input id="inputEmail" matInput formControlName="email">
             <mat-error *ngIf="formulario.get('email')?.hasError('required')">
                 O e-mail está <strong>incompleto.</strong>
             </mat-error>
@@ -14,11 +16,13 @@
                 Endereço de email <strong>inválido.</strong>
             </mat-error>
         </mat-form-field>
-        <mat-form-field class="painel_login-container-form">
+        <mat-form-field class="painel_login-container-input_senha
+            painel_login-container-form">
             <mat-label>Senha:</mat-label>
-            <input matInput formControlName="senha" type="password">
+            <input id="inputSenha"
+                matInput formControlName="senha" type="password">
         </mat-form-field>
-        <div class="painel_login-container-form">
+        <div class="painel_login-container-form senha">
             <button mat-button (click)="enviar()">Entrar</button>
         </div>
     </form>

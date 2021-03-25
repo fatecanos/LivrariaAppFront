@@ -12,7 +12,8 @@
                 {{ (livro$ | async)?.valor | currency:'BRL':true:'1.2-2'}}
             </span>
             <div class="detalhes-produto-display-valor-button">
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary"
+                    (click)="adicionaItemCarrinho()">
                     + Carrinho
                 </button>
             </div>
