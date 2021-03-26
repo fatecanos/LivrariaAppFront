@@ -3,8 +3,10 @@
         <h2>Carrinho</h2>
         <mat-divider></mat-divider>
     </div>
-
-    <div class="carrinho-table">
+    <div class="carrinho-content" *ngIf="!(carrinho$ | async).length">
+        <span>Nenhum item foi adicionado no carrinho ainda. :/</span>
+    </div>
+    <div class="carrinho-table" *ngIf="(carrinho$ | async).length">
         <table>
             <tr>
                 <th>ITEM</th>
@@ -20,10 +22,11 @@
                 </td>
                 <td class="carrinho-table-item_line-valor">R$ {{item.produto.valor}}</td>
                 <td>
-                    <button>-</button>
-                    <input class="carrinho-table-item_line-amount_input" 
-                        type="text" [value]="0">
-                    <button>+</button>
+                    <button (click)="minusQuantidade(item.id, inpQtdeCarrinho.value)">-</button>
+                    <input 
+                        class="carrinho-table-item_line-amount_input" 
+                        type="text" [value]="item.quantidade" #inpQtdeCarrinho>
+                    <button  (click)="plusQuantidade(item.id, inpQtdeCarrinho.value, item.produto.qtdeMaxima)">+</button>
                 </td>
                 <td class="carrinho-table-item_line-option">
                     <span (click)="removerItemCarrinho(item)">Remover</span>

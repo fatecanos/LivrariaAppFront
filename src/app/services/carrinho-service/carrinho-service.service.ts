@@ -35,4 +35,23 @@ export class CarrinhoService {
     return of(itensCarrinho);
   }
 
+  removerItem(itemId: number) {
+    let jsonCarrinho = localStorage.getItem('carrinho') || '[]';
+    let listaProdutos: LivroEstoqueInterface[] = JSON.parse(jsonCarrinho);
+    let itemIndex = listaProdutos.findIndex(item => item.id === itemId);
+    
+    listaProdutos.splice(itemIndex, 1);
+    localStorage.setItem('carrinho', JSON.stringify(listaProdutos));
+  }
+
+  atualizarQuantidadeItem(itemId: number, qtde: number) {
+    let jsonCarrinho = localStorage.getItem('carrinho') || '[]';
+    let listaProdutos: LivroEstoqueInterface[] = JSON.parse(jsonCarrinho);
+
+    let itemIndex = listaProdutos.findIndex(item => item.id === itemId);
+    listaProdutos[itemIndex].qtdeSelecionada = qtde;
+
+    localStorage.setItem('carrinho', JSON.stringify(listaProdutos));
+  }
+
 }

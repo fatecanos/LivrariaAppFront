@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
-import { ItemCarrinhoInterface, LivroInterface } from 'src/app/models/interfaces/carrinho.interface';
+import { ItemCarrinhoInterface } from 'src/app/models/interfaces/carrinho.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
-import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
-  selector: 'app-carrinho',
   templateUrl: './carrinho.component.html',
   styleUrls: ['./carrinho.component.scss']
 })
@@ -22,6 +20,7 @@ export class CarrinhoComponent implements OnInit {
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
 
   constructor(
+    private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     public dialog: MatDialog,
   ) { }
@@ -38,8 +37,30 @@ export class CarrinhoComponent implements OnInit {
   }
 
   removerItemCarrinho(item: LivroEstoqueInterface) {
-    console.log('Removendo livro...', item);
-    
+    this.carrinhoService.removerItem(item.id)
+    this.carrinho$ = this.carrinhoService.obterItens();
+  }
+
+  plusQuantidade(itemId: number, qtde: number, qtdeMax: number) {
+    if(qtde < qtdeMax) {
+      qtde++;
+      this.carrinhoService.atualizarQuantidadeItem(itemId, qtde);
+      this.carrinho$ = this.carrinhoService.obterItens();
+    } else {
+      this.snackBar.open('Limite de estoque', 'fechar', {
+        duration: 3000
+      })
+    }
+
+  }
+
+  minusQuantidade(itemId: number, qtde: number) {
+    const LIMITE=1;
+    if(qtde>LIMITE){
+      qtde--;
+    }
+    this.carrinhoService.atualizarQuantidadeItem(itemId, qtde);
+    this.carrinho$ = this.carrinhoService.obterItens();
   }
 
 }

@@ -44,9 +44,13 @@ export class DetalhesProdutoComponent implements OnInit {
     let isAlreadyExist = jsonCarrinho.includes(JSON.stringify(this.livroData));
 
     if(!isAlreadyExist) {
+      this.livroData.qtdeSelecionada = 1;
       listaProdutos = [this.livroData, ...listaProdutos];
+ 
       localStorage.setItem('carrinho', JSON.stringify(listaProdutos))
     }
+
+    //TODO: CORRIGIR REGRA DE NAO REPEDIR ITEM NO CARRINHO
 
     this.router.navigate(['/livraria/carrinho'])
   }
