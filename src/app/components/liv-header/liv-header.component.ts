@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 
 @Component({
   selector: 'liv-header',
@@ -10,7 +11,6 @@ export class LivHeaderComponent {
   showPainel: boolean = false;
 
   constructor(private router: Router) {
-
   }
 
   navigateToClientRegister() {

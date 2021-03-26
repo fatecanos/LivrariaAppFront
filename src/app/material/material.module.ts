@@ -15,7 +15,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const material_components = [
   MatToolbarModule,
@@ -34,7 +35,8 @@ const material_components = [
   MatDialogModule,
   MatRadioModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatBadgeModule
 ];
 
 @NgModule({

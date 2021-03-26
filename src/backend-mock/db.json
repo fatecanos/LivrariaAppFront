@@ -60,7 +60,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     },
     {
       "id": 2,
@@ -74,7 +75,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     },
     {
       "id": 3,
@@ -88,7 +90,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     },
     {
       "id": 4,
@@ -102,7 +105,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     },
     {
       "id": 5,
@@ -116,7 +120,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     },
     {
       "id": 6,
@@ -130,7 +135,8 @@
         "largura": 17.04,
         "altura": 30.03,
         "profundidade": 0.5
-      }
+      },
+      "qtdeMaxima": 5
     }
   ],
   "pedidos": [

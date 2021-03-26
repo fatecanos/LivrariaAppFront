@@ -6,7 +6,9 @@ export interface LivroEstoqueInterface {
     valor: number,
     url: string,
     sinopse: string,
-    dimensoes: DimensaoInterface
+    dimensoes: DimensaoInterface,
+    qtdeMaxima: number,
+    qtdeSelecionada: number
 }
 
 export interface DimensaoInterface {

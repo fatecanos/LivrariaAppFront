@@ -22,8 +22,6 @@ export class CarrinhoComponent implements OnInit {
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private estoqueService: EstoqueService,
     private carrinhoService: CarrinhoService,
     public dialog: MatDialog,
   ) { }
