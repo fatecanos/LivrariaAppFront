@@ -35,23 +35,23 @@ export class DetalhesProdutoComponent implements OnInit {
     this.livro$ = this.service.obterDetalhesLivroPorId(this.livroId);
     this.livro$.subscribe(response => {
       this.livroData = response;
-    })
+    });
   }
 
   addNovoItem() {
+    this.livroData.qtdeSelecionada = 1; 
     let jsonCarrinho = localStorage.getItem('carrinho') || '[]';
     let listaProdutos: LivroEstoqueInterface[] = JSON.parse(jsonCarrinho);
     let isAlreadyExist = jsonCarrinho.includes(JSON.stringify(this.livroData));
 
     if(!isAlreadyExist) {
-      this.livroData.qtdeSelecionada = 1;
       listaProdutos = [this.livroData, ...listaProdutos];
- 
       localStorage.setItem('carrinho', JSON.stringify(listaProdutos))
+    } else {
+      this.snack.open("Já está incluído no carrinho", "fechar", {
+        duration: 2000
+      })
     }
-
-    //TODO: CORRIGIR REGRA DE NAO REPEDIR ITEM NO CARRINHO
-
     this.router.navigate(['/livraria/carrinho'])
   }
 
