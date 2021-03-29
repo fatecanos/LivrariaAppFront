@@ -3,9 +3,145 @@
         <h2>Novo Livro</h2>
         <mat-divider></mat-divider>
     </div>
-    <div class="novo-livro-content">
-        <form action="">
-            
+    <div class="novo-livro-container">
+        <form [formGroup]="formularioLivro"
+            class="novo-livro-container-form">
+            <div class="novo-livro-container-form-row">
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input_titulo">
+                    <mat-label>Título:</mat-label>
+                    <input matInput formControlName="titulo">
+                </mat-form-field>
+
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>Autor:</mat-label>
+                    <input matInput formControlName="autor">
+                </mat-form-field>
+
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>Ano:</mat-label>
+                    <input matInput formControlName="ano">
+                </mat-form-field>
+            </div>
+
+            <div class="novo-livro-container-form-row">
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>Editora:</mat-label>
+                    <input matInput formControlName="editora">
+                </mat-form-field>
+
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>Edição:</mat-label>
+                    <input matInput formControlName="edicao">
+                </mat-form-field>
+
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>ISBN:</mat-label>
+                    <input matInput formControlName="isbn">
+                </mat-form-field>
+
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input">
+                    <mat-label>Número de Páginas:</mat-label>
+                    <input matInput formControlName="quantidadePaginas">
+                </mat-form-field>
+            </div>
+
+            <div class="novo-livro-container-form-row">
+                <mat-form-field 
+                    class="novo-livro-container-form-row-input_total">
+                    <mat-label>Sinopse:</mat-label>
+                    <textarea matInput 
+                        formControlName="sinopse">
+                    </textarea>
+                </mat-form-field>
+
+                <mat-form-field formArrayName="categorias" appearance="fill">
+                    <mat-label>Categoria:</mat-label>
+                    <mat-select multiple #categoriasMarcadas>
+                        <mat-option *ngFor="let categoria of categorias$ | async" 
+                             [value]="categoria"
+                             (click)="atualizarCategorias(categoriasMarcadas.value)">
+                            {{categoria.descricao}}
+                        </mat-option>
+                        <mat-error *ngIf="formularioLivro.get('categorias')?.hasError('minLength')">
+                            Escolha no mínimo uma <strong>categoria</strong>
+                        </mat-error>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <br>
+
+            <div class="novo-livro-container-form-detalhes-livro">
+                <div formGroupName="dimensoes"
+                    class="novo-livro-container-form-detalhes-livro-dimensoes">
+                    <h4>Dimensões:</h4>
+
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Altura:</mat-label>
+                        <input matInput formControlName="altura">
+                    </mat-form-field>
+
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Largura:</mat-label>
+                        <input matInput formControlName="largura">
+                    </mat-form-field>
+
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Profundidade:</mat-label>
+                        <input matInput formControlName="profundidade">
+                    </mat-form-field>
+
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Peso:</mat-label>
+                        <input matInput formControlName="peso">
+                </mat-form-field>
+                </div>
+
+                <div class="novo-livro-container-form-row-grupo">
+                    <h4>Grupo de Precificação:</h4>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Grupo de Precificação:</mat-label>
+                        <mat-select formControlName="grupoPrecificacao">
+                            <mat-option *ngFor="let grupo of gruposPrecificacao$ | async" 
+                                [value]="grupo.id">{{grupo.descricao}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="novo-livro-container-form-row-grupo">
+                    <h4>Código de Barras:</h4>
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Código:</mat-label>
+                        <input matInput formControlName="codigoBarras">
+                    </mat-form-field>
+                </div>
+
+                <div class="novo-livro-container-form-row-grupo">
+                    <h4>Foto do livro:</h4>
+                    <mat-form-field 
+                        class="novo-livro-container-form-row-input">
+                        <mat-label>Insira a URL da imagem:</mat-label>
+                        <input matInput formControlName="url">
+                    </mat-form-field>
+                </div>
+            </div>
+
         </form>
+        <div class="novo-livro-container-options">
+            <button mat-button color="primary" (click)="enviarLivro()">Enviar</button>
+        </div>
     </div>
 </div>

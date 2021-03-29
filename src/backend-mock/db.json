@@ -1,4 +1,86 @@
 {
+  "livros": [
+    {
+      "autor": "Lucas",
+      "ano": "2021",
+      "titulo": "Admirável mundo novo",
+      "editora": "Leitura",
+      "edicao": "1",
+      "isbn": "9429492240402",
+      "quantidadePaginas": "203",
+      "sinopse": "teste",
+      "dimensoes": {
+        "altura": "213",
+        "largura": "323",
+        "peso": "0.304",
+        "profundidade": "32"
+      },
+      "grupoPrecificacao": 2,
+      "codigoBarras": "213232323",
+      "url": "e1weqwewqeqwe",
+      "categorias": [
+        {
+          "id": 1,
+          "descricao": "T.I"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "autor": "Isaac Asimov",
+      "ano": "2021",
+      "titulo": "Admirável mundo novo",
+      "editora": "Leitura",
+      "edicao": "1",
+      "isbn": "9429492240402",
+      "quantidadePaginas": "203",
+      "sinopse": "teste",
+      "dimensoes": {
+        "altura": "213",
+        "largura": "323",
+        "peso": "0.304",
+        "profundidade": "32"
+      },
+      "grupoPrecificacao": 2,
+      "codigoBarras": "213232323",
+      "url": "e1weqwewqeqwe",
+      "categorias": [
+        {
+          "id": 1,
+          "descricao": "T.I"
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "gruposPrecificacao": [
+    {
+      "id": 1,
+      "descricao": "A"
+    },
+    {
+      "id": 2,
+      "descricao": "B"
+    },
+    {
+      "id": 3,
+      "descricao": "C"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "descricao": "T.I"
+    },
+    {
+      "id": 2,
+      "descricao": "Romance"
+    },
+    {
+      "id": 3,
+      "descricao": "Ficção Cientifica"
+    }
+  ],
   "vendas": [
     {
       "id": "49982737",
