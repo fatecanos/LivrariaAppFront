@@ -1,6 +1,6 @@
-import { CategoriaInterface } from "../utils-livro-form.interface";
+import { CategoriaInterface } from "./utils-livro-form.interface";
 
-export interface NovoLivroDTO {
+export interface LivroDTO {
     id?: number,
     autor: string,
     categorias: CategoriaInterface[],

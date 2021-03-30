@@ -1,21 +1,20 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { InativateDialogInterface } from 'src/app/models/interfaces/dialog-data.interface';
+import { ClienteDialogInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 @Component({
-  selector: 'app-inativar-dialog',
-  templateUrl: './inativar-dialog.component.html',
-  styleUrls: ['./inativar-dialog.component.scss']
+  templateUrl: './inativar-cliente-dialog.component.html',
+  styleUrls: ['./inativar-cliente-dialog.component.scss']
 })
-export class InativarDialogComponent {
+export class InativarClienteDialogComponent {
 
   constructor(
     private service: ClienteService,
     private _snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<InativarDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InativateDialogInterface
+    public dialogRef: MatDialogRef<InativarClienteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ClienteDialogInterface
   ) { }
   
   inativar() {
@@ -27,6 +26,6 @@ export class InativarDialogComponent {
         this._snackBar.open("erro ao desativar cliente", 'fechar', {duration: 5000});
       }, ()=> {
         this.dialogRef.close();
-      })
+    })
   }
 }

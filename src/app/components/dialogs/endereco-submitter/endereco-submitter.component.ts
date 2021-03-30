@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/client.interface';
+import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import {UFs} from '../../../models/mocks/ufs.mock';
 

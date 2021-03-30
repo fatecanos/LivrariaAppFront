@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { EnderecoSubmitterComponent } from 'src/app/components/dialogs/endereco-submitter/endereco-submitter.component';
-import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
+import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 

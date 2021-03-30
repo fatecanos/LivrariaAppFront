@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { BandeiraCartaoInterface, CartaoInterface } from 'src/app/models/interfaces/client.interface';
+import { BandeiraCartaoInterface, CartaoInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 

@@ -1,6 +1,6 @@
 import { ItemCarrinhoInterface } from "./carrinho.interface";
 
-export interface PerdidoInterface {
+export interface PedidoInterface {
     id: number,
     numero: string,
     data: string,

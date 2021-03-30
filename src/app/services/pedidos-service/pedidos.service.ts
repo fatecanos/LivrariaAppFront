@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { DetalhesPedidoInterface, PerdidoInterface } from "src/app/models/interfaces/pedido.interface";
+import { DetalhesPedidoInterface, PedidoInterface } from "src/app/models/interfaces/dto/pedido.interface";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -12,8 +12,8 @@ export class PedidosService {
 
     constructor(private http: HttpClient) { }
 
-    getPedidos(): Observable<PerdidoInterface[]> {
-        return this.http.get<PerdidoInterface[]>(`${this.baseUrl}/pedidos`);
+    getPedidos(): Observable<PedidoInterface[]> {
+        return this.http.get<PedidoInterface[]>(`${this.baseUrl}/pedidos`);
     }
 
     obterDetalhesPedido(id: number) {

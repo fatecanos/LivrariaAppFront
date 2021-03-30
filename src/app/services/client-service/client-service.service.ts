@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClienteInterface, EnderecoInterface } from 'src/app/models/interfaces/client.interface';
-import { MessageInterface } from 'src/app/models/interfaces/message.interface';
+import { ClienteInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {

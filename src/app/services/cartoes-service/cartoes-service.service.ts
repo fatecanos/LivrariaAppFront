@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartaoInterface } from 'src/app/models/interfaces/client.interface';
+import { CartaoInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

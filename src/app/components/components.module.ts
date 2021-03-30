@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 import { LivEnderecoFormComponent } from './liv-endereco-form/liv-endereco-form.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InativarDialogComponent } from './dialogs/inativar-dialog/inativar-dialog.component';
+import { InativarClienteDialogComponent } from './dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
 import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
 import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
+import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -22,10 +23,12 @@ const maskConfig: Partial<IConfig> = {
     LivHeaderComponent, 
     LivFooterComponent, 
     LivEnderecoFormComponent, 
-    InativarDialogComponent, 
+    InativarClienteDialogComponent, 
     EnderecoSubmitterComponent, 
     LivCartoesFormComponent, 
-    CarrinhoFinalizacaoComponent, DetalhesPedidoComponent, 
+    CarrinhoFinalizacaoComponent, 
+    DetalhesPedidoComponent, 
+    InativarLivroDialogComponent, 
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,7 @@ const maskConfig: Partial<IConfig> = {
     LivHeaderComponent, 
     LivFooterComponent, 
     LivEnderecoFormComponent, 
-    InativarDialogComponent, 
+    InativarClienteDialogComponent, 
     EnderecoSubmitterComponent, 
     LivCartoesFormComponent
   ]

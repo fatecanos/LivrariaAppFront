@@ -5,15 +5,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
-import { InativarDialogComponent } from './inativar-dialog.component';
+import { InativarClienteDialogComponent } from './inativar-cliente-dialog.component';
 
 describe('InativarDialogComponent', () => {
-  let component: InativarDialogComponent;
-  let fixture: ComponentFixture<InativarDialogComponent>;
+  let component: InativarClienteDialogComponent;
+  let fixture: ComponentFixture<InativarClienteDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InativarDialogComponent ],
+      declarations: [ InativarClienteDialogComponent ],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule,
@@ -30,7 +30,7 @@ describe('InativarDialogComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InativarDialogComponent);
+    fixture = TestBed.createComponent(InativarClienteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

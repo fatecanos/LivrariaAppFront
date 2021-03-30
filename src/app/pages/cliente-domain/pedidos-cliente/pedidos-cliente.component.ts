@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
-import { PerdidoInterface } from 'src/app/models/interfaces/pedido.interface';
+import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
-import {PedidosModalInterface} from 'src/app/models/interfaces/pedido.interface';
 
 @Component({
   templateUrl: './pedidos-cliente.component.html',
@@ -12,10 +11,10 @@ import {PedidosModalInterface} from 'src/app/models/interfaces/pedido.interface'
 })
 export class PedidosClienteComponent implements OnInit {
 
-  dataSource: PerdidoInterface[] = [];
+  dataSource: PedidoInterface[] = [];
   displayedColumns: string[] = ['numero', 'data', 'status', 'acoes'];
 
-  pedidos$?: Observable<PerdidoInterface[]>;
+  pedidos$?: Observable<PedidoInterface[]>;
 
   constructor(
     private service: PedidosService,

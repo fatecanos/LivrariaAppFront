@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { NovoLivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
-import { CategoriaInterface, GrupoPrecificacaoInterface } from 'src/app/models/interfaces/utils-livro-form.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
+import { CategoriaInterface, GrupoPrecificacaoInterface } from 'src/app/models/interfaces/dto/utils-livro-form.interface';
 import { UtilsLivroFormService } from 'src/app/services/utils-livro-service/utils-livro-form.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class NovoLivroComponent implements OnInit {
 
   categoriasSelecionadas: CategoriaInterface[] = [];
 
-  livroDto?: NovoLivroDTO;
+  livroDto?: LivroDTO;
 
   constructor(
     private snack: MatSnackBar,

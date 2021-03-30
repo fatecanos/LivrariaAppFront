@@ -69,9 +69,9 @@
                              (click)="atualizarCategorias(categoriasMarcadas.value)">
                             {{categoria.descricao}}
                         </mat-option>
-                        <mat-error *ngIf="formularioLivro.get('categorias')?.hasError('minLength')">
+                        <!-- <mat-error *ngIf="formularioLivro.get('categorias')?.hasError('minLength')">
                             Escolha no mínimo uma <strong>categoria</strong>
-                        </mat-error>
+                        </mat-error> -->
                     </mat-select>
                 </mat-form-field>
             </div>

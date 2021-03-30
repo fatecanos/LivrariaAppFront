@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
+import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CategoriaInterface, GrupoPrecificacaoInterface } from 'src/app/models/interfaces/utils-livro-form.interface';
+import { CategoriaInterface, GrupoPrecificacaoInterface } from 'src/app/models/interfaces/dto/utils-livro-form.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

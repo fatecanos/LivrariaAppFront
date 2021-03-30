@@ -4,8 +4,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
-import { PedidosModalInterface } from 'src/app/models/interfaces/pedido.interface';
-import { VendaInterface } from 'src/app/models/interfaces/venda.interface';
+import { PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
+import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({

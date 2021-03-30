@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CartaoCredidoInterface } from 'src/app/models/interfaces/cartao.interface';
-import { BandeiraCartaoInterface } from 'src/app/models/interfaces/client.interface';
+import { CartaoCredidoInterface } from 'src/app/models/interfaces/dto/cartao.interface';
+import { BandeiraCartaoInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 
 @Component({

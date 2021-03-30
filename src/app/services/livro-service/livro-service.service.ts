@@ -1,21 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VendasService {
-
+export class LivroService {
   baseUrl: string = environment.baseUrlMock;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  obterVendas(): Observable<VendaInterface[]> {
-    return this.http.get<VendaInterface[]>(`${this.baseUrl}/vendas`);
+  obterTodosLivros(): Observable<LivroDTO[]> {
+    return this.http.get<LivroDTO[]>(`${this.baseUrl}/livros`);
   }
 }

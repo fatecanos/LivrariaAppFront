@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
-import { ItemCarrinhoInterface } from 'src/app/models/interfaces/carrinho.interface';
-import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
+import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
+import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 
 @Component({

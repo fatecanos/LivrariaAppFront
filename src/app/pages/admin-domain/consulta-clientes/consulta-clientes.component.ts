@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { InativarDialogComponent } from 'src/app/components/dialogs/inativar-dialog/inativar-dialog.component';
-import { ClienteInterface } from 'src/app/models/interfaces/client.interface';
+import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
+import { InativarLivroDialogComponent } from 'src/app/components/dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
+import { ClienteInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 @Component({
@@ -31,12 +32,11 @@ export class ConsultaClientesComponent implements OnInit {
     })
   }
 
-  inativarClientePorId(id: number) {
-    const dialogRef = this.dialog.open(InativarDialogComponent, {
+  inativarLivroPorId(id: number) {
+    const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {
-        entity: 'cliente',
-        idCliente: id,
+        idCliente: id
       }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -46,5 +46,7 @@ export class ConsultaClientesComponent implements OnInit {
       })
     })
   }
+
+
 
 }

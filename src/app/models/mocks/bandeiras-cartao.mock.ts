@@ -1,4 +1,4 @@
-import { BandeiraCartaoInterface } from "../interfaces/client.interface";
+import { BandeiraCartaoInterface } from "../interfaces/dto/client.interface";
 
 export const bandeirasMock: BandeiraCartaoInterface[] = [
     {

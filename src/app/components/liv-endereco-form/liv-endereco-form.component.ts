@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/client.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/dto/client.interface';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 

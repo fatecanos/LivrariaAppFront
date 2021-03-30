@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LivroEstoqueInterface } from 'src/app/models/interfaces/estoque.interface';
+import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
