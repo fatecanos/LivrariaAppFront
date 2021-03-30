@@ -3,7 +3,9 @@ import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { DetalhesLivroComponent } from 'src/app/components/dialogs/detalhes-livro/detalhes-livro.component';
 import { InativarLivroDialogComponent } from 'src/app/components/dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
+import { DataDialogInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { LivroService } from 'src/app/services/livro-service/livro-service.service';
 
@@ -45,6 +47,19 @@ export class ConsultaLivrosComponent implements OnInit {
       data: {
         livroId: id
       }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.initContent();
+    })
+  }
+
+  abrirModalDetalhes(id: number) {
+    const data: DataDialogInterface = {
+      id: id
+    }
+    const dialogRef = this.dialog.open(DetalhesLivroComponent, {
+      width: '1200px',
+      data: data
     });
     dialogRef.afterClosed().subscribe(result => {
       this.initContent();

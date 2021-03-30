@@ -15,4 +15,8 @@ export class LivroService {
   obterTodosLivros(): Observable<LivroDTO[]> {
     return this.http.get<LivroDTO[]>(`${this.baseUrl}/livros`);
   }
+
+  obterLivroPorId(id: number) {
+    return this.http.get<LivroDTO>(`${this.baseUrl}/livros/${id}`)
+  }
 }

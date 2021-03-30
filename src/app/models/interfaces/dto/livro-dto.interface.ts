@@ -14,7 +14,8 @@ export interface LivroDTO {
     dimensoes: DimensoesDTO,
     grupoPrecificacao: string,
     codigoBarras: string,
-    url: string
+    url: string,
+    isAtivo: boolean
 }
 
 export interface DimensoesDTO {

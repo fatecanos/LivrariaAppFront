@@ -49,14 +49,20 @@
                 <th mat-header-cell *matHeaderCellDef>Opções </th>
                 <td mat-cell *matCellDef="let element">
                     <button mat-button 
-                        color="accent">
+                        color="accent"
+                        (click)="abrirModalDetalhes(element.id)">
                         DETALHES
                     </button>
 
                     <button mat-button 
-                        color="warn"
+                        color="warn" *ngIf="element.isAtivo"
                         (click)="inativarLivroPorId(element.id)">
                         INATIVAR
+                    </button>
+
+                    <button mat-button 
+                        color="primary" *ngIf="!element.isAtivo">
+                        ATIVAR
                     </button>
                 </td>
             </ng-container>

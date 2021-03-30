@@ -3,3 +3,6 @@ export interface ClienteDialogInterface {
     idCliente: number
 }
 
+export interface DataDialogInterface {
+    id: number
+}

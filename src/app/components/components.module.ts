@@ -13,6 +13,7 @@ import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.com
 import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
 import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
+import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -28,7 +29,7 @@ const maskConfig: Partial<IConfig> = {
     LivCartoesFormComponent, 
     CarrinhoFinalizacaoComponent, 
     DetalhesPedidoComponent, 
-    InativarLivroDialogComponent, 
+    InativarLivroDialogComponent, DetalhesLivroComponent, 
   ],
   imports: [
     CommonModule,

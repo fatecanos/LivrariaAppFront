@@ -1,6 +1,7 @@
 {
   "livros": [
     {
+      "isAtivo": true,
       "autor": "Lucas",
       "ano": "2021",
       "titulo": "Admirável mundo novo",
@@ -27,6 +28,7 @@
       "id": 1
     },
     {
+      "isAtivo": false,
       "autor": "Isaac Asimov",
       "ano": "2021",
       "titulo": "Admirável mundo novo",
