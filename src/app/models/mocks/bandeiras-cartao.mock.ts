@@ -1,6 +1,6 @@
-import { BandeiraCartaoInterface } from "../interfaces/dto/client.interface";
+import { BandeiraCartaoDTO } from "../interfaces/dto/client.interface";
 
-export const bandeirasMock: BandeiraCartaoInterface[] = [
+export const bandeirasMock: BandeiraCartaoDTO[] = [
     {
         id: 1,
         descricao: "Mastercard"

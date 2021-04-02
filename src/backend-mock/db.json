@@ -301,6 +301,172 @@
       "cidade": "Mogi das Cruzes",
       "estado": "São Paulo",
       "pais": "Brasil"
+    },
+    {
+      "id": 2,
+      "logradouro": "Rua Gilberto Gagliard",
+      "cep": "49345109",
+      "numero": "233",
+      "bairro": "Vila Boa",
+      "complemento": "",
+      "tipoEnderecoId": 1,
+      "tipoLogradouroId": 1,
+      "cidade": "Mogi das Cruzes",
+      "estado": "São Paulo",
+      "pais": "Brasil"
+    },
+    {
+      "id": 3,
+      "logradouro": "Rua Gilberto Gagliard",
+      "cep": "49345109",
+      "numero": "233",
+      "bairro": "Vila Boa",
+      "complemento": "",
+      "tipoEnderecoId": 1,
+      "tipoLogradouroId": 1,
+      "cidade": "Mogi das Cruzes",
+      "estado": "São Paulo",
+      "pais": "Brasil"
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 4
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 5
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 6
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 7
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 8
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 9
+    },
+    {
+      "logradouro": "Rua Gilberto Gagliard",
+      "numero": "223",
+      "bairro": "Mirage",
+      "complemento": "",
+      "tipoEndereco": {
+        "id": 1,
+        "descricao": "Casa"
+      },
+      "cidade": {
+        "id": 1,
+        "descricao": "Mogi",
+        "estado": {
+          "id": 1,
+          "descricao": "SP"
+        }
+      },
+      "cep": "3294929443323",
+      "id": 10
     }
   ],
   "clientes": [
@@ -323,6 +489,56 @@
           },
           "logradouro": "Rua Gilberto Gagliard",
           "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "casa 1",
+          "tipoResidencia": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "tipoEndereco": "entrega",
+          "tipoLogradouro": {
+            "id": 1,
+            "descricao": "Rua"
+          },
+          "logradouro": "Rua Gilberto Gagliard",
+          "cep": "49345109",
+          "numero": "233",
+          "bairro": "Vila Boa",
+          "complemento": "casa 1",
+          "tipoResidencia": {
+            "id": 1,
+            "descricao": "casa"
+          },
+          "cidade": {
+            "id": 1,
+            "descricao": "Mogi das Cruzes",
+            "estado": {
+              "id": 1,
+              "descricao": "SP"
+            }
+          }
+        },
+        {
+          "id": 3,
+          "tipoEndereco": "entrega",
+          "tipoLogradouro": {
+            "id": 1,
+            "descricao": "Rua"
+          },
+          "logradouro": "Rua Anita",
+          "cep": "09888423",
           "numero": "233",
           "bairro": "Vila Boa",
           "complemento": "casa 1",
@@ -682,6 +898,16 @@
       "senha": "lucas",
       "confirmacaoSenha": "lucas",
       "id": 20
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "2021-03-09",
+      "cpf": "93599539591",
+      "email": "lucas@gmail.com",
+      "senha": "lucas05",
+      "confirmacaoSenha": "lucas05",
+      "id": 21
     }
   ]
 }

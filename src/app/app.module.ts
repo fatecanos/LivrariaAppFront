@@ -22,7 +22,8 @@ import { AdminDomainModule } from './pages/admin-domain/admin-domain.module';
     LivrariaDomainModule,
     AdminDomainModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

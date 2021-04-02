@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClienteInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { ClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { environment } from 'src/environments/environment';
 
@@ -22,20 +22,20 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  saveClient(client: ClienteInterface): Observable<MessageInterface> {
+  saveClient(client: ClienteDTO): Observable<MessageInterface> {
     let payload = JSON.stringify(client);
     return this.http.post<MessageInterface>(`${this.baseUrl}/clientes`, payload, httpOptions);
   }
 
-  getClientById(id: number | undefined): Observable<ClienteInterface> {
-    return this.http.get<ClienteInterface>(`${this.baseUrl}/clientes/${id}`, httpOptions)
+  getClientById(id: number | undefined): Observable<ClienteDTO> {
+    return this.http.get<ClienteDTO>(`${this.baseUrl}/clientes/${id}`, httpOptions)
   }
 
-  getClients(): Observable<ClienteInterface[]> {
-    return this.http.get<ClienteInterface[]>(`${this.baseUrl}/clientes`, httpOptions)
+  getClients(): Observable<ClienteDTO[]> {
+    return this.http.get<ClienteDTO[]>(`${this.baseUrl}/clientes`, httpOptions)
   }
 
-  updateClientById(id: number | undefined, clientData?: ClienteInterface): Observable<MessageInterface> {
+  updateClientById(id: number | undefined, clientData?: ClienteDTO): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(`${this.baseUrl}/clientes/${id}`, clientData, httpOptions);
   }
 

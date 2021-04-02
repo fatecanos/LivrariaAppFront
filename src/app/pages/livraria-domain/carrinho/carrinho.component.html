@@ -20,13 +20,15 @@
                         alt="item">
                     <span>{{item.produto.nome}}</span>
                 </td>
-                <td class="carrinho-table-item_line-valor">R$ {{item.produto.valor}}</td>
+                <td class="carrinho-table-item_line-valor">{{item.produto.valor | moneyFormatter}}</td>
                 <td>
-                    <button (click)="minusQuantidade(item.id, inpQtdeCarrinho.value)">-</button>
+                    <button id="menos"
+                        (click)="minusQuantidade(item.id, inpQtdeCarrinho.value)">-</button>
                     <input 
                         class="carrinho-table-item_line-amount_input" 
                         type="text" [value]="item.quantidade" #inpQtdeCarrinho>
-                    <button  (click)="plusQuantidade(item.id, inpQtdeCarrinho.value, item.produto.qtdeMaxima)">+</button>
+                    <button  id="mais"
+                        (click)="plusQuantidade(item.id, inpQtdeCarrinho.value, item.produto.qtdeMaxima)">+</button>
                 </td>
                 <td class="carrinho-table-item_line-option">
                     <span (click)="removerItemCarrinho(item)">Remover</span>
@@ -37,31 +39,69 @@
         <div>
             <div class="carrinho-content-subtotal">
                 <div>
-                    <span>Sub-total:</span><span>R$ 160.00</span>
+                    <span>Sub-total:</span><span>{{total | moneyFormatter}}</span>
                 </div>
                 <br>
                 <div>
-                    <span>Total: </span><span>R$ 180.00</span>
+                    <span>Total: </span><span>{{total | moneyFormatter}}</span>
                 </div>
             </div>
         </div>
 
         <div class="carrinho-content">
 
-            <div class="carrinho-content-adress_selector">
-                <h3>Endereço de entrega:</h3>
+            <div class="carrinho-content-adress_selector"
+              *ngIf="isUsuarioAutenticado">
+                <h3>Taxa de entrega</h3>
                 <mat-divider></mat-divider>
-                <div class="carrinho-content-adress_selector-item">
-                    <mat-icon class="carrinho-content-adress_selector-item-selected">
-                        radio_button_checked
-                    </mat-icon>
-                    <!-- <mat-icon>radio_button_unchecked</mat-icon> -->
-                    <span>Rua Gilberto Gagliard, 266</span><span> - 08744103</span>
-                </div>
 
-                <div class="carrinho-content-adress_selector-item">
-                    <mat-icon>radio_button_unchecked</mat-icon>
-                    <span>Rua Antonio Lima, 1098</span><span> - 0847663</span>
+                <mat-radio-group [(ngModel)]="isMyEndereco" (change)="enderecoSelecionado = undefined"
+                    aria-label="Select an option" class="carrinho-content-adress_selector-radio">
+                    <mat-radio-button [value]="true" [checked]="isMyEndereco">
+                        Escolher entre os meus endereços de entrega
+                    </mat-radio-button>
+                    <mat-radio-button [value]="false">
+                        Novo Endereço
+                    </mat-radio-button>
+                </mat-radio-group>
+                <br>
+
+                <mat-form-field appearance="fill" *ngIf="isMyEndereco">
+                    <mat-label>Selecione um endereço</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let endereco of enderecosEntrega" 
+                            [value]="endereco" (click)="enderecoSelecionado = endereco">
+                            {{endereco.cep}} - {{endereco.logradouro}}, {{endereco.numero}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div *ngIf="!isMyEndereco"
+                    class="carrinho-content-adress_selector-form">
+                    <mat-form-field>
+                        <mat-label>CEP</mat-label>
+                        <input matInput mask="000000-000">
+                    </mat-form-field>
+                    <button mat-button>buscar</button>
+                    <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
+                </div>
+            </div>
+
+            <div class="carrinho-content-adress_selector"
+                *ngIf="!isUsuarioAutenticado">
+                <h3>Taxa de entrega</h3>
+                <mat-divider></mat-divider>
+
+                <span>Ops! Não é possível finalizar o processo de seleção de endereço.</span>
+
+                <div class="carrinho-content-adress_selector-options">
+                    <button mat-raised-button 
+                        color="primary" (click)="router.navigate(['/livraria/login'])">
+                        Entrar
+                    </button>
+                    <a (click)="router.navigate(['/livraria/novo-cliente'])">
+                        Cadastre-se aqui!
+                    </a>
                 </div>
             </div>
 
@@ -73,9 +113,13 @@
             </div>
         </div>
 
-        <div class="carrinho-valor_frete">
-            <span>Valor Frete:</span><span> R$ 20.00</span>
-            <button mat-button>Calcular</button>
+        <div class="carrinho-valor_frete"
+            *ngIf="isUsuarioAutenticado">
+            <span>Valor Frete:</span><span> {{valorFrete | moneyFormatter}}</span>
+            <button mat-button (click)="calcularFrete()">
+                Calcular
+            </button>
+            <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
         </div>
     </div>
 </div>

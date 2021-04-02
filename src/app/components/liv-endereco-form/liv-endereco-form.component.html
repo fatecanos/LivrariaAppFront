@@ -8,14 +8,14 @@
             <mat-radio-group
                 aria-label="Tipo de Endereço">
                 <mat-radio-button value="1" #inputCobranca 
-                    [checked]="endereco?.tipoEnderecoId === inputCobranca.value"
+                    [checked]="endereco?.tipoEndereco.descricao === 'cobranca'"
                     (click)="updateTipoEndereco(inputCobranca.value)">
                     Cobrança
                 </mat-radio-button>
                 
                 <mat-radio-button 
                     value="2" #inputEntrega
-                    [checked]="endereco?.tipoEnderecoId === inputEntrega.value"
+                    [checked]="endereco?.tipoEndereco.descricao === 'entrega'"
                     (click)="updateTipoEndereco(inputEntrega.value)">
                     Entrega
                 </mat-radio-button>

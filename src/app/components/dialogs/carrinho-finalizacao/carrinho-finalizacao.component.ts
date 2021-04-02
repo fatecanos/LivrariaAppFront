@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartaoCredidoInterface } from 'src/app/models/interfaces/dto/cartao.interface';
-import { BandeiraCartaoInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 
 @Component({
@@ -13,7 +13,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
 
   isLoading = false;
   isPagtoPreferencial: boolean = true;
-  bandeirasCartao: BandeiraCartaoInterface[] = bandeirasMock;
+  bandeirasCartao: BandeiraCartaoDTO[] = bandeirasMock;
 
   formNovoCartao: FormGroup;
   cartaoSelecionado?: CartaoCredidoInterface;

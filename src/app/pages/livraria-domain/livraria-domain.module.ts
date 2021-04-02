@@ -15,6 +15,7 @@ import { EstoqueService } from "src/app/services/estoque-service/estoque.service
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { PainelLoginComponent } from './painel-login/painel-login.component';
+import { MoneyFormmatter } from "src/app/custom-pipes/format-money.pipe";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -38,7 +39,8 @@ const maskConfig: Partial<IConfig> = {
         EstoqueComponent,
         DetalhesProdutoComponent,
         CarrinhoComponent,
-        PainelLoginComponent
+        PainelLoginComponent,
+        MoneyFormmatter
     ],
     providers: [
         {

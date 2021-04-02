@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { EnderecoDTO, TipoLogradouroDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import {UFs} from '../../../models/mocks/ufs.mock';
 
@@ -13,12 +13,12 @@ export class EnderecoSubmitterComponent implements OnInit {
 
   formEndereco: FormGroup = new FormGroup({});
   estados: Array<any> = UFs;
-  tiposLogradouros: Array<TipoLogradouroInterface> = tiposLogradourosMock;
+  tiposLogradouros: Array<TipoLogradouroDTO> = tiposLogradourosMock;
 
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<EnderecoInterface>,
-    @Inject(MAT_DIALOG_DATA) public data: EnderecoInterface
+    public dialogRef: MatDialogRef<EnderecoDTO>,
+    @Inject(MAT_DIALOG_DATA) public data: EnderecoDTO
   ) { }
 
   ngOnInit(): void {

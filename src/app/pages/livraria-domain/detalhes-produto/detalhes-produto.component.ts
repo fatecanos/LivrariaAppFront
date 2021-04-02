@@ -39,10 +39,10 @@ export class DetalhesProdutoComponent implements OnInit {
   }
 
   addNovoItem() {
-    this.livroData.qtdeSelecionada = 1; 
+    this.livroData.qtdeSelecionada = 1;
     let jsonCarrinho = localStorage.getItem('carrinho') || '[]';
     let listaProdutos: LivroEstoqueInterface[] = JSON.parse(jsonCarrinho);
-    let isAlreadyExist = jsonCarrinho.includes(JSON.stringify(this.livroData));
+    let isAlreadyExist = listaProdutos.find(livro => livro.id === this.livroData.id)
 
     if(!isAlreadyExist) {
       listaProdutos = [this.livroData, ...listaProdutos];
@@ -54,5 +54,7 @@ export class DetalhesProdutoComponent implements OnInit {
     }
     this.router.navigate(['/livraria/carrinho'])
   }
+
+  
 
 }

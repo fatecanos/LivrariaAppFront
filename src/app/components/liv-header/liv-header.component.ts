@@ -42,5 +42,6 @@ export class LivHeaderComponent {
 
   logout(){
     sessionStorage.clear();
+    location.reload();
   }
 }

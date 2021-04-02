@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EnderecoInterface, TipoLogradouroInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { EnderecoDTO, TipoLogradouroDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 
@@ -10,7 +10,7 @@ import { UFs } from 'src/app/models/mocks/ufs.mock';
   styleUrls: ['./liv-endereco-form.component.scss']
 })
 export class LivEnderecoFormComponent implements OnInit {
-  @Input() endereco?: EnderecoInterface;
+  @Input() endereco?: EnderecoDTO;
   @Input() index: string = '';
   @Output() dadosEndereco: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   
@@ -18,7 +18,7 @@ export class LivEnderecoFormComponent implements OnInit {
 
   isLoading: boolean = false;
   estados: Array<string> = UFs;
-  tiposLogradouros: Array<TipoLogradouroInterface> = tiposLogradourosMock;
+  tiposLogradouros: Array<TipoLogradouroDTO> = tiposLogradourosMock;
 
   constructor(
     private formBuilder: FormBuilder
@@ -26,7 +26,7 @@ export class LivEnderecoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formEndereco = this.formBuilder.group({
-      tipoEnderecoId: [this.endereco?.tipoEnderecoId, Validators.required],
+      tipoEndereco: [this.endereco?.tipoEndereco, Validators.required],
       tipoLogradouroId: [this.endereco?.tipoLogradouroId, Validators.required],
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],

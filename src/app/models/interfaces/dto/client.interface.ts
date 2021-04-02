@@ -1,4 +1,4 @@
-export interface ClienteInterface {
+export interface ClienteDTO {
     id: number,
     nome: string,
     sobrenome: string,
@@ -7,53 +7,72 @@ export interface ClienteInterface {
     email: string,
     senha: string,
     confirmacaoSenha: string,
-    enderecos: EnderecoInterface[]
+    enderecos: EnderecoDTO[]
 }
 
-export interface EnderecoInterface {
+export interface EnderecoDTO {
     id: number,
-    tipoEnderecoId: number,
-    tipoLogradouroId: number,
-    logradouro: string,
+    tipoEndereco: TipoEnderecoEnum,
+    tipoLogradouroId: TipoLogradouroDTO,
+    logradouro: TipoLogradouroDTO,
     cep: string,
     numero: string,
     bairro: string,
     complemento: string,
     tipoResidencia: string,
-    cidade: CidadeInterface,
+    cidade: CidadeDTO,
     pais: string,
 }
 
-export interface CidadeInterface {
+export interface CidadeDTO {
     id: number,
     descricao: string,
-    estado: EstadoInterface
+    estado: EstadoDTO
 }
 
-export interface EstadoInterface {
+export interface EstadoDTO {
     id: number,
     descricao: string
 }
 
-export interface TipoEnderecoInterface {
+export enum TipoEnderecoEnum {
+    COBRANCA = 'cobranca',
+    ENTREGA = 'entrega'
+}
+
+export interface TipoLogradouroDTO {
     id: number,
     descricao: string
 }
 
-export interface TipoLogradouroInterface {
-    id: number,
-    descricao: string
-}
-
-export interface BandeiraCartaoInterface {
+export interface BandeiraCartaoDTO {
     id: number,
     descricao: string,
 }
 
-export interface CartaoInterface {
+export interface CartaoDTO {
     id: number,
     numero: string,
     nome: string,
     bandeira: string,
     isPrincipal: boolean
+}
+
+export interface EnderecoSimplificadoDTO {
+    id: number;
+    logradouro: string;
+    cep: string;
+    numero: string;
+    bairro: string;
+    complemento: string;
+    tipoEnderecoId: number;
+    tipoLogradouroId: number;
+    cidade: string;
+    estado: string;
+    pais: string;
+}
+
+export interface TipoEnderecoDTO {
+    id: number,
+    description: string
 }

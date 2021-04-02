@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import { InativarLivroDialogComponent } from 'src/app/components/dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
-import { ClienteInterface } from 'src/app/models/interfaces/dto/client.interface';
+import { ClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { ClienteService } from 'src/app/services/client-service/client-service.s
 })
 export class ConsultaClientesComponent implements OnInit {
 
-  dataSource: ClienteInterface[] = [];
+  dataSource: ClienteDTO[] = [];
   displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
 
   constructor(
