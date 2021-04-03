@@ -43,7 +43,7 @@
                 </div>
                 <br>
                 <div>
-                    <span>Total: </span><span>{{total | moneyFormatter}}</span>
+                    <span>Total: </span><span>{{total+valorFrete | moneyFormatter}}</span>
                 </div>
             </div>
         </div>
@@ -57,10 +57,10 @@
 
                 <mat-radio-group [(ngModel)]="isMyEndereco" (change)="enderecoSelecionado = undefined"
                     aria-label="Select an option" class="carrinho-content-adress_selector-radio">
-                    <mat-radio-button [value]="true" [checked]="isMyEndereco">
+                    <mat-radio-button [value]="true" [checked]="isMyEndereco" id="rdMeusEnderecos">
                         Escolher entre os meus endereços de entrega
                     </mat-radio-button>
-                    <mat-radio-button [value]="false">
+                    <mat-radio-button [value]="false" id="rdNovoEndereco">
                         Novo Endereço
                     </mat-radio-button>
                 </mat-radio-group>
@@ -68,7 +68,7 @@
 
                 <mat-form-field appearance="fill" *ngIf="isMyEndereco">
                     <mat-label>Selecione um endereço</mat-label>
-                    <mat-select>
+                    <mat-select id="matSelectEndereco">
                         <mat-option *ngFor="let endereco of enderecosEntrega" 
                             [value]="endereco" (click)="enderecoSelecionado = endereco">
                             {{endereco.cep}} - {{endereco.logradouro}}, {{endereco.numero}}
@@ -80,7 +80,7 @@
                     class="carrinho-content-adress_selector-form">
                     <mat-form-field>
                         <mat-label>CEP</mat-label>
-                        <input matInput mask="000000-000">
+                        <input matInput mask="00000-000" id="txtCep">
                     </mat-form-field>
                     <button mat-button>buscar</button>
                     <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
@@ -95,7 +95,7 @@
                 <span>Ops! Não é possível finalizar o processo de seleção de endereço.</span>
 
                 <div class="carrinho-content-adress_selector-options">
-                    <button mat-raised-button 
+                    <button mat-raised-button id="acessarPaginaLogin"
                         color="primary" (click)="router.navigate(['/livraria/login'])">
                         Entrar
                     </button>
@@ -106,7 +106,8 @@
             </div>
 
             <div class="carrinho-content-action">
-                <button mat-button color="accent"
+                <button mat-button color="accent" 
+                    id="btnFinalizarPedido"
                     (click)="finalizarCompra()">
                     Finalizar
                 </button>
@@ -116,7 +117,8 @@
         <div class="carrinho-valor_frete"
             *ngIf="isUsuarioAutenticado">
             <span>Valor Frete:</span><span> {{valorFrete | moneyFormatter}}</span>
-            <button mat-button (click)="calcularFrete()">
+            <button mat-button id="btnCalcularFrete"
+                (click)="calcularFrete()">
                 Calcular
             </button>
             <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>

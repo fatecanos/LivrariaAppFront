@@ -50,7 +50,7 @@ export interface BandeiraCartaoDTO {
     descricao: string,
 }
 
-export interface CartaoDTO {
+export interface CartaoClienteDTO {
     id: number,
     numero: string,
     nome: string,

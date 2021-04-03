@@ -19,7 +19,7 @@
                 <span>{{livro.valor | currency:'BRL':true:'1.2-2'}}</span>
             </div>
             <div class="estoque-container-card-button">
-                <button mat-button color="primary" 
+                <button mat-button color="primary" id="livroCard"
                     (click)="goToDetails(livro.id)">Comprar</button>
             </div>
         </mat-card>

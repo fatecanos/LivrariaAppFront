@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -5,7 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
-import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
+import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
+import { CarrinhoStoreInterface, ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
@@ -28,7 +30,7 @@ export class CarrinhoComponent implements OnInit {
   //dados venda
   idCliente: number = 0;
   total: number = 0;
-  enderecoSelecionado?: EnderecoDTO;
+  enderecoSelecionado: EnderecoDTO | any;
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
   valorFrete: number = 0;
 
@@ -66,10 +68,21 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarCompra() {
+    let itens: ItemCarrinhoInterface[] = [];
+    this.carrinhoService.obterItens()
+      .subscribe(response => { itens = response });
+
+    const dadosFinalizacao: PedidoFinalizacaoInterface = {
+      enderecoDTO: this.enderecoSelecionado,
+      isNovoEndereco: this.isMyEndereco,
+      itensCarrinho: itens,
+      total: this.total+this.valorFrete
+    };
+
     if(this.isUsuarioAutenticado) {
       const dialogRef = this.dialog.open(CarrinhoFinalizacaoComponent, {
         width: '900px',
-        data: 'ola'
+        data: dadosFinalizacao
       });
     } else {
       this.snackBar.open(

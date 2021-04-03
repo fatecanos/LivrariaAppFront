@@ -1,4 +1,4 @@
-export interface CartaoCredidoInterface {
+export interface NovoCartaoDTO {
     numeroCartao: string,
     nomeNoCartao: string,
     bandeira: string,

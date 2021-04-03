@@ -17,6 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const material_components = [
   MatToolbarModule,
@@ -36,7 +37,8 @@ const material_components = [
   MatRadioModule,
   MatSidenavModule,
   MatCardModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

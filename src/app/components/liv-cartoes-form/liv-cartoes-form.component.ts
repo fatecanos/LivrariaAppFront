@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { BandeiraCartaoDTO, CartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 
@@ -17,7 +17,7 @@ export class LivCartoesFormComponent implements OnInit {
   
   idCartaoSelecionado: number = 0;
 
-  cartoes$?: Observable<CartaoDTO[]>;
+  cartoes$?: Observable<CartaoClienteDTO[]>;
 
   constructor(
     private snackService: MatSnackBar,
