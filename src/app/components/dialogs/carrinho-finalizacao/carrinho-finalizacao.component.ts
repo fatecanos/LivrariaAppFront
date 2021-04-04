@@ -8,6 +8,8 @@ import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interfac
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
+import { VendasService } from 'src/app/services/vendas-service/vendas.service';
+import { PedidoFinalizadoDTO } from 'src/app/models/interfaces/dto/venda.interface';
 
 @Component({
   templateUrl: './carrinho-finalizacao.component.html',
@@ -28,10 +30,13 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
 
   cartaoPreferencial$?: Observable<NovoCartaoDTO>;
 
+  desconto: number = 0;
+
   constructor(
     private snack: MatSnackBar,
     private formBuilder: FormBuilder,
     private cartaoService: CartoesService,
+    private vendaService: VendasService,
     public dialogRef: MatDialogRef<PedidoFinalizacaoInterface>,
     @Inject(MAT_DIALOG_DATA) public data: PedidoFinalizacaoInterface) { 
     this.formNovoCartao = this.formBuilder.group({
@@ -81,11 +86,25 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
 
   executarPedido() {
     //TODO: integrar executar pedido
+
+
+    //TODO: montagem do payload
+    let form: any = {
+
+    }
+
+    this.vendaService.executarPedido(form).subscribe(response => {
+      this.snack.open(response.mensagem, 'fechar', {
+        duration: 2000
+      })
+    })
+
     this.isLoading = true;
     setTimeout(()=> {
       this.isLoading = false;
       this.dialogRef.close()
-    }, 1000)
+    }, 1000);
+
   }
 
   get obterParcelas() {
