@@ -11,6 +11,12 @@ import { ConsultaVendasComponent } from './consulta-vendas/consulta-vendas.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NovoLivroComponent } from './novo-livro/novo-livro.component';
 import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.component';
+import { GestaoEstoqueComponent } from './gestao-estoque/gestao-estoque.component';
+import { IConfig, NgxMaskModule } from "ngx-mask";
+
+const maskConfig: Partial<IConfig> = {
+    validation: false,
+};
 
 @NgModule({
     imports: [
@@ -19,7 +25,8 @@ import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.compo
         MaterialModule,
         AdminDomainRouting,
         ReactiveFormsModule,
-        ServiceModule
+        ServiceModule,
+        NgxMaskModule.forRoot(maskConfig),
     ],
     declarations: [
         ConsultaClientesComponent,
@@ -27,7 +34,8 @@ import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.compo
         ConsultaVendasComponent,
         DashboardComponent,
         NovoLivroComponent,
-        ConsultaLivrosComponent
+        ConsultaLivrosComponent,
+        GestaoEstoqueComponent
     ]
 })
 export class AdminDomainModule {

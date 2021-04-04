@@ -5,6 +5,7 @@ import { ConsultaClientesComponent } from "./consulta-clientes/consulta-clientes
 import { ConsultaLivrosComponent } from "./consulta-livros/consulta-livros.component";
 import { ConsultaVendasComponent } from "./consulta-vendas/consulta-vendas.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { GestaoEstoqueComponent } from "./gestao-estoque/gestao-estoque.component";
 import { NovoLivroComponent } from "./novo-livro/novo-livro.component";
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
             {
                 path: 'consulta-livros',
                 component: ConsultaLivrosComponent
+            },
+            {
+                path: 'estoque',
+                component: GestaoEstoqueComponent
             }
         ]
     }

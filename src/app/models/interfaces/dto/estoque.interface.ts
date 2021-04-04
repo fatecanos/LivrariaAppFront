@@ -1,3 +1,5 @@
+import { LivroDTO } from "./livro-dto.interface";
+
 export interface LivroEstoqueInterface {
     id: number,
     nomeLivro: string,
@@ -15,4 +17,11 @@ export interface DimensaoInterface {
     largura: number,
     altura: number,
     profundidade: number
+}
+
+export interface ItemEstoqueDTO {
+    id: number,
+    livro: LivroDTO,
+    quantidade: number,
+    custoCompra: number,
 }
