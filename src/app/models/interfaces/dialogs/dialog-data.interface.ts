@@ -14,5 +14,6 @@ export interface PedidoFinalizacaoInterface {
     enderecoDTO: EnderecoDTO,
     isNovoEndereco: boolean,
     itensCarrinho: ItemCarrinhoInterface[],
+    frete: number,
     total: number,
 }

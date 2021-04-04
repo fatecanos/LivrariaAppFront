@@ -3,15 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { DataDialogInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { NovoCartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
-import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 
 @Component({
-  selector: 'app-carrinho-finalizacao',
   templateUrl: './carrinho-finalizacao.component.html',
   styleUrls: ['./carrinho-finalizacao.component.scss']
 })
@@ -28,7 +26,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
   formNovoCartao: FormGroup;
   cartaoSelecionado?: NovoCartaoDTO;
 
-  cartaoPreferencial?: Observable<CartaoClienteDTO>;
+  cartaoPreferencial$?: Observable<NovoCartaoDTO>;
 
   constructor(
     private snack: MatSnackBar,
@@ -45,8 +43,12 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('Dados que chegaram no modal:', this.data);
+    
     this.selecionaCartaoPreferencial();
     this.isGravarNovoEndereco = this.data.isNovoEndereco;
+
+    this.cartaoPreferencial$ = this.cartaoService.getCartaoPreferencial();
   }
 
   addNovoCartao() {
@@ -75,6 +77,25 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
     this.isPagtoPreferencial = true;
     this.cartaoService.getCartaoPreferencial()
       .subscribe(response => this.cartaoSelecionado = response);
+  }
+
+  executarPedido() {
+    //TODO: integrar executar pedido
+    this.isLoading = true;
+    setTimeout(()=> {
+      this.isLoading = false;
+      this.dialogRef.close()
+    }, 1000)
+  }
+
+  get obterParcelas() {
+    const total = this.data.total;
+    return [
+      `1x de ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}`,
+      `2x de ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total/2)}`,
+      `3x de ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total/3)}`,
+      `4x de ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total/4)}`
+    ]
   }
 
 }

@@ -13,6 +13,7 @@ import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.int
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
+import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({
   templateUrl: './carrinho.component.html',
@@ -38,6 +39,7 @@ export class CarrinhoComponent implements OnInit {
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     private clienteService: ClienteService,
+    private vendaService: VendasService,
     public dialog: MatDialog,
     private router: Router
   ) { }
@@ -76,19 +78,22 @@ export class CarrinhoComponent implements OnInit {
       enderecoDTO: this.enderecoSelecionado,
       isNovoEndereco: this.isMyEndereco,
       itensCarrinho: itens,
-      total: this.total+this.valorFrete
+      total: this.total+this.valorFrete,
+      frete: this.valorFrete
     };
 
-    if(this.isUsuarioAutenticado) {
+    if(this.isUsuarioAutenticado && this.enderecoSelecionado) {
       const dialogRef = this.dialog.open(CarrinhoFinalizacaoComponent, {
         width: '900px',
         data: dadosFinalizacao
       });
     } else {
       this.snackBar.open(
-        "favor, acesse a plataforma primeiro", 
+        "favor, insira um endereço primeiro", 
         "fechar", 
-        {duration: 2000}
+        {
+          duration: 2000
+        }
       )  
     }
   }

@@ -191,10 +191,12 @@ describe('GERENCIAR VENDAS ELETRÔNICAS', ()=> {
 
         cy.get('#btnCalcularFrete').click();
     }),
+
     it('RF0036 - Selecionar forma de pagamento', ()=> {
         cy.get('#btnFinalizarPedido').click();
 
-        
+        cy.get()
     }),
+
     it('RF0037 - Finalizar Compra')
 })
