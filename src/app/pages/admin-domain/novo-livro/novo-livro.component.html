@@ -85,25 +85,37 @@
                     <mat-form-field 
                         class="novo-livro-container-form-row-input">
                         <mat-label>Altura:</mat-label>
-                        <input matInput formControlName="altura">
+                        <input matInput 
+                            formControlName="altura" 
+                            type="number" 
+                            placeholder="valor em cm">
                     </mat-form-field>
 
                     <mat-form-field 
                         class="novo-livro-container-form-row-input">
                         <mat-label>Largura:</mat-label>
-                        <input matInput formControlName="largura">
+                        <input matInput 
+                            formControlName="largura" 
+                            type="number" 
+                            placeholder="valor em cm">
                     </mat-form-field>
 
                     <mat-form-field 
                         class="novo-livro-container-form-row-input">
                         <mat-label>Profundidade:</mat-label>
-                        <input matInput formControlName="profundidade">
+                        <input matInput
+                            formControlName="profundidade" 
+                            type="number" 
+                            placeholder="valor em cm">
                     </mat-form-field>
 
                     <mat-form-field 
                         class="novo-livro-container-form-row-input">
                         <mat-label>Peso:</mat-label>
-                        <input matInput formControlName="peso">
+                        <input matInput 
+                            formControlName="peso" 
+                            type="number"
+                            placeholder="valor em cm">
                 </mat-form-field>
                 </div>
 
@@ -112,7 +124,7 @@
 
                     <mat-form-field appearance="fill">
                         <mat-label>Grupo de Precificação:</mat-label>
-                        <mat-select formControlName="grupoPrecificacao">
+                        <mat-select formControlName="grupoPrecificacaoId">
                             <mat-option *ngFor="let grupo of gruposPrecificacao$ | async" 
                                 [value]="grupo.id">{{grupo.descricao}}
                             </mat-option>

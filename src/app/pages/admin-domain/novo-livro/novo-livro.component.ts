@@ -45,12 +45,12 @@ export class NovoLivroComponent implements OnInit {
       quantidadePaginas: ['', [Validators.required]], //ok
       sinopse: ['', [Validators.required]], //ok
       dimensoes: this.formBuilder.group({ //ok
-        altura: ['', [Validators.required]], 
-        largura: ['', [Validators.required]],
-        peso: ['', [Validators.required]],
-        profundidade: ['', [Validators.required]]
+        altura: [null, [Validators.required]], 
+        largura: [null, [Validators.required]],
+        peso: [null, [Validators.required]],
+        profundidade: [null, [Validators.required]]
       }),
-      grupoPrecificacao: ['', [Validators.required]], //ok
+      grupoPrecificacaoId: ['', [Validators.required]], //ok
       codigoBarras: ['', [Validators.required]], // ok
       url: ['', [Validators.required]]
     })

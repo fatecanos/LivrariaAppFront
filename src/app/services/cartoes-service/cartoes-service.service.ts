@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CartoesService {
-  baseUrl: string = environment.baseUrlMock;
+  baseUrl: string = environment.urlMock;
 
   constructor(private http: HttpClient) { }
 

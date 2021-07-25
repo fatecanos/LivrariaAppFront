@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class VendasService {
 
-  baseUrl: string = environment.baseUrlMock;
+  baseUrl: string = environment.urlMock;
 
   constructor(
     private http: HttpClient
