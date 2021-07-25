@@ -1,0 +1,74 @@
+<div class="consulta-livros">
+    <div class="consulta-livros-header">
+        <h2>Livros</h2>
+        <mat-divider></mat-divider>
+    </div>
+    <div class="consulta-livros-content">
+        <div class="consulta-livros-content-search_bar">
+            <mat-form-field>
+                <mat-label>Pesquisa</mat-label>
+                <input matInput type="text">    
+            </mat-form-field>
+            <button mat-button>Filtrar</button>
+            <mat-form-field appearance="fill">
+                <mat-label>Filtrar Por:</mat-label>
+                <select matNativeControl [disabled]="disableSelect.value">
+                    <option value="" selected></option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab" disabled>Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="consulta-livros-content">
+        <span *ngIf="!dataSource.length">Nenhum cliente encontrado</span>
+        <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef> Titulo </th>
+                <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isbn">
+                <th mat-header-cell *matHeaderCellDef> ISBN </th>
+                <td mat-cell *matCellDef="let element"> {{element.isbn}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="editora">
+                <th mat-header-cell *matHeaderCellDef> Editora </th>
+                <td mat-cell *matCellDef="let element"> {{element.editora}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ano">
+                <th mat-header-cell *matHeaderCellDef> Ano </th>
+                <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opcoes">
+                <th mat-header-cell *matHeaderCellDef>Opções </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button 
+                        color="accent"
+                        (click)="abrirModalDetalhes(element.id)">
+                        DETALHES
+                    </button>
+
+                    <button mat-button 
+                        color="warn" *ngIf="element.isAtivo"
+                        (click)="inativarLivroPorId(element.id)">
+                        INATIVAR
+                    </button>
+
+                    <button mat-button 
+                        color="primary" *ngIf="!element.isAtivo">
+                        ATIVAR
+                    </button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

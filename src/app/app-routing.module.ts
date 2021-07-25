@@ -1,26 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AtualizarClientesComponent } from './pages/atualizar-clientes/atualizar-clientes.component';
-import { CadastroClientesComponent } from './pages/cadastro-clientes/cadastro-clientes.component';
-import { ConsultaClientesComponent } from './pages/consulta-clientes/consulta-clientes.component';
-import { StoreHomeComponent } from './pages/store-home/store-home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: StoreHomeComponent
+    loadChildren: 'src/app/pages/livraria-domain/livraria-domain.module#LivrariaDomainModule'
+  },
+  { 
+    path: 'clientes', 
+    loadChildren: 'src/app/pages/cliente-domain/cliente-domain.module#ClienteDomainModule'
   },
   {
-    path: 'novo-cliente',
-    component: CadastroClientesComponent
+    path: 'livraria',
+    loadChildren: 'src/app/pages/livraria-domain/livraria-domain.module#LivrariaDomainModule'
   },
   {
-    path: 'consulta-clientes',
-    component: ConsultaClientesComponent
-  },
-  {
-    path: 'atualizar-clientes',
-    component: AtualizarClientesComponent
+    path: 'admin',
+    loadChildren: 'src/app/pages/admin-domain/admin-domain.module#AdminDomainModule'
   }
 ];
 

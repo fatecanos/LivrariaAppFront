@@ -10,6 +10,23 @@
             mat-form-field {
                 margin-left: 10px;
             }
+
+            &-tipo_residencia {
+                margin: 15px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                mat-label {
+                    font-weight: bold;
+                }
+
+                mat-radio-group {
+                    mat-radio-button {
+                        margin-left: 5px;
+                    }
+                }
+            }
         }
     }
 

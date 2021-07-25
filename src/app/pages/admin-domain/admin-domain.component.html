@@ -1,0 +1,50 @@
+<mat-sidenav-container class="admin-domain">
+    <mat-sidenav mode="side" opened>
+      <ul class="admin-domain-options">
+        <li>
+          <span>Dashboard</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin">Painel</a>
+          </div>
+        </li>
+        <li>
+          <span>Livros</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>add</mat-icon>
+            <a routerLink="/admin/novo-livro">Novo Livro</a>
+          </div>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin/consulta-livros">Consulta</a>
+          </div>
+        </li>
+        <li>
+          <span>Clientes</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin/cliente">Consulta</a>
+          </div>
+        </li>
+        <li>
+          <span>Vendas</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin/venda">Consulta</a>
+          </div>
+        </li>
+        <li>
+          <span>Estoque</span>
+          <div class="admin-domain-options-item">
+            <mat-icon>search</mat-icon>
+            <a routerLink="/admin/estoque">Gerenciar</a>
+          </div>
+        </li>
+      </ul>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

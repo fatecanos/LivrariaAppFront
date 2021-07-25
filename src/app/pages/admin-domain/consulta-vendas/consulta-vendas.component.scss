@@ -1,0 +1,24 @@
+.consulta_vendas {
+    margin: 0 auto;
+    padding: 15px;
+    min-height: 600px;
+
+    &-header {
+
+        h2 { 
+            margin-top: 35px;
+            font-size: 1.8em;
+        }
+
+        mat-divider {
+            margin-bottom: 35px;
+        }
+    }
+
+    &-content {
+       
+        table {
+            width: 100%;
+        }
+    }
+}

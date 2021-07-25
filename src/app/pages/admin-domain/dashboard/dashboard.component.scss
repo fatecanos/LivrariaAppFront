@@ -1,0 +1,17 @@
+.dashboard {
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 500px;
+
+    &-header {
+
+        h2 { 
+            margin-top: 35px;
+            font-size: 1.8em;
+        }
+
+        mat-divider {
+            margin-bottom: 35px;
+        }
+    }
+}

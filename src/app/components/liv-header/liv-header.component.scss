@@ -7,11 +7,25 @@
 
         img {
             width: 66%;
+            cursor: pointer;
         }
     }
 
-    &-search-bar {
+    &-search_bar {
+        display: flex;
+        align-items: center;
 
+        input {
+            width: 40vw;
+            height: 24px;
+            font-size: 0.9em;
+            border: 1px solid #6363;
+            border-radius: 3px 0 0 3px;
+        }
+
+        button {
+            height: 30px;
+        }
     }
 
     &-right_painel {
@@ -26,10 +40,6 @@
             font-size: 0.8em;
             cursor: pointer;
             padding: 3px;
-
-            &-login {
-
-            }
 
             &-account {
                 display: flex;
@@ -53,6 +63,11 @@
             margin-left: 30px;
             margin-right: 25px;
             margin-top: 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 25px;
+
             
             mat-icon {
                 cursor: pointer;
@@ -64,6 +79,18 @@
                 color: #fac515;
             }
 
+            a {
+                text-decoration: none;
+                text-transform: none;
+                text-transform: none;
+                color: #000;
+                cursor: pointer;
+            }
+
+            a:hover {
+                color: #fac515;
+            }
+    
         }
     }
 }
@@ -75,6 +102,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    z-index: 2;
 
     &-item {
         padding: 5px;
