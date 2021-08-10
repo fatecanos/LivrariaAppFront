@@ -8,43 +8,36 @@
     <mat-tab-group mat-align-tabs="start" class="client_update-tabs_container">
 
         <mat-tab label="Dados do Cliente">
-            <form [formGroup]="formDadosCliente"
-                class="client_update-tabs_container-form">
+            <!-- <form [formGroup]="formDadosCliente" *ngIf="formDadosCliente" class="client_update-tabs_container-form"> -->
+            <form [formGroup]="formDadosCliente" class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>Nome: </mat-label>
-                    <input matInput formControlName="nome"
-                        placeholder="Primeiro Nome">
+                    <input matInput formControlName="nome" placeholder="Primeiro Nome">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Sobrenome:</mat-label>
-                    <input matInput formControlName="sobrenome"
-                        placeholder="Segundo nome">
+                    <input matInput formControlName="sobrenome" placeholder="Segundo nome">
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                     <mat-label>Data de Nascimento:</mat-label>
-                    <input matInput formControlName="dataNascimento"
-                        type="date">
+                    <input matInput formControlName="dataNascimento" type="date">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>CPF:</mat-label>
-                    <input matInput formControlName="cpf"
-                        type="text" mask="000.000.000-00">
+                    <input matInput formControlName="cpf" type="text" mask="000.000.000-00">
                 </mat-form-field>
             </form>
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
-                <mat-progress-spinner *ngIf="isLoading"
-                    class="client-form-spinner"
-                    color="primary" diameter="50"
-                    mode="indeterminate">
+
+                <mat-progress-spinner *ngIf="isLoading" class="client-form-spinner" color="primary" diameter="50" mode="indeterminate">
                 </mat-progress-spinner>
             </div>
         </mat-tab>
 
         <mat-tab label="Endereço">
-            <liv-endereco-form [endereco]="endereco" [index]="i+1"
-                *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
+            <liv-endereco-form [endereco]="endereco" [index]="i+1" *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
             </liv-endereco-form>
             <div class="client_update-tabs_container-message">
                 <span *ngIf="!(clienteResponse$ | async)?.enderecos">
@@ -52,23 +45,19 @@
                 </span>
                 <button mat-button (click)="abrirModalNovoEndereco()">+ Endereco</button>
             </div>
-            
+
         </mat-tab>
 
         <mat-tab label="Alterar E-mail">
-            <form [formGroup]="formEmail"
-                class="client_update-tabs_container-form">
+            <form [formGroup]="formEmail" class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>E-mail: </mat-label>
-                    <input matInput value="{{ (clienteResponse$ | async)?.email}}"
-                        type="email" disabled="true">
+                    <input matInput value="{{ (clienteResponse$ | async)?.email}}" type="email" disabled="true">
                 </mat-form-field>
                 <br>
                 <mat-form-field>
                     <mat-label>Novo e-mail: </mat-label>
-                    <input matInput formControlName="email" 
-                        placeholder="Endereço de e-mail válido" 
-                        type="email">
+                    <input matInput formControlName="email" placeholder="Endereço de e-mail válido" type="email">
                     <mat-error *ngIf="formEmail?.get('email')?.hasError('required')">
                         Email, <strong>incompleto.</strong>
                     </mat-error>
@@ -79,9 +68,7 @@
 
                 <mat-form-field>
                     <mat-label>Repita o e-mail: </mat-label>
-                    <input matInput formControlName="confirmacaoEmail"
-                        placeholder="Endereço de e-mail válido" 
-                        type="email">
+                    <input matInput formControlName="confirmacaoEmail" placeholder="Endereço de e-mail válido" type="email">
 
                     <mat-error *ngIf="formEmail?.get('confirmacaoEmail')?.hasError('required')">
                         Favor, <strong>redigite o e-mail.</strong>
@@ -95,34 +82,25 @@
                 </mat-form-field>
             </form>
             <div class="client_update-option_container">
-                <mat-progress-spinner *ngIf="isLoading"
-                    class="client-form-spinner"
-                    color="primary" diameter="50"
-                    mode="indeterminate">
+                <mat-progress-spinner *ngIf="isLoading" class="client-form-spinner" color="primary" diameter="50" mode="indeterminate">
                 </mat-progress-spinner>
                 <button mat-button [disabled]="formEmail?.invalid" (click)="atualizarEmail()">Atualizar Dados</button>
             </div>
         </mat-tab>
 
         <mat-tab label="Alterar Senha">
-            <form [formGroup]="formSenha"
-                class="client_update-tabs_container-form">
-                <mat-form-field >
+            <form [formGroup]="formSenha" class="client_update-tabs_container-form">
+                <mat-form-field>
                     <mat-label>Nova senha: </mat-label>
-                    <input matInput type="password" 
-                        formControlName="senha">
+                    <input matInput type="password" formControlName="senha">
                 </mat-form-field>
-                <mat-form-field >
+                <mat-form-field>
                     <mat-label>Repita a senha: </mat-label>
-                    <input matInput type="password" 
-                        formControlName="confirmacaoSenha">
+                    <input matInput type="password" formControlName="confirmacaoSenha">
                 </mat-form-field>
             </form>
             <div class="client_update-option_container">
-                <mat-progress-spinner *ngIf="isLoading"
-                    class="client-form-spinner"
-                    color="primary" diameter="50"
-                    mode="indeterminate">
+                <mat-progress-spinner *ngIf="isLoading" class="client-form-spinner" color="primary" diameter="50" mode="indeterminate">
                 </mat-progress-spinner>
                 <button mat-button (click)="atualizarSenha()">Atualizar Dados</button>
             </div>

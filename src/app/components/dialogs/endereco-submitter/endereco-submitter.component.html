@@ -2,19 +2,16 @@
     <h3>Novo Endereço</h3>
     <mat-divider></mat-divider>
 
-    <form [formGroup]="formEndereco"
-        class="endereco-form-tabs_container-form">
+    <form [formGroup]="formEndereco" class="endereco-form-tabs_container-form">
         <mat-form-field>
-            <mat-label>CEP:</mat-label>
-            <input matInput formControlName="cep"
-                placeholder="00000-000" mask="00000-000" type="text">
+            <mat-label> :</mat-label>
+            <input matInput formControlName="cep" placeholder="00000-000" mask="00000-000" type="text" (ngModelChange)="consultarCEP()">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
             <mat-select>
-                <mat-option
-                    *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog.id">
+                <mat-option *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog.id">
                     {{ tipoLog.descricao }}
                 </mat-option>
             </mat-select>
@@ -22,24 +19,20 @@
 
         <mat-form-field>
             <mat-label>Endereço: </mat-label>
-            <input matInput formControlName="logradouro"
-                placeholder="rua, logradouro, avenida..." type="text">
+            <input matInput formControlName="logradouro" placeholder="rua, logradouro, avenida..." type="text">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Bairro:</mat-label>
-            <input matInput formControlName="bairro"
-                placeholder="nome do seu bairro" type="text">
+            <input matInput formControlName="bairro" placeholder="nome do seu bairro" type="text">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Complemento:</mat-label>
-            <input matInput formControlName="complemento"
-                placeholder="casa 1, ao lado de..." type="text">
+            <input matInput formControlName="complemento" placeholder="casa 1, ao lado de..." type="text">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Numero:</mat-label>
-            <input matInput formControlName="numero"
-                type="text">
+            <input matInput formControlName="numero" type="text">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Cidade:</mat-label>
@@ -57,8 +50,7 @@
 
         <mat-form-field>
             <mat-label>País:</mat-label>
-            <input matInput 
-                placeholder="nome do seu bairro" type="text">
+            <input matInput placeholder="nome do seu bairro" type="text">
         </mat-form-field>
 
         <mat-form-field>

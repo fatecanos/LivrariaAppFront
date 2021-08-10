@@ -908,6 +908,16 @@
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
       "id": 21
+    },
+    {
+      "nome": "Gabriel",
+      "sobrenome": "Luz",
+      "dataNascimento": "2001-04-10",
+      "cpf": "36976415068",
+      "email": "g.luzsilva1@gmail.com",
+      "senha": "abc12345",
+      "confirmacaoSenha": "abc12345",
+      "id": 22
     }
   ]
 }

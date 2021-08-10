@@ -4,7 +4,7 @@
         <div class="painel_login-container-header">
             <h3>Acesse sua conta</h3>
         </div>
-        <mat-form-field 
+        <mat-form-field
             class="painel_login-container-input_email
                 painel_login-container-form">
             <mat-label>E-mail:</mat-label>
@@ -23,7 +23,7 @@
                 matInput formControlName="senha" type="password">
         </mat-form-field>
         <div class="painel_login-container-form senha">
-            <button mat-button (click)="enviar()">Entrar</button>
+            <button mat-button (click)="login(formulario.get('email'), formulario.get('senha'))">Entrar</button>
         </div>
     </form>
     <div class="painel_login-spinner" *ngIf="isLoading">
