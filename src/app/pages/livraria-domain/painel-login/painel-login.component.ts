@@ -47,9 +47,7 @@ export class PainelLoginComponent implements OnInit {
           this.isLoading = false;
 
           if (response.email != null) {
-
-            console.log("EACA: " + response.perfilUsuario)
-            sessionStorage.setItem('isLogado', response.perfilUsuario);
+            sessionStorage.setItem('isLogado', String(response.usuarioId));
             this.router.navigate(['/livraria']);
           }
         });

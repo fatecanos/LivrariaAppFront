@@ -10,11 +10,11 @@
         <a *ngIf="!isLogado"
             class="liv-header-right_painel-account" (click)="showPainel = !showPainel">
             <span class="liv-header-right_painel-account-login">
-                Olá, Faça seu login 
+                Olá, Faça seu login
             </span>
             <div class="liv-header-right_painel-account-account">
                 <span>
-                    Acesso a Conta 
+                    Acesso a Conta
                 </span>
                 <mat-icon>play_arrow</mat-icon>
             </div>
@@ -30,18 +30,18 @@
                     Meus Dados
                 </span>
             </div>
-        </a>    
+        </a>
 
         <div class="liv-header-right_painel-cart">
             <mat-icon (click)="navigateToCart()">shopping_cart</mat-icon>
-            <a (click)="logout()" *ngIf="isLogado">sair</a>
+            <a (click)="logout()" *ngIf="isLogado">Sair</a>
         </div>
     </div>
 </mat-toolbar>
 
 <div class="dialog-absolute" *ngIf="showPainel">
     <div class="dialog-absolute-item">
-        <button 
+        <button
             mat-raised-button
             color="primary" (click)="navigateToLoginPage()">
             Entrar

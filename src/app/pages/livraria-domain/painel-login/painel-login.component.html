@@ -23,7 +23,7 @@
                 matInput formControlName="senha" type="password">
         </mat-form-field>
         <div class="painel_login-container-form senha">
-            <button mat-button (click)="login(formulario.get('email'), formulario.get('senha'))">Entrar</button>
+            <button mat-button (click)="login()">Entrar</button>
         </div>
     </form>
     <div class="painel_login-spinner" *ngIf="isLoading">

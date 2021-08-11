@@ -53,7 +53,7 @@ export class CarrinhoComponent implements OnInit {
     //TODO: integrar cliente autenticado
     this.dadosCliente$ = this.clienteService.getClientById(1);
 
-    this.dadosCliente$.subscribe(cliente => { 
+    this.dadosCliente$.subscribe(cliente => {
       this.enderecosEntrega = cliente.enderecos.filter(endereco => {
         return endereco.tipoEndereco === TipoEnderecoEnum.ENTREGA;
       })
@@ -89,12 +89,12 @@ export class CarrinhoComponent implements OnInit {
       });
     } else {
       this.snackBar.open(
-        "favor, insira um endereço primeiro", 
-        "fechar", 
+        "favor, insira um endereço primeiro",
+        "fechar",
         {
           duration: 2000
         }
-      )  
+      )
     }
   }
 
@@ -116,7 +116,7 @@ export class CarrinhoComponent implements OnInit {
         duration: 3000
       })
     }
-    
+
   }
 
   minusQuantidade(itemId: number, qtde: number) {
@@ -134,7 +134,7 @@ export class CarrinhoComponent implements OnInit {
     setTimeout(()=> {
       this.isLoading = false
       this.valorFrete = 40
-    }, 4000) 
+    }, 4000)
   }
 
 }

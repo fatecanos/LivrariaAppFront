@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'http://localhost:4200',
-    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Methods': 'POST',
   }),
 };
 
@@ -31,10 +31,8 @@ export class ClienteService {
   }
 
   getClientById(id: number | undefined): Observable<ClienteDTO> {
-
     return this.http.get<ClienteDTO>(
       `${this.baseUrl}/clientes/meus_dados/${id}`,
-      // `${this.baseUrl}/clientes/${id}`,
       httpOptions
     );
   }

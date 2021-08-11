@@ -29,4 +29,8 @@ export class LoginService {
       httpOptions,
     });
   }
+
+  logout() {
+    this.http.get(`${this.baseUrl}/login/logout`, httpOptions);
+  }
 }

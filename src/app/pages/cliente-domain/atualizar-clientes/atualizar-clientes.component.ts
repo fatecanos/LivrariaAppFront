@@ -67,7 +67,11 @@ export class AtualizarClientesComponent implements OnInit {
   ngOnInit(): void {
     //TODO: integrar busca do cliente a partir da sessao de usuario
 
-    this.clienteResponse$ = this.clienteService.getClientById(3);
+    console.log(`eae quem é: ${ Number(sessionStorage.getItem('isLogado'))}`);
+
+    this.clienteResponse$ = this.clienteService.getClientById(
+      Number(sessionStorage.getItem('isLogado'))
+    );
 
     this.clienteResponse$.subscribe(
       (response) => {
