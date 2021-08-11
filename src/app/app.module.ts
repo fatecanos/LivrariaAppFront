@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
-import { PagesModule } from './pages/pages.module';
+import { ClienteDomainModule } from './pages/cliente-domain/cliente-domain.module';
+import { LivrariaDomainModule } from './pages/livraria-domain/livraria-domain.module';
+import { AdminDomainModule } from './pages/admin-domain/admin-domain.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,12 @@ import { PagesModule } from './pages/pages.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     ComponentsModule,
-    PagesModule
+    ClienteDomainModule,
+    LivrariaDomainModule,
+    AdminDomainModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

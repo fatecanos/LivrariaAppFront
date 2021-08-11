@@ -7,8 +7,14 @@ import { RouterModule } from '@angular/router';
 import { LivEnderecoFormComponent } from './liv-endereco-form/liv-endereco-form.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InativarDialogComponent } from './dialogs/inativar-dialog/inativar-dialog.component';
-
+import { InativarClienteDialogComponent } from './dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
+import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
+import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
+import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
+import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
+import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
+import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
+import { CurrencyPipe } from '../custom-pipes/formatter.pipe';
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
@@ -17,7 +23,15 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     LivHeaderComponent, 
     LivFooterComponent, 
-    LivEnderecoFormComponent, InativarDialogComponent, 
+    LivEnderecoFormComponent, 
+    InativarClienteDialogComponent, 
+    EnderecoSubmitterComponent, 
+    LivCartoesFormComponent, 
+    CarrinhoFinalizacaoComponent, 
+    DetalhesPedidoComponent, 
+    InativarLivroDialogComponent, 
+    DetalhesLivroComponent, 
+    CurrencyPipe
   ],
   imports: [
     CommonModule,
@@ -28,9 +42,12 @@ const maskConfig: Partial<IConfig> = {
     FormsModule
   ],
   exports: [
-    LivHeaderComponent,
-    LivFooterComponent,
-    LivEnderecoFormComponent
+    LivHeaderComponent, 
+    LivFooterComponent, 
+    LivEnderecoFormComponent, 
+    InativarClienteDialogComponent, 
+    EnderecoSubmitterComponent, 
+    LivCartoesFormComponent
   ]
 })
 export class ComponentsModule { }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { EnderecoInterface } from 'src/app/models/interfaces/client.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EnderecoDTO, TipoLogradouroDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 
 @Component({
@@ -9,7 +10,7 @@ import { UFs } from 'src/app/models/mocks/ufs.mock';
   styleUrls: ['./liv-endereco-form.component.scss']
 })
 export class LivEnderecoFormComponent implements OnInit {
-  @Input() endereco?: EnderecoInterface;
+  @Input() endereco?: EnderecoDTO;
   @Input() index: string = '';
   @Output() dadosEndereco: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   
@@ -17,54 +18,58 @@ export class LivEnderecoFormComponent implements OnInit {
 
   isLoading: boolean = false;
   estados: Array<string> = UFs;
+  tiposLogradouros: Array<TipoLogradouroDTO> = tiposLogradourosMock;
 
   constructor(
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    console.log("Formulario endereco:", this.endereco);
-    
     this.formEndereco = this.formBuilder.group({
+      tipoEndereco: [this.endereco?.tipoEndereco, Validators.required],
+      tipoLogradouroId: [this.endereco?.tipoLogradouroId, Validators.required],
       logradouro: [this.endereco?.logradouro, { validators: [Validators.required] }],
       cep: [this.endereco?.cep, { validators: [Validators.required] }],
       numero: [this.endereco?.numero, { validators: [Validators.required] }],
       complemento: [this.endereco?.complemento, { validators: [Validators.required] }],
       bairro: [this.endereco?.bairro, { validators: [Validators.required] }],
-      tipoEndereco: this.formBuilder.group({
+      tipoResidencia: this.formBuilder.group({
         id: ['', { validators: [Validators.required] }],
-        descricao: [this.endereco?.tipoEndereco, { validators: [Validators.required] }]
+        descricao: [this.endereco?.tipoResidencia, { validators: [Validators.required] }]
       }),
       cidade: this.formBuilder.group({
-        id: ['', { validators: [Validators.required] }],
-        descricao: ['', { validators: [Validators.required] }],
+        id: [this.endereco?.cidade.id, { validators: [Validators.required] }],
+        descricao: [this.endereco?.cidade.descricao, { validators: [Validators.required] }],
         estado: this.formBuilder.group({
-          id: ['', { validators: [Validators.required] }],
-          descricao: ['', { validators: [Validators.required] }]
+          id: [this.endereco?.cidade.estado.id, { validators: [Validators.required] }],
+          descricao: [this.endereco?.cidade.estado.descricao, { validators: [Validators.required] }]
         })
       })
     });
   }
 
-  enviarEndereco() {
-    
+  atualizarEndereco() {
+    console.log('oi')
   }
 
   removerEndereco() {
-
+    console.log('oi')
   }
+
+  updateTipoEndereco(id: string) {
+    console.log(id);
+    
+    this.formEndereco.patchValue({
+      tipoEnderecoId: id
+    })
+  }
+
+  updateTipoLogradouro(id: number) {
+    this.formEndereco.patchValue({
+      tipoLogradouroId: id
+    })
+  }
+
+
+  
 }
-
-
-// this.clienteResponse$?.subscribe(response => {
-//   this.formArrayEnderecos = this.formBuilder.array(
-//       response.enderecos.map(endereco => {
-//         return this.formBuilder.group({
-//           logradrouro: ['', {validators: [Validators.required]}],
-//           numero: ['', {validators: [Validators.required]}],
-//           cep: ['', {validators: [Validators.required]}],
-//           complemento: ['', {validators: [Validators.required]}],
-//         })
-//       })
-//   )
-// })

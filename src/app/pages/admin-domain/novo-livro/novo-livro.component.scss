@@ -1,0 +1,42 @@
+.novo-livro {
+    padding: 5%;
+    margin: 0 auto;
+
+    &-header {
+        margin-top: 15px;
+    }
+
+    &-container {
+        margin: 0 auto;
+
+        &-form {
+            padding-top: 15px;
+
+            &-row {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+
+                &-input_total{
+                    width: 60%;
+                }
+
+                &-input_titulo {
+                    width: 26vw;
+                }
+            }
+
+            &-detalhes-livro {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                align-items: center;
+
+                &-dimensoes {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

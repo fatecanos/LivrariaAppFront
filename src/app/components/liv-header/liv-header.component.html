@@ -1,35 +1,49 @@
 <mat-toolbar class="liv-header">
     <div class="liv-header-left_logo">
-        <img class="liv-header-left_logo-image"
+        <img class="liv-header-left_logo-image" (click)="navigateToHome()"
             src="../../../assets/img/logo-2.svg" alt="logotipo">
     </div>
-    <!-- <div class="liv-header-search_bar">
-        search-bar
-    </div> -->
-    <div class="liv-header-right_painel" (click)="showPainel = !showPainel">
-        <a class="liv-header-right_painel-account">
+    <div class="liv-header-search_bar">
+        <input type="text"><button mat-button color="accent">Pesquisar</button>
+    </div>
+    <div class="liv-header-right_painel" >
+        <a *ngIf="!isLogado"
+            class="liv-header-right_painel-account" (click)="showPainel = !showPainel">
             <span class="liv-header-right_painel-account-login">
-                Olá, Faça seu login 
+                Olá, Faça seu login
             </span>
             <div class="liv-header-right_painel-account-account">
                 <span>
-                    Acesso a Conta 
+                    Acesso a Conta
                 </span>
                 <mat-icon>play_arrow</mat-icon>
             </div>
         </a>
 
+        <a *ngIf="isLogado"
+            class="liv-header-right_painel-account" (click)="navegaCliente()">
+            <span class="liv-header-right_painel-account-login">
+                Olá, Lucas
+            </span>
+            <div class="liv-header-right_painel-account-account">
+                <span>
+                    Meus Dados
+                </span>
+            </div>
+        </a>
+
         <div class="liv-header-right_painel-cart">
-            <mat-icon>shopping_cart</mat-icon>
+            <mat-icon (click)="navigateToCart()">shopping_cart</mat-icon>
+            <a (click)="logout()" *ngIf="isLogado">Sair</a>
         </div>
     </div>
 </mat-toolbar>
 
 <div class="dialog-absolute" *ngIf="showPainel">
     <div class="dialog-absolute-item">
-        <button 
+        <button
             mat-raised-button
-            color="primary">
+            color="primary" (click)="navigateToLoginPage()">
             Entrar
         </button>
         <span>ou</span>

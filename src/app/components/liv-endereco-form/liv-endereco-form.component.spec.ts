@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { LivEnderecoFormComponent } from './liv-endereco-form.component';
 
@@ -8,7 +9,10 @@ describe('LivEnderecoFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LivEnderecoFormComponent ]
+      declarations: [ LivEnderecoFormComponent ],
+      imports: [
+        ReactiveFormsModule,
+      ]
     })
     .compileComponents();
   });

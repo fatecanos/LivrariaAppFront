@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 
 import { LivHeaderComponent } from './liv-header.component';
 
@@ -8,7 +10,10 @@ describe('LivHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LivHeaderComponent ]
+      declarations: [ LivHeaderComponent ],
+      imports: [
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   });
