@@ -46,11 +46,7 @@ export class LivHeaderComponent {
   }
 
   logout() {
-
-    this.loginService.logout();
-
     sessionStorage.clear();
     location.reload();
-
   }
 }

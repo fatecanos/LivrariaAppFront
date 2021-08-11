@@ -10,8 +10,10 @@ import {
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EnderecoSubmitterComponent } from 'src/app/components/dialogs/endereco-submitter/endereco-submitter.component';
+import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import {
   ClienteDTO,
   EnderecoDTO,
@@ -54,7 +56,8 @@ export class AtualizarClientesComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private router: Router
   ) {
     this.formDadosCliente = new FormGroup({
       nome: new FormControl(),
@@ -67,7 +70,7 @@ export class AtualizarClientesComponent implements OnInit {
   ngOnInit(): void {
     //TODO: integrar busca do cliente a partir da sessao de usuario
 
-    console.log(`eae quem é: ${ Number(sessionStorage.getItem('isLogado'))}`);
+    console.log(`eae quem é: ${Number(sessionStorage.getItem('isLogado'))}`);
 
     this.clienteResponse$ = this.clienteService.getClientById(
       Number(sessionStorage.getItem('isLogado'))
@@ -157,6 +160,19 @@ export class AtualizarClientesComponent implements OnInit {
     }
 
     this.isLoading = false;
+  }
+
+  inativarClientePorId() {
+    const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
+      width: '250px',
+      data: {
+        idCliente: Number(sessionStorage.getItem('isLogado')),
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      sessionStorage.clear();
+      this.router.navigate(['/login']);
+    });
   }
 
   atualizarEmail() {

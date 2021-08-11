@@ -32,7 +32,7 @@ export class ConsultaClientesComponent implements OnInit {
     })
   }
 
-  inativarLivroPorId(id: number) {
+  inativarClientePorId(id: number) {
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {
