@@ -13,7 +13,7 @@ export class LivEnderecoFormComponent implements OnInit {
   @Input() endereco?: EnderecoDTO;
   @Input() index: string = '';
   @Output() dadosEndereco: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
-  
+
   formEndereco: FormGroup = new FormGroup({});
 
   isLoading: boolean = false;
@@ -39,10 +39,10 @@ export class LivEnderecoFormComponent implements OnInit {
       }),
       cidade: this.formBuilder.group({
         id: [this.endereco?.cidade.id, { validators: [Validators.required] }],
-        descricao: [this.endereco?.cidade.descricao, { validators: [Validators.required] }],
+        // descricao: [this.endereco?.cidade.descricao, { validators: [Validators.required] }],
         estado: this.formBuilder.group({
-          id: [this.endereco?.cidade.estado.id, { validators: [Validators.required] }],
-          descricao: [this.endereco?.cidade.estado.descricao, { validators: [Validators.required] }]
+          id: [this.endereco?.cidade.id, { validators: [Validators.required] }],
+          // descricao: [this.endereco?.cidade.estado.descricao, { validators: [Validators.required] }]
         })
       })
     });
@@ -58,7 +58,7 @@ export class LivEnderecoFormComponent implements OnInit {
 
   updateTipoEndereco(id: string) {
     console.log(id);
-    
+
     this.formEndereco.patchValue({
       tipoEnderecoId: id
     })
@@ -71,5 +71,5 @@ export class LivEnderecoFormComponent implements OnInit {
   }
 
 
-  
+
 }

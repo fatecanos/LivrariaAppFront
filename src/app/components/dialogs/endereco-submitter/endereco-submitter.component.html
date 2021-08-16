@@ -9,15 +9,6 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Tipo Logradouro: </mat-label>
-            <mat-select>
-                <mat-option *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog.id">
-                    {{ tipoLog.descricao }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
             <mat-label>Endereço: </mat-label>
             <input matInput formControlName="logradouro" placeholder="rua, logradouro, avenida..." type="text">
         </mat-form-field>
@@ -34,9 +25,17 @@
             <mat-label>Numero:</mat-label>
             <input matInput formControlName="numero" type="text">
         </mat-form-field>
+
         <mat-form-field>
             <mat-label>Cidade:</mat-label>
-            <input matInput type="text">
+            <!-- <input matInput formControlName="cidade" type="text"> -->
+
+            <mat-select>
+              <mat-option *ngFor="let cidade of cidades" [value]="cidade">
+                  {{cidade.nome}}
+              </mat-option>
+          </mat-select>
+
         </mat-form-field>
 
         <mat-form-field>
@@ -71,7 +70,8 @@
             </mat-select>
         </mat-form-field>
     </form>
-    <div class="button">
+    <div class="button" mat-button
+    (click)="salvarEndereco()">
         <button mat-button>Enviar</button>
     </div>
 </div>

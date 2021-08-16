@@ -225,7 +225,9 @@ export class AtualizarClientesComponent implements OnInit {
       data: 'ola',
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.clienteResponse$ = this.clienteService.getClientById(1);
+      this.clienteResponse$ = this.clienteService.getClientById(
+        Number(sessionStorage.getItem('isLogado'))
+      );
     });
   }
 }
