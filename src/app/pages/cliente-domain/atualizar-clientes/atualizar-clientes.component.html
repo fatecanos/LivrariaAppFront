@@ -34,6 +34,8 @@
             </form>
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
+                <button class="client_update-option_container-disable_account" mat-button
+                    (click)="inativarClientePorId()">Desativar conta</button>
                 <mat-progress-spinner *ngIf="isLoading"
                     class="client-form-spinner"
                     color="primary" diameter="50"

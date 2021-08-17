@@ -476,7 +476,7 @@
       "sobrenome": "Snider",
       "dataNascimento": "2001-08-09",
       "cpf": "33443141241",
-      "email": "lcuas@gmail.com",
+      "email": "lucasnogueiratdm@hotmail.com",
       "senha": "denis",
       "confirmacaoSenha": "denis",
       "enderecos": [
@@ -908,6 +908,36 @@
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
       "id": 21
+    },
+    {
+      "nome": "Lucas Nogueira",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-03-06",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "admin123",
+      "confirmacaoSenha": "admin123",
+      "id": 22
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-10-06",
+      "cpf": "47126964862",
+      "email": "lucas@gmail.com",
+      "senha": "lucas123",
+      "confirmacaoSenha": "lucas123",
+      "id": 23
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "cpf": "47126964862",
+      "email": "lucas@gmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 24
     }
   ]
 }
