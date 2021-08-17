@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { EnderecoDTO, TipoLogradouroDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
+import { EnderecoSubmitterComponent } from '../dialogs/endereco-submitter/endereco-submitter.component';
 
 @Component({
   selector: 'liv-endereco-form',
@@ -21,6 +23,7 @@ export class LivEnderecoFormComponent implements OnInit {
   tiposLogradouros: Array<TipoLogradouroDTO> = tiposLogradourosMock;
 
   constructor(
+    public dialog: MatDialog,
     private formBuilder: FormBuilder
   ) {}
 
@@ -49,19 +52,18 @@ export class LivEnderecoFormComponent implements OnInit {
   }
 
   atualizarEndereco() {
-    console.log('oi')
+    const dialogRef = this.dialog.open(EnderecoSubmitterComponent, {
+      width: '700px',
+      data: this.endereco
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      //TODO: id do cliente fixo
+      this.dadosEndereco.emit(result);
+    })
   }
 
   removerEndereco() {
     console.log('oi')
-  }
-
-  updateTipoEndereco(id: string) {
-    console.log(id);
-    
-    this.formEndereco.patchValue({
-      tipoEnderecoId: id
-    })
   }
 
   updateTipoLogradouro(id: number) {

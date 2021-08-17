@@ -12,6 +12,7 @@ export interface ClienteDTO {
 
 export interface EnderecoDTO {
     id: number,
+    apelidoId: string,
     tipoEndereco: TipoEnderecoEnum,
     tipoLogradouroId: TipoLogradouroDTO,
     logradouro: TipoLogradouroDTO,

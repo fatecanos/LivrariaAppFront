@@ -482,6 +482,7 @@
       "enderecos": [
         {
           "id": 1,
+          "apelidoId": "Casa da nica",
           "tipoEndereco": "cobranca",
           "tipoLogradouro": {
             "id": 1,

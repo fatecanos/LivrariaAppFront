@@ -1,9 +1,15 @@
 <div class="endereco-submitter">
-    <h3>Novo Endereço</h3>
+    <h3>{{ enderecoAtual?.apelidoId || "Novo Endereço" }}</h3>
     <mat-divider></mat-divider>
 
     <form [formGroup]="formEndereco"
         class="endereco-form-tabs_container-form">
+        <mat-form-field>
+            <mat-label>Apelido:</mat-label>
+            <input matInput
+                placeholder="(opcional)" type="text">
+        </mat-form-field>
+
         <mat-form-field>
             <mat-label>CEP:</mat-label>
             <input matInput formControlName="cep"
@@ -78,6 +84,24 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <br>
+        <mat-radio-group
+            aria-label="Tipo de Endereço">
+        <mat-label>Tipo de Endereço:</mat-label>
+        <mat-radio-button value="cobranca" #inputCobranca 
+            [checked]="formEndereco?.get('tipoEndereco')?.value === 'cobranca'"
+            (click)="updateTipoEndereco(inputCobranca.value)">
+            Cobrança
+        </mat-radio-button>
+        
+        <mat-radio-button 
+            value="entrega" #inputEntrega
+            [checked]="formEndereco?.get('tipoEndereco')?.value  === 'entrega'"
+            (click)="updateTipoEndereco(inputEntrega.value)">
+            Entrega
+        </mat-radio-button>
+
+    </mat-radio-group>
     </form>
     <div class="button">
         <button mat-button>Enviar</button>
