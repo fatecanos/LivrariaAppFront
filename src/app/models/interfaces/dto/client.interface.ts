@@ -20,7 +20,7 @@ export interface EnderecoDTO {
     numero: string,
     bairro: string,
     complemento: string,
-    tipoResidencia: string,
+    tipoResidenciaId: number,
     cidade: CidadeDTO,
     pais: string,
 }

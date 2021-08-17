@@ -493,10 +493,7 @@
           "numero": "233",
           "bairro": "Vila Boa",
           "complemento": "casa 1",
-          "tipoResidencia": {
-            "id": 1,
-            "descricao": "casa"
-          },
+          "tipoResidenciaId": 1,
           "cidade": {
             "id": 1,
             "descricao": "Mogi das Cruzes",
@@ -504,7 +501,8 @@
               "id": 1,
               "descricao": "SP"
             }
-          }
+          },
+          "pais": "Brasil"
         },
         {
           "id": 2,
@@ -518,10 +516,7 @@
           "numero": "233",
           "bairro": "Vila Boa",
           "complemento": "casa 1",
-          "tipoResidencia": {
-            "id": 1,
-            "descricao": "casa"
-          },
+          "tipoResidenciaId": 1,
           "cidade": {
             "id": 1,
             "descricao": "Mogi das Cruzes",

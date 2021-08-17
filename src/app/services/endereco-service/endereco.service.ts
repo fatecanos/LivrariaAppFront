@@ -40,9 +40,8 @@ export class EnderecoService {
       endereco.cidade.estado.descricao = response.uf; //isso tbm
       endereco.complemento = response.complemento;
       endereco.cep = response.cep;
-      endereco.tipoResidencia = "casa";
+      endereco.tipoResidenciaId = response.tipoResidenciaId;
       endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
-      endereco.tipoResidencia = 'casa';
     })
   }
 }
