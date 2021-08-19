@@ -43,7 +43,7 @@ export class EnderecoSubmitterComponent implements OnInit {
 
       this.cidades = response;
 
-      
+
     console.log(this.cidades);
 
 
@@ -95,10 +95,7 @@ export class EnderecoSubmitterComponent implements OnInit {
   }
 
   salvarEndereco() {
-    // this.dadosEndereco = { ...this.formEndereco.value };
-    // this.enderecoService.salvarNovoEndereco(this.dadosEndereco);
-
-
-
+    this.dadosEndereco = { ...this.formEndereco.value };
+    this.enderecoService.salvarNovoEndereco(this.dadosEndereco);
   }
 }

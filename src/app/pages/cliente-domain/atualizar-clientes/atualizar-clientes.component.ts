@@ -163,6 +163,9 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   inativarClientePorId() {
+
+    console.log(`QUAL ID: ${sessionStorage.getItem('isLogado')}` )
+
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {

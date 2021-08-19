@@ -31,6 +31,8 @@ export class ClienteService {
   }
 
   getClientById(id: number | undefined): Observable<ClienteDTO> {
+    console.log(`id: ${id}`);
+
     return this.http.get<ClienteDTO>(
       `${this.baseUrl}/clientes/meus_dados/${id}`,
       httpOptions
@@ -53,6 +55,6 @@ export class ClienteService {
   }
 
   deleteClientById(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/clientes?id=${id}`, httpOptions);
+    return this.http.delete(`${this.baseUrl}/clientes?usuarioID=${id}`, httpOptions);
   }
 }
