@@ -32,12 +32,24 @@
             <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef>Opções </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-button 
+
+                  <!-- //ngif para ativar ou desativar conta do cara -->
+
+                    <button mat-button
                         color="warn"
                         (click)="inativarClientePorId(element.id)">
-                        INATIVAR
+                        Inativar
                     </button>
-                </td>
+
+                    <button mat-button
+                        (click)="ativarClientePorId(element.id)"
+                        [ngStyle]= "{color: '#7FA143'}">
+                        Ativar
+                    </button>
+
+
+                  </td>
+
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

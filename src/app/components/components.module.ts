@@ -16,6 +16,7 @@ import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/in
 import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
 import { CurrencyPipe } from '../custom-pipes/formatter.pipe';
 import { ComponenteTesteComponent } from './componente-teste/componente-teste.component';
+import { AtivarClienteDialogComponent } from './dialogs/ativar-cliente-dialog/ativar-cliente-dialog.component';
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
@@ -32,7 +33,7 @@ const maskConfig: Partial<IConfig> = {
     DetalhesPedidoComponent, 
     InativarLivroDialogComponent, 
     DetalhesLivroComponent, 
-    CurrencyPipe, ComponenteTesteComponent
+    CurrencyPipe, ComponenteTesteComponent, AtivarClienteDialogComponent
   ],
   imports: [
     CommonModule,

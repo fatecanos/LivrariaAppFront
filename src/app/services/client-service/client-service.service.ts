@@ -40,7 +40,7 @@ export class ClienteService {
   }
 
   getClients(): Observable<ClienteDTO[]> {
-    return this.http.get<ClienteDTO[]>(`${this.baseUrl}/clientes`, httpOptions);
+    return this.http.get<ClienteDTO[]>(`${this.baseUrl}/clientes/listarTodosClientes`, httpOptions);
   }
 
   updateClientById(
@@ -55,6 +55,10 @@ export class ClienteService {
   }
 
   deleteClientById(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/clientes?usuarioID=${id}`, httpOptions);
+    return this.http.delete(`${this.baseUrl}/clientes/inativarContaClienteByAdmin?clienteID=${id}`, httpOptions);
+  }
+
+  activeClientById(id: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/clientes/reativarContaClienteByAdmin?clienteID=${id}`, httpOptions);
   }
 }

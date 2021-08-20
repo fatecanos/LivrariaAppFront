@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AtivarClienteDialogComponent } from 'src/app/components/dialogs/ativar-cliente-dialog/ativar-cliente-dialog.component';
 import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import { InativarLivroDialogComponent } from 'src/app/components/dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 import { ClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
@@ -16,6 +17,7 @@ export class ConsultaClientesComponent implements OnInit {
   dataSource: ClienteDTO[] = [];
   displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
 
+
   constructor(
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -24,6 +26,14 @@ export class ConsultaClientesComponent implements OnInit {
   ngOnInit(): void {
     this.service.getClients()
       .subscribe(response => {
+
+
+        response.map(item => {
+
+          console.log(`me diz a response: ${item.ativo}`);
+
+        });
+
         this.dataSource = response;
     }, error => {
       console.log('Erro ao consultar clientes')
@@ -34,6 +44,21 @@ export class ConsultaClientesComponent implements OnInit {
 
   inativarClientePorId(id: number) {
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
+      width: '250px',
+      data: {
+        idCliente: id
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.service.getClients()
+        .subscribe(response => {
+          this.dataSource = response;
+      })
+    })
+  }
+
+  ativarClientePorId(id: number) {
+    const dialogRef = this.dialog.open(AtivarClienteDialogComponent, {
       width: '250px',
       data: {
         idCliente: id

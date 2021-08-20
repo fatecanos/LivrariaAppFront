@@ -7,6 +7,7 @@ export interface ClienteDTO {
   email: string;
   senha: string;
   confirmacaoSenha: string;
+  ativo: boolean;
   enderecos: EnderecoDTO[];
 }
 
