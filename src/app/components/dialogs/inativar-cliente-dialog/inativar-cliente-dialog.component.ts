@@ -9,7 +9,6 @@ import { ClienteService } from 'src/app/services/client-service/client-service.s
   styleUrls: ['./inativar-cliente-dialog.component.scss']
 })
 export class InativarClienteDialogComponent {
-
   constructor(
     private service: ClienteService,
     private _snackBar: MatSnackBar,

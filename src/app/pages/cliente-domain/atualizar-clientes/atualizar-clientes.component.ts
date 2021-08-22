@@ -36,6 +36,7 @@ export class AtualizarClientesComponent implements OnInit {
   enderecosCliente: EnderecoDTO[] = [];
 
   clienteResponse$?: Observable<ClienteDTO>;
+  CLIENTE_ID: number = 1;
 
   constructor(
     public dialog: MatDialog,
@@ -46,11 +47,12 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clienteResponse$ = this.clienteService.getClientById(1);
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     
     //TODO: integrar busca do cliente a partir da sessao de usuario
     this.clienteResponse$.subscribe(response => {
       this.formDadosCliente = this.formBuilder.group({
+        id: [this.CLIENTE_ID],
         nome: [response.nome, {validators: [Validators.required]} ],
         sobrenome: [response.sobrenome, {validators: [Validators.required]} ],
         dataNascimento: [response.dataNascimento, {validators: [Validators.required]} ],
@@ -97,15 +99,16 @@ export class AtualizarClientesComponent implements OnInit {
 
   enviarDadosCliente() {
     this.isLoading = true;
+    let cliente: ClienteDTO;
 
     if(this.formDadosCliente?.valid) {
-      let dados = this.dadosCliente;
-      this.dadosCliente = { dados, ...this.formDadosCliente.value };
-
-      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+      cliente = this.formDadosCliente.value;
+      console.log(cliente);
+      
+      this.clienteService.updateClientById(cliente.id, cliente)
         .subscribe(response => {
           this.isLoading = false;
-          this._snackBar.open(response.description, 'fechar', {duration: 5000});
+          this._snackBar.open(response.description || 'sucesso', 'fechar', {duration: 5000});
         }, error => {
           this.isLoading = false;
           this._snackBar.open("erro ao atualizar cliente", 'fechar', {duration: 5000});
@@ -145,7 +148,7 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   atualizarEstado() {
-    this.clienteResponse$ = this.clienteService.getClientById(this.dadosCliente?.id);
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     this.clienteResponse$.subscribe(response => { this.dadosCliente = response });
   }
 
@@ -163,7 +166,7 @@ export class AtualizarClientesComponent implements OnInit {
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {
-        idCliente: Number(sessionStorage.getItem('isLogado')),
+        idCliente: this.formDadosCliente?.get('id')?.value
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
