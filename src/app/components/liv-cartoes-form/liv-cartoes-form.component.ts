@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
+import { InativarCartaoDialogComponent } from '../dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
 
 @Component({
   selector: 'liv-cartoes-form',
@@ -18,11 +20,12 @@ export class LivCartoesFormComponent implements OnInit {
   novoCartaoForm: FormGroup = new FormGroup({});
   isNovoCartaoForm: boolean = false;
   
-  idCartaoSelecionado: number = 0;
+  idCartaoSelecionado?: number;
 
   cartoes$?: Observable<CartaoClienteDTO[]>;
 
   constructor(
+    public dialog: MatDialog,
     private snackService: MatSnackBar,
     private service: CartoesService,
     private formBuilder: FormBuilder) { }
@@ -35,7 +38,7 @@ export class LivCartoesFormComponent implements OnInit {
         return cartao.isPrincipal;
       })
 
-      this.idCartaoSelecionado = cartaoPreferencial?.id  || 0;
+      this.idCartaoSelecionado = cartaoPreferencial?.id;
     })
 
     this.novoCartaoForm = this.formBuilder.group({
@@ -50,8 +53,27 @@ export class LivCartoesFormComponent implements OnInit {
 
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
-      
+      console.log('enviando novo cartao...');
     }
   }
 
+  inativarCartao(cartao: CartaoClienteDTO) {
+    console.log("Cartao clicado:", cartao);
+    const dialogRef = this.dialog.open(InativarCartaoDialogComponent, {
+      width: '250px',
+      data: {
+        cartao: cartao
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.cartoes$ = this.service.getCartoes();
+      this.cartoes$.subscribe(response => {
+        let cartaoPreferencial = response.find(cartao => {
+          return cartao.isPrincipal;
+        })
+  
+        this.idCartaoSelecionado = cartaoPreferencial?.id;
+      })
+    });
+  }
 }

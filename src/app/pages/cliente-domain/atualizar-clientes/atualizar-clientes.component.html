@@ -12,7 +12,7 @@
                 class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>Nome: </mat-label>
-                    <input matInput formControlName="nome"
+                    <input matInput [formControl]="formDadosCliente?.get('nome')"
                         placeholder="Primeiro Nome">
                 </mat-form-field>
                 <mat-form-field>
@@ -53,7 +53,7 @@
         </mat-tab>
 
         <mat-tab label="Endereço">
-            <liv-endereco-form [endereco]="endereco" [index]="i+1"
+            <liv-endereco-form [endereco]="endereco" [index]="i+1" (dadosAtualizacao)="atualizarEnderecos($event)"
                 *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
             </liv-endereco-form>
             <div class="client_update-tabs_container-message">

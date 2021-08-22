@@ -5,6 +5,7 @@ import { EnderecoDTO, EstadoDTO, TipoLogradouroDTO } from 'src/app/models/interf
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { EnderecoSubmitterComponent } from '../dialogs/endereco-submitter/endereco-submitter.component';
+import { InativarEnderecoDialogComponent } from '../dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 
 @Component({
   selector: 'liv-endereco-form',
@@ -14,7 +15,7 @@ import { EnderecoSubmitterComponent } from '../dialogs/endereco-submitter/endere
 export class LivEnderecoFormComponent implements OnInit {
   @Input() endereco?: EnderecoDTO;
   @Input() index: string = '';
-  @Output() dadosEndereco: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  @Output() dadosAtualizacao: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   
   formEndereco: FormGroup = new FormGroup({});
 
@@ -58,12 +59,22 @@ export class LivEnderecoFormComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       //TODO: id do cliente fixo
-      this.dadosEndereco.emit(result);
+      this.dadosAtualizacao.emit(result);
     })
   }
 
   removerEndereco() {
-    console.log('oi')
+    console.log('Endereco para remover:', this.endereco)
+    const dialogRef = this.dialog.open(InativarEnderecoDialogComponent, {
+      width: '250px',
+      data: {
+        idCliente: Number(sessionStorage.getItem('isLogado')),
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.dadosAtualizacao.emit(result);
+    })
   }
 
   updateTipoLogradouro(id: number) {
@@ -72,6 +83,4 @@ export class LivEnderecoFormComponent implements OnInit {
     })
   }
 
-
-  
 }

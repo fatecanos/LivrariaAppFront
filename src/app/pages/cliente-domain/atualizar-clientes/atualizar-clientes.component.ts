@@ -32,7 +32,7 @@ export class AtualizarClientesComponent implements OnInit {
   formEmail?: FormGroup;
   formSenha?: FormGroup;
 
-  dadosCliente: ClienteDTO | any;
+  dadosCliente?: ClienteDTO | any;
   enderecosCliente: EnderecoDTO[] = [];
 
   clienteResponse$?: Observable<ClienteDTO>;
@@ -46,26 +46,23 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //TODO: integrar busca do cliente a partir da sessao de usuario
-    this.clienteService.getClientById(1)
-    .subscribe(response => {
-      console.log("Response", response);
-      
-      this.dadosCliente = response;
-    });
+    this.clienteResponse$ = this.clienteService.getClientById(1);
     
-
-    this.formDadosCliente = this.formBuilder.group({
-      nome: [this.dadosCliente?.nome, [Validators.required]],
-      sobrenome: [this.dadosCliente?.sobrenome, Validators.required],
-      dataNascimento: [this.dadosCliente?.dataNascimento, [Validators.required]],
-      cpf: this.formBuilder.control(this.dadosCliente?.cpf, 
-        [
-          Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
+    //TODO: integrar busca do cliente a partir da sessao de usuario
+    this.clienteResponse$.subscribe(response => {
+      this.formDadosCliente = this.formBuilder.group({
+        nome: [response.nome, {validators: [Validators.required]} ],
+        sobrenome: [response.sobrenome, {validators: [Validators.required]} ],
+        dataNascimento: [response.dataNascimento, {validators: [Validators.required]} ],
+        cpf: [response.cpf, 
+          { validators: [
+              Validators.required,
+              Validators.minLength(11),
+              Validators.maxLength(11),
+            ]
+          }
         ]
-      )
+      });
     });
 
     this.initForms();
@@ -73,7 +70,7 @@ export class AtualizarClientesComponent implements OnInit {
 
   initForms() {
     this.formEmail = this.formBuilder.group({
-      email: ['', {validators: [Validators.required, Validators.email]}],
+      email: [this.dadosCliente?.email, {validators: [Validators.required, Validators.email]}],
       confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
     })
 
@@ -103,7 +100,7 @@ export class AtualizarClientesComponent implements OnInit {
 
     if(this.formDadosCliente?.valid) {
       let dados = this.dadosCliente;
-      this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
+      this.dadosCliente = { dados, ...this.formDadosCliente.value };
 
       this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
         .subscribe(response => {
@@ -173,6 +170,11 @@ export class AtualizarClientesComponent implements OnInit {
       sessionStorage.clear();
       this.router.navigate(['/login']);
     });
+  }
+
+  atualizarEnderecos(event: any) {
+    console.log("obteve evento");
+    this.clienteResponse$ = this.clienteService.getClientById(1);
   }
 
 }

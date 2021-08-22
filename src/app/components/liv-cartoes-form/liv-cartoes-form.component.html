@@ -55,7 +55,7 @@
                     </mat-icon>
                     <span>{{ idCartaoSelecionado === cartao.id? 'Preferencial': ''}}</span>
                 </div>
-                <button mat-button color="warn">Inativar Cartão</button>
+                <button mat-button color="warn" (click)="inativarCartao(cartao)">Inativar Cartão</button>
             </div>
 
             <mat-form-field class="cartoes_form-novo-nome">
