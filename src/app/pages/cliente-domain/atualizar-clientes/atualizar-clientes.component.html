@@ -33,12 +33,12 @@
                 </mat-form-field>
             </form>
 
-            <div class="client_update-tabs_container-telefones">
+            <!-- <div class="client_update-tabs_container-telefones">
                 <h3>Telefones</h3>
                 <mat-divider></mat-divider>
 
-                <liv-telefones-management></liv-telefones-management>
-            </div>
+                
+            </div> -->
 
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
@@ -50,6 +50,10 @@
                     mode="indeterminate">
                 </mat-progress-spinner>
             </div>
+        </mat-tab>
+
+        <mat-tab label="Telefones">
+            <liv-telefones-management></liv-telefones-management>
         </mat-tab>
 
         <mat-tab label="Endereço">
