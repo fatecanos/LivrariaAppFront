@@ -23,6 +23,8 @@ export class LivEnderecoFormComponent implements OnInit {
   estados: Array<EstadoDTO> = UFs;
   tiposLogradouros: Array<string> = tiposLogradourosMock;
 
+  CLIENTE_ID: number = 1;
+
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder
@@ -58,7 +60,6 @@ export class LivEnderecoFormComponent implements OnInit {
       data: this.endereco
     });
     dialogRef.afterClosed().subscribe(result => {
-      //TODO: id do cliente fixo
       this.dadosAtualizacao.emit(result);
     })
   }
@@ -68,7 +69,7 @@ export class LivEnderecoFormComponent implements OnInit {
     const dialogRef = this.dialog.open(InativarEnderecoDialogComponent, {
       width: '250px',
       data: {
-        idCliente: Number(sessionStorage.getItem('isLogado')),
+        idCliente: this.CLIENTE_ID
       },
     });
 

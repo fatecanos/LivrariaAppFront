@@ -3,13 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { NovoCartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
+import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
-import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
-import { PedidoFinalizadoDTO } from 'src/app/models/interfaces/dto/venda.interface';
+import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 
 @Component({
   templateUrl: './carrinho-finalizacao.component.html',
@@ -26,9 +25,9 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
   isGravarNovoEndereco: boolean = false;
 
   formNovoCartao: FormGroup;
-  cartaoSelecionado?: NovoCartaoDTO;
+  cartaoSelecionado?: CartaoDTO;
 
-  cartaoPreferencial$?: Observable<NovoCartaoDTO>;
+  cartaoPreferencial$?: Observable<CartaoDTO>;
 
   desconto: number = 0;
 

@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
-import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service.service';
+import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 import { InativarCartaoDialogComponent } from '../dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
 
 @Component({
@@ -53,7 +54,10 @@ export class LivCartoesFormComponent implements OnInit {
 
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
-      console.log('enviando novo cartao...');
+      let cartao: CartaoDTO = this.novoCartaoForm.value;
+      console.log("novo-cartao:", cartao);
+      
+      //salvar cartao
     }
   }
 

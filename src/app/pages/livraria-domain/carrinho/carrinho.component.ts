@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,13 +6,11 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
-import { CarrinhoStoreInterface, ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
+import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
-import { CorreiosService } from 'src/app/services/correiros-service/correios.service';
-import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({
@@ -40,9 +37,7 @@ export class CarrinhoComponent implements OnInit {
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     private clienteService: ClienteService,
-    private vendaService: VendasService,
-    public dialog: MatDialog,
-    private router: Router
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {

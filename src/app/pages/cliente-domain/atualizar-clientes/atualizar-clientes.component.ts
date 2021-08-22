@@ -34,6 +34,7 @@ export class AtualizarClientesComponent implements OnInit {
 
   dadosCliente?: ClienteDTO | any;
   enderecosCliente: EnderecoDTO[] = [];
+  isNovoEnderecoForm: boolean = false;
 
   clienteResponse$?: Observable<ClienteDTO>;
   CLIENTE_ID: number = 1;
@@ -72,7 +73,7 @@ export class AtualizarClientesComponent implements OnInit {
 
   initForms() {
     this.formEmail = this.formBuilder.group({
-      email: [this.dadosCliente?.email, {validators: [Validators.required, Validators.email]}],
+      email: ['', {validators: [Validators.required, Validators.email]}],
       confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
     })
 
@@ -125,15 +126,18 @@ export class AtualizarClientesComponent implements OnInit {
     this.isLoading = true;
 
     if(this.formEmail?.valid) {
-      this.dadosCliente.email = this.formEmail.get('email')?.value;
+      let cliente: ClienteDTO;
 
-      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+      cliente = this.formDadosCliente?.value;
+      cliente.email = this.formEmail.get('email')?.value
+
+      this.clienteService.updateClientById(this.CLIENTE_ID, cliente)
         .subscribe(response => {
           this.isLoading = false;
           this._snackBar.open("email do cliente foi atualizado", 'fechar', {duration: 5000});
         }, error=> {
           this.isLoading = false;
-          this._snackBar.open("erro ao atualizar", 'fechar', {duration: 5000});
+          this._snackBar.open("erro ao atualizar email", 'fechar', {duration: 5000});
         }, ()=> {
           this.atualizarEstado();
           this.isLoading = false;
@@ -143,8 +147,23 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarSenha() {
     if(this.formSenha?.valid) {
-      console.log('atualizando senha...')
-    }
+      let cliente: ClienteDTO;
+
+      cliente = this.formDadosCliente?.value;
+      cliente.email = this.formSenha.get('senha')?.value
+
+      this.clienteService.updateClientById(this.CLIENTE_ID, cliente)
+        .subscribe(response => {
+          this.isLoading = false;
+          this._snackBar.open("senha do cliente foi atualizada com sucesso", 'fechar', {duration: 5000});
+        }, error=> {
+          this.isLoading = false;
+          this._snackBar.open("erro ao atualizar senha", 'fechar', {duration: 5000});
+        }, ()=> {
+          this.atualizarEstado();
+          this.isLoading = false;
+        });
+    } 
   }
 
   atualizarEstado() {
@@ -177,7 +196,7 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarEnderecos(event: any) {
     console.log("obteve evento");
-    this.clienteResponse$ = this.clienteService.getClientById(1);
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
   }
 
 }

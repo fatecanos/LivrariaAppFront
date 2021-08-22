@@ -19,9 +19,11 @@ export class EnderecoSubmitterComponent implements OnInit {
   selectedTipoLog?: string;
   selectedEstado?: EstadoDTO;
 
+  CLIENTE_ID: number = 1;
+
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<EnderecoDTO>,
+    public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: EnderecoDTO
   ) { 
     
