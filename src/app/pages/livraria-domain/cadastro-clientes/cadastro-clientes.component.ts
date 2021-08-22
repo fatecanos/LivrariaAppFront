@@ -60,6 +60,7 @@ export class CadastroClientesComponent {
       nome: ['', {validators: [Validators.required]}],
       sobrenome: ['', {validators: [Validators.required]}],
       dataNascimento: ['', {validators: [Validators.required]}],
+      genero: ['', { validators: [Validators.required]}],
 
       cpf: this.formBuilder.control('', {
         validators: [
@@ -68,6 +69,8 @@ export class CadastroClientesComponent {
           Validators.maxLength(11),
         ]
       }),
+
+      telefone: ['', { validators: [Validators.required]} ],
 
       email: ['', {validators: [Validators.required, Validators.email]}],
 

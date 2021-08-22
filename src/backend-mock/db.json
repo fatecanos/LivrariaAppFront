@@ -381,7 +381,7 @@
         "id": 1,
         "descricao": "Mogi",
         "estado": {
-          "id": 1,
+          "id": 25,
           "descricao": "SP"
         }
       },
@@ -401,7 +401,7 @@
         "id": 1,
         "descricao": "Mogi",
         "estado": {
-          "id": 1,
+          "id": 25,
           "descricao": "SP"
         }
       },
@@ -421,7 +421,7 @@
         "id": 1,
         "descricao": "Mogi",
         "estado": {
-          "id": 1,
+          "id": 25,
           "descricao": "SP"
         }
       },
@@ -441,7 +441,7 @@
         "id": 1,
         "descricao": "Mogi",
         "estado": {
-          "id": 1,
+          "id": 25,
           "descricao": "SP"
         }
       },
@@ -461,7 +461,7 @@
         "id": 1,
         "descricao": "Mogi",
         "estado": {
-          "id": 1,
+          "id": 25,
           "descricao": "SP"
         }
       },
@@ -484,220 +484,31 @@
           "id": 1,
           "apelidoId": "Casa da nica",
           "tipoEndereco": "cobranca",
-          "tipoLogradouro": {
-            "id": 1,
-            "descricao": "Rua"
-          },
+          "tipoLogradouro": "Rua",
           "logradouro": "Rua Gilberto Gagliard",
           "cep": "49345109",
           "numero": "233",
           "bairro": "Vila Boa",
           "complemento": "casa 1",
-          "tipoResidenciaId": 1,
           "cidade": {
             "id": 1,
             "descricao": "Mogi das Cruzes",
             "estado": {
-              "id": 1,
+              "id": 25,
               "descricao": "SP"
             }
           },
           "pais": "Brasil"
+        }
+      ],
+      "telefones": [
+        {
+          "id": 1,
+          "telefone": "(11) 93858-7475"
         },
         {
           "id": 2,
-          "tipoEndereco": "entrega",
-          "tipoLogradouro": {
-            "id": 1,
-            "descricao": "Rua"
-          },
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "casa 1",
-          "tipoResidenciaId": 1,
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "SP"
-            }
-          }
-        },
-        {
-          "id": 3,
-          "tipoEndereco": "entrega",
-          "tipoLogradouro": {
-            "id": 1,
-            "descricao": "Rua"
-          },
-          "logradouro": "Rua Anita",
-          "cep": "09888423",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "casa 1",
-          "tipoResidencia": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "SP"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "nome": "João",
-      "sobrenome": "Cleber",
-      "dataNascimento": "1998-02-10",
-      "cpf": "47823872373",
-      "email": "lucas@gmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 2,
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        },
-        {
-          "id": 2,
-          "logradouro": "Rua Anita Gabibaldo",
-          "cep": "49345809",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "nome": "Maria",
-      "sobrenome": "Snider",
-      "dataNascimento": "2001-08-09",
-      "cpf": "33443141241",
-      "email": "denis222@gmail.com",
-      "senha": "denis",
-      "confirmacaoSenha": "denis",
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "nome": "Anderson",
-      "sobrenome": "Snider",
-      "dataNascimento": "2001-08-09",
-      "cpf": "33443141241",
-      "email": "denis222@gmail.com",
-      "senha": "denis",
-      "confirmacaoSenha": "denis",
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "nome": "Josimar",
-      "sobrenome": "Snider",
-      "dataNascimento": "2001-08-09",
-      "cpf": "33443141241",
-      "email": "denis222@gmail.com",
-      "senha": "denis",
-      "confirmacaoSenha": "denis",
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
+          "telefone": "(12) 90999-4984"
         }
       ]
     },
@@ -705,235 +516,57 @@
       "nome": "Lucas",
       "sobrenome": "Nogueira",
       "dataNascimento": "1998-02-06",
+      "genero": "f",
       "cpf": "47126964862",
-      "email": "lucas@gmail.com",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 2
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "genero": "m",
+      "cpf": "47126964862",
+      "email": "lucas@hotmail.com",
       "senha": "lucas05",
       "confirmacaoSenha": "lucas05",
+      "id": 3
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "genero": "m",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 4
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-09",
+      "genero": "m",
+      "cpf": "47126964862",
+      "email": "lucasnogueiratdm@hotmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
+      "id": 5
+    },
+    {
+      "nome": "Lucas",
+      "sobrenome": "Nogueira",
+      "dataNascimento": "1998-02-06",
+      "genero": "m",
+      "cpf": "47126964862",
+      "telefone": "1198493940",
+      "email": "lucas@gmail.com",
+      "senha": "lucas",
+      "confirmacaoSenha": "lucas",
       "id": 6
-    },
-    {
-      "nome": "Rodrigo",
-      "sobrenome": "Oliveira",
-      "dataNascimento": "1998-02-06",
-      "cpf": "47142555535",
-      "email": "lucas@gmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 7
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-02-06",
-      "cpf": "47478148818",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 8
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-02-11",
-      "cpf": "12323242441",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 9
-    },
-    {
-      "nome": "Denis",
-      "sobrenome": "Snider",
-      "dataNascimento": "2001-08-09",
-      "cpf": "33443141241",
-      "email": "denis222@gmail.com",
-      "senha": "denis",
-      "confirmacaoSenha": "denis",
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        }
-      ],
-      "id": 10
-    },
-    {
-      "nome": "Breno",
-      "sobrenome": "Snider",
-      "dataNascimento": "2001-08-09",
-      "cpf": "33443141241",
-      "email": "denis222@gmail.com",
-      "senha": "denis",
-      "confirmacaoSenha": "denis",
-      "enderecos": [
-        {
-          "id": 1,
-          "logradouro": "Rua Gilberto Gagliard",
-          "cep": "49345109",
-          "numero": "233",
-          "bairro": "Vila Boa",
-          "complemento": "",
-          "tipoEndereco": {
-            "id": 1,
-            "descricao": "casa"
-          },
-          "cidade": {
-            "id": 1,
-            "descricao": "Mogi das Cruzes",
-            "estado": {
-              "id": 1,
-              "descricao": "São Paulo"
-            }
-          }
-        }
-      ],
-      "id": 11
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-03-11",
-      "cpf": "47142555535",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 12
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-03-19",
-      "cpf": "54344343434",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 13
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-03-10",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 14
-    },
-    {
-      "nome": "LUCAS",
-      "sobrenome": "NOGUEIRA",
-      "dataNascimento": "2021-03-17",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 15
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-02-09",
-      "cpf": "47127858453",
-      "email": "lucas@gmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 16
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-03-09",
-      "cpf": "47172637232",
-      "email": "lucas@gmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 17
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-02-09",
-      "cpf": "23748023089",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 18
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-02-06",
-      "cpf": "47712814818",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 19
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1990-02-09",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 20
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "2021-03-09",
-      "cpf": "93599539591",
-      "email": "lucas@gmail.com",
-      "senha": "lucas05",
-      "confirmacaoSenha": "lucas05",
-      "id": 21
-    },
-    {
-      "nome": "Lucas Nogueira",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-03-06",
-      "cpf": "47126964862",
-      "email": "lucasnogueiratdm@hotmail.com",
-      "senha": "admin123",
-      "confirmacaoSenha": "admin123",
-      "id": 22
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-10-06",
-      "cpf": "47126964862",
-      "email": "lucas@gmail.com",
-      "senha": "lucas123",
-      "confirmacaoSenha": "lucas123",
-      "id": 23
-    },
-    {
-      "nome": "Lucas",
-      "sobrenome": "Nogueira",
-      "dataNascimento": "1998-02-06",
-      "cpf": "47126964862",
-      "email": "lucas@gmail.com",
-      "senha": "lucas",
-      "confirmacaoSenha": "lucas",
-      "id": 24
     }
   ]
 }

@@ -5,6 +5,24 @@
         <mat-divider></mat-divider>
     </div>
 
+    <div class="consulta-clientes-filtro">
+        <mat-form-field appearance="fill">
+            <mat-label>Filtrar Por:</mat-label>
+            <select matNativeControl>
+                <option value="" selected></option>
+                <option value="volvo">Volvo</option>
+                <option value="saab" disabled>Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Pesquisa</mat-label>
+            <input matInput type="text">    
+        </mat-form-field>
+        <button mat-button>Filtrar</button>
+    </div>
+
     <div class="consulta-clientes-table">
         <span *ngIf="!dataSource.length">Nenhum cliente encontrado</span>
         <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length">
