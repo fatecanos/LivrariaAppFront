@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CarrinhoService {
 
-  baseUrl: string = environment.baseUrlMock;
+  baseUrl: string = environment.urlMock;
 
   constructor(private http: HttpClient) { }
 

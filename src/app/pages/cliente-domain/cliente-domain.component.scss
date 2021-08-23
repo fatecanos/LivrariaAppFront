@@ -4,4 +4,26 @@
     mat-sidenav {
         width: 300px;
     }
+
+    &-nav {
+        display: flex;
+
+        &-item_list {
+            font-size: 1.2em;
+            list-style: none;
+
+            li {
+                margin: 15px;
+
+                a {
+                    text-decoration: none;
+                    color: #a5a5a5;
+                }
+                
+                a:hover {
+                    color: #fac515;
+                }
+            }
+        }
+    }
 }

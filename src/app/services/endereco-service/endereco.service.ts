@@ -20,9 +20,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class EnderecoService {
-  baseUrl: string = environment.baseUrl;
+  baseUrl: string = environment.urlMock;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAddressById(id: number): Observable<EnderecoDTO[]> {
     //mockado

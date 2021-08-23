@@ -12,6 +12,7 @@ import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interf
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
+import { CorreiosService } from 'src/app/services/correiros-service/correios.service';
 import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 

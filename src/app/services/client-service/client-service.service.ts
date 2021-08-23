@@ -17,7 +17,8 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ClienteService {
-  baseUrl: string = environment.baseUrl;
+
+  baseUrl: string = environment.urlMock;
 
   constructor(private http: HttpClient) {}
 

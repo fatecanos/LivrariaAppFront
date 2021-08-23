@@ -12,10 +12,10 @@ export interface LivroDTO {
     quantidadePaginas: string
     sinopse: string
     dimensoes: DimensoesDTO,
-    grupoPrecificacao: string,
+    grupoPrecificacaoId: number,
     codigoBarras: string,
     url: string,
-    isAtivo: boolean
+    isAtivo?: boolean
 }
 
 export interface DimensoesDTO {

@@ -8,7 +8,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 export class PedidosService {
-    baseUrl: string = environment.baseUrl;
+    baseUrl: string = environment.urlMock;
 
     constructor(private http: HttpClient) { }
 

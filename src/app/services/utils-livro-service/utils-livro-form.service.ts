@@ -14,11 +14,11 @@ export class UtilsLivroFormService {
   constructor(private http: HttpClient) { }
 
   obterCategorias(): Observable<CategoriaInterface[]> {
-    return this.http.get<CategoriaInterface[]>(`${this.baseUrl}/categorias`);
+    return this.http.get<CategoriaInterface[]>(`${this.baseUrl}/livros/categorias`);
   }
 
   obterGruposPrecificacao(): Observable<GrupoPrecificacaoInterface[]>{
     return this.http
-      .get<GrupoPrecificacaoInterface[]>(`${this.baseUrl}/gruposPrecificacao`);
+      .get<GrupoPrecificacaoInterface[]>(`${this.baseUrl}/livros/grupo-precificacao`);
   }
 }

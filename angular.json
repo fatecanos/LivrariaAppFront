@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "livraria-front-app"
+  "defaultProject": "livraria-front-app",
+  "cli": {
+    "analytics": false
+  }
 }
