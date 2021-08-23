@@ -20,22 +20,22 @@ export class AtivarClienteDialogComponent {
   ) {}
 
 
-  ativar() {
-    this.service.activeClientById(this.data.idCliente).subscribe(
-      (response) => {
-        this._snackBar.open('Cliente foi reativado com sucesso!', 'fechar', {
-          duration: 5000,
-        });
-      },
-      (error) => {
-        this._snackBar.open('Erro ao tentar ativar o cliente.', 'fechar', {
-          duration: 5000,
-        });
-      },
-      () => {
-        this.dialogRef.close();
-      }
-    );
-  }
+  // ativar() {
+  //   this.service.activeClientById(this.data.idCliente).subscribe(
+  //     (response) => {
+  //       this._snackBar.open('Cliente foi reativado com sucesso!', 'fechar', {
+  //         duration: 5000,
+  //       });
+  //     },
+  //     (error) => {
+  //       this._snackBar.open('Erro ao tentar ativar o cliente.', 'fechar', {
+  //         duration: 5000,
+  //       });
+  //     },
+  //     () => {
+  //       this.dialogRef.close();
+  //     }
+  //   );
+  // }
 
 }

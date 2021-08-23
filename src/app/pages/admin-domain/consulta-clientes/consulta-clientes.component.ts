@@ -26,14 +26,6 @@ export class ConsultaClientesComponent implements OnInit {
   ngOnInit(): void {
     this.service.getClients()
       .subscribe(response => {
-
-
-        response.map(item => {
-
-          console.log(`me diz a response: ${item.ativo}`);
-
-        });
-
         this.dataSource = response;
     }, error => {
       console.log('Erro ao consultar clientes')

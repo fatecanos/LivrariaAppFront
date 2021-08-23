@@ -18,7 +18,8 @@ const httpOptions = {
 })
 export class ClienteService {
 
-  baseUrl: string = environment.urlMock;
+  // baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
