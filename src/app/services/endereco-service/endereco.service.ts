@@ -37,11 +37,12 @@ export class EnderecoService {
       endereco.logradouro = response.logradouro;
       endereco.bairro = response.bairro;
       endereco.cidade.descricao = response.cidade;  // isso aqui é um problema
-      endereco.cidade.estado.uf = response.uf; //isso tbm
+      endereco.cidade.estado.descricao = response.uf; //isso tbm
       endereco.complemento = response.complemento;
       endereco.cep = response.cep;
-      endereco.tipoResidenciaId = response.tipoResidenciaId;
+      endereco.tipoResidencia = "casa";
       endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
+      endereco.tipoResidencia = 'casa';
     })
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
@@ -14,8 +13,6 @@ import { CartoesService } from 'src/app/services/cartoes-service/cartoes-service
 export class LivCartoesFormComponent implements OnInit {
 
   bandeirasCartao: BandeiraCartaoDTO[] = bandeirasMock;
-
-  novoCartaoForm: FormGroup = new FormGroup({});
   isNovoCartaoForm: boolean = false;
   
   idCartaoSelecionado: number = 0;
@@ -24,8 +21,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   constructor(
     private snackService: MatSnackBar,
-    private service: CartoesService,
-    private formBuilder: FormBuilder) { }
+    private service: CartoesService) { }
 
   ngOnInit(): void {
     this.cartoes$ = this.service.getCartoes();
@@ -37,21 +33,8 @@ export class LivCartoesFormComponent implements OnInit {
 
       this.idCartaoSelecionado = cartaoPreferencial?.id  || 0;
     })
-
-    this.novoCartaoForm = this.formBuilder.group({
-      id: [''],
-      numero: ['', { validators: [Validators.required] }],
-      nome: ['', { validators: [Validators.required] }],
-      bandeira: ['', { validators: [Validators.required] }],
-      codigoSeguranca: ['', { validators: [Validators.required]}],
-      isPrincipal: [false, { validators: [Validators.required] }]
-    })
   }
 
-  enviarNovoCartao() {
-    if(this.novoCartaoForm.valid) {
-      
-    }
-  }
+  
 
 }

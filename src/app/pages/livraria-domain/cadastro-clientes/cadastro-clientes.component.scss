@@ -27,17 +27,6 @@
 
             &-input {
                 margin-left: 15px;
-
-                &-genders {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-
-                    mat-radio-group {
-                        display: flex;
-                        gap: 5px;
-                    }
-                }
             }
         }
 
@@ -60,6 +49,6 @@
     
     &-header {
         display: flex;
-        flex-direction: row;
+        align-items: baseline;
     }
 }

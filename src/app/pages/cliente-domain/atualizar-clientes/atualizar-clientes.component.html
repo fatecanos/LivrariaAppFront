@@ -32,17 +32,9 @@
                         type="text" mask="000.000.000-00">
                 </mat-form-field>
             </form>
-
-            <div class="client_update-tabs_container-telefones">
-                <h3>Telefones</h3>
-                <mat-divider></mat-divider>
-
-                <liv-telefones-management></liv-telefones-management>
-            </div>
-
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
-                <button mat-button color="warn"
+                <button class="client_update-option_container-disable_account" mat-button
                     (click)="inativarClientePorId()">Desativar conta</button>
                 <mat-progress-spinner *ngIf="isLoading"
                     class="client-form-spinner"

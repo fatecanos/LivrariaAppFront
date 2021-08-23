@@ -1,15 +1,9 @@
 <div class="endereco-submitter">
-    <h3>{{ enderecoAtual?.apelidoId || "Novo Endereço" }}</h3>
+    <h3>Novo Endereço</h3>
     <mat-divider></mat-divider>
 
     <form [formGroup]="formEndereco"
         class="endereco-form-tabs_container-form">
-        <mat-form-field>
-            <mat-label>Apelido:</mat-label>
-            <input matInput formControlName="apelidoId"
-                placeholder="(opcional)" type="text">
-        </mat-form-field>
-
         <mat-form-field>
             <mat-label>CEP:</mat-label>
             <input matInput formControlName="cep"
@@ -18,11 +12,10 @@
 
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
-            <mat-select [(value)]="selectedTipoLog">
-                <mat-option formControlName="tipoLogradouro"
-                    *ngFor="let tipoLog of tiposLogradouros" 
-                    [value]="tipoLog">
-                    {{ tipoLog }}
+            <mat-select>
+                <mat-option
+                    *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog.id">
+                    {{ tipoLog.descricao }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -48,49 +41,45 @@
             <input matInput formControlName="numero"
                 type="text">
         </mat-form-field>
-        <mat-form-field formGroupName="cidade">
+        <mat-form-field>
             <mat-label>Cidade:</mat-label>
-            <input matInput type="text" formControlName="descricao">
+            <input matInput type="text">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Estado:</mat-label>
-            <mat-select [(value)]="selectedEstado">
-                <mat-option
-                    *ngFor="let estado of estados" [value]="estado">
-                    {{ estado.uf }}
+            <mat-select>
+                <mat-option *ngFor="let estado of estados" [value]="estado">
+                    {{estado}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>País:</mat-label>
-            <input matInput formControlName="pais"
+            <input matInput 
                 placeholder="nome do seu bairro" type="text">
         </mat-form-field>
-        <br>
-        <mat-radio-group class="endereco-form-tabs_container-form-tipo_endereco"
-            aria-label="Tipo de Endereço">
 
+        <mat-form-field>
             <mat-label>Tipo de Endereço:</mat-label>
-
-            <mat-radio-button value="cobranca" #inputCobranca 
-                [checked]="formEndereco?.get('tipoEndereco')?.value === 'cobranca'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputCobranca.value)">
-                Cobrança
-            </mat-radio-button>
-            
-            <mat-radio-button 
-                value="entrega" #inputEntrega
-                [checked]="formEndereco?.get('tipoEndereco')?.value  === 'entrega'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputEntrega.value)">
-                Entrega
-            </mat-radio-button>
-
-        </mat-radio-group>
+            <mat-select>
+                <mat-option value="casa">
+                    Casa
+                </mat-option>
+                <mat-option value="apartamento">
+                    Apartamento
+                </mat-option>
+                <mat-option value="lote">
+                    Lote
+                </mat-option>
+                <mat-option value="condominio">
+                    Condomínio
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </form>
     <div class="button">
-        <button mat-button *ngIf="enderecoAtual">Atualizar</button>
-        <button mat-button *ngIf="!enderecoAtual">Enviar</button>
+        <button mat-button>Enviar</button>
     </div>
 </div>

@@ -15,10 +15,6 @@ import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedi
 import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
 import { CurrencyPipe } from '../custom-pipes/formatter.pipe';
-import { LivTelefonesManagementComponent } from './liv-telefones-management/liv-telefones-management.component';
-import { InativarTelefoneDialogComponent } from './dialogs/inativar-telefone-dialog/inativar-telefone-dialog.component';
-import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
-import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
@@ -35,8 +31,7 @@ const maskConfig: Partial<IConfig> = {
     DetalhesPedidoComponent, 
     InativarLivroDialogComponent, 
     DetalhesLivroComponent, 
-    CurrencyPipe, 
-    LivTelefonesManagementComponent, InativarTelefoneDialogComponent, InativarCartaoDialogComponent, InativarEnderecoDialogComponent
+    CurrencyPipe
   ],
   imports: [
     CommonModule,
@@ -52,8 +47,7 @@ const maskConfig: Partial<IConfig> = {
     LivEnderecoFormComponent, 
     InativarClienteDialogComponent, 
     EnderecoSubmitterComponent, 
-    LivCartoesFormComponent,
-    LivTelefonesManagementComponent
+    LivCartoesFormComponent
   ]
 })
 export class ComponentsModule { }

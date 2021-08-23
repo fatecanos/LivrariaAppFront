@@ -27,11 +27,3 @@
         }
     }
 }
-
-@media screen and (min-width: 0px) and (max-width: 900px) {
-    .cliente-domain-nav { display: block; }  /* show it on small screens */
-  }
-  
-  @media screen and (min-width: 401px) and (max-width: 1024px) {
-    .cliente-domain-nav { display: none; }   /* hide it elsewhere */
-  }

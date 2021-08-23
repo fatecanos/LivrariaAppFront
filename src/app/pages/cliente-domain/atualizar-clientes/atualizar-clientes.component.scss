@@ -28,15 +28,17 @@
         &-message {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
-            margin-top: 5px;
         }
     }
 
     &-option_container {
         display: flex;
-        justify-content: flex-end;
+        justify-content: start;
         margin-bottom: 40px;
+
+        &-disable_account{
+          color: #D46A6A;
+        }
     }
 
 

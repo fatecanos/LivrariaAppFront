@@ -7,26 +7,19 @@ export interface ClienteDTO {
     email: string,
     senha: string,
     confirmacaoSenha: string,
-    enderecos: EnderecoDTO[],
-    telefones: TelefoneDTO[]
-}
-
-export interface TelefoneDTO {
-    id: number,
-    telefone: string
+    enderecos: EnderecoDTO[]
 }
 
 export interface EnderecoDTO {
     id: number,
-    apelidoId: string,
     tipoEndereco: TipoEnderecoEnum,
-    tipoLogradouro: string,
-    logradouro: string,
+    tipoLogradouroId: TipoLogradouroDTO,
+    logradouro: TipoLogradouroDTO,
     cep: string,
     numero: string,
     bairro: string,
     complemento: string,
-    tipoResidenciaId: number,
+    tipoResidencia: string,
     cidade: CidadeDTO,
     pais: string,
 }
@@ -39,9 +32,7 @@ export interface CidadeDTO {
 
 export interface EstadoDTO {
     id: number,
-    uf: string,
-    dataCriacao?: Date,
-    ativo?: boolean
+    descricao: string
 }
 
 export enum TipoEnderecoEnum {
@@ -76,8 +67,8 @@ export interface EnderecoSimplificadoDTO {
     complemento: string;
     tipoEnderecoId: number;
     tipoLogradouroId: number;
-    cidade: number;
-    estado: number;
+    cidade: string;
+    estado: string;
     pais: string;
 }
 
