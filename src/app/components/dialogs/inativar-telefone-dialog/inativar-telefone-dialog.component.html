@@ -1,9 +1,10 @@
 <div class="modal-inativa-telefone">
-    <div class="modal-inativa-telefone-header">
-        <h4>Desativação telefone:</h4>
-    </div>
-    <div class="modal-inativa-telefone-options">
-        <button mat-button (click)="dialogRef.close()">Cancelar</button>
-        <button mat-button color="warn">Desativar</button>
-    </div>
+  <div class="modal-inativa-telefone-header">
+    <h4>Tem certeza que deseja excluir este telefone?</h4>
+  </div>
+  <div class="modal-inativa-telefone-options">
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+    <button mat-button color="warn" (click)="inativarTelefone()">Excluir</button>
+    <!-- <button mat-button color="warn" (click)="testeTelefone()">Excluir</button> -->
+  </div>
 </div>

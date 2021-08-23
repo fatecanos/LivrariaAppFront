@@ -47,7 +47,7 @@ export class CarrinhoComponent implements OnInit {
     this.idCliente = Number.parseInt(sessionStorage.getItem('isLogado') || '0');
 
     //TODO: integrar cliente autenticado
-    this.dadosCliente$ = this.clienteService.getClientById(1);
+    this.dadosCliente$ = this.clienteService.getClientById();
 
     this.dadosCliente$.subscribe(cliente => {
       this.enderecosEntrega = cliente.enderecos.filter(endereco => {

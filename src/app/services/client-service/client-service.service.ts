@@ -32,9 +32,7 @@ export class ClienteService {
     );
   }
 
-  getClientById(id: number | undefined): Observable<ClienteDTO> {
-    console.log(`id: ${id}`);
-
+  getClientById(): Observable<ClienteDTO> {
     return this.http.get<ClienteDTO>(
       `${this.baseUrl}/clientes/meus_dados/${Number(sessionStorage.getItem('isLogado'))}`,
       httpOptions
@@ -46,7 +44,6 @@ export class ClienteService {
   }
 
   updateClientById(
-    id: number | undefined,
     clientData?: ClienteDTO
   ): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(

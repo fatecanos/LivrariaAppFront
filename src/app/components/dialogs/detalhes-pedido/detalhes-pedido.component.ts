@@ -24,7 +24,7 @@ export class DetalhesPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data.idPedido);
-    this.cliente$ = this.clienteService.getClientById(this.data.idCliente);
+    this.cliente$ = this.clienteService.getClientById();
   }
 
 }

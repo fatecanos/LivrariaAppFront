@@ -1,26 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ClienteDTO, TelefoneDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { Observable } from 'rxjs';
+import { TelefoneDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { environment } from 'src/environments/environment';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'http://localhost:4200',
+    'Access-Control-Allow-Methods': '*',
+  }),
+};
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TelefoneService {
+  baseUrl: string = environment.baseUrl;
 
-  baseUrl: string = environment.urlMock;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-  
-  inativarTelefonePorId(telefone: TelefoneDTO) {
-    this.http.delete(`${this.baseUrl}/telefones/${telefone.id}`)
+  inativarTelefonePorId(idTelefone: number): Observable<MessageInterface> {
+    console.log(`porra: ${idTelefone}`)
+    return this.http.delete<MessageInterface>(
+      `${this.baseUrl}/telefone/${idTelefone}`,
+      httpOptions
+    );
   }
 
-  atualizarTelefonePorId() {
-
-  }
-
-  obterTelefonesPorIdCliente(idCliente: number) {
-    
+  atualizarTelefone(telefoneDto: TelefoneDTO): Observable<MessageInterface> {
+    return this.http.put<MessageInterface>(
+      `${this.baseUrl}/telefone/${Number(sessionStorage.getItem('isLogado'))}`,
+      telefoneDto,
+      httpOptions
+    );
   }
 }
