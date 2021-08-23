@@ -76,21 +76,48 @@ describe('Gestão de Clientes - Modulo', function() {
             cy.get('div[role=tab]').eq(4).click()
         })
 
-        // Credito
+        //Credito
         cy.get('div[role=tab]').eq(5).click().click().then(()=> {
             cy.get('.cartoes_form').within(()=> {
                 cy.get('#btnMaisCartao').click()
                 cy.get('#txtNomeCartao').type('Jonathan Joestar')
                 cy.get('#txtNumeroCartao').type('57684758374586')
-                cy.get('.matSelectBandeira')
-                    .click().get('mat-option').first().click()
+                // cy.get('.matSelectBandeira').click().then(()=> {
+       
+                // })
             })
-        })
-    }),
 
-    it('RF0023 - Deve desativar cliente', ()=> {
-        cy.get('div[role=tab]').eq(0).click()
+            cy.get('mat-select[formControlName="bandeira"]')
+            .click()
+
+            // cy.get('mat-option')
+            //     .contains('Mastercard').click();
+            cy.get('mat-option')
+                .first().click()
+
+            cy.get('#txtCodigoSeg').type('989')
+
+            cy.get('#btnEnviaNovoCartao').click()
+
+
+            cy.get('.cartoes_form-cadastrados-lista-preferencial')
+                .within(()=> {
+                    cy.get('mat-icon').first().click()
+                })
+            
+            cy.get('.btnInativarCartao').first().click()
+            cy.get('#btnModalInativarCartao').click()
+        })
+    })
+
+    it('RF0023 - Deve inativar cliente', ()=> {
+        cy.visit('http://localhost:4200/clientes')
+
         cy.get('#btnDesativarCliente').click()
-        cy.get('.mat-focus-indicator').click()
+
+        cy.get('.inativar-dialog').within(()=> {
+            cy.get('#btnDesativarCliente').click({force: true})
+        })
+        
     })
 })

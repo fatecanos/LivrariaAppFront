@@ -19,7 +19,7 @@
             <mat-form-field>
                 <mat-label>Bandeira:</mat-label>
                 <mat-select formControlName="bandeira" class="matSelectBandeira">
-                    <mat-option *ngFor="let bandeiraCartao of bandeirasCartao" 
+                    <mat-option *ngFor="let bandeiraCartao of bandeirasCartao; let i = index;"
                         [value]="bandeiraCartao">
                         {{ bandeiraCartao.descricao }}
                     </mat-option>
@@ -56,7 +56,11 @@
                     </mat-icon>
                     <span>{{ idCartaoSelecionado === cartao.id? 'Preferencial': ''}}</span>
                 </div>
-                <button mat-button color="warn" (click)="inativarCartao(cartao)">Inativar Cartão</button>
+                <button mat-button 
+                    color="warn" class="btnInativarCartao"
+                    (click)="inativarCartao(cartao)">
+                    Inativar Cartão
+                </button>
             </div>
 
             <mat-form-field class="cartoes_form-novo-nome">
