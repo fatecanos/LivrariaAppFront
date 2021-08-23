@@ -19,8 +19,8 @@
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
             <mat-select formControlName="tipoLogradouro">
-                <mat-option 
-                    *ngFor="let tipoLog of tiposLogradouros" 
+                <mat-option
+                    *ngFor="let tipoLog of tiposLogradouros"
                     [value]="tipoLog">
                     {{ tipoLog }}
                 </mat-option>
@@ -49,13 +49,20 @@
                 type="text">
         </mat-form-field>
         <mat-form-field formGroupName="cidade">
+
             <mat-label>Cidade:</mat-label>
-            <input matInput type="text" formControlName="descricao">
-        </mat-form-field>
+            <mat-select [(value)]="selectedCidade">
+              <mat-option
+                  *ngFor="let cidade of cidades" [value]="cidade">
+                  {{ cidade.nome }}
+              </mat-option>
+          </mat-select>
+
+          </mat-form-field>
 
         <mat-form-field>
             <mat-label>Estado:</mat-label>
-            <mat-select [(value)]="selectedEstado">
+            <mat-select [(value)]="selectedEstado" (change)='onEstadoSelecionado(estado.value)'>
                 <mat-option
                     *ngFor="let estado of estados" [value]="estado">
                     {{ estado.uf }}
@@ -74,13 +81,13 @@
 
             <mat-label>Tipo de Endereço:</mat-label>
 
-            <mat-radio-button value="cobranca" #inputCobranca 
+            <mat-radio-button value="cobranca" #inputCobranca
                 [checked]="formEndereco?.get('tipoEndereco')?.value === 'cobranca'"
                 (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputCobranca.value)">
                 Cobrança
             </mat-radio-button>
-            
-            <mat-radio-button 
+
+            <mat-radio-button
                 value="entrega" #inputEntrega
                 [checked]="formEndereco?.get('tipoEndereco')?.value  === 'entrega'"
                 (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputEntrega.value)">

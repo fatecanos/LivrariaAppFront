@@ -20,9 +20,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class EnderecoService {
-  baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAddressById(id: number): Observable<EnderecoDTO[]> {
     //mockado
@@ -40,17 +40,26 @@ export class EnderecoService {
     );
   }
 
+  obterCidades(estadoID: number): Observable<CidadeDTO[]> {
+
+    return this.http.get<CidadeDTO[]>(
+      `${this.baseUrl}/cidades?idEstado=${estadoID}`
+    );
+  }
+
   obterEnderecoPorCep(cep: string) {
     let endereco: EnderecoDTO;
-    this.http.get<any>(`viacep.com.br/ws/${cep}/json/`).subscribe(response => {
-      endereco.logradouro = response.logradouro;
-      endereco.bairro = response.bairro;
-      // endereco.cidade.descricao = response.cidade;  // isso aqui é um problema
-      // endereco.cidade.estado.uf = response.uf; //isso tbm
-      endereco.complemento = response.complemento;
-      endereco.cep = response.cep;
-      // endereco.tipoResidenciaId = response.tipoResidenciaId;
-      endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
-    })
+    this.http
+      .get<any>(`viacep.com.br/ws/${cep}/json/`)
+      .subscribe((response) => {
+        endereco.logradouro = response.logradouro;
+        endereco.bairro = response.bairro;
+        // endereco.cidade.descricao = response.cidade;  // isso aqui é um problema
+        // endereco.cidade.estado.uf = response.uf; //isso tbm
+        endereco.complemento = response.complemento;
+        endereco.cep = response.cep;
+        // endereco.tipoResidenciaId = response.tipoResidenciaId;
+        endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
+      });
   }
 }
