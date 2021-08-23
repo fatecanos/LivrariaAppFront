@@ -3,3 +3,16 @@
         margin-left: 10px;
     }
 }
+
+.endereco-form-tabs_container-form-tipo_endereco {
+    display: flex;
+    justify-content: flex-end;
+
+    mat-label {
+        margin-right: 5px;
+    }
+}
+
+mat-divider {
+    margin-bottom: 15px;
+}

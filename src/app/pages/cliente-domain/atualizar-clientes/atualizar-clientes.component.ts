@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EnderecoSubmitterComponent } from 'src/app/components/dialogs/endereco-submitter/endereco-submitter.component';
 import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
-import { ClienteDTO, EnderecoDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { ClienteDTO, EnderecoDTO, EstadoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
@@ -26,9 +26,9 @@ function matchValidator(controlName: string): ValidatorFn {
 export class AtualizarClientesComponent implements OnInit {
 
   isLoading: boolean = false;
-  estados: Array<string> = UFs;
+  estados: Array<EstadoDTO> = UFs;
 
-  formDadosCliente?: FormGroup;
+  formDadosCliente?: FormGroup = new FormGroup({});
   formEmail?: FormGroup;
   formSenha?: FormGroup;
 
@@ -47,15 +47,12 @@ export class AtualizarClientesComponent implements OnInit {
 
   ngOnInit(): void {
     //TODO: integrar busca do cliente a partir da sessao de usuario
-    this.clienteResponse$ = this.clienteService.getClientById(1);
-
-    this.clienteResponse$.subscribe(response => {
+    this.clienteService.getClientById(1)
+    .subscribe(response => {
+      console.log("Response", response);
+      
       this.dadosCliente = response;
-    }, err => {
-      console.log('Erro ao carregar cliente'); 
     });
-
-    console.log("Dados do cliente", this.dadosCliente);
     
 
     this.formDadosCliente = this.formBuilder.group({
@@ -71,10 +68,10 @@ export class AtualizarClientesComponent implements OnInit {
       )
     });
 
-    this.initForm();
+    this.initForms();
   }
 
-  initForm() {
+  initForms() {
     this.formEmail = this.formBuilder.group({
       email: ['', {validators: [Validators.required, Validators.email]}],
       confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
