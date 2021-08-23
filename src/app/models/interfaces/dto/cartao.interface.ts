@@ -1,4 +1,5 @@
-export interface NovoCartaoDTO {
+export interface CartaoDTO {
+    id: number,
     numeroCartao: string,
     nomeNoCartao: string,
     bandeira: string,

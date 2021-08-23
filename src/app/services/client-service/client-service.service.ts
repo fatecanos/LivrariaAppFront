@@ -40,6 +40,6 @@ export class ClienteService {
   }
 
   deleteClientById(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/clientes?id=${id}`, httpOptions);
+    return this.http.delete(`${this.baseUrl}/clientes/${id}`, httpOptions);
   }
 }

@@ -1,0 +1,36 @@
+<div class="telefones-management">
+    <div class="telefones-management-content"
+        *ngFor="let telefoneGroup of telefonesArrayForm?.controls; let i = index;">
+        <mat-form-field class="telefones-management-content-form_field"
+            [formGroup]="telefoneGroup">
+            <mat-label>Telefone {{i+1}}:</mat-label>
+            <input mask="(00) 0000-0000" formControlName="telefone"
+                matInput type="text" placeholder="(00) 0000-0000">
+            <mat-error>
+                O telefone é um campo <strong>obrigatório.</strong>
+            </mat-error>
+        </mat-form-field>
+        <button mat-button>Atualizar</button>
+        <button mat-button color="warn" (click)="inativarTelefone(telefone)">Excluir</button>
+    </div>
+    <div class="telefones-management-content" *ngIf="!telefones?.length">
+        <span>Nenhum Telefone foi encontrado</span>
+    </div>
+    <div class="telefones-management-content">
+        <div class="telefones-management-content-new_phone" *ngIf="hasSendNew">
+            <mat-form-field class="telefones-management-form_field">
+                <mat-label>Novo Telefone:</mat-label>
+                <input mask="(00) 0000-0000"
+                    matInput type="text" placeholder="(00) 0000-0000">
+                <mat-error>
+                    O telefone é um campo <strong>obrigatório.</strong>
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <button mat-button (click)="clearForm()">Cancelar</button>
+                <button mat-button>Enviar</button>
+            </div>
+        </div>
+        <button mat-button (click)="initForm()">+ Telefone</button>
+    </div>
+</div> 

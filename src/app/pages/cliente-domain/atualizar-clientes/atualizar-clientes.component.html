@@ -1,4 +1,4 @@
-<div class="client_update">
+<div class="client_update" *ngIf="(clienteResponse$ | async)">
 
     <div class="client_update-header">
         <h2>Dados do Cliente</h2>
@@ -12,7 +12,7 @@
                 class="client_update-tabs_container-form">
                 <mat-form-field>
                     <mat-label>Nome: </mat-label>
-                    <input matInput formControlName="nome"
+                    <input matInput [formControl]="formDadosCliente?.get('nome')"
                         placeholder="Primeiro Nome">
                 </mat-form-field>
                 <mat-form-field>
@@ -32,9 +32,10 @@
                         type="text" mask="000.000.000-00">
                 </mat-form-field>
             </form>
+
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()">Atualizar Dados</button>
-                <button class="client_update-option_container-disable_account" mat-button
+                <button mat-button color="warn"
                     (click)="inativarClientePorId()">Desativar conta</button>
                 <mat-progress-spinner *ngIf="isLoading"
                     class="client-form-spinner"
@@ -44,15 +45,26 @@
             </div>
         </mat-tab>
 
+        <mat-tab label="Telefones">
+            <liv-telefones-management></liv-telefones-management>
+        </mat-tab>
+
         <mat-tab label="Endereço">
-            <liv-endereco-form [endereco]="endereco" [index]="i+1"
+            <liv-endereco-form [endereco]="endereco" [index]="i+1" (dadosAtualizacao)="atualizarEnderecos($event)"
                 *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
             </liv-endereco-form>
+            <span *ngIf="!(clienteResponse$ | async)?.enderecos">
+                Nenhum endereço foi associado para este cliente.
+            </span>
+
+            <div *ngIf="isNovoEnderecoForm">
+                <novo-endereco-form></novo-endereco-form>
+            </div>
+
             <div class="client_update-tabs_container-message">
-                <span *ngIf="!(clienteResponse$ | async)?.enderecos">
-                    Nenhum endereço foi associado para este cliente.
-                </span>
-                <button mat-button (click)="abrirModalNovoEndereco()">+ Endereco</button>
+                <button mat-button (click)="isNovoEnderecoForm = !isNovoEnderecoForm">
+                    {{ isNovoEnderecoForm? 'Cancelar': '+ Endereço' }}
+                </button>
             </div>
             
         </mat-tab>
@@ -135,4 +147,8 @@
         </mat-tab>
 
     </mat-tab-group>
+</div>
+
+<div *ngIf="!(clienteResponse$ | async)">
+    <span>Cliente não encontrado</span>
 </div>

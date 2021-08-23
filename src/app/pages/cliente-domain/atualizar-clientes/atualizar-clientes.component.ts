@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { EnderecoSubmitterComponent } from 'src/app/components/dialogs/endereco-submitter/endereco-submitter.component';
 import { InativarClienteDialogComponent } from 'src/app/components/dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
-import { ClienteDTO, EnderecoDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { ClienteDTO, EnderecoDTO, EstadoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
@@ -26,16 +26,18 @@ function matchValidator(controlName: string): ValidatorFn {
 export class AtualizarClientesComponent implements OnInit {
 
   isLoading: boolean = false;
-  estados: Array<string> = UFs;
+  estados: Array<EstadoDTO> = UFs;
 
-  formDadosCliente?: FormGroup;
+  formDadosCliente?: FormGroup = new FormGroup({});
   formEmail?: FormGroup;
   formSenha?: FormGroup;
 
-  dadosCliente: ClienteDTO | any;
+  dadosCliente?: ClienteDTO | any;
   enderecosCliente: EnderecoDTO[] = [];
+  isNovoEnderecoForm: boolean = false;
 
   clienteResponse$?: Observable<ClienteDTO>;
+  CLIENTE_ID: number = 1;
 
   constructor(
     public dialog: MatDialog,
@@ -46,35 +48,30 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //TODO: integrar busca do cliente a partir da sessao de usuario
-    this.clienteResponse$ = this.clienteService.getClientById(1);
-
-    this.clienteResponse$.subscribe(response => {
-      this.dadosCliente = response;
-    }, err => {
-      console.log('Erro ao carregar cliente'); 
-    });
-
-    console.log("Dados do cliente", this.dadosCliente);
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     
-
-    this.formDadosCliente = this.formBuilder.group({
-      nome: [this.dadosCliente?.nome, [Validators.required]],
-      sobrenome: [this.dadosCliente?.sobrenome, Validators.required],
-      dataNascimento: [this.dadosCliente?.dataNascimento, [Validators.required]],
-      cpf: this.formBuilder.control(this.dadosCliente?.cpf, 
-        [
-          Validators.required,
-          Validators.minLength(11),
-          Validators.maxLength(11),
+    //TODO: integrar busca do cliente a partir da sessao de usuario
+    this.clienteResponse$.subscribe(response => {
+      this.formDadosCliente = this.formBuilder.group({
+        id: [this.CLIENTE_ID],
+        nome: [response.nome, {validators: [Validators.required]} ],
+        sobrenome: [response.sobrenome, {validators: [Validators.required]} ],
+        dataNascimento: [response.dataNascimento, {validators: [Validators.required]} ],
+        cpf: [response.cpf, 
+          { validators: [
+              Validators.required,
+              Validators.minLength(11),
+              Validators.maxLength(11),
+            ]
+          }
         ]
-      )
+      });
     });
 
-    this.initForm();
+    this.initForms();
   }
 
-  initForm() {
+  initForms() {
     this.formEmail = this.formBuilder.group({
       email: ['', {validators: [Validators.required, Validators.email]}],
       confirmacaoEmail: ['', {validators: [Validators.required, matchValidator('email')]}],
@@ -103,15 +100,16 @@ export class AtualizarClientesComponent implements OnInit {
 
   enviarDadosCliente() {
     this.isLoading = true;
+    let cliente: ClienteDTO;
 
     if(this.formDadosCliente?.valid) {
-      let dados = this.dadosCliente;
-      this.dadosCliente = { ...dados, ...this.formDadosCliente.value };
-
-      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+      cliente = this.formDadosCliente.value;
+      console.log(cliente);
+      
+      this.clienteService.updateClientById(cliente.id, cliente)
         .subscribe(response => {
           this.isLoading = false;
-          this._snackBar.open(response.description, 'fechar', {duration: 5000});
+          this._snackBar.open(response.description || 'sucesso', 'fechar', {duration: 5000});
         }, error => {
           this.isLoading = false;
           this._snackBar.open("erro ao atualizar cliente", 'fechar', {duration: 5000});
@@ -128,15 +126,18 @@ export class AtualizarClientesComponent implements OnInit {
     this.isLoading = true;
 
     if(this.formEmail?.valid) {
-      this.dadosCliente.email = this.formEmail.get('email')?.value;
+      let cliente: ClienteDTO;
 
-      this.clienteService.updateClientById(this.dadosCliente?.id, this.dadosCliente)
+      cliente = this.formDadosCliente?.value;
+      cliente.email = this.formEmail.get('email')?.value
+
+      this.clienteService.updateClientById(this.CLIENTE_ID, cliente)
         .subscribe(response => {
           this.isLoading = false;
           this._snackBar.open("email do cliente foi atualizado", 'fechar', {duration: 5000});
         }, error=> {
           this.isLoading = false;
-          this._snackBar.open("erro ao atualizar", 'fechar', {duration: 5000});
+          this._snackBar.open("erro ao atualizar email", 'fechar', {duration: 5000});
         }, ()=> {
           this.atualizarEstado();
           this.isLoading = false;
@@ -146,12 +147,27 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarSenha() {
     if(this.formSenha?.valid) {
-      console.log('atualizando senha...')
-    }
+      let cliente: ClienteDTO;
+
+      cliente = this.formDadosCliente?.value;
+      cliente.email = this.formSenha.get('senha')?.value
+
+      this.clienteService.updateClientById(this.CLIENTE_ID, cliente)
+        .subscribe(response => {
+          this.isLoading = false;
+          this._snackBar.open("senha do cliente foi atualizada com sucesso", 'fechar', {duration: 5000});
+        }, error=> {
+          this.isLoading = false;
+          this._snackBar.open("erro ao atualizar senha", 'fechar', {duration: 5000});
+        }, ()=> {
+          this.atualizarEstado();
+          this.isLoading = false;
+        });
+    } 
   }
 
   atualizarEstado() {
-    this.clienteResponse$ = this.clienteService.getClientById(this.dadosCliente?.id);
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     this.clienteResponse$.subscribe(response => { this.dadosCliente = response });
   }
 
@@ -169,13 +185,18 @@ export class AtualizarClientesComponent implements OnInit {
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {
-        idCliente: Number(sessionStorage.getItem('isLogado')),
+        idCliente: this.formDadosCliente?.get('id')?.value
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
       sessionStorage.clear();
       this.router.navigate(['/login']);
     });
+  }
+
+  atualizarEnderecos(event: any) {
+    console.log("obteve evento");
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
   }
 
 }
