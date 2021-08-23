@@ -53,15 +53,15 @@
             <liv-endereco-form [endereco]="endereco" [index]="i+1" (dadosAtualizacao)="atualizarEnderecos($event)"
                 *ngFor="let endereco of (clienteResponse$ | async)?.enderecos; let i=index">
             </liv-endereco-form>
+            <span *ngIf="!(clienteResponse$ | async)?.enderecos">
+                Nenhum endereço foi associado para este cliente.
+            </span>
 
             <div *ngIf="isNovoEnderecoForm">
                 <novo-endereco-form></novo-endereco-form>
             </div>
 
             <div class="client_update-tabs_container-message">
-                <span *ngIf="!(clienteResponse$ | async)?.enderecos">
-                    Nenhum endereço foi associado para este cliente.
-                </span>
                 <button mat-button (click)="isNovoEnderecoForm = !isNovoEnderecoForm">
                     {{ isNovoEnderecoForm? 'Cancelar': '+ Endereço' }}
                 </button>

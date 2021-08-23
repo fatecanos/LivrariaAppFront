@@ -1,7 +1,9 @@
-<div class="endereco-form">
-
+<div class="endereco">
+    <div>
+        <h3>Novo Endereço:</h3>
+    </div>
     <form [formGroup]="formEndereco"
-        class="endereco-form-tabs_container-form">
+        class="endereco-form">
         <mat-form-field>
             <mat-label>Apelido:</mat-label>
             <input matInput formControlName="apelidoId"
@@ -16,8 +18,8 @@
 
         <mat-form-field>
             <mat-label>Tipo Logradouro: </mat-label>
-            <mat-select [(value)]="selectedTipoLog">
-                <mat-option formControlName="tipoLogradouro"
+            <mat-select formControlName="tipoLogradouro">
+                <mat-option 
                     *ngFor="let tipoLog of tiposLogradouros" 
                     [value]="tipoLog">
                     {{ tipoLog }}
@@ -67,7 +69,7 @@
                 placeholder="nome do seu bairro" type="text">
         </mat-form-field>
         <br>
-        <mat-radio-group class="endereco-form-tabs_container-form-tipo_endereco"
+        <mat-radio-group class="endereco-form-tipo_endereco"
             aria-label="Tipo de Endereço">
 
             <mat-label>Tipo de Endereço:</mat-label>
