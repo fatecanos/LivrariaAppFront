@@ -40,7 +40,7 @@
             <div class="client_update-option_container">
                 <button mat-button (click)="enviarDadosCliente()" id="btnAtualizaDados">Atualizar Dados</button>
                 <button mat-button color="warn"
-                    (click)="inativarClientePorId()">Desativar conta</button>
+                    (click)="inativarClientePorId()" id="btnDesativarCliente">Desativar conta</button>
                 <mat-progress-spinner *ngIf="isLoading"
                     class="client-form-spinner"
                     color="primary" diameter="50"

@@ -1,7 +1,6 @@
 describe('Gestão de Clientes - Modulo', function() {
     
     it('RF0021 - Deve cadastrar um cliente', function() {
-        this.skip()
         cy.visit('http://localhost:4200/livraria/novo-cliente'); 
         cy.get('.client-form-input').within(()=> {
             cy.get('#nome')
@@ -61,20 +60,37 @@ describe('Gestão de Clientes - Modulo', function() {
         // cy.get('div[role=tab]').eq(2).click()
 
         //Email
-        cy.get('div[role=tab]').eq(3).click()
-        cy.get('#txtEmail').type('gabriel@gmail.com')
-        cy.get('#txtConfirmaEmail').type('gabriel@gmail.com')
-        cy.get('#btnEmail').click()
-        cy.get('div[role=tab]').eq(3).click()
+        cy.get('div[role=tab]').eq(3).click().then(()=> {
+            cy.get('#txtEmail').type('gabriel@gmail.com')
+            cy.get('#txtConfirmaEmail').type('gabriel@gmail.com')
+            cy.get('#btnEmail').click()
+            cy.get('div[role=tab]').eq(3).click()
+        })
+
 
         // Senha
-        cy.get('div[role=tab]').eq(4).click()
-        cy.get('#txtSenha').type('gabriel')
-        cy.get('#txtConfirmaSenha').type('gabriel')
-        cy.get('#btnAtualizaSenha').click()
-        cy.get('div[role=tab]').eq(4).click()
-        // //Credito
-        // cy.get('div[role=tab]').eq(5).click().click()
+        cy.get('div[role=tab]').eq(4).click().then(()=> {
+            cy.get('#txtSenha').type('gabriel')
+            cy.get('#txtConfirmaSenha').type('gabriel')
+            cy.get('#btnAtualizaSenha').click()
+            cy.get('div[role=tab]').eq(4).click()
+        })
 
+        // Credito
+        cy.get('div[role=tab]').eq(5).click().click().then(()=> {
+            cy.get('.cartoes_form').within(()=> {
+                cy.get('#btnMaisCartao').click()
+                cy.get('#txtNomeCartao').type('Jonathan Joestar')
+                cy.get('#txtNumeroCartao').type('57684758374586')
+                cy.get('.matSelectBandeira')
+                    .click().get('mat-option').first().click()
+            })
+        })
+    }),
+
+    it('RF0023 - Deve desativar cliente', ()=> {
+        cy.get('div[role=tab]').eq(0).click()
+        cy.get('#btnDesativarCliente').click()
+        cy.get('.mat-focus-indicator').click()
     })
 })

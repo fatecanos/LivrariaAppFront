@@ -5,20 +5,20 @@
         <form [formGroup]="novoCartaoForm">
             <mat-form-field class="cartoes_form-novo-nome">
                 <mat-label>Nome no cartão:</mat-label>
-                <input matInput formControlName="nome"
+                <input matInput formControlName="nome" id="txtNomeCartao"
                     placeholder="Nome Completo" type="text">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Número cartão:</mat-label>
-                <input matInput formControlName="numero"
+                <input matInput formControlName="numero" id="txtNumeroCartao"
                     placeholder="0000.0000.0000.0000" 
                     mask="0000.0000.0000.0000" type="text">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Bandeira:</mat-label>
-                <mat-select formControlName="bandeira">
+                <mat-select formControlName="bandeira" class="matSelectBandeira">
                     <mat-option *ngFor="let bandeiraCartao of bandeirasCartao" 
                         [value]="bandeiraCartao">
                         {{ bandeiraCartao.descricao }}
@@ -28,13 +28,14 @@
 
             <mat-form-field>
                 <mat-label>Código de segurança:</mat-label>
-                <input matInput formControlName="codigoSeguranca"
+                <input matInput formControlName="codigoSeguranca" id="txtCodigoSeg"
                     placeholder="000" mask="000" type="text">
             </mat-form-field>
         </form>
 
         <div class="cartoes_form-novo-options">
-            <button mat-button color="primary" (click)="enviarNovoCartao()">Enviar</button>
+            <button mat-button color="primary" id="btnEnviaNovoCartao"
+                (click)="enviarNovoCartao()">Enviar</button>
             <button mat-button (click)="isNovoCartaoForm=false">Cancelar</button>
         </div>
     </div>
@@ -78,7 +79,9 @@
     </div>
 
     <div class="cartoes_form-button">
-        <button mat-button (click)="isNovoCartaoForm=true">+ Cartão</button>
+        <button mat-button 
+            (click)="isNovoCartaoForm=true" 
+            id="btnMaisCartao">+ Cartão</button>
         <button mat-button>Atualizar</button>
     </div>
 </div>
