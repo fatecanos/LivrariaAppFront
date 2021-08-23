@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 
-import { correiosBrasil, CorreiosBrasil } from "correios-brasil";
+// import { correiosBrasil, CorreiosBrasil } from "correios-brasil";
 
 @Injectable({providedIn: 'root'})
 export class CorreiosService {
 
-    constructor(correios: CorreiosBrasil) {}
+    // constructor(correios: CorreiosBrasil) {}
 
     obterValorFrete(cep: string) {
         let  args = {
@@ -23,9 +23,9 @@ export class CorreiosService {
 
         let response: any;
 
-        correiosBrasil.calcularPrecoPrazo(args).then(res=> {
-            response = res
-        })
+        // correiosBrasil.calcularPrecoPrazo(args).then(res=> {
+            // response = res
+        // })
         return response.Valor;
     }
 }

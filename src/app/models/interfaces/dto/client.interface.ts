@@ -1,28 +1,34 @@
 export interface ClienteDTO {
-  id: number;
-  nome: string;
-  sobrenome: string;
-  dataNascimento: Date;
-  cpf: string;
-  email: string;
-  senha: string;
-  confirmacaoSenha: string;
-  ativo: boolean;
-  enderecos: EnderecoDTO[];
+    id: number,
+    nome: string,
+    sobrenome: string,
+    dataNascimento: Date,
+    cpf: string,
+    email: string,
+    senha: string,
+    confirmacaoSenha: string,
+    enderecos: EnderecoDTO[],
+    telefones: TelefoneDTO[]
+}
+
+export interface TelefoneDTO {
+    id: number,
+    telefone: string
 }
 
 export interface EnderecoDTO {
-  id: number;
-  tipoEndereco: TipoEnderecoEnum;
-  tipoLogradouroId: TipoLogradouroDTO;
-  logradouro: TipoLogradouroDTO;
-  cep: string;
-  numero: string;
-  bairro: string;
-  complemento: string;
-  tipoResidencia: string;
-  cidade: CidadeDTO;
-  pais: string;
+    id: number,
+    apelidoId: string,
+    tipoEndereco: TipoEnderecoEnum,
+    tipoLogradouro: string,
+    logradouro: string,
+    cep: string,
+    numero: string,
+    bairro: string,
+    complemento: string,
+    tipoResidenciaId: number,
+    cidade: CidadeDTO,
+    pais: string,
 }
 
 export interface CidadeDTO {
@@ -31,8 +37,10 @@ export interface CidadeDTO {
 }
 
 export interface EstadoDTO {
-  id: number;
-  descricao: string;
+    id: number,
+    uf: string,
+    dataCriacao?: Date,
+    ativo?: boolean
 }
 
 export enum TipoEnderecoEnum {
@@ -59,17 +67,17 @@ export interface CartaoClienteDTO {
 }
 
 export interface EnderecoSimplificadoDTO {
-  id: number;
-  logradouro: string;
-  cep: string;
-  numero: string;
-  bairro: string;
-  complemento: string;
-  tipoEnderecoId: number;
-  tipoLogradouroId: number;
-  cidade: string;
-  estado: string;
-  pais: string;
+    id: number;
+    logradouro: string;
+    cep: string;
+    numero: string;
+    bairro: string;
+    complemento: string;
+    tipoEnderecoId: number;
+    tipoLogradouroId: number;
+    cidade: number;
+    estado: number;
+    pais: string;
 }
 
 export interface TipoEnderecoDTO {

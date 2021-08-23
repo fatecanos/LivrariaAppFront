@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { NovoCartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
+import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { environment } from 'src/environments/environment';
 
@@ -17,8 +17,17 @@ export class CartoesService {
     return this.http.get<CartaoClienteDTO[]>(this.baseUrl+'/cartoes');
   }
 
-  getCartaoPreferencial(): Observable<NovoCartaoDTO>{
-    const cartaoMock: NovoCartaoDTO = {
+  gravar(cartao: CartaoDTO) {
+    this.http.post(`${this.baseUrl}/cartoes`, cartao)
+  }
+
+  atualizar(idCartao: number, cartao: CartaoDTO) {
+    this.http.put(`${this.baseUrl}/cartoes/${idCartao}`, cartao)
+  }
+
+  getCartaoPreferencial(): Observable<CartaoDTO>{
+    const cartaoMock: CartaoDTO = {
+      id: 1,
       numeroCartao: '1230032994042',
       nomeNoCartao: 'Lucas M Nogueira',
       bandeira: 'Mastercard',
@@ -26,4 +35,6 @@ export class CartoesService {
     }
     return of(cartaoMock);
   }
+
+
 }

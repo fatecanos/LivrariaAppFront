@@ -42,40 +42,15 @@ export class EnderecoService {
 
   obterEnderecoPorCep(cep: string) {
     let endereco: EnderecoDTO;
-    this.http
-      .get<any>(`viacep.com.br/ws/${cep}/json/`)
-      .subscribe((response) => {
-        endereco.logradouro = response.logradouro;
-        endereco.bairro = response.bairro;
-        endereco.complemento = response.complemento;
-        endereco.cep = response.cep;
-        endereco.tipoResidencia = 'casa';
-        endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
-        endereco.tipoResidencia = 'casa';
-      });
-  }
-
-  recuperarCidadesPeloEstado(estadoID: number) : Observable<CidadeDTO[]>{
-    return this.http
-      .get<CidadeDTO[]>(`${this.baseUrl}/endereco/cidades`, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:4200',
-          'Access-Control-Allow-Methods': '*',
-        }),
-        params: new HttpParams().set('estadoID', estadoID.toString()),
-      });
-  }
-
-  // salvarNovoEndereco(enderecoDto: EnderecoDTO): Observable<any> {
-  salvarNovoEndereco(enderecoDto: EnderecoDTO) {
-    console.log(`vai printar: ${enderecoDto.cep}`);
-
-    const body = JSON.stringify(enderecoDto);
-    return this.http.post(
-      `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
-      body,
-      httpOptions
-    );
+    this.http.get<any>(`viacep.com.br/ws/${cep}/json/`).subscribe(response => {
+      endereco.logradouro = response.logradouro;
+      endereco.bairro = response.bairro;
+      // endereco.cidade.descricao = response.cidade;  // isso aqui é um problema
+      // endereco.cidade.estado.uf = response.uf; //isso tbm
+      endereco.complemento = response.complemento;
+      endereco.cep = response.cep;
+      // endereco.tipoResidenciaId = response.tipoResidenciaId;
+      endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
+    })
   }
 }

@@ -15,25 +15,33 @@ import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedi
 import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
 import { CurrencyPipe } from '../custom-pipes/formatter.pipe';
-import { ComponenteTesteComponent } from './componente-teste/componente-teste.component';
-import { AtivarClienteDialogComponent } from './dialogs/ativar-cliente-dialog/ativar-cliente-dialog.component';
+import { LivTelefonesManagementComponent } from './liv-telefones-management/liv-telefones-management.component';
+import { InativarTelefoneDialogComponent } from './dialogs/inativar-telefone-dialog/inativar-telefone-dialog.component';
+import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
+import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
+import { NovoEnderecoFormComponent } from './novo-endereco-form/novo-endereco-form.component';
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
 
 @NgModule({
   declarations: [
-    LivHeaderComponent, 
-    LivFooterComponent, 
-    LivEnderecoFormComponent, 
-    InativarClienteDialogComponent, 
-    EnderecoSubmitterComponent, 
-    LivCartoesFormComponent, 
-    CarrinhoFinalizacaoComponent, 
-    DetalhesPedidoComponent, 
-    InativarLivroDialogComponent, 
-    DetalhesLivroComponent, 
-    CurrencyPipe, ComponenteTesteComponent, AtivarClienteDialogComponent
+    LivHeaderComponent,
+    LivFooterComponent,
+    LivEnderecoFormComponent,
+    InativarClienteDialogComponent,
+    EnderecoSubmitterComponent,
+    LivCartoesFormComponent,
+    CarrinhoFinalizacaoComponent,
+    DetalhesPedidoComponent,
+    InativarLivroDialogComponent,
+    DetalhesLivroComponent,
+    CurrencyPipe,
+    LivTelefonesManagementComponent,
+    InativarTelefoneDialogComponent,
+    InativarCartaoDialogComponent,
+    InativarEnderecoDialogComponent,
+    NovoEnderecoFormComponent
   ],
   imports: [
     CommonModule,
@@ -44,12 +52,14 @@ const maskConfig: Partial<IConfig> = {
     FormsModule
   ],
   exports: [
-    LivHeaderComponent, 
-    LivFooterComponent, 
-    LivEnderecoFormComponent, 
-    InativarClienteDialogComponent, 
-    EnderecoSubmitterComponent, 
-    LivCartoesFormComponent
+    LivHeaderComponent,
+    LivFooterComponent,
+    LivEnderecoFormComponent,
+    InativarClienteDialogComponent,
+    EnderecoSubmitterComponent,
+    LivCartoesFormComponent,
+    LivTelefonesManagementComponent,
+    NovoEnderecoFormComponent
   ]
 })
 export class ComponentsModule { }

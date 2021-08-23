@@ -1,0 +1,10 @@
+.endereco {
+    border: 1px #636363 dashed;
+    padding: 8px;
+
+    &-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

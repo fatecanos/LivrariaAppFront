@@ -56,10 +56,6 @@ export class ClienteService {
   }
 
   deleteClientById(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/clientes/inativarContaClienteByAdmin?clienteID=${id}`, httpOptions);
-  }
-
-  activeClientById(id: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/clientes/reativarContaClienteByAdmin?clienteID=${id}`, httpOptions);
+    return this.http.delete(`${this.baseUrl}/clientes/${id}`, httpOptions);
   }
 }
