@@ -11,7 +11,7 @@
         <div class="client-form-input_group">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Nome:</mat-label>
-                <input matInput value="" formControlName="nome">
+                <input matInput value="" formControlName="nome" id="nome">
                 <mat-error *ngIf="formularioCliente.get('nome')?.hasError('required')">
                     O nome está <strong>incompleto.</strong>
                 </mat-error>
@@ -19,7 +19,7 @@
     
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Sobrenome:</mat-label>
-                <input matInput value="" formControlName="sobrenome">
+                <input matInput value="" formControlName="sobrenome" id="sobrenome">
                 <mat-error *ngIf="formularioCliente.get('sobrenome')?.hasError('required')">
                     O sobrenome está <strong>incompleto.</strong>
                 </mat-error>
@@ -30,14 +30,14 @@
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Aniversário:</mat-label>
                 <input matInput value="" type="date" 
-                    formControlName="dataNascimento">
+                    formControlName="dataNascimento" id="dataNascimento">
                 <mat-error *ngIf="formularioCliente.get('dataNascimento')?.hasError('required')">
                     Data de nascimento está <strong>incompleta.</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>CPF:</mat-label>
-                <input mask="000.000.000-00" 
+                <input mask="000.000.000-00" id="cpf"
                     matInput type="text" formControlName="cpf">
                 <mat-error *ngIf="formularioCliente.get('cpf')?.hasError('required')">
                     O cpf está <strong>incompleto.</strong>
@@ -48,7 +48,7 @@
                 <mat-label>Gênero:</mat-label>
                 <mat-radio-group aria-label="Selecione seu gênero" 
                     formControlName="genero">
-                    <mat-radio-button value="m">Masculino</mat-radio-button>
+                    <mat-radio-button value="m" id="rdMasculino">Masculino</mat-radio-button>
                     <mat-radio-button value="f">Feminino</mat-radio-button>
                 </mat-radio-group>
             </div>
@@ -57,7 +57,7 @@
         <div class="client-form-input_group">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>E-mail:</mat-label>
-                <input matInput value="" type="email" formControlName="email">
+                <input matInput type="email" formControlName="email" id="email">
                 <mat-error *ngIf="formularioCliente.get('email')?.hasError('required')">
                     O e-mail está <strong>incompleto.</strong>
                 </mat-error>
@@ -67,7 +67,7 @@
             </mat-form-field>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Telefone Principal:</mat-label>
-                <input mask="(00) 0000-0000" formControlName="telefone"
+                <input mask="(00) 0000-0000" formControlName="telefone" id="telefone"
                     matInput type="text" placeholder="(ddd) 0000-0000">
                 <mat-error *ngIf="formularioCliente.get('telefone')?.hasError('required')">
                     O telefone é <strong>obrigatório.</strong>
@@ -77,14 +77,14 @@
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Senha:</mat-label>
                 <input mask="AAAAAAAAAAAA" placeholder="insira até 12 caracteres"
-                    matInput value="" type="password" formControlName="senha">
+                    matInput value="" type="password" formControlName="senha" id="senha">
                 <mat-error *ngIf="formularioCliente.get('senha')?.hasError('required')">
                     A senha está <strong>incompleta.</strong>
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Repita a senha:</mat-label>
-                <input matInput value="" mask="AAAAAAAAAAAA" 
+                <input matInput value="" mask="AAAAAAAAAAAA" id="repeteSenha"
                     placeholder="insira até 12 caracteres" type="password" 
                     formControlName="confirmacaoSenha">
                 <mat-error *ngIf="formularioCliente.get('confirmacaoSenha')?.hasError('required')">
@@ -97,7 +97,7 @@
         </div>
 
         <div class="client-form-input_group client-form-button">
-            <button mat-button (click)="submitCustomer()">Enviar</button>
+            <button mat-button (click)="submitCustomer()" id="btnEnviar">Enviar</button>
             <mat-progress-spinner *ngIf="isLoading"
                 class="client-form-spinner"
                 color="primary" diameter="50"

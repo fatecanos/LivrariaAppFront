@@ -18,11 +18,15 @@ export class CartoesService {
   }
 
   gravar(cartao: CartaoDTO) {
-    this.http.post(`${this.baseUrl}/cartoes`, cartao)
+    return this.http.post(`${this.baseUrl}/cartoes`, cartao)
   }
 
   atualizar(idCartao: number, cartao: CartaoDTO) {
-    this.http.put(`${this.baseUrl}/cartoes/${idCartao}`, cartao)
+    return this.http.put(`${this.baseUrl}/cartoes/${idCartao}`, cartao)
+  }
+
+  removerCartao(idCartao: number) {
+    return this.http.delete(`${this.baseUrl}/cartoes/${idCartao}`)
   }
 
   getCartaoPreferencial(): Observable<CartaoDTO>{

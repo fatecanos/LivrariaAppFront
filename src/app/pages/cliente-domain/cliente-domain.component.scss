@@ -1,8 +1,8 @@
 .cliente-domain {
-    min-height: 900px;
+    min-height: 500px;
     
     mat-sidenav {
-        width: 300px;
+        min-width: 250px;
     }
 
     &-nav {
