@@ -1,102 +1,83 @@
 <div class="endereco">
-    <div>
-        <h3>Novo Endereço:</h3>
-    </div>
-    <form [formGroup]="formEndereco"
-        class="endereco-form">
-        <mat-form-field>
-            <mat-label>Apelido:</mat-label>
-            <input matInput formControlName="apelidoId"
-                placeholder="(opcional)" type="text">
-        </mat-form-field>
+  <div>
+    <h3>Novo Endereço:</h3>
+  </div>
+  <form [formGroup]="formEndereco" class="endereco-form">
+    <mat-form-field>
+      <mat-label>Nome:</mat-label>
+      <input matInput formControlName="nome" placeholder="Nome" type="text">
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>CEP:</mat-label>
-            <input matInput formControlName="cep"
-                placeholder="00000-000" mask="00000-000" type="text">
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>CEP:</mat-label>
+      <input matInput formControlName="cep" placeholder="00000-000" mask="00000-000" type="text"
+        (change)="consultarCEP()">
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Tipo Logradouro: </mat-label>
-            <mat-select formControlName="tipoLogradouro">
-                <mat-option
-                    *ngFor="let tipoLog of tiposLogradouros"
-                    [value]="tipoLog">
-                    {{ tipoLog }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo Logradouro: </mat-label>
+      <mat-select [(value)]="selectedTipoLogradouro">
+        <mat-option *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog">
+          {{ tipoLog }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Endereço: </mat-label>
-            <input matInput formControlName="logradouro"
-                placeholder="rua, logradouro, avenida..." type="text">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Bairro:</mat-label>
-            <input matInput formControlName="bairro"
-                placeholder="nome do seu bairro" type="text">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Complemento:</mat-label>
-            <input matInput formControlName="complemento"
-                placeholder="casa 1, ao lado de..." type="text">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Numero:</mat-label>
-            <input matInput formControlName="numero"
-                type="text">
-        </mat-form-field>
-        <mat-form-field formGroupName="cidade">
+    <mat-form-field>
+      <mat-label>Endereço: </mat-label>
+      <input matInput formControlName="logradouro" placeholder="Digite seu endereço" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bairro:</mat-label>
+      <input matInput formControlName="bairro" placeholder="Bairro" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Complemento:</mat-label>
+      <input matInput formControlName="complemento" placeholder="Digite o complemento" type="text">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Numero:</mat-label>
+      <input matInput formControlName="numero" type="text">
+    </mat-form-field>
 
-            <mat-label>Cidade:</mat-label>
-            <mat-select [(value)]="selectedCidade">
-              <mat-option
-                  *ngFor="let cidade of cidades" [value]="cidade">
-                  {{ cidade.nome }}
-              </mat-option>
-          </mat-select>
+    <mat-form-field>
+      <mat-label>Estado:</mat-label>
+      <mat-select [(value)]="selectedEstado" (selectionChange)='onEstadoSelecionado(selectedEstado)'>
+        <mat-option *ngFor="let estado of estados" [value]="estado">
+          {{ estado.uf }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-          </mat-form-field>
+    <mat-form-field formGroupName="cidade">
+      <mat-label>Cidade:</mat-label>
+      <mat-select [(value)]="selectedCidade">
+        <mat-option *ngFor="let cidade of cidades" [value]="cidade">
+          {{ cidade.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Estado:</mat-label>
-            <mat-select [(value)]="selectedEstado" (change)='onEstadoSelecionado(estado.value)'>
-                <mat-option
-                    *ngFor="let estado of estados" [value]="estado">
-                    {{ estado.uf }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+      <mat-label>País:</mat-label>
+      <input matInput formControlName="pais" placeholder="País" type="text">
+    </mat-form-field>
+    <br>
+    <mat-radio-group class="endereco-form-tipo_endereco" aria-label="Tipo de Endereço">
 
-        <mat-form-field>
-            <mat-label>País:</mat-label>
-            <input matInput formControlName="pais"
-                placeholder="nome do seu bairro" type="text">
-        </mat-form-field>
-        <br>
-        <mat-radio-group class="endereco-form-tipo_endereco"
-            aria-label="Tipo de Endereço">
+      <mat-label>Tipo de Endereço:</mat-label>
 
-            <mat-label>Tipo de Endereço:</mat-label>
+      <mat-radio-group name="tipoEnderecosRadioList" fxLayout="column">
+        <mat-radio-button *ngFor="let enderecoOption of tipoEnderecos" name="tipoEnderecosRadio"
+          [value]="enderecoOption.nome">
 
-            <mat-radio-button value="cobranca" #inputCobranca
-                [checked]="formEndereco?.get('tipoEndereco')?.value === 'cobranca'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputCobranca.value)">
-                Cobrança
-            </mat-radio-button>
+          {{ enderecoOption.nome}}</mat-radio-button>
+      </mat-radio-group>
 
-            <mat-radio-button
-                value="entrega" #inputEntrega
-                [checked]="formEndereco?.get('tipoEndereco')?.value  === 'entrega'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputEntrega.value)">
-                Entrega
-            </mat-radio-button>
-
-        </mat-radio-group>
-    </form>
-    <div class="button">
-        <button mat-button>Enviar Novo</button>
-    </div>
+    </mat-radio-group>
+  </form>
+  <div class="button">
+    <button mat-button (click)="salvarNovoEndereco()">Enviar Novo</button>
+  </div>
 </div>

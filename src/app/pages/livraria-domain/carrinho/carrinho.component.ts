@@ -51,7 +51,7 @@ export class CarrinhoComponent implements OnInit {
 
     this.dadosCliente$.subscribe(cliente => {
       this.enderecosEntrega = cliente.enderecos.filter(endereco => {
-        return endereco.tipoEndereco === TipoEnderecoEnum.ENTREGA;
+        return endereco.tipoEndereco.nome === TipoEnderecoEnum.ENTREGA;
       })
     })
   }

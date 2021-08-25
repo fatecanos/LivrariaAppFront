@@ -6,6 +6,7 @@ import {
   EnderecoDTO,
   TipoEnderecoEnum,
 } from 'src/app/models/interfaces/dto/client.interface';
+import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -24,6 +25,17 @@ export class EnderecoService {
 
   constructor(private http: HttpClient) {}
 
+  salvarNovoEndereco(enderecoDTO: EnderecoDTO): Observable<MessageInterface> {
+
+    console.log(`n worka???`)
+
+    return this.http.post<MessageInterface>(
+      `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
+      enderecoDTO,
+      httpOptions
+    );
+  }
+
   getAddressById(id: number): Observable<EnderecoDTO[]> {
     //mockado
     return this.http.get<EnderecoDTO[]>(
@@ -41,25 +53,13 @@ export class EnderecoService {
   }
 
   obterCidades(estadoID: number): Observable<CidadeDTO[]> {
-
     return this.http.get<CidadeDTO[]>(
       `${this.baseUrl}/cidades?idEstado=${estadoID}`
     );
   }
 
-  obterEnderecoPorCep(cep: string) {
+  obterEnderecoPorCep(cep: string): Observable<any> {
     let endereco: EnderecoDTO;
-    this.http
-      .get<any>(`viacep.com.br/ws/${cep}/json/`)
-      .subscribe((response) => {
-        endereco.logradouro = response.logradouro;
-        endereco.bairro = response.bairro;
-        // endereco.cidade.descricao = response.cidade;  // isso aqui é um problema
-        // endereco.cidade.estado.uf = response.uf; //isso tbm
-        endereco.complemento = response.complemento;
-        endereco.cep = response.cep;
-        // endereco.tipoResidenciaId = response.tipoResidenciaId;
-        endereco.tipoEndereco = TipoEnderecoEnum.COBRANCA;
-      });
+    return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json/`);
   }
 }

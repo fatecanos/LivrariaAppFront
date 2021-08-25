@@ -17,23 +17,22 @@ export interface TelefoneDTO {
 }
 
 export interface EnderecoDTO {
-    id: number,
-    apelidoId: string,
-    tipoEndereco: TipoEnderecoEnum,
+    id?: number,
+    nome: string,
+    tipoEndereco: TipoEnderecoDTO,
     tipoLogradouro: string,
     logradouro: string,
     cep: string,
     numero: string,
     bairro: string,
     complemento: string,
-    tipoResidenciaId: number,
     cidade: CidadeDTO,
     pais: string,
 }
 
 export interface CidadeDTO {
   id: number;
-  nome: string;
+  nome?: string;
 }
 
 export interface EstadoDTO {
@@ -82,5 +81,5 @@ export interface EnderecoSimplificadoDTO {
 
 export interface TipoEnderecoDTO {
   id: number;
-  description: string;
+  nome?: string;
 }
