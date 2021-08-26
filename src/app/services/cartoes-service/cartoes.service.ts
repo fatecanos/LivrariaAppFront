@@ -9,12 +9,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CartoesService {
-  baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   getCartoes(): Observable<CartaoClienteDTO[]> {
-    return this.http.get<CartaoClienteDTO[]>(this.baseUrl+'/cartoes');
+    return this.http.get<CartaoClienteDTO[]>(`${this.baseUrl}/cartoes/${Number(sessionStorage.getItem('isLogado'))}`);
   }
 
   gravar(cartao: CartaoCreditoDTO) {
