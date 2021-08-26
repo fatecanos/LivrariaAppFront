@@ -2,7 +2,7 @@
     <form [formGroup]="formEndereco"
         class="endereco-form-tabs_container-form">
         <mat-card class="endereco-form-tabs_container-form-tipo_residencia">
-            <h3>{{ endereco?.apelidoId || "Endereço "+index }}</h3>
+            <h3>{{ endereco?.nome || "Endereço "+index }}</h3>
             <div class="endereco-form-tabs_container-form-tipo_residencia-description">
                 <span>{{ endereco?.logradouro }}, {{ endereco?.numero }}</span>
                 <span>{{ endereco?.cidade.descricao}}, {{ endereco?.cidade.estado.descricao}}.</span>

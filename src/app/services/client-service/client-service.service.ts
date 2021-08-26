@@ -46,6 +46,9 @@ export class ClienteService {
   updateClientById(
     clientData?: ClienteDTO
   ): Observable<MessageInterface> {
+
+    console.log("chega aca??")
+
     return this.http.put<MessageInterface>(
       `${this.baseUrl}/clientes?usuarioID=${Number(sessionStorage.getItem('isLogado'))}`,
       clientData,

@@ -143,6 +143,7 @@ export class AtualizarClientesComponent implements OnInit {
           this.isLoading = false;
         }
       );
+
     }
 
     this.isLoading = false;
