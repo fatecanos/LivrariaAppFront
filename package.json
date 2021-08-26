@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "postinstall": "ngcc",
     "cypress": "cypress open",
-    "json-server": "cd src/backend-mock && json-server --watch db.json"
+    "json-server": "cd src/backend-mock && json-server --port 8080 --watch db.json"
   },
   "private": true,
   "dependencies": {

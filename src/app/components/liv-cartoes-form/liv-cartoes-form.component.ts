@@ -32,15 +32,7 @@ export class LivCartoesFormComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.cartoes$ = this.service.getCartoes();
-
-    this.cartoes$.subscribe(response => {
-      let cartaoPreferencial = response.find(cartao => {
-        return cartao.isPrincipal;
-      })
-
-      this.idCartaoSelecionado = cartaoPreferencial?.id;
-    })
+    this.init();
 
     this.novoCartaoForm = this.formBuilder.group({
       id: [''],
@@ -52,12 +44,32 @@ export class LivCartoesFormComponent implements OnInit {
     })
   }
 
+  init() {
+    this.cartoes$ = this.service.getCartoes();
+
+    this.cartoes$.subscribe(response => {
+      let cartaoPreferencial = response.find(cartao => {
+        return cartao.isPrincipal;
+      })
+
+      this.idCartaoSelecionado = cartaoPreferencial?.id;
+    })
+  }
+
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
       let cartao: CartaoDTO = this.novoCartaoForm.value;
       console.log("novo-cartao:", cartao);
       
       //salvar cartao
+      this.service.gravar(cartao).subscribe(response => {
+        this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
+        this.isNovoCartaoForm = false;
+      }, err => {
+        this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
+      }, () => {
+        this.init();
+      })
     }
   }
 
@@ -65,9 +77,7 @@ export class LivCartoesFormComponent implements OnInit {
     console.log("Cartao clicado:", cartao);
     const dialogRef = this.dialog.open(InativarCartaoDialogComponent, {
       width: '250px',
-      data: {
-        cartao: cartao
-      },
+      data: cartao
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.cartoes$ = this.service.getCartoes();
