@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
+import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
@@ -25,9 +25,9 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
   isGravarNovoEndereco: boolean = false;
 
   formNovoCartao: FormGroup;
-  cartaoSelecionado?: CartaoDTO;
+  cartaoSelecionado?: CartaoCreditoDTO;
 
-  cartaoPreferencial$?: Observable<CartaoDTO>;
+  cartaoPreferencial$?: Observable<CartaoCreditoDTO>;
 
   desconto: number = 0;
 
@@ -37,7 +37,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
     private cartaoService: CartoesService,
     private vendaService: VendasService,
     public dialogRef: MatDialogRef<PedidoFinalizacaoInterface>,
-    @Inject(MAT_DIALOG_DATA) public data: PedidoFinalizacaoInterface) { 
+    @Inject(MAT_DIALOG_DATA) public data: PedidoFinalizacaoInterface) {
     this.formNovoCartao = this.formBuilder.group({
       numeroCartao: ['', [Validators.required]],
       nomeNoCartao: ['', [Validators.required]],
@@ -48,7 +48,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Dados que chegaram no modal:', this.data);
-    
+
     this.selecionaCartaoPreferencial();
     this.isGravarNovoEndereco = this.data.isNovoEndereco;
 
@@ -60,7 +60,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
 
     setTimeout(()=> {
       console.log(this.formNovoCartao.value);
-      
+
       this.isLoading = false;
       if(this.formNovoCartao.valid) {
         this.cartaoSelecionado = this.formNovoCartao.value;
@@ -71,7 +71,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
     }, 1000)
   }
 
-  patchBandeira(bandeira: string) {    
+  patchBandeira(bandeira: string) {
     this.formNovoCartao?.patchValue({
       bandeira: bandeira
     })

@@ -1,7 +1,8 @@
-export interface CartaoDTO {
+export interface CartaoCreditoDTO {
     id: number,
     numeroCartao: string,
-    nomeNoCartao: string,
+    nomeImpressoCartao: string,
     bandeira: string,
-    codigoSeguranca: string
+    codigoSeguranca: string,
+    isPreferencial: boolean
 }
