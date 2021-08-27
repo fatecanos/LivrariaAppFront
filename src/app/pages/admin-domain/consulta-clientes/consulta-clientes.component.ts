@@ -10,60 +10,70 @@ import { ClienteService } from 'src/app/services/client-service/client-service.s
 @Component({
   selector: 'app-consulta-clientes',
   templateUrl: './consulta-clientes.component.html',
-  styleUrls: ['./consulta-clientes.component.scss']
+  styleUrls: ['./consulta-clientes.component.scss'],
 })
 export class ConsultaClientesComponent implements OnInit {
-
   dataSource: ClienteDTO[] = [];
   displayedColumns: string[] = ['nome', 'sobrenome', 'cpf', 'email', 'acoes'];
 
+  valorFiltro?: string;
 
   constructor(
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private service: ClienteService) { }
+    private service: ClienteService
+  ) {}
 
   ngOnInit(): void {
-    this.service.getClients()
-      .subscribe(response => {
+    this.service.getClients().subscribe(
+      (response) => {
         this.dataSource = response;
-    }, error => {
-      console.log('Erro ao consultar clientes')
-    },()=> {
-      this._snackBar.open("lista de clientes carregada", 'fechar', {duration: 2000})
-    })
+      },
+      (error) => {
+        console.log('Erro ao consultar clientes');
+      },
+      () => {
+        this._snackBar.open('lista de clientes carregada', 'fechar', {
+          duration: 2000,
+        });
+      }
+    );
+  }
+
+  pesquisarPeloFiltro() {
+    // setTimeout(() => {
+      // console.log(`eu só queria alterar direto ${this.valorFiltro}`);
+    // }, 3000);
+
+    
+
   }
 
   inativarClientePorId(id: number) {
     const dialogRef = this.dialog.open(InativarClienteDialogComponent, {
       width: '250px',
       data: {
-        idCliente: id
-      }
+        idCliente: id,
+      },
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.service.getClients()
-        .subscribe(response => {
-          this.dataSource = response;
-      })
-    })
+    dialogRef.afterClosed().subscribe((result) => {
+      this.service.getClients().subscribe((response) => {
+        this.dataSource = response;
+      });
+    });
   }
 
   ativarClientePorId(id: number) {
     const dialogRef = this.dialog.open(AtivarClienteDialogComponent, {
       width: '250px',
       data: {
-        idCliente: id
-      }
+        idCliente: id,
+      },
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.service.getClients()
-        .subscribe(response => {
-          this.dataSource = response;
-      })
-    })
+    dialogRef.afterClosed().subscribe((result) => {
+      this.service.getClients().subscribe((response) => {
+        this.dataSource = response;
+      });
+    });
   }
-
-
-
 }

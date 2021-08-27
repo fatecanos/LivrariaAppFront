@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ComponentsModule } from "src/app/components/components.module";
 import { MaterialModule } from "src/app/material/material.module";
 import { ServiceModule } from "src/app/services/services.module";
@@ -24,6 +24,7 @@ const maskConfig: Partial<IConfig> = {
         ComponentsModule,
         MaterialModule,
         AdminDomainRouting,
+        FormsModule,
         ReactiveFormsModule,
         ServiceModule,
         NgxMaskModule.forRoot(maskConfig),

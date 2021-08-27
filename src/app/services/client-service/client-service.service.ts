@@ -40,7 +40,7 @@ export class ClienteService {
   }
 
   getClients(): Observable<ClienteDTO[]> {
-    return this.http.get<ClienteDTO[]>(`${this.baseUrl}/clientes/listarTodosClientes`, httpOptions);
+    return this.http.get<ClienteDTO[]>(`${this.baseUrl}/clientes/listarclientes`, httpOptions);
   }
 
   updateClientById(
