@@ -1,11 +1,11 @@
 <div class="endereco-submitter">
-    <h3>{{ enderecoAtual?.apelidoId || "Novo Endereço" }}</h3>
+    <h3>{{ enderecoAtual?.nome || "Novo Endereço" }}</h3>
     <mat-divider></mat-divider>
 
     <form [formGroup]="formEndereco" class="endereco-form-tabs_container-form">
         <mat-form-field>
             <mat-label>Apelido:</mat-label>
-            <input matInput formControlName="apelidoId"
+            <input matInput formControlName="nome"
                 placeholder="(opcional)" type="text">
         </mat-form-field>
 

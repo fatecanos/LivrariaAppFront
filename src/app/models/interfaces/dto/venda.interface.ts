@@ -1,5 +1,5 @@
 import { ItemCarrinhoInterface } from "./carrinho.interface";
-import { CartaoDTO } from "./cartao.interface";
+import { CartaoCreditoDTO } from "./cartao.interface";
 import { CartaoClienteDTO, EnderecoDTO } from "./client.interface";
 
 export interface VendaInterface {
@@ -14,7 +14,7 @@ export interface VendaInterface {
 export interface PedidoFinalizadoDTO {
     enderecoDTO: EnderecoDTO,
     cartaoCreditoPreferencial: CartaoClienteDTO,
-    novoCartao: CartaoDTO,
+    novoCartao: CartaoCreditoDTO,
     isNovoEndereco: boolean,
     isNovoCartao: boolean,
     itensCarrinho: ItemCarrinhoInterface[],

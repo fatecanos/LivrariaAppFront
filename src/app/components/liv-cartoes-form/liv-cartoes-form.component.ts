@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
+import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
@@ -20,7 +20,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   novoCartaoForm: FormGroup = new FormGroup({});
   isNovoCartaoForm: boolean = false;
-  
+
   idCartaoSelecionado?: number;
 
   cartoes$?: Observable<CartaoClienteDTO[]>;
@@ -58,18 +58,18 @@ export class LivCartoesFormComponent implements OnInit {
 
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
-      let cartao: CartaoDTO = this.novoCartaoForm.value;
+      let cartao: CartaoCreditoDTO = this.novoCartaoForm.value;
       console.log("novo-cartao:", cartao);
-      
+
       //salvar cartao
-      this.service.gravar(cartao).subscribe(response => {
-        this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
-        this.isNovoCartaoForm = false;
-      }, err => {
-        this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
-      }, () => {
-        this.init();
-      })
+      // this.service.gravar(cartao).subscribe(response => {
+      //   this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
+      //   this.isNovoCartaoForm = false;
+      // }, err => {
+      //   this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
+      // }, () => {
+      //   this.init();
+      // })
     }
   }
 
@@ -85,7 +85,7 @@ export class LivCartoesFormComponent implements OnInit {
         let cartaoPreferencial = response.find(cartao => {
           return cartao.isPrincipal;
         })
-  
+
         this.idCartaoSelecionado = cartaoPreferencial?.id;
       })
     });

@@ -39,10 +39,10 @@ export class LivEnderecoFormComponent implements OnInit {
       numero: [this.endereco?.numero, { validators: [Validators.required] }],
       complemento: [this.endereco?.complemento, { validators: [Validators.required] }],
       bairro: [this.endereco?.bairro, { validators: [Validators.required] }],
-      tipoResidencia: this.formBuilder.group({
-        id: ['', { validators: [Validators.required] }],
-        descricao: [this.endereco?.tipoResidenciaId, { validators: [Validators.required] }]
-      }),
+      // tipoResidencia: this.formBuilder.group({
+      //   id: ['', { validators: [Validators.required] }],
+      //   descricao: [this.endereco?.tipoEndereco, { validators: [Validators.required] }]
+      // }),
       cidade: this.formBuilder.group({
         id: [this.endereco?.cidade.id, { validators: [Validators.required] }],
         // descricao: [this.endereco?.cidade.descricao, { validators: [Validators.required] }],

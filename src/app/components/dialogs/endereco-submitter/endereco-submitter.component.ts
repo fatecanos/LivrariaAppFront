@@ -76,7 +76,7 @@ export class EnderecoSubmitterComponent implements OnInit {
 
     this.formEndereco = this.formBuilder.group({
       id: [this.enderecoAtual?.id],
-      apelidoId: [this.enderecoAtual?.apelidoId],
+      apelidoId: [this.enderecoAtual?.nome],
       logradouro: [this.enderecoAtual?.logradouro, { validators: [Validators.required] }],
       cep: [this.enderecoAtual?.cep, { validators: [Validators.required] }],
       numero: [this.enderecoAtual?.numero, { validators: [Validators.required] }],
