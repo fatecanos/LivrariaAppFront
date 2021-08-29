@@ -39,6 +39,19 @@
                     }
                 }
             }
+
+            &-form_endereco {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            &-header {
+                &-endereco {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
         }
 
         &-button {

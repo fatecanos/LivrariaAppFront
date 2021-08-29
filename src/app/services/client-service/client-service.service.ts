@@ -28,7 +28,7 @@ export class ClienteService {
   }
 
   getClientById(id: number | undefined): Observable<ClienteDTO> {
-    return this.http.get<ClienteDTO>(`${this.baseUrl}/clientes/${id}`, httpOptions)
+    return this.http.get<ClienteDTO>(`${this.baseUrl}/clientes/meusdados/${id}`, httpOptions)
   }
 
   getClients(): Observable<ClienteDTO[]> {

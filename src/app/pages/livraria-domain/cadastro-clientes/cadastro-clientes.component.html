@@ -8,7 +8,7 @@
     <form [formGroup]="formularioCliente" *ngIf="!showMessage"
         class="client-form-input">
 
-        <div class="client-form-input_group">
+        <div class="client-form-input_group" *ngIf="currentStep === 0">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Nome:</mat-label>
                 <input matInput value="" formControlName="nome" id="nome">
@@ -26,7 +26,7 @@
             </mat-form-field>
         </div>
 
-        <div class="client-form-input_group">
+        <div class="client-form-input_group" *ngIf="currentStep === 0">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>Aniversário:</mat-label>
                 <input matInput value="" type="date" 
@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div class="client-form-input_group">
+        <div class="client-form-input_group" *ngIf="currentStep === 0">
             <mat-form-field class="client-form-input_group-input">
                 <mat-label>E-mail:</mat-label>
                 <input matInput type="email" formControlName="email" id="email">
@@ -96,15 +96,203 @@
             </mat-form-field>
         </div>
 
-        <div class="client-form-input_group client-form-button">
-            <button mat-button (click)="submitCustomer()" id="btnEnviar">Enviar</button>
-            <mat-progress-spinner *ngIf="isLoading"
-                class="client-form-spinner"
-                color="primary" diameter="50"
-                mode="indeterminate">
-            </mat-progress-spinner>
+        <div class="client-form-input_group" *ngIf="currentStep === 1">
+            <div class="client-form-input_group-header">
+                <h3>Endereço de Entrega</h3>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div class="client-form-input_group-form_endereco">
+                <mat-form-field>
+                    <mat-label>Apelido:</mat-label>
+                    <input matInput
+                        placeholder="(opcional)" type="text">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>CEP:</mat-label>
+                    <input matInput
+                        placeholder="00000-000" mask="00000-000" type="text">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Tipo Logradouro: </mat-label>
+                    <mat-select >
+                        <mat-option 
+                            *ngFor="let tipoLog of tipoLogradouros" 
+                            [value]="tipoLog">
+                            {{ tipoLog }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Endereço: </mat-label>
+                    <input matInput
+                        placeholder="rua, logradouro, avenida..." type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Bairro:</mat-label>
+                    <input matInput
+                        placeholder="nome do seu bairro" type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Complemento:</mat-label>
+                    <input matInput 
+                        placeholder="casa 1, ao lado de..." type="text">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Numero:</mat-label>
+                    <input matInput 
+                        type="text">
+                </mat-form-field>
+                <mat-form-field formGroupName="cidade">
+                    <mat-label>Cidade:</mat-label>
+                    <input matInput type="text" >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Estado:</mat-label>
+                    <mat-select>
+                        <mat-option
+                            *ngFor="let estado of estados" [value]="estado">
+                            {{ estado.uf }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>País:</mat-label>
+                    <input matInput 
+                        placeholder="nome do seu bairro" type="text">
+                </mat-form-field>
+                <br>
+                <mat-radio-group class="endereco-form-tipo_endereco"
+                    aria-label="Tipo de Endereço">
+
+                    <mat-label>Tipo de Endereço:</mat-label>
+
+                    <mat-radio-button value="cobranca" #inputCobranca>
+                        Cobrança
+                    </mat-radio-button>
+                    
+                    <mat-radio-button value="entrega" #inputEntrega>
+                        Entrega
+                    </mat-radio-button>
+
+                </mat-radio-group>
+            </div>
+        </div>
+
+        <div class="client-form-input_group" *ngIf="currentStep === 2">
+            <div class="client-form-input_group-header client-form-input_group-header-endereco">
+                <h3>Endereço de Cobrança</h3> 
+                <button mat-button>Copiar endereço de entrega</button>
+                <mat-divider></mat-divider>
+            </div>
+
+            <div class="client-form-input_group-form_endereco">
+                <mat-form-field>
+                    <mat-label>Apelido:</mat-label>
+                    <input matInput
+                        placeholder="(opcional)" type="text">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>CEP:</mat-label>
+                    <input matInput
+                        placeholder="00000-000" mask="00000-000" type="text">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Tipo Logradouro: </mat-label>
+                    <mat-select >
+                        <mat-option 
+                            *ngFor="let tipoLog of tipoLogradouros" 
+                            [value]="tipoLog">
+                            {{ tipoLog }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Endereço: </mat-label>
+                    <input matInput
+                        placeholder="rua, logradouro, avenida..." type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Bairro:</mat-label>
+                    <input matInput
+                        placeholder="nome do seu bairro" type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Complemento:</mat-label>
+                    <input matInput 
+                        placeholder="casa 1, ao lado de..." type="text">
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Numero:</mat-label>
+                    <input matInput 
+                        type="text">
+                </mat-form-field>
+                <mat-form-field formGroupName="cidade">
+                    <mat-label>Cidade:</mat-label>
+                    <input matInput type="text" >
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Estado:</mat-label>
+                    <mat-select>
+                        <mat-option
+                            *ngFor="let estado of estados" [value]="estado">
+                            {{ estado.uf }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <mat-form-field>
+                    <mat-label>País:</mat-label>
+                    <input matInput 
+                        placeholder="nome do seu bairro" type="text">
+                </mat-form-field>
+                <br>
+                <mat-radio-group class="endereco-form-tipo_endereco"
+                    aria-label="Tipo de Endereço">
+
+                    <mat-label>Tipo de Endereço:</mat-label>
+
+                    <mat-radio-button value="cobranca" #inputCobranca>
+                        Cobrança
+                    </mat-radio-button>
+                    
+                    <mat-radio-button value="entrega" #inputEntrega>
+                        Entrega
+                    </mat-radio-button>
+
+                </mat-radio-group>
+            </div>
         </div>
     </form>
+    <div class="client-form-input_group client-form-button">
+        <button mat-button *ngIf="currentStep !== 0" (click)="currentStep = currentStep-1">Voltar</button>
+
+        <button mat-button *ngIf="currentStep === 0" (click)="currentStep = 1">Endereço Entrega</button>
+        <button mat-button *ngIf="currentStep === 1" (click)="currentStep = 2">Endereço Cobrança</button>
+
+        <button *ngIf="currentStep === 2" 
+            mat-button (click)="submitCustomer()" 
+            id="btnEnviar" color="primary">
+            Finalizar Cadastro
+        </button>
+
+        <mat-progress-spinner *ngIf="isLoading"
+            class="client-form-spinner"
+            color="primary" diameter="50"
+            mode="indeterminate">
+        </mat-progress-spinner>
+    </div>
 
     <div class="message_container" *ngIf="showMessage">
         <div class="message_container-header">

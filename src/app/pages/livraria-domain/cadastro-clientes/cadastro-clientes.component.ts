@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { TipoEndereco } from 'src/app/models/enum/tipo-endereco.enum';
+import { EstadoDTO, TipoLogradouroDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
+import { UFs } from 'src/app/models/mocks/ufs.mock';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 function passwordMatchValidator(password: string): ValidatorFn {
@@ -27,6 +31,11 @@ export class CadastroClientesComponent {
 
   message: string = '';
   title: string = '';
+
+  estados: EstadoDTO[] = UFs;
+  tipoLogradouros: Array<string> = tiposLogradourosMock;
+
+  currentStep: number = 0;
 
   constructor(
     private clientService: ClienteService,
@@ -91,8 +100,54 @@ export class CadastroClientesComponent {
             Validators.maxLength(12),
             passwordMatchValidator('senha')
           ]
-        }),
+      }),
+      enderecos: this.formBuilder.array([
+        {
+          logradouro: ['', Validators.required],
+          bairro: ['', Validators.required],
+          numero: ['', Validators.required],
+          cep: ['', Validators.required],
+          complemento: ['', Validators.required],
+          nome: ['', Validators.required],
+          pais: ['', Validators.required],
+          tipoLogradouro: ['', Validators.required],
+          cidade: this.formBuilder.group({
+            id: [''],
+            descricao: ['', Validators.required],
+            estado: this.formBuilder.group({
+              id: ['', Validators.required]
+            })
+          }),
+          tipoEndereco: this.formBuilder.group({
+            id: [''],
+            descricao: ['', Validators.required]
+          })
+        },
+        {
+          logradouro: ['', Validators.required],
+          bairro: ['', Validators.required],
+          numero: ['', Validators.required],
+          cep: ['', Validators.required],
+          complemento: ['', Validators.required],
+          nome: ['', Validators.required],
+          pais: ['', Validators.required],
+          tipoLogradouro: ['', Validators.required],
+          cidade: this.formBuilder.group({
+            id: [''],
+            descricao: ['', Validators.required],
+            estado: this.formBuilder.group({
+              id: ['', Validators.required]
+            })
+          }),
+          tipoEndereco: this.formBuilder.group({
+            id: [''],
+            descricao: ['', Validators.required]
+          })
+        }
+      ])
     });
+
+
   }
 
 }

@@ -37,7 +37,7 @@ export class AtualizarClientesComponent implements OnInit {
   isNovoEnderecoForm: boolean = false;
 
   clienteResponse$?: Observable<ClienteDTO>;
-  CLIENTE_ID: number = 1;
+  CLIENTE_ID: number = 18;
 
   constructor(
     public dialog: MatDialog,
