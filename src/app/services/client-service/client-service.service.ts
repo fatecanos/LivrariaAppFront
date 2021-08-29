@@ -32,11 +32,8 @@ export class ClienteService {
     );
   }
 
-  getClientById(): Observable<ClienteDTO> {
-    return this.http.get<ClienteDTO>(
-      `${this.baseUrl}/clientes/meusdados/${Number(sessionStorage.getItem('isLogado'))}`,
-      httpOptions
-    );
+  getClientById(id: number | undefined): Observable<ClienteDTO> {
+    return this.http.get<ClienteDTO>(`${this.baseUrl}/clientes/meusdados/${id}`, httpOptions)
   }
 
   getClients(): Observable<ClienteDTO[]> {
