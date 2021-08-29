@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login-service/login-service.service';
 
@@ -18,7 +19,8 @@ export class PainelLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -28,7 +30,7 @@ export class PainelLoginComponent implements OnInit {
       setTimeout(() => {
         console.log('enviando');
         this.isLoading = false;
-        sessionStorage.setItem('isLogado', '1');
+        sessionStorage.setItem('idUsuario', '1');
         this.router.navigate(['/livraria']);
       }, 2000);
     }
@@ -47,7 +49,8 @@ export class PainelLoginComponent implements OnInit {
           this.isLoading = false;
 
           if (response.email != null) {
-            sessionStorage.setItem('isLogado', String(response.usuarioId));
+            sessionStorage.setItem('idUsuario', String(response.usuarioId));
+            localStorage.setItem('perfilUsuario', String(response.perfilUsuario));
             this.router.navigate(['/livraria']);
           }
         });

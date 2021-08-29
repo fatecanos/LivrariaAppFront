@@ -36,9 +36,9 @@ export class LivHeaderComponent {
     this.showPainel = false;
   }
 
-  get isLogado() {
-    let isLogado = sessionStorage.getItem('isLogado');
-    return isLogado;
+  get idUsuario() {
+    let idUsuario = sessionStorage.getItem('idUsuario');
+    return idUsuario;
   }
 
   navegaCliente() {

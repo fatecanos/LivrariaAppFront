@@ -7,7 +7,7 @@
         <input type="text"><button mat-button color="accent">Pesquisar</button>
     </div>
     <div class="liv-header-right_painel" >
-        <a *ngIf="!isLogado"
+        <a *ngIf="!idUsuario"
             class="liv-header-right_painel-account" (click)="showPainel = !showPainel">
             <span class="liv-header-right_painel-account-login">
                 Olá, Faça seu login
@@ -20,7 +20,7 @@
             </div>
         </a>
 
-        <a *ngIf="isLogado"
+        <a *ngIf="idUsuario"
             class="liv-header-right_painel-account" (click)="navegaCliente()">
             <span class="liv-header-right_painel-account-login">
                 Olá, Cliente
@@ -34,7 +34,7 @@
 
         <div class="liv-header-right_painel-cart">
             <mat-icon (click)="navigateToCart()">shopping_cart</mat-icon>
-            <a (click)="logout()" *ngIf="isLogado">Sair</a>
+            <a (click)="logout()" *ngIf="idUsuario">Sair</a>
         </div>
     </div>
 </mat-toolbar>

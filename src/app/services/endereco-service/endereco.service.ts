@@ -30,7 +30,7 @@ export class EnderecoService {
     console.log(`n worka???`)
 
     return this.http.post<MessageInterface>(
-      `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
+      `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('idUsuario'))}`,
       enderecoDTO,
       httpOptions
     );

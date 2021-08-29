@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
   ValidatorFn,
   Validators,
@@ -51,7 +49,7 @@ export class AtualizarClientesComponent implements OnInit {
   isNovoEnderecoForm: boolean = false;
 
   clienteResponse$?: Observable<ClienteDTO>;
-  CLIENTE_ID: number = 18;
+  CLIENTE_ID: number = Number.parseInt(sessionStorage.getItem('idUsuario') || '0');
 
   constructor(
     public dialog: MatDialog,
@@ -62,12 +60,12 @@ export class AtualizarClientesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.clienteResponse$ = this.clienteService.getClientById();
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
 
     //TODO: integrar busca do cliente a partir da sessao de usuario
     this.clienteResponse$.subscribe((response) => {
       this.formDadosCliente = this.formBuilder.group({
-        id: Number(sessionStorage.getItem('isLogado')),
+        id: Number(sessionStorage.getItem('idUsuario')),
         nome: [response.nome, { validators: [Validators.required] }],
         sobrenome: [response.sobrenome, { validators: [Validators.required] }],
         dataNascimento: [
@@ -210,7 +208,7 @@ export class AtualizarClientesComponent implements OnInit {
   }
 
   atualizarEstado() {
-    this.clienteResponse$ = this.clienteService.getClientById();
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     this.clienteResponse$.subscribe((response) => {
       this.dadosCliente = response;
     });
@@ -222,7 +220,7 @@ export class AtualizarClientesComponent implements OnInit {
       data: 'ola',
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.clienteResponse$ = this.clienteService.getClientById();
+      this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
     });
   }
 
@@ -241,6 +239,6 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarEnderecos(event: any) {
     console.log('obteve evento');
-    this.clienteResponse$ = this.clienteService.getClientById();
+    this.clienteResponse$ = this.clienteService.getClientById(this.CLIENTE_ID);
   }
 }

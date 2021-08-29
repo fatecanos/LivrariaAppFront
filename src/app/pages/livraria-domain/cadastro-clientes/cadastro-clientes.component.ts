@@ -102,12 +102,33 @@ export class CadastroClientesComponent {
           ]
       }),
       enderecos: this.formBuilder.array([
-        {
+        this.formBuilder.group({
           logradouro: ['', Validators.required],
           bairro: ['', Validators.required],
           numero: ['', Validators.required],
           cep: ['', Validators.required],
-          complemento: ['', Validators.required],
+          complemento: [''],
+          nome: ['', Validators.required],
+          pais: ['', Validators.required],
+          tipoLogradouro: ['', Validators.required],
+          cidade: this.formBuilder.group({
+            id: [''],
+            descricao: ['', Validators.required],
+            estado: this.formBuilder.group({
+              id: ['', Validators.required]
+            })
+          }),
+          tipoEndereco: this.formBuilder.group({
+            id: [1],
+            descricao: ['Entrega']
+          })
+        }),
+        this.formBuilder.group({
+          logradouro: ['', Validators.required],
+          bairro: ['', Validators.required],
+          numero: ['', Validators.required],
+          cep: ['', Validators.required],
+          complemento: [''],
           nome: ['', Validators.required],
           pais: ['', Validators.required],
           tipoLogradouro: ['', Validators.required],
@@ -122,28 +143,7 @@ export class CadastroClientesComponent {
             id: [''],
             descricao: ['', Validators.required]
           })
-        },
-        {
-          logradouro: ['', Validators.required],
-          bairro: ['', Validators.required],
-          numero: ['', Validators.required],
-          cep: ['', Validators.required],
-          complemento: ['', Validators.required],
-          nome: ['', Validators.required],
-          pais: ['', Validators.required],
-          tipoLogradouro: ['', Validators.required],
-          cidade: this.formBuilder.group({
-            id: [''],
-            descricao: ['', Validators.required],
-            estado: this.formBuilder.group({
-              id: ['', Validators.required]
-            })
-          }),
-          tipoEndereco: this.formBuilder.group({
-            id: [''],
-            descricao: ['', Validators.required]
-          })
-        }
+        })
       ])
     });
 

@@ -96,28 +96,30 @@
             </mat-form-field>
         </div>
 
-        <div class="client-form-input_group" *ngIf="currentStep === 1">
+        <div class="client-form-input_group" *ngIf="currentStep === 1" 
+            formArrayName="enderecos">
+
             <div class="client-form-input_group-header">
                 <h3>Endereço de Entrega</h3>
                 <mat-divider></mat-divider>
             </div>
 
             <div class="client-form-input_group-form_endereco">
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Apelido:</mat-label>
-                    <input matInput
+                    <input matInput formControlName="nome"
                         placeholder="(opcional)" type="text">
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>CEP:</mat-label>
-                    <input matInput
+                    <input matInput formControlName="cep"
                         placeholder="00000-000" mask="00000-000" type="text">
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Tipo Logradouro: </mat-label>
-                    <mat-select >
+                    <mat-select formControlName="tipoLogradouro">
                         <mat-option 
                             *ngFor="let tipoLog of tipoLogradouros" 
                             [value]="tipoLog">
@@ -126,30 +128,30 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Endereço: </mat-label>
-                    <input matInput
+                    <input matInput formControlName="logradouro"
                         placeholder="rua, logradouro, avenida..." type="text">
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Bairro:</mat-label>
-                    <input matInput
+                    <input matInput fromControlName="bairro"
                         placeholder="nome do seu bairro" type="text">
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Complemento:</mat-label>
-                    <input matInput 
+                    <input matInput formControlName="complemento"
                         placeholder="casa 1, ao lado de..." type="text">
                 </mat-form-field>
                 <br>
-                <mat-form-field>
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Numero:</mat-label>
-                    <input matInput 
-                        type="text">
+                    <input matInput formControlName="numero" type="text">
                 </mat-form-field>
-                <mat-form-field formGroupName="cidade">
+
+                <mat-form-field [formGroupName]="0">
                     <mat-label>Cidade:</mat-label>
-                    <input matInput type="text" >
+                    <input matInput formControlNname="cidade" type="text" >
                 </mat-form-field>
 
                 <mat-form-field>

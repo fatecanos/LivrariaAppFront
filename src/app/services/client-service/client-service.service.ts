@@ -44,7 +44,7 @@ export class ClienteService {
     clientData?: ClienteDTO
   ): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(
-      `${this.baseUrl}/clientes?usuarioID=${Number(sessionStorage.getItem('isLogado'))}`,
+      `${this.baseUrl}/clientes?usuarioID=${Number(sessionStorage.getItem('idUsuario'))}`,
       clientData,
       httpOptions
     );

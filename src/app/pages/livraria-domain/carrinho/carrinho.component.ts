@@ -43,8 +43,8 @@ export class CarrinhoComponent implements OnInit {
   ngOnInit(): void {
     this.carrinho$ = this.carrinhoService.obterItens();
     this.atualizaTotais();
-    this.isUsuarioAutenticado = !!sessionStorage.getItem('isLogado');
-    this.idCliente = Number.parseInt(sessionStorage.getItem('isLogado') || '0');
+    this.isUsuarioAutenticado = !!sessionStorage.getItem('idUsuario');
+    this.idCliente = Number.parseInt(sessionStorage.getItem('idUsuario') || '0');
 
     //TODO: integrar cliente autenticado
     this.dadosCliente$ = this.clienteService.getClientById();

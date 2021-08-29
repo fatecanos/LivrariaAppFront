@@ -30,7 +30,7 @@ export class TelefoneService {
 
   atualizarTelefone(telefoneDto: TelefoneDTO): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(
-      `${this.baseUrl}/telefone/${Number(sessionStorage.getItem('isLogado'))}`,
+      `${this.baseUrl}/telefone/${Number(sessionStorage.getItem('idUsuario'))}`,
       telefoneDto,
       httpOptions
     );
