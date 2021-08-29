@@ -66,7 +66,7 @@ export class AtualizarClientesComponent implements OnInit {
     //TODO: integrar busca do cliente a partir da sessao de usuario
     this.clienteResponse$.subscribe((response) => {
       this.formDadosCliente = this.formBuilder.group({
-        id: Number(sessionStorage.getItem('isLogado')),
+        id: response.id,
         nome: [response.nome, { validators: [Validators.required] }],
         sobrenome: [response.sobrenome, { validators: [Validators.required] }],
         dataNascimento: [

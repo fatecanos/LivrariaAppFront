@@ -65,13 +65,15 @@
                     Endereço de email <strong>inválido.</strong>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="client-form-input_group-input">
+            <mat-form-field class="client-form-input_group-input" formArrayName="telefones">
                 <mat-label>Telefone Principal:</mat-label>
-                <input mask="(00) 0000-0000" formControlName="telefone" id="telefone"
+                <div [formGroupName]="0">
+                    <input mask="(00) 0000-0000" formControlName="telefone" id="telefone"
                     matInput type="text" placeholder="(ddd) 0000-0000">
-                <mat-error *ngIf="formularioCliente.get('telefone')?.hasError('required')">
-                    O telefone é <strong>obrigatório.</strong>
-                </mat-error>
+                    <mat-error *ngIf="formularioCliente.get('telefone')?.hasError('required')">
+                        O telefone é <strong>obrigatório.</strong>
+                    </mat-error>
+                </div>
             </mat-form-field>
             <br>
             <mat-form-field class="client-form-input_group-input">

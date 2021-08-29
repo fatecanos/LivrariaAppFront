@@ -52,17 +52,18 @@ export interface TipoLogradouroDTO {
   descricao: string;
 }
 
-export interface BandeiraCartaoDTO {
+export interface BandeiraCartaoClienteDTO {
   id: number;
   descricao: string;
 }
 
 export interface CartaoClienteDTO {
   id: number;
-  numero: string;
-  nome: string;
   bandeira: string;
-  isPrincipal: boolean;
+  isPreferencial: boolean;
+  codigoSeguranca: string;
+  nomeImpressoCartao: string;
+  numeroCartao: string;
 }
 
 export interface EnderecoSimplificadoDTO {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 
 function passwordMatchValidator(password: string): ValidatorFn {
@@ -30,7 +31,8 @@ export class CadastroClientesComponent {
 
   constructor(
     private clientService: ClienteService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar) {
     this.initForm();
   }
 
@@ -43,8 +45,10 @@ export class CadastroClientesComponent {
             this.title = response.title
             this.message = response.description;
             this.isSuccess = true;
+            this.snackBar.open(`cliente cadastrado com sucesso`, `fechar`, {duration: 3000})
           }, (error)=> {
-            console.log(error);
+            this.snackBar.open(error.error.description, `fechar`, {duration: 3000})
+            console.log(`Erro ao cadastrar:`, error);
           }, ()=> {
             this.showMessage = true;
             this.isLoading = false
@@ -70,7 +74,11 @@ export class CadastroClientesComponent {
         ]
       }),
 
-      telefone: ['', { validators: [Validators.required]} ],
+      telefones: this.formBuilder.array([
+        this.formBuilder.group({
+          telefone: ['', Validators.required]
+        })
+      ]),
 
       email: ['', {validators: [Validators.required, Validators.email]}],
 
