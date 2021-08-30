@@ -19,7 +19,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   novoCartaoForm: FormGroup = new FormGroup({});
   isNovoCartaoForm: boolean = false;
-  
+
   idCartaoSelecionado?: number;
 
   cartoes$?: Observable<CartaoClienteDTO[]>;
@@ -59,16 +59,16 @@ export class LivCartoesFormComponent implements OnInit {
     if(this.novoCartaoForm.valid) {
       let cartao: CartaoClienteDTO = this.novoCartaoForm.value;
       console.log("novo-cartao:", cartao);
-      
+
       //salvar cartao
-      this.service.gravar(cartao).subscribe(response => {
-        this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
-        this.isNovoCartaoForm = false;
-      }, err => {
-        this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
-      }, () => {
-        this.init();
-      })
+      // this.service.gravar(cartao).subscribe(response => {
+      //   this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
+      //   this.isNovoCartaoForm = false;
+      // }, err => {
+      //   this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
+      // }, () => {
+      //   this.init();
+      // })
     }
   }
 
@@ -84,7 +84,7 @@ export class LivCartoesFormComponent implements OnInit {
         let cartaoPreferencial = response.find(cartao => {
           return cartao.isPreferencial;
         })
-  
+
         this.idCartaoSelecionado = cartaoPreferencial?.id;
       })
     });

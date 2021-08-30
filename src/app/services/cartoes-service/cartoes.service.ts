@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';  
 import { CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { environment } from 'src/environments/environment';
 
@@ -8,12 +8,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CartoesService {
-  baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   getCartoes(): Observable<CartaoClienteDTO[]> {
-    return this.http.get<CartaoClienteDTO[]>(this.baseUrl+'/cartoes');
+    return this.http.get<CartaoClienteDTO[]>(`${this.baseUrl}/cartoes/${Number(sessionStorage.getItem('isLogado'))}`);
   }
 
   gravar(cartao: CartaoClienteDTO) {
