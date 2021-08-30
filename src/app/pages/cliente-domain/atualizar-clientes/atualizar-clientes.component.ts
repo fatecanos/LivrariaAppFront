@@ -66,7 +66,7 @@ export class AtualizarClientesComponent implements OnInit {
     //TODO: integrar busca do cliente a partir da sessao de usuario
     this.clienteResponse$.subscribe((response) => {
       this.formDadosCliente = this.formBuilder.group({
-        id: Number(sessionStorage.getItem('isLogado')),
+        id: response.id,
         nome: [response.nome, { validators: [Validators.required] }],
         sobrenome: [response.sobrenome, { validators: [Validators.required] }],
         dataNascimento: [
@@ -174,6 +174,8 @@ export class AtualizarClientesComponent implements OnInit {
         () => {
           this.atualizarEstado();
           this.isLoading = false;
+          this.clienteResponse$ = this.clienteService.getClientById();
+          this.ngOnInit();
         }
       );
     }
@@ -190,7 +192,7 @@ export class AtualizarClientesComponent implements OnInit {
         (response) => {
           this.isLoading = false;
           this._snackBar.open(
-            'senha do cliente foi atualizada com sucesso',
+            response.description,
             'fechar',
             { duration: 5000 }
           );
@@ -241,6 +243,7 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarEnderecos(event: any) {
     console.log('obteve evento');
-    this.clienteResponse$ = this.clienteService.getClientById();
+    this.isNovoEnderecoForm = false;
+    this.ngOnInit();
   }
 }

@@ -62,11 +62,11 @@
             </span>
 
             <div *ngIf="isNovoEnderecoForm">
-                <novo-endereco-form></novo-endereco-form>
+                <novo-endereco-form (enderecoEnviado)="atualizarEnderecos($event)"></novo-endereco-form>
             </div>
 
             <div class="client_update-tabs_container-message">
-                <button mat-button (click)="isNovoEnderecoForm = !isNovoEnderecoForm">
+                <button mat-button id="maisEndereco" (click)="isNovoEnderecoForm = !isNovoEnderecoForm">
                     {{ isNovoEnderecoForm? 'Cancelar': '+ Endereço' }}
                 </button>
             </div>

@@ -275,7 +275,7 @@
         "descricao": "Visa"
       },
       "codigoSeguranca": "899",
-      "isPrincipal": false
+      "isPreferencial": false
     }
   ],
   "enderecos": [

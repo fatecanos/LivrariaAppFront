@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartaoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 
