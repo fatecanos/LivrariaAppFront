@@ -11,7 +11,7 @@
     <mat-form-field>
       <mat-label>CEP:</mat-label>
       <input matInput formControlName="cep" placeholder="00000-000" mask="00000-000" type="text"
-        (change)="consultarCEP()">
+        (keyup)="consultarCEP($event)">
     </mat-form-field>
 
     <mat-form-field>

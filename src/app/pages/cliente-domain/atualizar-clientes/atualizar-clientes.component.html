@@ -62,7 +62,7 @@
             </span>
 
             <div *ngIf="isNovoEnderecoForm">
-                <novo-endereco-form></novo-endereco-form>
+                <novo-endereco-form (enderecoEnviado)="atualizarEnderecos($event)"></novo-endereco-form>
             </div>
 
             <div class="client_update-tabs_container-message">

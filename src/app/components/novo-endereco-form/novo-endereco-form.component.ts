@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import {
   CidadeDTO,
   EnderecoDTO,
   EstadoDTO,
-  TipoEnderecoDTO,
-  TipoLogradouroDTO,
+  TipoEnderecoDTO
 } from 'src/app/models/interfaces/dto/client.interface';
 import { tipoEnderecosMock } from 'src/app/models/mocks/tipoEndereco.mock';
 import { tiposLogradourosMock } from 'src/app/models/mocks/tipoLogradouro.mock';
@@ -36,9 +37,13 @@ export class NovoEnderecoFormComponent implements OnInit {
   selectedEstado: EstadoDTO = { id: 25, uf: 'SP' };
   selectedCidade: CidadeDTO = { id: 4706, nome: 'Adamantina' };
 
+  enderecoEnviado: EventEmitter<boolean> = new EventEmitter();
+
   constructor(
     private formBuilder: FormBuilder,
-    private enderecoService: EnderecoService
+    private enderecoService: EnderecoService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +57,7 @@ export class NovoEnderecoFormComponent implements OnInit {
       logradouro: ['', { validators: [Validators.required] }],
       cep: ['', { validators: [Validators.required] }],
       numero: ['', { validators: [Validators.required] }],
-      complemento: ['', { validators: [Validators.required] }],
+      complemento: [''],
       bairro: ['', { validators: [Validators.required] }],
       tipoEnderecoID: ['', { validators: [Validators.required] }],
       tipoLogradouro: [
@@ -96,16 +101,21 @@ export class NovoEnderecoFormComponent implements OnInit {
     this.enderecoService
       .salvarNovoEndereco(enderecoDTO)
       .subscribe((message) => {
-        console.log(`Retorna???? ${message}`);
+        this.snackBar.open(message.description, 'fechar')
+      }, err => {
+        this.snackBar.open(err.error.description, 'fechar')
+      }, () => {
+        console.log('disparou evento');
+        this.enderecoEnviado.emit(true) 
       });
   }
 
-  consultarCEP() {
+  consultarCEP(event: any) {
     var cep = this.formEndereco?.controls['cep'].value;
 
-    if (cep?.length === 8) {
+    if (cep?.length >=7) {
       this.enderecoService
-        .obterEnderecoPorCep('01311200')
+        .obterEnderecoPorCep(cep)
         .subscribe((response) => {
           if (response !== null) {
             this.formEndereco?.controls['pais'].setValue('Brasil');

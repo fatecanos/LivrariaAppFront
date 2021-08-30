@@ -26,9 +26,6 @@ export class EnderecoService {
   constructor(private http: HttpClient) {}
 
   salvarNovoEndereco(enderecoDTO: EnderecoDTO): Observable<MessageInterface> {
-
-    console.log(`n worka???`)
-
     return this.http.post<MessageInterface>(
       `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
       enderecoDTO,
@@ -61,5 +58,9 @@ export class EnderecoService {
   obterEnderecoPorCep(cep: string): Observable<any> {
     let endereco: EnderecoDTO;
     return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json/`);
+  }
+
+  removerEndereco(idEndereco: number){
+    return this.http.delete(`${this.baseUrl}/endereco/${idEndereco}`, httpOptions);
   }
 }

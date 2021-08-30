@@ -173,6 +173,8 @@ export class AtualizarClientesComponent implements OnInit {
         () => {
           this.atualizarEstado();
           this.isLoading = false;
+          this.clienteResponse$ = this.clienteService.getClientById();
+          this.ngOnInit();
         }
       );
     }
@@ -189,7 +191,7 @@ export class AtualizarClientesComponent implements OnInit {
         (response) => {
           this.isLoading = false;
           this._snackBar.open(
-            'senha do cliente foi atualizada com sucesso',
+            response.description,
             'fechar',
             { duration: 5000 }
           );
@@ -240,6 +242,8 @@ export class AtualizarClientesComponent implements OnInit {
 
   atualizarEnderecos(event: any) {
     console.log('obteve evento');
+    this.isNovoEnderecoForm = false;
     this.clienteResponse$ = this.clienteService.getClientById();
+    this.ngOnInit();
   }
 }

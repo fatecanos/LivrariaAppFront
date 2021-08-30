@@ -69,7 +69,7 @@ export class LivEnderecoFormComponent implements OnInit {
     const dialogRef = this.dialog.open(InativarEnderecoDialogComponent, {
       width: '250px',
       data: {
-        idCliente: this.CLIENTE_ID
+        idEndereco: this.endereco?.id
       },
     });
 

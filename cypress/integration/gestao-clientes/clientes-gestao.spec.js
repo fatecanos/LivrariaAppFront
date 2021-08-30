@@ -38,9 +38,9 @@ describe('Gestão de Clientes - Modulo', function() {
 
         cy.get('.painel_login-container').within(()=> {
             cy.get('#inputEmail')
-                .type('lucas@gmail.com')
+                .type('fabio@gmail.com')
             cy.get('#inputSenha')
-                .type('12345')
+                .type('lucas')
         });
 
         cy.get('.painel_login-container-form > button').click();
