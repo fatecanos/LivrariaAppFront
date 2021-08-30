@@ -1,6 +1,6 @@
 describe('Gestão de Clientes - Modulo', function() {
     
-    it.skip('RF0021 - Deve cadastrar um cliente', function() {
+    it('RF0021 - Deve cadastrar um cliente', function() {
         cy.visit('http://localhost:4200/livraria/novo-cliente'); 
         cy.get('.client-form-input').within(()=> {
             cy.get('#nome')
@@ -110,7 +110,7 @@ describe('Gestão de Clientes - Modulo', function() {
         cy.get('div[role=tab]').eq(2).click()     
     }),
 
-    it.skip('RF0022 - Deve atualizar email', ()=> {
+    it('RF0022 - Deve atualizar email', ()=> {
         //Email
         cy.get('div[role=tab]').eq(3).click().then(()=> {
             cy.get('#txtEmail').type('gabriel@gmail.com')
@@ -120,7 +120,7 @@ describe('Gestão de Clientes - Modulo', function() {
         })
     }),
 
-    it.skip('RF0022 - Deve atualizar senha', () => {
+    it('RF0022 - Deve atualizar senha', () => {
         // Senha
         cy.get('div[role=tab]').eq(4).click().then(()=> {
             cy.get('#txtSenha').type('gabriel')

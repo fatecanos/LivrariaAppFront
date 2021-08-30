@@ -243,7 +243,6 @@ export class AtualizarClientesComponent implements OnInit {
   atualizarEnderecos(event: any) {
     console.log('obteve evento');
     this.isNovoEnderecoForm = false;
-    this.clienteResponse$ = this.clienteService.getClientById();
     this.ngOnInit();
   }
 }
