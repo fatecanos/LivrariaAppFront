@@ -1,5 +1,5 @@
 <div class="endereco-submitter">
-    <h3>{{ enderecoAtual?.nome || "Novo Endereço" }}</h3>
+    <h3>{{ enderecoAtual?.apelidoId || "Novo Endereço" }}</h3>
     <mat-divider></mat-divider>
 
     <form [formGroup]="formEndereco" class="endereco-form-tabs_container-form">
@@ -50,9 +50,9 @@
 
         <mat-form-field>
             <mat-label>Estado:</mat-label>
-            <mat-select [(value)]="selectedEstado">
+            <mat-select [(value)]="selectedEstado.id">
                 <mat-option
-                    *ngFor="let estado of estados" [value]="estado">
+                    *ngFor="let estado of estados" [value]="estado.id">
                     {{ estado.uf }}
                 </mat-option>
             </mat-select>
@@ -65,27 +65,30 @@
         </mat-form-field>
         <br>
         <mat-radio-group class="endereco-form-tabs_container-form-tipo_endereco"
-            aria-label="Tipo de Endereço">
+            aria-label="Tipo de Endereço" formControlName="tipoEndereco">
 
             <mat-label>Tipo de Endereço:</mat-label>
 
-            <mat-radio-button value="cobranca" #inputCobranca
-                [checked]="formEndereco?.get('tipoEndereco')?.value === 'cobranca'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputCobranca.value)">
+            <mat-radio-button [value]="TIPO_COBRANCA" #inputCobranca
+                [checked]="formEndereco?.get('tipoEndereco')?.get('descricao')?.value === 'COBRANÇA'"
+                (click)="formEndereco?.get('tipoEndereco').patchValue(inputCobranca.value)">
                 Cobrança
             </mat-radio-button>
 
             <mat-radio-button
-                value="entrega" #inputEntrega
-                [checked]="formEndereco?.get('tipoEndereco')?.value  === 'entrega'"
-                (click)="formEndereco?.get('tipoEndereco')?.patchValue(inputEntrega.value)">
+                [value]="TIPO_ENTREGA" #inputEntrega 
+                [checked]="formEndereco?.get('tipoEndereco')?.get('descricao')?.value  === 'ENTREGA'"
+                (click)="formEndereco?.get('tipoEndereco').patchValue(inputEntrega.value)">
                 Entrega
             </mat-radio-button>
 
         </mat-radio-group>
     </form>
     <div class="button">
-        <button mat-button *ngIf="enderecoAtual">Atualizar</button>
-        <button mat-button *ngIf="!enderecoAtual">Enviar</button>
+        <button mat-button 
+            (click)="atualizarEndereco()">
+            Atualizar
+        </button>
+        <!-- <button mat-button *ngIf="!enderecoAtual">Enviar</button> [disabled]="formEndereco?.invalid" -->
     </div>
 </div>

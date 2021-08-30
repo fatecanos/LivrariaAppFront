@@ -33,6 +33,7 @@ export interface EnderecoDTO {
 export interface CidadeDTO {
   id: number;
   nome?: string;
+  estado?: EstadoDTO
 }
 
 export interface EstadoDTO {
@@ -82,5 +83,7 @@ export interface EnderecoSimplificadoDTO {
 
 export interface TipoEnderecoDTO {
   id: number;
-  nome?: string;
+  dataCriacao?: Date,
+  ativo?: boolean,
+  descricao?: string;
 }
