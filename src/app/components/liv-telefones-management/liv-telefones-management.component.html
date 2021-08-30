@@ -2,31 +2,35 @@
   <div class="telefones-management-content" *ngFor="let telefoneGroup of telefonesArrayForm?.controls; let i = index;">
     <mat-form-field class="telefones-management-content-form_field" [formGroup]="telefoneGroup">
       <mat-label>Telefone {{i+1}}:</mat-label>
-      <input mask="(00) 0000-0000" formControlName="telefone" matInput type="text" placeholder="(00) 0000-0000">
+      <input mask="(00) 0000-0000" class="txtDadosTel"
+        formControlName="telefone" matInput type="text" placeholder="(00) 0000-0000">
       <mat-error>
         O telefone é um campo <strong>obrigatório.</strong>
       </mat-error>
     </mat-form-field>
-    <button mat-button (click)="alterarTelefone(telefoneGroup)">Atualizar</button>
-    <button mat-button color="warn" (click)="inativarTelefone(telefoneGroup)">Excluir</button>
+    <button mat-button (click)="alterarTelefone(telefoneGroup)" class="btnAtualizaTel">Atualizar</button>
+    <button mat-button color="warn" (click)="inativarTelefone(telefoneGroup)" class="btnRemoveTel">Excluir</button>
   </div>
   <div class="telefones-management-content" *ngIf="!telefones?.length">
     <span>Nenhum Telefone foi encontrado</span>
   </div>
   <div class="telefones-management-content">
-    <div class="telefones-management-content-new_phone" *ngIf="hasSendNew">
+    <form class="telefones-management-content-new_phone" *ngIf="hasSendNew" [formGroup]="novoTelefoneForm">
       <mat-form-field class="telefones-management-form_field">
         <mat-label>Novo Telefone:</mat-label>
-        <input mask="(00) 0000-0000" matInput type="text" placeholder="(00) 0000-0000">
+        <input mask="(00) 0000-0000" formControlName="telefone" id="txtNovoTelefone"
+          matInput type="text" placeholder="(00) 0000-0000">
         <mat-error>
           O telefone é um campo <strong>obrigatório.</strong>
         </mat-error>
       </mat-form-field>
       <div>
         <button mat-button (click)="clearForm()">Cancelar</button>
-        <button mat-button>Enviar</button>
+        <button mat-button (click)="enviarNovo()" 
+          [disabled]="novoTelefoneForm.invalid" 
+          id="btnNovoTel">Enviar</button>
       </div>
-    </div>
-    <button mat-button (click)="initForm()">+ Telefone</button>
+    </form>
+    <button mat-button (click)="initForm()" id="maisTel">+ Telefone</button>
   </div>
 </div>

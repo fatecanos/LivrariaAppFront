@@ -10,8 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import {
-  ClienteDTO,
-  TelefoneDTO,
+  TelefoneDTO
 } from 'src/app/models/interfaces/dto/client.interface';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
 import { TelefoneService } from 'src/app/services/telefone-service/telefone.service';
@@ -59,8 +58,7 @@ export class LivTelefonesManagementComponent implements OnInit {
   initForm() {
     this.hasSendNew = true;
     this.novoTelefoneForm = this.formBuilder.group({
-      id: [''],
-      telefone: ['', { validators: [Validators.required] }],
+      telefone: ['', { validators: [Validators.required, Validators.minLength(10)] }],
     });
   }
 
@@ -99,7 +97,6 @@ export class LivTelefonesManagementComponent implements OnInit {
   }
 
   inativarTelefone(telefoneForm: FormGroup) {
-    console.log(telefoneForm.controls['telefone'].value);
     let telefone: TelefoneDTO;
     telefone = telefoneForm.value;
 
@@ -107,8 +104,23 @@ export class LivTelefonesManagementComponent implements OnInit {
       width: '250px',
       data: telefone,
     });
+
     dialogRef.afterClosed().subscribe((result) => {
-      this.router.navigate(['/clientes']);
+      this.ngOnInit()
     });
+  }
+
+  enviarNovo() {
+    if(!this.novoTelefoneForm?.invalid) {
+      let payload = this.novoTelefoneForm?.value;
+      this.telefoneService.save(payload).subscribe(res => {
+        this.hasSendNew = false;
+        this._snackBar.open(`telefone gravado com sucesso`, 'fechar')
+      }, err => {
+        this._snackBar.open(err.error.description, 'fechar')
+      }, ()=> {
+        this.ngOnInit()
+      })
+    }
   }
 }

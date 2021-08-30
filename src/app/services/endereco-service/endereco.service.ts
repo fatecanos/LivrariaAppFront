@@ -26,9 +26,6 @@ export class EnderecoService {
   constructor(private http: HttpClient) {}
 
   salvarNovoEndereco(enderecoDTO: EnderecoDTO): Observable<MessageInterface> {
-
-    console.log(`n worka???`)
-
     return this.http.post<MessageInterface>(
       `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
       enderecoDTO,
@@ -37,7 +34,6 @@ export class EnderecoService {
   }
 
   getAddressById(id: number): Observable<EnderecoDTO[]> {
-    //mockado
     return this.http.get<EnderecoDTO[]>(
       `${this.baseUrl}/enderecos/${id}`,
       httpOptions
@@ -45,7 +41,6 @@ export class EnderecoService {
   }
 
   obterTodosEnderecosCliente(idCliente: number): Observable<EnderecoDTO[]> {
-    //está mockada, lembrar de ajustar
     return this.http.get<EnderecoDTO[]>(
       `${this.baseUrl}/enderecos`,
       httpOptions
@@ -59,7 +54,16 @@ export class EnderecoService {
   }
 
   obterEnderecoPorCep(cep: string): Observable<any> {
-    let endereco: EnderecoDTO;
     return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json/`);
+  }
+
+  removerEndereco(idEndereco: number){
+    return this.http.delete(`${this.baseUrl}/endereco/${idEndereco}`, httpOptions);
+  }
+
+  atualizar(endereco: EnderecoDTO): Observable<MessageInterface> {
+    return this.http
+      .put<MessageInterface>(`${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`, 
+          endereco, httpOptions)
   }
 }

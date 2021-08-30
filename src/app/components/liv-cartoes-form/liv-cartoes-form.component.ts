@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
-import { BandeiraCartaoDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { BandeiraCartaoClienteDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 import { InativarCartaoDialogComponent } from '../dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
@@ -16,7 +15,7 @@ import { InativarCartaoDialogComponent } from '../dialogs/inativar-cartao-dialog
 })
 export class LivCartoesFormComponent implements OnInit {
 
-  bandeirasCartao: BandeiraCartaoDTO[] = bandeirasMock;
+  bandeirasCartao: BandeiraCartaoClienteDTO[] = bandeirasMock;
 
   novoCartaoForm: FormGroup = new FormGroup({});
   isNovoCartaoForm: boolean = false;
@@ -40,7 +39,7 @@ export class LivCartoesFormComponent implements OnInit {
       nome: ['', { validators: [Validators.required] }],
       bandeira: ['', { validators: [Validators.required] }],
       codigoSeguranca: ['', { validators: [Validators.required]}],
-      isPrincipal: [false, { validators: [Validators.required] }]
+      isPreferencial: [false, { validators: [Validators.required] }]
     })
   }
 
@@ -49,7 +48,7 @@ export class LivCartoesFormComponent implements OnInit {
 
     this.cartoes$.subscribe(response => {
       let cartaoPreferencial = response.find(cartao => {
-        return cartao.isPrincipal;
+        return cartao.isPreferencial;
       })
 
       this.idCartaoSelecionado = cartaoPreferencial?.id;
@@ -58,7 +57,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
-      let cartao: CartaoCreditoDTO = this.novoCartaoForm.value;
+      let cartao: CartaoClienteDTO = this.novoCartaoForm.value;
       console.log("novo-cartao:", cartao);
 
       //salvar cartao
@@ -83,7 +82,7 @@ export class LivCartoesFormComponent implements OnInit {
       this.cartoes$ = this.service.getCartoes();
       this.cartoes$.subscribe(response => {
         let cartaoPreferencial = response.find(cartao => {
-          return cartao.isPrincipal;
+          return cartao.isPreferencial;
         })
 
         this.idCartaoSelecionado = cartaoPreferencial?.id;

@@ -35,4 +35,12 @@ export class TelefoneService {
       httpOptions
     );
   }
+
+  save(telefoneDto: TelefoneDTO): Observable<MessageInterface> {
+    return this.http.post<MessageInterface>(
+      `${this.baseUrl}/telefone/${Number(sessionStorage.getItem('isLogado'))}`, 
+      telefoneDto,
+      httpOptions  
+    ); 
+  }
 }

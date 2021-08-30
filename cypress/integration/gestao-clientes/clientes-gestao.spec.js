@@ -33,14 +33,14 @@ describe('Gestão de Clientes - Modulo', function() {
         });        
     }),
 
-    it('RF0022 - Deve alterar dados cadastrais do cliente', ()=> {
+    it('RF0022 - Deve gerenciar dados cadastrais do cliente', ()=> {
         cy.visit('http://localhost:4200/livraria/login'); 
 
         cy.get('.painel_login-container').within(()=> {
             cy.get('#inputEmail')
-                .type('lucas@gmail.com')
+                .type('fabio@gmail.com')
             cy.get('#inputSenha')
-                .type('12345')
+                .type('lucas')
         });
 
         cy.get('.painel_login-container-form > button').click();
@@ -53,12 +53,64 @@ describe('Gestão de Clientes - Modulo', function() {
         cy.get('#cpf').clear().type('47126964862')
         cy.get('#btnAtualizaDados').click()
 
-        // //Atualiza Telefone
-        // cy.get('div[role=tab]').eq(1).click()
+    }),
 
-        // //Endereco
-        // cy.get('div[role=tab]').eq(2).click()
+    it('RF0022 - Deve gerenciar Telefones do cliente', ()=> {
+        cy.visit('http://localhost:4200/clientes')
+        //Atualiza Telefone
+        cy.get('div[role=tab]').eq(1).click().then(()=> {
+            //add
+            cy.get('#maisTel').click().then(()=> {
+                cy.get('#txtNovoTelefone').type('11997477173')
+                cy.get('#btnNovoTel').click()
+            })
 
+            //atualiza
+            // cy.get('mat-form-field').first().click({ force: true }).within(()=> {
+            //     cy.get('input').first().clear().type('1198465674')
+            // })
+            // cy.get('.mat-focus-indicator').first().click()
+
+            // //add
+            // cy.get('#maisTel').click().then(()=> {
+            //     cy.get('#txtNovoTelefone').type('11997477173')
+            //     cy.get('#btnNovoTel').click()
+            // })
+
+            //remover
+            // cy.get.get('.btnRemoveTel').first().click();
+            // cy.get('.mat-focus-indicator').eq(0).click()
+
+        })
+    }),
+
+    it('RF0022 - Deve gerenciar Endereços do cliente', ()=> {
+        //Endereco
+        cy.get('div[role=tab]').eq(2).click()
+        cy.get('#maisEndereco').click()
+
+        cy.get('#txtNomeEndereco').type('Casa da vó');
+        cy.get('#txtCep').type('08744103')
+        cy.get('#txtNumero').type('266')
+        cy.get('.txtTipoEndereco').first().click()
+
+        cy.get('#btnEnviaEndereco').click()
+
+        cy.visit('http://localhost:4200/clientes')
+        cy.get('div[role=tab]').eq(2).click()
+
+        cy.get('.endereco-form-tabs_container-form-tipo_residencia-options')
+            .first()
+            .get('.btnRemoverEndereco')
+            .first().click();
+
+        cy.get('#btnInativarEndereco').click()
+
+        cy.visit('http://localhost:4200/clientes')
+        cy.get('div[role=tab]').eq(2).click()     
+    }),
+
+    it('RF0022 - Deve atualizar email', ()=> {
         //Email
         cy.get('div[role=tab]').eq(3).click().then(()=> {
             cy.get('#txtEmail').type('gabriel@gmail.com')
@@ -66,8 +118,9 @@ describe('Gestão de Clientes - Modulo', function() {
             cy.get('#btnEmail').click()
             cy.get('div[role=tab]').eq(3).click()
         })
+    }),
 
-
+    it('RF0022 - Deve atualizar senha', () => {
         // Senha
         cy.get('div[role=tab]').eq(4).click().then(()=> {
             cy.get('#txtSenha').type('gabriel')
@@ -75,7 +128,9 @@ describe('Gestão de Clientes - Modulo', function() {
             cy.get('#btnAtualizaSenha').click()
             cy.get('div[role=tab]').eq(4).click()
         })
+    }),
 
+    it.skip('RF0022 - Deve alterar cartões', ()=> {
         //Credito
         cy.get('div[role=tab]').eq(5).click().click().then(()=> {
             cy.get('.cartoes_form').within(()=> {
@@ -110,7 +165,9 @@ describe('Gestão de Clientes - Modulo', function() {
         })
     })
 
-    it('RF0023 - Deve inativar cliente', ()=> {
+
+
+    it.skip('RF0023 - Deve inativar cliente', ()=> {
         cy.visit('http://localhost:4200/clientes')
 
         cy.get('#btnDesativarCliente').click()

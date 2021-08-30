@@ -5,14 +5,14 @@
             <h3>{{ endereco?.nome || "Endereço "+index }}</h3>
             <div class="endereco-form-tabs_container-form-tipo_residencia-description">
                 <span>{{ endereco?.logradouro }}, {{ endereco?.numero }}</span>
-                <span>{{ endereco?.cidade.descricao}}, {{ endereco?.cidade.estado.descricao}}.</span>
+                <span>{{ endereco?.cidade.nome}}, {{ endereco?.cidade.estado.nome}}.</span>
                 <span>{{ endereco?.cep }}</span>
             </div>
             <div class="endereco-form-tabs_container-form-tipo_residencia-options">
                 <button mat-button (click)="atualizarEndereco()">
                     Atualizar Dados
                 </button>
-                <button mat-button color="warn"
+                <button mat-button color="warn" class="btnRemoverEndereco"
                     (click)="removerEndereco()">
                     Remover Endereço
                 </button>

@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ComponentsModule } from "src/app/components/components.module";
 import { MaterialModule } from "src/app/material/material.module";
 import { ServiceModule } from "src/app/services/services.module";
@@ -9,9 +9,11 @@ import { ClienteDomainComponent } from "./cliente-domain.component";
 import { ClienteDomainRouting } from "./cliente-domain.routing";
 import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
 import { MeusCuponsComponent } from './meus-cupons/meus-cupons.component';
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         ComponentsModule,
         MaterialModule,

@@ -50,7 +50,7 @@ export class ClienteService {
     console.log("chega aca??")
 
     return this.http.put<MessageInterface>(
-      `${this.baseUrl}/clientes?usuarioID=${Number(sessionStorage.getItem('isLogado'))}`,
+      `${this.baseUrl}/clientes?idUsuario=${Number(sessionStorage.getItem('isLogado'))}`,
       clientData,
       httpOptions
     );

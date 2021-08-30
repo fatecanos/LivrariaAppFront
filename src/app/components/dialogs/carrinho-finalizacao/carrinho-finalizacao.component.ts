@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
-import { BandeiraCartaoDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { BandeiraCartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
@@ -19,7 +19,7 @@ export class CarrinhoFinalizacaoComponent implements OnInit {
   isLoading = false;
   isPagtoPreferencial: boolean = true;
   isNovoEndereco: boolean = false;
-  bandeirasCartao: BandeiraCartaoDTO[] = bandeirasMock;
+  bandeirasCartao: BandeiraCartaoClienteDTO[] = bandeirasMock;
 
   isGravarNovoCartao: boolean = false;
   isGravarNovoEndereco: boolean = false;
