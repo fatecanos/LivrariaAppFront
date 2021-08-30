@@ -5,16 +5,16 @@
   <form [formGroup]="formEndereco" class="endereco-form">
     <mat-form-field>
       <mat-label>Nome:</mat-label>
-      <input matInput formControlName="nome" placeholder="Nome" type="text">
+      <input matInput formControlName="nome" placeholder="Nome" type="text" id="txtNomeEndereco">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>CEP:</mat-label>
       <input matInput formControlName="cep" placeholder="00000-000" mask="00000-000" type="text"
-        (keyup)="consultarCEP($event)">
+        (keyup)="consultarCEP($event)" id="txtCep">
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field id="selectTiposLog">
       <mat-label>Tipo Logradouro: </mat-label>
       <mat-select [(value)]="selectedTipoLogradouro">
         <mat-option *ngFor="let tipoLog of tiposLogradouros" [value]="tipoLog">
@@ -38,7 +38,7 @@
     <br>
     <mat-form-field>
       <mat-label>Numero:</mat-label>
-      <input matInput formControlName="numero" type="text">
+      <input matInput formControlName="numero" type="text" id="txtNumero">
     </mat-form-field>
 
     <mat-form-field>
@@ -70,7 +70,7 @@
 
       <mat-radio-group name="tipoEnderecosRadioList" fxLayout="column">
         <mat-radio-button *ngFor="let enderecoOption of tipoEnderecos" name="tipoEnderecosRadio"
-          [value]="enderecoOption.nome">
+          [value]="enderecoOption.nome" class="txtTipoEndereco">
 
           {{ enderecoOption.nome}}</mat-radio-button>
       </mat-radio-group>
@@ -78,6 +78,6 @@
     </mat-radio-group>
   </form>
   <div class="button">
-    <button mat-button (click)="salvarNovoEndereco()">Enviar Novo</button>
+    <button mat-button (click)="salvarNovoEndereco()" id="btnEnviaEndereco">Enviar Novo</button>
   </div>
 </div>
