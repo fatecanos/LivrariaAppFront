@@ -41,19 +41,19 @@ export class ConsultaClientesComponent implements OnInit {
   }
 
   pesquisarPeloFiltro() {
-    this.service.getClientsComFiltro(this.valorFiltro).subscribe(
-      (response) => {
-        this.dataSource = response;
-      },
-      (error) => {
-        console.log('Erro ao consultar clientes');
-      },
-      () => {
-        this._snackBar.open('lista de clientes carregada', 'fechar', {
-          duration: 2000,
-        });
-      }
-    );
+    // this.service.getClientsComFiltro(this.valorFiltro).subscribe(
+    //   (response) => {
+    //     this.dataSource = response;
+    //   },
+    //   (error) => {
+    //     console.log('Erro ao consultar clientes');
+    //   },
+    //   () => {
+    //     this._snackBar.open('lista de clientes carregada', 'fechar', {
+    //       duration: 2000,
+    //     });
+    //   }
+    // );
   }
 
   inativarClientePorId(id: number) {

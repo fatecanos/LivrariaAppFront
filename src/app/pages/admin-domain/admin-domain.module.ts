@@ -13,6 +13,7 @@ import { NovoLivroComponent } from './novo-livro/novo-livro.component';
 import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.component';
 import { GestaoEstoqueComponent } from './gestao-estoque/gestao-estoque.component';
 import { IConfig, NgxMaskModule } from "ngx-mask";
+import { GestaoCuponsComponent } from './gestao-cupons/gestao-cupons.component';
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -27,7 +28,7 @@ const maskConfig: Partial<IConfig> = {
         FormsModule,
         ReactiveFormsModule,
         ServiceModule,
-        NgxMaskModule.forRoot(maskConfig),
+        NgxMaskModule.forRoot(maskConfig)
     ],
     declarations: [
         ConsultaClientesComponent,
@@ -36,7 +37,8 @@ const maskConfig: Partial<IConfig> = {
         DashboardComponent,
         NovoLivroComponent,
         ConsultaLivrosComponent,
-        GestaoEstoqueComponent
+        GestaoEstoqueComponent,
+        GestaoCuponsComponent
     ]
 })
 export class AdminDomainModule {

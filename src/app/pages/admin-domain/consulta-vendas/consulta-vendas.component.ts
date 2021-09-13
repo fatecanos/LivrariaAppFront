@@ -19,6 +19,8 @@ export class ConsultaVendasComponent implements OnInit {
   dataSource: VendaInterface[] = [];
   displayedColumns: string[] = ['numero', 'data', 'status', 'acoes'];
 
+  filterOptions: Array<any> = ['número', 'status'];
+
   constructor(
     private _snackBar: MatSnackBar,
     private service: VendasService,

@@ -11,7 +11,6 @@ import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interf
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
-import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({
   templateUrl: './carrinho.component.html',
@@ -37,7 +36,8 @@ export class CarrinhoComponent implements OnInit {
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     private clienteService: ClienteService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class CarrinhoComponent implements OnInit {
 
     this.dadosCliente$.subscribe(cliente => {
       this.enderecosEntrega = cliente.enderecos.filter(endereco => {
-        return endereco.tipoEndereco.nome === TipoEnderecoEnum.ENTREGA;
+        return endereco.tipoEndereco.descricao === TipoEnderecoEnum.ENTREGA;
       })
     })
   }

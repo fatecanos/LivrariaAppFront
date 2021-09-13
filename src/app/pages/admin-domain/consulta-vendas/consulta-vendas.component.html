@@ -1,7 +1,25 @@
 <div class="consulta_vendas">
     <div class="consulta_vendas-header">
-        <h2>Vendas</h2>
+        <h2>Gestão de Vendas</h2>
         <mat-divider></mat-divider>
+    </div>
+
+    <div class="consulta_vendas-header-filtro">
+      <mat-form-field>
+        <mat-label>Filtro de busca:</mat-label>
+        <input type="email" matInput placeholder="Ex. pat@example.com">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Propriedade</mat-label>
+        <select matNativeControl>
+          <option value="status">Status</option>
+          <option value="data">Data</option>
+          <option value="valor">Valor</option>
+        </select>
+      </mat-form-field>
+
+      <button mat-button>Pesquisar</button>
     </div>
 
     <div class="consulta_vendas-content">

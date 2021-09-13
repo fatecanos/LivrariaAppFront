@@ -50,7 +50,7 @@
 
         <mat-form-field>
             <mat-label>Estado:</mat-label>
-            <mat-select [(value)]="selectedEstado.id">
+            <mat-select [(value)]="selectedEstado">
                 <mat-option
                     *ngFor="let estado of estados" [value]="estado.id">
                     {{ estado.uf }}

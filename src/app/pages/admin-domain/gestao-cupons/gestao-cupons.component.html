@@ -1,0 +1,86 @@
+<div class="gestao_cupons">
+    <div class="gestao_cupons-header">
+        <h2>Gestão de Cupons</h2>
+        <mat-divider></mat-divider>
+
+        <div class="gestao_cupons-header-filtro">
+            <mat-form-field>
+              <mat-label>Filtro de busca:</mat-label>
+              <input type="text" matInput>
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Propriedade</mat-label>
+              <select matNativeControl>
+                <option value="status">Status</option>
+                <option value="data">Data</option>
+                <option value="valor">Valor</option>
+              </select>
+            </mat-form-field>
+      
+            <button mat-button>Pesquisar</button>
+        </div>
+    </div>
+
+    <div class="gestao_cupons-content">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef> Valor </th>
+                <td mat-cell *matCellDef="let element"> {{element.valor | currency:'BRL':true:'1.2-2'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opcoes">
+                <th mat-header-cell *matHeaderCellDef> Opções </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button color="accent">Atualizar</button>
+                    <button mat-button color="danger">Remover</button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <div class="gestao_cupons-options">
+        <button mat-button color="primary" (click)="isNovoCupomForm = true">+ Cupom</button>
+    </div>
+    
+    <div class="gestao_cupons-novo" *ngIf="isNovoCupomForm">
+        <div class="gestao_cupons-novo-header">
+            <h3>Novo Cupom</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <form [formGroup]="cupomForm">
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput type="text">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Valor</mat-label>
+                <input matInput type="text">
+            </mat-form-field>
+        </form>
+        <div class="gestao_cupons-novo-options">
+            <button mat-button>Enviar</button>
+            <button mat-button color="warn" (click)="isNovoCupomForm = false">Cancelar</button>
+        </div>
+    </div>
+</div>

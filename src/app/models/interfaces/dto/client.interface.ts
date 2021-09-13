@@ -44,8 +44,8 @@ export interface EstadoDTO {
 }
 
 export enum TipoEnderecoEnum {
-  COBRANCA = 'cobranca',
-  ENTREGA = 'entrega',
+  COBRANCA = 'COBRANÇA',
+  ENTREGA = 'ENTREGA',
 }
 
 export interface TipoLogradouroDTO {
