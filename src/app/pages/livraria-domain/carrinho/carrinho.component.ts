@@ -32,6 +32,13 @@ export class CarrinhoComponent implements OnInit {
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
   valorFrete: number = 0;
 
+  //cupons
+  cuponsForm = new FormControl();
+  cuponsTroca: any[] = ['09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00'];
+  
+  //cupons de promo
+  cuponsPromocionais: any[] = ['8999 - R$ 20,00', '0999 - R$ 20,00', '9777 - R$ 20,00']
+
   constructor(
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,

@@ -2,6 +2,7 @@
     max-width: 900px;
     margin: 0 auto;
     min-height: 600px;
+    margin-bottom: 50px;
 
     &-header {
         margin-top: 16px;
@@ -121,6 +122,35 @@
                 width: 87px;
                 height: 35px;
             }
+        }
+    }
+
+    &-step_one {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &-valor_frete {
+            
+        }
+
+        &-cupom {
+            margin-top: 15px;
+            mat-divider {
+                margin-bottom: 15px;
+            }
+
+            &-painel {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+            }
+        }
+
+        &-options {
+            display: flex;
+            justify-content: flex-end;
         }
     }
 }
