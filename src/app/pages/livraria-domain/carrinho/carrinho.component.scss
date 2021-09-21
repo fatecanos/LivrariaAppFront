@@ -131,10 +131,6 @@
         justify-content: space-between;
         align-items: center;
 
-        &-valor_frete {
-            
-        }
-
         &-cupom {
             margin-top: 15px;
             mat-divider {
@@ -151,6 +147,27 @@
         &-options {
             display: flex;
             justify-content: flex-end;
+        }
+
+        &-selecao_cartoes {
+            margin-top: 15px;
+
+            &-painel {
+                max-width: 200px;
+                cursor: pointer;
+
+                &-header {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                &-preferencial {
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                }
+            }
         }
     }
 }

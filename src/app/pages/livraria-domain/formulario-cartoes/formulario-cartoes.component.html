@@ -1,0 +1,55 @@
+<div class="finalizacao-pedido">
+    <div class="finalizacao-pedido-content">
+        <h3>Forma de pagamento</h3>
+        <mat-divider></mat-divider>
+
+
+        <div class="finalizacao-pedido-content-form" [formGroup]="form"
+            *ngFor="let cartao of form?.get('cartoes').value; let index = index;">
+            <div class="finalizacao-pedido-content-form-header">
+                <h4>Cartão {{index+1}}</h4>
+                <mat-icon (click)="removeCartao(index)">close</mat-icon>
+            </div>
+            <div class="finalizacao-pedido-content-form-options">
+                <mat-radio-group aria-label="Select an option" formArrayName="cartoes">
+                    <mat-radio-button formControlName="isNovoCartao"
+                        [value]="false" [disabled]="!(cartoesCliente$ | async)?.length">
+                        Meus Cartões
+                    </mat-radio-button>
+                    <mat-radio-button formControlName="isNovoCartao"
+                        [value]="true" [checked]="!(cartoesCliente$ | async)?.length">
+                        Novo Cartão de Crédito
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div *ngIf="(cartoesCliente$ | async)?.length" 
+                class="finalizacao-pedido-content-form-meus_cartoes">
+                <mat-form-field formArrayName="cartoes">
+                    <mat-label>Meus cartões:</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let cartao of (cartoesCliente$ | async)">
+                            {{ cartao.bandeira }} - {{ cartao.numero }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="finalizacao-pedido-content-form-meus_cartoes-valor">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Valor:</mat-label>
+                        <input matInput mask="000,00"
+                            placeholder="Digite o valor pago neste cartão">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="finalizacao-pedido-content-form-novo_cartao">
+                <span> "novo cartao form" </span>
+            </div>
+        </div>
+
+        <div>
+            <button color="primary" mat-button (click)="addCartao()">+ Cartão</button>
+        </div>
+    </div>
+</div>

@@ -126,22 +126,28 @@
             </div>
         </div>
 
+        <formulario-cartoes *ngIf="isUsuarioAutenticado"></formulario-cartoes>
+
         <div class="carrinho-step_one-cupom" *ngIf="isUsuarioAutenticado">
-            <h3>Cupons</h3>
+            <h3>Meus Cupons (Opcional)</h3>
             <mat-divider></mat-divider>
 
             <div class="carrinho-step_one-cupom-painel">
                 <mat-form-field>
                     <mat-label>Cupons Promocionais:</mat-label>
-                    <mat-select [formControl]="cuponsPromocionaisForm">
-                        <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom">{{cupom}}</mat-option>
+                    <mat-select>
+                        <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom">
+                            {{cupom.codigo}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
+                        </mat-option>
                       </mat-select>
                 </mat-form-field> 
     
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
-                    <mat-select [formControl]="cuponsForm" multiple>
-                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">{{cupom}}</mat-option>
+                    <mat-select multiple>
+                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">
+                          {{cupom.codigo}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
+                      </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -149,7 +155,7 @@
 
         <div class="carrinho-step_one-options">
             <button mat-button color="accent" (click)="router.navigate(['/livraria/estoque'])">Continuar comprando</button>
-            <button mat-button color="primary">Finalizar</button>
+            <button mat-button color="primary">Finalizar Pedido</button>
         </div>
     </div>
 </div>

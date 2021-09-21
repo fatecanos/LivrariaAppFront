@@ -269,12 +269,17 @@
     {
       "id": 1,
       "numero": "0059594594858858",
-      "nome": "Naruto Uzumaki",
-      "bandeira": {
-        "id": 2,
-        "descricao": "Visa"
-      },
+      "nome": "Naruto Uzumaki Cunha",
+      "bandeira": "Visa",
       "codigoSeguranca": "899",
+      "isPreferencial": false
+    },
+    {
+      "id": 2,
+      "numero": "8958458589594534",
+      "nome": "Zabuza Momochi Santos",
+      "bandeira": "Mastercard",
+      "codigoSeguranca": "456",
       "isPreferencial": false
     }
   ],

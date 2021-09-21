@@ -16,6 +16,7 @@ import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.co
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { PainelLoginComponent } from './painel-login/painel-login.component';
 import { MoneyFormmatter } from "src/app/custom-pipes/format-money.pipe";
+import { FormularioCartoesComponent } from './formulario-cartoes/formulario-cartoes.component';
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -40,7 +41,8 @@ const maskConfig: Partial<IConfig> = {
         DetalhesProdutoComponent,
         CarrinhoComponent,
         PainelLoginComponent,
-        MoneyFormmatter
+        MoneyFormmatter,
+        FormularioCartoesComponent
     ],
     providers: [
         {

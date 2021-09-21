@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinh
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
+import { CupomDTO, TipoCupomEnum } from 'src/app/models/interfaces/dto/cupom.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
@@ -34,16 +35,43 @@ export class CarrinhoComponent implements OnInit {
 
   //cupons
   cuponsForm = new FormControl();
-  cuponsTroca: any[] = ['09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00', '09843 - R$ 20,00'];
+  cuponsTroca: CupomDTO[] = [
+    {
+      id: 1,
+      codigo: '88994',
+      tipo: TipoCupomEnum.TROCA,
+      valor: 103.88
+    },
+    {
+      id: 2,
+      codigo: '09998',
+      tipo: TipoCupomEnum.TROCA,
+      valor: 65.78
+    }
+  ];
   
   //cupons de promo
-  cuponsPromocionais: any[] = ['8999 - R$ 20,00', '0999 - R$ 20,00', '9777 - R$ 20,00']
+  cuponsPromocionais: CupomDTO[] = [
+    {
+      id: 1,
+      codigo: '09984',
+      tipo: TipoCupomEnum.PROMOCIONAL,
+      valor: 20
+    },
+    {
+      id: 2,
+      codigo: '98809',
+      tipo: TipoCupomEnum.PROMOCIONAL,
+      valor: 33.90
+    }
+  ];
 
   constructor(
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
     private clienteService: ClienteService,
     public dialog: MatDialog,
+    public formBuilder: FormBuilder,
     private router: Router
   ) { }
 
@@ -72,34 +100,34 @@ export class CarrinhoComponent implements OnInit {
     })
   }
 
-  finalizarCompra() {
-    let itens: ItemCarrinhoInterface[] = [];
-    this.carrinhoService.obterItens()
-      .subscribe(response => { itens = response });
+  // finalizarCompra() {
+  //   let itens: ItemCarrinhoInterface[] = [];
+  //   this.carrinhoService.obterItens()
+  //     .subscribe(response => { itens = response });
 
-    const dadosFinalizacao: PedidoFinalizacaoInterface = {
-      enderecoDTO: this.enderecoSelecionado,
-      isNovoEndereco: this.isMyEndereco,
-      itensCarrinho: itens,
-      total: this.total+this.valorFrete,
-      frete: this.valorFrete
-    };
+  //   const dadosFinalizacao: PedidoFinalizacaoInterface = {
+  //     enderecoDTO: this.enderecoSelecionado,
+  //     isNovoEndereco: this.isMyEndereco,
+  //     itensCarrinho: itens,
+  //     total: this.total+this.valorFrete,
+  //     frete: this.valorFrete
+  //   };
 
-    if(this.isUsuarioAutenticado && this.enderecoSelecionado) {
-      const dialogRef = this.dialog.open(CarrinhoFinalizacaoComponent, {
-        width: '900px',
-        data: dadosFinalizacao
-      });
-    } else {
-      this.snackBar.open(
-        "favor, insira um endereço primeiro",
-        "fechar",
-        {
-          duration: 2000
-        }
-      )
-    }
-  }
+  //   if(this.isUsuarioAutenticado && this.enderecoSelecionado) {
+  //     const dialogRef = this.dialog.open(CarrinhoFinalizacaoComponent, {
+  //       width: '900px',
+  //       data: dadosFinalizacao
+  //     });
+  //   } else {
+  //     this.snackBar.open(
+  //       "favor, insira um endereço primeiro",
+  //       "fechar",
+  //       {
+  //         duration: 2000
+  //       }
+  //     )
+  //   }
+  // }
 
   removerItemCarrinho(item: LivroEstoqueInterface) {
     this.carrinhoService.removerItem(item.id)
