@@ -2,25 +2,28 @@ import { CategoriaInterface } from "./utils-livro-form.interface";
 
 export interface LivroDTO {
     id?: number,
+    titulo: string,
     autor: string,
-    categorias: CategoriaInterface[],
     ano: string
-    titulo: string
     editora: string
     edicao: string
     isbn: string
-    quantidadePaginas: string
+    numeroPaginas: string
     sinopse: string
-    dimensoes: DimensoesDTO,
-    grupoPrecificacaoId: number,
-    codigoBarras: string,
     url: string,
-    isAtivo?: boolean
-}
+    codigoBarras: string,
+    valorVenda: number,
+    valorCompra: number,
+    estoque: number,
+    dimensoes: DimensoesDTO,
+    ativo?: boolean
+    categorias: CategoriaInterface[],
+    // grupoPrecificacaoId: number,
+  }
 
 export interface DimensoesDTO {
-    altura: string, 
-    largura: string,
-    peso: string,
-    profundidade: string
+    altura: number,
+    largura: number,
+    peso: number,
+    profundidade: number
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { EstoqueService } from 'src/app/services/estoque-service/estoque.service
 })
 export class EstoqueComponent implements OnInit {
 
-  livros$?: Observable<LivroEstoqueInterface[]>;
+  // livros$?: Observable<LivroEstoqueInterface[]>;
+  livros$?: Observable<LivroDTO[]>;
 
   constructor(
     private service: EstoqueService,
