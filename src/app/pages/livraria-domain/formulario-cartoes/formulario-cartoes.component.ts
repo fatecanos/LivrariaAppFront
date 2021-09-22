@@ -25,30 +25,28 @@ export class FormularioCartoesComponent implements OnInit {
 
     this.form = this.formBuilder.group({
         cartoes: this.formBuilder.array([
-          {
-            id: [''],
-            numeroCartao: ['', Validators.required],
-            nomeImpressoCartao: ['', Validators.required],
-            bandeira: ['', Validators.required],
-            codigoSeguranca: ['', Validators.required],
-            isPreferencial: [''],
-            isNovoCartao: [false],
-            valorPago: [0, Validators.required]
-          }
+          this.formBuilder.group({
+            id: this.formBuilder.control(''),
+            numeroCartao: this.formBuilder.control('', Validators.required),
+            nomeImpressoCartao: this.formBuilder.control('', Validators.required),
+            bandeira: this.formBuilder.control('', Validators.required),
+            codigoSeguranca: this.formBuilder.control('', Validators.required),
+            isNovoCartao: this.formBuilder.control(false, Validators.required),
+            valorPago: this.formBuilder.control(0, Validators.required)
+          })
         ])
       })
   }
 
   addCartao() {
-    let formCartaoPlus = new FormControl({
-      id: [''],
-      numeroCartao: ['', Validators.required],
-      nomeImpressoCartao: ['', Validators.required],
-      bandeira: ['', Validators.required],
-      codigoSeguranca: ['', Validators.required],
-      isPreferencial: [''],
-      isNovoCartao: [false],
-      valorPago: [0, Validators.required]
+    let formCartaoPlus = this.formBuilder.group({
+      id: this.formBuilder.control(''),
+      numeroCartao: this.formBuilder.control('', Validators.required),
+      nomeImpressoCartao: this.formBuilder.control('', Validators.required),
+      bandeira: this.formBuilder.control('', Validators.required),
+      codigoSeguranca: this.formBuilder.control('', Validators.required),
+      isNovoCartao: this.formBuilder.control(false, Validators.required),
+      valorPago: this.formBuilder.control(0, Validators.required)
     })
 
     const add = this.form.get('cartoes') as FormArray;
@@ -58,6 +56,18 @@ export class FormularioCartoesComponent implements OnInit {
   removeCartao(index: number) {
     const cartoes = this.form.get('cartoes') as FormArray;
     cartoes.removeAt(index)
+  }
+
+  patchFornGroup(index: number, cartao: CartaoCreditoDTO) {
+    const cartoes = this.form.get('cartoes') as FormArray;
+
+    cartoes.controls[index].patchValue({
+      id: cartao.id,
+      numeroCartao: cartao.numeroCartao,
+      nomeImpressoCartao: cartao.nomeImpressoCartao,
+      bandeira: cartao.bandeira,
+      codigoSeguranca: cartao.codigoSeguranca,
+    })
   }
 
 }
