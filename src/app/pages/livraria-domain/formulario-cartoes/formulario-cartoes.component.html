@@ -43,14 +43,44 @@
                         <mat-select>
                             <mat-option (click)="patchFornGroup(index, cartaoCliente)"
                                 *ngFor="let cartaoCliente of (cartoesCliente$ | async)" value="cartaoCliente">
-                                {{ cartaoCliente.bandeira }} - {{ cartaoCliente.numero }}
+                                {{ cartaoCliente.bandeira }} - {{ hidenNumbers(cartaoCliente.numero) }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
 
-                    <div class="finalizacao-pedido-content-form-novo_cartao"
+                    <div class="finalizacao-pedido-content-form-novo_cartao" [formGroupName]="index"
                         *ngIf="form.get('cartoes').controls[index].get('isNovoCartao').value">
-                        <span> "novo cartao form" </span>
+
+                        <mat-form-field>
+                            <mat-label>Nome:</mat-label>
+                            <input matInput formControlName="nomeImpressoCartao"
+                                placeholder="Nome no cartão">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Número:</mat-label>
+                            <input matInput formControlName="numeroCartao"
+                                mask="0000.0000.0000.0000"
+                                placeholder="Nome no cartão">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>CVV:</mat-label>
+                            <input matInput formControlName="codigoSeguranca"
+                                placeholder="Código de segurança">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Bandeira</mat-label>
+                            <mat-select formControlName="bandeira">
+                                <mat-option (click)="patchFornGroup(index, cartaoCliente)"
+                                    *ngFor="let bandeira of bandeiras" value="bandeira.id">
+                                    {{ bandeira.descricao }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-checkbox formControlName="isGravarNovo">Desejo gravar este cartão</mat-checkbox>
                     </div>
 
                     <div class="finalizacao-pedido-content-form-meus_cartoes-valor">

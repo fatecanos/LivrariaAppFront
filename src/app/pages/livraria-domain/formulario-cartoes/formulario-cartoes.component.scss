@@ -10,6 +10,13 @@
             margin-top: 12px;
             padding: 8px;
 
+            &-novo_cartao {
+                display: flex;
+                gap: 8px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
             &-header {
                 display: flex;
                 flex-direction: row;
@@ -35,7 +42,7 @@
                 margin-top: 15px;
                 display: flex;
                 flex-direction: row;
-                gap: 16px;
+                gap: 8px;
             }
         }
     }
