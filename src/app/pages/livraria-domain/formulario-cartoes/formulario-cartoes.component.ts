@@ -61,7 +61,7 @@ export class FormularioCartoesComponent implements OnInit {
     cartoes.removeAt(index)
   }
 
-  patchFornGroup(index: number, cartao: CartaoCreditoDTO) {
+  patchFormGroup(index: number, cartao: CartaoCreditoDTO) {
     const cartoes = this.form.get('cartoes') as FormArray;
 
     cartoes.controls[index].patchValue({
@@ -71,11 +71,6 @@ export class FormularioCartoesComponent implements OnInit {
       bandeira: cartao.bandeira,
       codigoSeguranca: cartao.codigoSeguranca,
     })
-  }
-
-  hidenNumbers(numeroCartao: string) {
-    const rgx = /\d\d\d\d.\d\d\d\d.\d\d\d\d./;
-    return numeroCartao.replace(rgx, numeroCartao);
   }
 
 }

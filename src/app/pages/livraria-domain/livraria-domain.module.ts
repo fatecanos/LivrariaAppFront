@@ -17,6 +17,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { PainelLoginComponent } from './painel-login/painel-login.component';
 import { MoneyFormmatter } from "src/app/custom-pipes/format-money.pipe";
 import { FormularioCartoesComponent } from './formulario-cartoes/formulario-cartoes.component';
+import { HiddenCardNumberPipe } from "src/app/custom-pipes/hidden-card-number.pipe";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -31,7 +32,7 @@ const maskConfig: Partial<IConfig> = {
         ReactiveFormsModule,
         ServiceModule,
         NgxMaskModule.forRoot(maskConfig),
-        FormsModule
+        FormsModule,
     ],
     declarations: [
         LivrariaDomainComponent,
@@ -42,7 +43,8 @@ const maskConfig: Partial<IConfig> = {
         CarrinhoComponent,
         PainelLoginComponent,
         MoneyFormmatter,
-        FormularioCartoesComponent
+        FormularioCartoesComponent,
+        HiddenCardNumberPipe
     ],
     providers: [
         {

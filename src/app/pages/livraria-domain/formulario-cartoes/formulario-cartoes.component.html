@@ -41,9 +41,9 @@
                     <mat-form-field *ngIf="!form.get('cartoes').controls[index].get('isNovoCartao').value">
                         <mat-label>Meus cartões:</mat-label>
                         <mat-select>
-                            <mat-option (click)="patchFornGroup(index, cartaoCliente)"
+                            <mat-option (click)="patchFormGroup(index, cartaoCliente)"
                                 *ngFor="let cartaoCliente of (cartoesCliente$ | async)" value="cartaoCliente">
-                                {{ cartaoCliente.bandeira }} - {{ hidenNumbers(cartaoCliente.numero) }}
+                                {{ cartaoCliente?.bandeira }} - {{ cartaoCliente?.numeroCartao | hiddenCardNumber }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
