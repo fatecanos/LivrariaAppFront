@@ -79,8 +79,6 @@
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
-
-                        <mat-checkbox formControlName="isGravarNovo">Desejo gravar este cartão</mat-checkbox>
                     </div>
 
                     <div class="finalizacao-pedido-content-form-meus_cartoes-valor">
@@ -91,6 +89,9 @@
                         </mat-form-field>
                     </div>
                 </div>
+
+                <mat-checkbox *ngIf="form.get('cartoes').controls[index].get('isNovoCartao').value"
+                    formControlName="isGravarNovo">Desejo gravar este cartão</mat-checkbox>
             </div>
         </form>
             
