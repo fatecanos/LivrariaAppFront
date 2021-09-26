@@ -11,6 +11,7 @@ import { CartaoCreditoDTO, CartaoFormDTO } from 'src/app/models/interfaces/dto/c
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { CupomDTO, TipoCupomEnum } from 'src/app/models/interfaces/dto/cupom.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { PayloadCarrinhoDTO } from 'src/app/models/interfaces/dto/pedido-carrinho.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
@@ -25,7 +26,9 @@ export class CarrinhoComponent implements OnInit {
   isUsuarioAutenticado: boolean = false;
   dadosCliente$?: Observable<ClienteDTO>;
   enderecosEntrega: EnderecoDTO[] = [];
+
   isMyEndereco: boolean = true;
+
   isLoading: boolean = false;
   cepInput: FormControl = new FormControl('', [Validators.required]);
 
@@ -98,8 +101,8 @@ export class CarrinhoComponent implements OnInit {
     })
   }
 
-  removerItemCarrinho(item: LivroEstoqueInterface) {
-    this.carrinhoService.removerItem(item.id)
+  removerItemCarrinho(itemId: number) {
+    this.carrinhoService.removerItem(itemId)
     this.carrinho$ = this.carrinhoService.obterItens();
 
     this.atualizaTotais();

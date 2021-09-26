@@ -30,7 +30,7 @@
                         (click)="plusQuantidade(item.produto.id, inpQtdeCarrinho.value, item.produto.estoque)">+</button>
                 </td>
                 <td class="carrinho-table-item_line-option">
-                    <span (click)="removerItemCarrinho(item)">Remover</span>
+                    <span (click)="removerItemCarrinho(item?.id)">Remover</span>
                 </td>
             </tr>
         </table>
@@ -54,12 +54,13 @@
                 <h3>Taxa de entrega</h3>
                 <mat-divider></mat-divider>
 
-                <mat-radio-group [(ngModel)]="isMyEndereco" (change)="enderecoSelecionado = undefined"
-                    aria-label="Select an option" class="carrinho-content-adress_selector-radio">
-                    <mat-radio-button [value]="true" [checked]="isMyEndereco" id="rdMeusEnderecos">
+                <mat-radio-group [(ngModel)]="isMyEndereco" 
+                    (change)="enderecoSelecionado = undefined"
+                    class="carrinho-content-adress_selector-radio">
+                    <mat-radio-button [value]="true">
                         Escolher entre os meus endereços de entrega
                     </mat-radio-button>
-                    <mat-radio-button [value]="false" id="rdNovoEndereco">
+                    <mat-radio-button [value]="false">
                         Novo Endereço de Entrega
                     </mat-radio-button>
                 </mat-radio-group>
@@ -69,7 +70,7 @@
                     <mat-label>Selecione um endereço</mat-label>
                     <mat-select id="matSelectEndereco">
                         <mat-option *ngFor="let endereco of enderecosEntrega" 
-                            [value]="endereco" (click)="enderecoSelecionado = endereco">
+                            [value]="endereco" [(ngModel)]="enderecoSelecionado">
                             {{endereco.cep}} - {{endereco.logradouro}}, {{endereco.numero}}
                         </mat-option>
                     </mat-select>
