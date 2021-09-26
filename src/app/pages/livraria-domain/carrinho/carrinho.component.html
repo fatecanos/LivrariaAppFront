@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="carrinho-content">
+        <div class="carrinho-content" [formGroup]="formPedido">
 
             <div class="carrinho-content-adress_selector"
               *ngIf="isUsuarioAutenticado">
@@ -103,14 +103,6 @@
                     </a>
                 </div>
             </div>
-        <!-- 
-            <div class="carrinho-content-action">
-                <button mat-button color="accent" 
-                    id="btnFinalizarPedido"
-                    (click)="finalizarCompra()">
-                    Finalizar
-                </button>
-            </div> -->
         </div>
 
         <div class="carrinho-step_one">
@@ -135,18 +127,18 @@
             <div class="carrinho-step_one-cupom-painel">
                 <mat-form-field>
                     <mat-label>Cupons Promocionais:</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom">
-                            {{cupom.codigo}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
+                    <mat-select [disabled]="!cuponsPromocionais.length">
+                        <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom.id">
+                            {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
                         </mat-option>
-                      </mat-select>
+                    </mat-select>
                 </mat-form-field> 
     
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
-                    <mat-select multiple>
-                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">
-                          {{cupom.codigo}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
+                    <mat-select multiple [disabled]="!cuponsTroca.length">
+                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom.id">
+                          {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
                       </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -155,7 +147,7 @@
 
         <div class="carrinho-step_one-options">
             <button mat-button color="accent" (click)="router.navigate(['/livraria/estoque'])">Continuar comprando</button>
-            <button mat-button color="primary">Finalizar Pedido</button>
+            <button mat-button color="primary" (click)="finalizarPedido()">Finalizar Pedido</button>
         </div>
     </div>
 </div>

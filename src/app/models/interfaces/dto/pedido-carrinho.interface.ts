@@ -15,7 +15,7 @@ export interface Cupom {
     idCupom: number;
 }
 
-export interface PedidoCarrinhoDTO {
+export interface PayloadCarrinhoDTO {
     enderecoId: number;
     idCliente: number;
     itensPedido: ItensPedido[];

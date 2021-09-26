@@ -11,8 +11,10 @@ import { CartaoCreditoDTO, CartaoFormDTO } from 'src/app/models/interfaces/dto/c
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { CupomDTO, TipoCupomEnum } from 'src/app/models/interfaces/dto/cupom.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
+import { PayloadCarrinhoDTO } from 'src/app/models/interfaces/dto/pedido-carrinho.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
+import { CupomService } from 'src/app/services/cupons-service/cupom.service';
 
 @Component({
   templateUrl: './carrinho.component.html',
@@ -30,48 +32,15 @@ export class CarrinhoComponent implements OnInit {
   //dados venda
   idCliente: number = 0;
   total: number = 0;
+
   enderecoSelecionado: EnderecoDTO | any;
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
   valorFrete: number = 0;
 
-  //pagmento
   cartoesSelecionados: FormArray = new FormArray([]);
+  cuponsTroca: CupomDTO[] = [];
+  cuponsPromocionais: CupomDTO[] = [];
 
-  //cupons
-  cuponsForm = new FormArray([]);
-
-  cuponsTroca: CupomDTO[] = [
-    {
-      id: 1,
-      codigo: '88994',
-      tipo: TipoCupomEnum.TROCA,
-      valor: 103.88
-    },
-    {
-      id: 2,
-      codigo: '09998',
-      tipo: TipoCupomEnum.TROCA,
-      valor: 65.78
-    }
-  ];
-  
-  //cupons de promo
-  cuponsPromocionais: CupomDTO[] = [
-    {
-      id: 1,
-      codigo: '09984',
-      tipo: TipoCupomEnum.PROMOCIONAL,
-      valor: 20
-    },
-    {
-      id: 2,
-      codigo: '98809',
-      tipo: TipoCupomEnum.PROMOCIONAL,
-      valor: 33.90
-    }
-  ];
-
-  //payload
   formPedido: FormGroup = new FormGroup({});
 
   constructor(
@@ -80,7 +49,8 @@ export class CarrinhoComponent implements OnInit {
     private clienteService: ClienteService,
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cupomService: CupomService
   ) { }
 
   ngOnInit(): void {
@@ -98,6 +68,7 @@ export class CarrinhoComponent implements OnInit {
     })
 
     this.initFormulario();
+    this.initCupons();
   }
 
   initFormulario() {
@@ -107,6 +78,14 @@ export class CarrinhoComponent implements OnInit {
       itensPedido: this.formBuilder.array([]),
       formasPagamento: this.formBuilder.array([]),
       cupom: this.formBuilder.array([])
+    })
+  }
+
+  initCupons() {
+    this.cupomService.obterCuponsCliente()
+    .subscribe(response => {
+      this.cuponsTroca = response.filter(cupom => cupom.tipoCupom == TipoCupomEnum.TROCA)
+      this.cuponsPromocionais = response.filter(cupom => cupom.tipoCupom == TipoCupomEnum.PROMOCIONAL)
     })
   }
 
@@ -173,7 +152,14 @@ export class CarrinhoComponent implements OnInit {
   }
 
   finalizarPedido() {
-
+    let payload: PayloadCarrinhoDTO;
+    console.log(this.formPedido.value);
+    
+    if(this.formPedido.valid) {
+      
+    } else {
+      this.snackBar.open('formulário inválido', 'fechar', { duration: 2000})
+    }
   }
 
 }
