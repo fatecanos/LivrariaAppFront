@@ -126,7 +126,8 @@
             </div>
         </div>
 
-        <formulario-cartoes *ngIf="isUsuarioAutenticado"></formulario-cartoes>
+        <formulario-cartoes (formaPagamentoSelecionado)="obterCartoesSelecionados($event)"
+            *ngIf="isUsuarioAutenticado"></formulario-cartoes>
 
         <div class="carrinho-step_one-cupom" *ngIf="isUsuarioAutenticado">
             <h3>Meus Cupons (Opcional)</h3>

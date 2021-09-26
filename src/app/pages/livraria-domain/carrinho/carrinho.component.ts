@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
+import { CartaoCreditoDTO, CartaoFormDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { CupomDTO, TipoCupomEnum } from 'src/app/models/interfaces/dto/cupom.interface';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
@@ -33,8 +34,12 @@ export class CarrinhoComponent implements OnInit {
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
   valorFrete: number = 0;
 
+  //pagmento
+  cartoesSelecionados: FormArray = new FormArray([]);
+
   //cupons
-  cuponsForm = new FormControl();
+  cuponsForm = new FormArray([]);
+
   cuponsTroca: CupomDTO[] = [
     {
       id: 1,
@@ -66,6 +71,9 @@ export class CarrinhoComponent implements OnInit {
     }
   ];
 
+  //payload
+  formPedido: FormGroup = new FormGroup({});
+
   constructor(
     private snackBar: MatSnackBar,
     private carrinhoService: CarrinhoService,
@@ -81,13 +89,24 @@ export class CarrinhoComponent implements OnInit {
     this.isUsuarioAutenticado = !!sessionStorage.getItem('isLogado');
     this.idCliente = Number.parseInt(sessionStorage.getItem('isLogado') || '0');
 
-    //TODO: integrar cliente autenticado
     this.dadosCliente$ = this.clienteService.getClientById();
 
     this.dadosCliente$.subscribe(cliente => {
       this.enderecosEntrega = cliente.enderecos.filter(endereco => {
         return endereco.tipoEndereco.descricao === TipoEnderecoEnum.ENTREGA;
       })
+    })
+
+    this.initFormulario();
+  }
+
+  initFormulario() {
+    this.formPedido = this.formBuilder.group({
+      enderecoId: this.formBuilder.control('', Validators.required),
+      idCliente: this.formBuilder.control('', Validators.required),
+      itensPedido: this.formBuilder.array([]),
+      formasPagamento: this.formBuilder.array([]),
+      cupom: this.formBuilder.array([])
     })
   }
 
@@ -99,35 +118,6 @@ export class CarrinhoComponent implements OnInit {
       })
     })
   }
-
-  // finalizarCompra() {
-  //   let itens: ItemCarrinhoInterface[] = [];
-  //   this.carrinhoService.obterItens()
-  //     .subscribe(response => { itens = response });
-
-  //   const dadosFinalizacao: PedidoFinalizacaoInterface = {
-  //     enderecoDTO: this.enderecoSelecionado,
-  //     isNovoEndereco: this.isMyEndereco,
-  //     itensCarrinho: itens,
-  //     total: this.total+this.valorFrete,
-  //     frete: this.valorFrete
-  //   };
-
-  //   if(this.isUsuarioAutenticado && this.enderecoSelecionado) {
-  //     const dialogRef = this.dialog.open(CarrinhoFinalizacaoComponent, {
-  //       width: '900px',
-  //       data: dadosFinalizacao
-  //     });
-  //   } else {
-  //     this.snackBar.open(
-  //       "favor, insira um endereço primeiro",
-  //       "fechar",
-  //       {
-  //         duration: 2000
-  //       }
-  //     )
-  //   }
-  // }
 
   removerItemCarrinho(item: LivroEstoqueInterface) {
     this.carrinhoService.removerItem(item.id)
@@ -166,6 +156,24 @@ export class CarrinhoComponent implements OnInit {
       this.isLoading = false
       this.valorFrete = 40
     }, 4000)
+  }
+
+  obterCartoesSelecionados(cartoes: FormArray) {
+    this.cartoesSelecionados = cartoes;
+    console.log(`cartoes selecionados:`, this.cartoesSelecionados);
+  }
+
+  addCupom(cupom: CupomDTO) {
+    const cupons = this.formPedido.get('cupons') as FormArray;
+    cupons.push(
+      this.formBuilder.control({
+        idCupom: this.formBuilder.control(cupom.id)
+      })
+    )
+  }
+
+  finalizarPedido() {
+
   }
 
 }
