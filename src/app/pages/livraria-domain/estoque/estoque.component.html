@@ -6,9 +6,8 @@
 
     <div class="estoque-container">
         <mat-card class="estoque-container-card"
-            *ngFor="let livro of livros$ | async">
-            <img [src]="livro.url" 
-                alt="imagem">
+            *ngFor="let livro of (livros$ | async)">
+            <img [src]="livro.url ? livro.url : 'src/assets/img/ash.jpeg'" alt="imagem">
             <div class="estoque-container-card-content">
                 <span class="estoque-container-card-content-title">
                     {{livro.nomeLivro}}

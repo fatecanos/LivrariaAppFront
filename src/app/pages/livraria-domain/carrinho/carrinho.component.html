@@ -14,21 +14,20 @@
                 <th>QTDE</th>
             </tr>
             <tr class="carrinho-table-item_line" 
-                *ngFor="let item of carrinho$ | async">
+                *ngFor="let item of (carrinho$ | async)">
                 <td class="carrinho-table-item_line-item">
-                    <img src="{{item.produto.url}}" 
-                        alt="item">
-                    <span>{{item.produto.nome}}</span>
+                    <img [src]="item.produto.url"  alt="item">
+                    <span>{{item.produto.titulo}}</span>
                 </td>
-                <td class="carrinho-table-item_line-valor">{{item.produto.valor | moneyFormatter}}</td>
+                <td class="carrinho-table-item_line-valor">{{ item.produto.valorVenda | moneyFormatter }}</td>
                 <td>
                     <button id="menos"
-                        (click)="minusQuantidade(item.id, inpQtdeCarrinho.value)">-</button>
+                        (click)="minusQuantidade(item.produto.id, inpQtdeCarrinho.value)">-</button>
                     <input 
                         class="carrinho-table-item_line-amount_input" 
-                        type="text" [value]="item.quantidade" #inpQtdeCarrinho>
+                        type="text" [value]="item.produto.quantidadeSelecionada" #inpQtdeCarrinho>
                     <button  id="mais"
-                        (click)="plusQuantidade(item.id, inpQtdeCarrinho.value, item.produto.qtdeMaxima)">+</button>
+                        (click)="plusQuantidade(item.produto.id, inpQtdeCarrinho.value, item.produto.estoque)">+</button>
                 </td>
                 <td class="carrinho-table-item_line-option">
                     <span (click)="removerItemCarrinho(item)">Remover</span>
@@ -39,11 +38,11 @@
         <div>
             <div class="carrinho-content-subtotal">
                 <div>
-                    <span>Sub-total:</span><span>{{total | moneyFormatter}}</span>
+                    <span>Sub-total:</span><span>{{ total | moneyFormatter}}</span>
                 </div>
                 <br>
                 <div>
-                    <span>Total: </span><span>{{total+valorFrete | moneyFormatter}}</span>
+                    <span>Total: </span><span>{{ total+valorFrete | moneyFormatter}}</span>
                 </div>
             </div>
         </div>

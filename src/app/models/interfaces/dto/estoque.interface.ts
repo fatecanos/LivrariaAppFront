@@ -5,12 +5,13 @@ export interface LivroEstoqueInterface {
     nomeLivro: string,
     autor: string,
     ano: string,
-    valor: number,
+    valorUnitario: number,
+    valorTotal: number,
     url: string,
     sinopse: string,
     dimensoes: DimensaoInterface,
     qtdeMaxima: number,
-    qtdeSelecionada: number
+    qtdeComprada: number
 }
 
 export interface DimensaoInterface {

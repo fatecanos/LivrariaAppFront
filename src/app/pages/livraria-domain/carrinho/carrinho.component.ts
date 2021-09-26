@@ -114,7 +114,7 @@ export class CarrinhoComponent implements OnInit {
     this.total = 0;
     this.carrinho$?.subscribe(carrinho => {
       carrinho.forEach(item=> {
-        this.total += item.produto.valor*item.quantidade;
+        this.total += item.produto.valorVenda * item.quantidade;
       })
     })
   }

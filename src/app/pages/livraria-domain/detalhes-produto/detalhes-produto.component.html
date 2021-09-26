@@ -9,7 +9,7 @@
         </div>
         <div class="detalhes-produto-display-valor">
             <span class="detalhes-produto-display-valor-content">
-                {{ (livro$ | async)?.valor | currency:'BRL':true:'1.2-2'}}
+                {{ (livro$ | async)?.valorVenda | currency:'BRL':true:'1.2-2'}}
             </span>
             <div class="detalhes-produto-display-valor-button">
                 <button mat-raised-button color="primary"

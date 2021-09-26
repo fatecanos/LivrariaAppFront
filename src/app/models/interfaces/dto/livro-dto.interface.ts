@@ -18,6 +18,7 @@ export interface LivroDTO {
     dimensoes: DimensoesDTO,
     ativo?: boolean
     categorias: CategoriaInterface[],
+    quantidadeSelecionada: number
     // grupoPrecificacaoId: number,
   }
 

@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
@@ -13,11 +14,11 @@ export class DetalhesProdutoComponent implements OnInit {
 
   livroId: number = 0;
 
-  livroData: LivroEstoqueInterface | any; 
+  livroData: LivroDTO | any; 
 
   routeData$?: Observable<Params>;
 
-  livro$?: Observable<LivroEstoqueInterface>;
+  livro$?: Observable<LivroDTO>;
 
   constructor(
     private snack: MatSnackBar,
@@ -39,12 +40,14 @@ export class DetalhesProdutoComponent implements OnInit {
   }
 
   addNovoItem() {
-    this.livroData.qtdeSelecionada = 1;
+    this.livroData.quantidadeSelecionada = 1;
     let jsonCarrinho = localStorage.getItem('carrinho') || '[]';
-    let listaProdutos: LivroEstoqueInterface[] = JSON.parse(jsonCarrinho);
+    let listaProdutos: LivroDTO[] = JSON.parse(jsonCarrinho);
     let isAlreadyExist = listaProdutos.find(livro => livro.id === this.livroData.id)
 
     if(!isAlreadyExist) {
+      console.log('item adicionado', this.livroData);
+      
       listaProdutos = [this.livroData, ...listaProdutos];
       localStorage.setItem('carrinho', JSON.stringify(listaProdutos))
     } else {
