@@ -1,0 +1,105 @@
+<div class="finalizacao-pedido" (focusout)="emiteFormaPagamento($event)">
+    <div class="finalizacao-pedido-content">
+        <h3>Forma de pagamento</h3>
+        <mat-divider></mat-divider>
+
+        <form [formGroup]="form">
+            <div class="finalizacao-pedido-content-form"
+                formArrayName="cartoes"
+                *ngFor="let cartao of form?.get('cartoes')?.controls; let index = index;">
+
+                <div class="finalizacao-pedido-content-form-header">
+                    <h4>Cartão {{index+1}}</h4>
+                    <mat-icon (click)="removeCartao(index)" 
+                        *ngIf="form?.get('cartoes')?.controls.length !== 1">
+                        close
+                    </mat-icon>
+                </div>
+                <div class="finalizacao-pedido-content-form-options" [formGroupName]="index">
+                    <mat-radio-group aria-label="Select an option" formControlName="isNovoCartao"
+                        *ngIf="(cartoesCliente$ | async)?.length">
+                        <mat-radio-button [value]="false">
+                            Meus Cartões
+                        </mat-radio-button>
+                        <mat-radio-button [value]="true">
+                            Novo Cartão de Crédito
+                        </mat-radio-button>
+                    </mat-radio-group>
+
+                    <mat-radio-group aria-label="Select an option" 
+                        *ngIf="!(cartoesCliente$ | async)?.length" formControlName="isNovoCartao">
+                        <mat-radio-button [disabled]="true">
+                            Meus Cartões
+                        </mat-radio-button>
+                        <mat-radio-button [value]="true">
+                            Novo Cartão de Crédito
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="finalizacao-pedido-content-form-meus_cartoes">
+                    <mat-form-field *ngIf="!form.get('cartoes').controls[index].get('isNovoCartao').value">
+                        <mat-label>Meus cartões:</mat-label>
+                        <mat-select>
+                            <mat-option (click)="patchFormGroup(index, cartaoCliente)"
+                                *ngFor="let cartaoCliente of (cartoesCliente$ | async)" value="cartaoCliente">
+                                {{ cartaoCliente?.bandeira }} - {{ cartaoCliente?.numeroCartao | hiddenCardNumber }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="finalizacao-pedido-content-form-novo_cartao" [formGroupName]="index"
+                        *ngIf="form.get('cartoes').controls[index].get('isNovoCartao').value">
+
+                        <mat-form-field>
+                            <mat-label>Nome:</mat-label>
+                            <input matInput formControlName="nomeImpressoCartao"
+                                placeholder="Nome no cartão">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Número:</mat-label>
+                            <input matInput formControlName="numeroCartao"
+                                mask="0000.0000.0000.0000"
+                                placeholder="Nome no cartão">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>CVV:</mat-label>
+                            <input matInput formControlName="codigoSeguranca"
+                                placeholder="Código de segurança">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Bandeira</mat-label>
+                            <mat-select formControlName="bandeira">
+                                <mat-option (click)="patchFornGroup(index, cartaoCliente)"
+                                    *ngFor="let bandeira of bandeiras" [value]="bandeira.descricao">
+                                    {{ bandeira.descricao }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="finalizacao-pedido-content-form-meus_cartoes-valor" [formGroupName]="index">
+                        <mat-form-field>
+                            <mat-label>Valor:</mat-label>
+                            <input matInput type="number" formControlName="valorPago"
+                                placeholder="Digite o valor pago neste cartão">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div [formGroupName]="index">
+                    <mat-checkbox 
+                        *ngIf="form.get('cartoes').controls[index].get('isNovoCartao').value"
+                        formControlName="isGravarNovo">Desejo gravar este cartão</mat-checkbox>
+                </div>
+
+            </div>
+        </form>
+            
+        <div>
+            <button color="primary" mat-button (click)="addCartao()">+ Cartão</button>
+        </div>
+    </div>
+</div>

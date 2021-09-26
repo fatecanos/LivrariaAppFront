@@ -268,13 +268,18 @@
   "cartoes": [
     {
       "id": 1,
-      "numero": "0059594594858858",
-      "nome": "Naruto Uzumaki",
-      "bandeira": {
-        "id": 2,
-        "descricao": "Visa"
-      },
+      "numeroCartao": "0059.5945.9485.8858",
+      "nomeImpressoCartao": "Naruto Uzumaki Cunha",
+      "bandeira": "Visa",
       "codigoSeguranca": "899",
+      "isPreferencial": false
+    },
+    {
+      "id": 2,
+      "numeroCartao": "8958.4585.8959.4534",
+      "nomeImpressoCartao": "Zabuza Momochi Santos",
+      "bandeira": "Mastercard",
+      "codigoSeguranca": "456",
       "isPreferencial": false
     }
   ],

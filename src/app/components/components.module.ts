@@ -20,7 +20,7 @@ import { InativarTelefoneDialogComponent } from './dialogs/inativar-telefone-dia
 import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
 import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 import { NovoEnderecoFormComponent } from './novo-endereco-form/novo-endereco-form.component';
-import { BrowserModule } from '@angular/platform-browser';
+
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };

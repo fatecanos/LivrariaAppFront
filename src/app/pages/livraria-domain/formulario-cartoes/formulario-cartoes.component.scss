@@ -1,0 +1,49 @@
+.finalizacao-pedido {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    &-content {
+
+        &-form {
+            border: 1px dashed #b3a9a9;
+            min-height: 200px;
+            margin-top: 12px;
+            padding: 8px;
+
+            &-novo_cartao {
+                display: flex;
+                gap: 8px;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            &-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                mat-icon {
+                    cursor: pointer;
+                }
+
+                mat-icon:hover {
+                    color: red;
+                }
+            }
+
+            &-options {
+                mat-radio-group {
+                    display: flex;
+                    gap: 8px;
+                }
+            }
+
+            &-meus_cartoes {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+            }
+        }
+    }
+}

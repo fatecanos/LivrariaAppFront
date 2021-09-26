@@ -6,3 +6,13 @@ export interface CartaoCreditoDTO {
     codigoSeguranca: string,
     isPreferencial: boolean
 }
+
+export interface CartaoFormDTO {
+    id: number,
+    numeroCartao: string,
+    nomeImpressoCartao: string,
+    bandeira: number,
+    isNovoCartao: boolean,
+    isGravarNovo: boolean,
+    valorPago: number
+}
