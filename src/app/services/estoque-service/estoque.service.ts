@@ -22,7 +22,7 @@ export class EstoqueService {
   }
 
   obterDetalhesLivroPorId(id: number): Observable<LivroEstoqueInterface> {
-    return this.http.get<LivroEstoqueInterface>(`${this.baseUrl}/estoque/${id}`)
+    return this.http.get<LivroEstoqueInterface>(`${this.baseUrl}/livros/detalhes/${id}`)
   }
 
   obterLivrosGestaoEstoque(): Observable<ItemEstoqueDTO[]> {

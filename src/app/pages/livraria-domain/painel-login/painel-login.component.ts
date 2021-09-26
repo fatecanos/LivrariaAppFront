@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login-service/login-service.service';
 
@@ -18,39 +19,35 @@ export class PainelLoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private snack: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
 
-  enviar() {
-    if (this.formulario.valid) {
-      setTimeout(() => {
-        console.log('enviando');
-        this.isLoading = false;
-        sessionStorage.setItem('isLogado', '1');
-        this.router.navigate(['/livraria']);
-      }, 2000);
-    }
-  }
+  // enviar() {
+  //   if (this.formulario.valid) {
+  //     setTimeout(() => {
+  //       console.log('enviando');
+  //       this.isLoading = false;
+  //       sessionStorage.setItem('isLogado', '1');
+  //       this.router.navigate(['/livraria']);
+  //     }, 2000);
+  //   }
+  // }
 
   login() {
+    this.isLoading = true;
     if (this.formulario.valid) {
-      this.isLoading = true;
-
       this.loginService
-        .loginByEmailAndPassword(
-          this.formulario.value['email'],
-          this.formulario.value['senha']
-        )
+        .loginByEmailAndPassword(this.formulario.value['email'], this.formulario.value['senha'])
         .subscribe((response) => {
-          this.isLoading = false;
-
-          if (response.email != null) {
-            sessionStorage.setItem('isLogado', String(response.usuarioId));
-            this.router.navigate(['/livraria']);
-          }
+          sessionStorage.setItem('isLogado', String(response.usuarioId));
+          this.router.navigate(['/livraria']);
+        }, error => {
+          this.snack.open('usuário não encontrado', 'fechar', {duration: 3000})
         });
     }
+    this.isLoading = false;
   }
 }
