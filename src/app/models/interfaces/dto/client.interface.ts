@@ -18,7 +18,7 @@ export interface TelefoneDTO {
 
 export interface EnderecoDTO {
     id?: number,
-    nome: string,
+    nome?: string,
     tipoEndereco: TipoEnderecoDTO,
     tipoLogradouro: string,
     logradouro: string,

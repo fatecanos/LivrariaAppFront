@@ -1,11 +1,15 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { EnderecoDTO, TipoEnderecoEnum } from "src/app/models/interfaces/dto/client.interface";
+import { EnderecoCorreioInterface } from "./correio.interface";
 
 // import { correiosBrasil, CorreiosBrasil } from "correios-brasil";
 
 @Injectable({providedIn: 'root'})
 export class CorreiosService {
 
-    // constructor(correios: CorreiosBrasil) {}
+    constructor(private http: HttpClient) {}
 
     obterValorFrete(cep: string) {
         let  args = {
@@ -27,5 +31,9 @@ export class CorreiosService {
             // response = res
         // })
         return response.Valor;
+    }
+
+    obterEnderecoPorCep(cep: string): Observable<EnderecoCorreioInterface> {
+        return this.http.get<EnderecoCorreioInterface>(`https://viacep.com.br/ws/${cep}/json/`)
     }
 }
