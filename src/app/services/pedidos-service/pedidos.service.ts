@@ -11,12 +11,12 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 export class PedidosService {
-    baseUrl: string = environment.urlMock;
+    baseUrl: string = environment.baseUrl;
 
     constructor(private http: HttpClient) { }
 
     getPedidos(): Observable<PedidoInterface[]> {
-        return this.http.get<PedidoInterface[]>(`${this.baseUrl}/pedidos`);
+        return this.http.get<PedidoInterface[]>(`${this.baseUrl}/vendas/${sessionStorage.getItem('isLogado')}`);
     }
 
     obterDetalhesPedido(id: number) {
