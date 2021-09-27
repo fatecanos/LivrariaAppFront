@@ -67,7 +67,7 @@
                 </mat-radio-group>
                 <br>
 
-                <mat-form-field appearance="fill" *ngIf="flgMyAddress">
+                <mat-form-field appearance="fill" *ngIf="flgMyAddress" id="formFieldMyEndereco">
                     <mat-label>Selecione um endereço</mat-label>
                     <mat-select id="matSelectEndereco" [(ngModel)]="enderecoSelecionado">
                         <mat-option *ngFor="let endereco of enderecosEntrega" 
