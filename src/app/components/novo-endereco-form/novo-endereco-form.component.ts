@@ -101,7 +101,7 @@ export class NovoEnderecoFormComponent implements OnInit {
     this.enderecoService
       .salvarNovoEndereco(enderecoDTO)
       .subscribe((message) => {
-        this.snackBar.open(message.description, 'fechar')
+        this.snackBar.open('Sucesso ao gravar endereço!', 'fechar')
       }, err => {
         this.snackBar.open(err.error.description, 'fechar')
       }, () => {

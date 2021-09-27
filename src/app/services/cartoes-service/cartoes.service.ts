@@ -22,8 +22,8 @@ export class CartoesService {
     return this.http.get<CartaoClienteDTO[]>(`${this.baseUrl}/cartoes/${Number(sessionStorage.getItem('isLogado'))}`);
   }
 
-  gravar(cartao: CartaoClienteDTO) {
-    return this.http.post(`${this.baseUrl}/cartoes`, cartao)
+  gravar(cartao: CartaoClienteDTO): Observable<CartaoCreditoDTO> {
+    return this.http.post<CartaoCreditoDTO>(`${this.baseUrl}/cartoes`, cartao)
   }
 
   atualizar(idCartao: number, cartao: CartaoClienteDTO) {
