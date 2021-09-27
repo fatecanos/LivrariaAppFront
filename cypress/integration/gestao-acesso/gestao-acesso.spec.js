@@ -6,7 +6,7 @@ describe('Gestao de Acesso - Modulo', ()=> {
         cy.get('.painel_login-container').within(()=> {
             cy.get('#inputEmail')
                 .type('lucas@gmail.com')
-                
+
             cy.get('#inputSenha')
                 .type('12345')
         });
@@ -17,7 +17,7 @@ describe('Gestao de Acesso - Modulo', ()=> {
         cy.get('.painel_login-container').within(()=> {
             cy.get('#inputEmail')
                 .type(' ')
-                
+
             cy.get('#inputSenha')
                 .type(' ')
         });
