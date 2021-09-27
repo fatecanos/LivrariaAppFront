@@ -40,8 +40,8 @@
                 <div class="finalizacao-pedido-content-form-meus_cartoes">
                     <mat-form-field *ngIf="!form.get('cartoes').controls[index].get('isNovoCartao').value">
                         <mat-label>Meus cartões:</mat-label>
-                        <mat-select>
-                            <mat-option (click)="patchFormGroup(index, cartaoCliente)"
+                        <mat-select id="myCardSelector">
+                            <mat-option (click)="patchFormGroup(index, cartaoCliente)" class="cardOption"
                                 *ngFor="let cartaoCliente of (cartoesCliente$ | async)" value="cartaoCliente">
                                 {{ cartaoCliente?.bandeira }} - {{ cartaoCliente?.numeroCartao | hiddenCardNumber }}
                             </mat-option>
@@ -84,7 +84,7 @@
                     <div class="finalizacao-pedido-content-form-meus_cartoes-valor" [formGroupName]="index">
                         <mat-form-field>
                             <mat-label>Valor:</mat-label>
-                            <input matInput type="number" formControlName="valorPago" id="txtValorPAgo"
+                            <input matInput type="number" formControlName="valorPago" id="txtValorPago"
                                 placeholder="Digite o valor pago neste cartão">
                         </mat-form-field>
                     </div>

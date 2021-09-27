@@ -139,7 +139,7 @@
             <div class="carrinho-step_one-cupom-painel">
                 <mat-form-field>
                     <mat-label>Cupons Promocionais:</mat-label>
-                    <mat-select [disabled]="!cuponsPromocionais.length" 
+                    <mat-select [disabled]="!cuponsPromocionais.length" id="cupomPromoSelector"
                         [(ngModel)]="cupomPromocionalSelecionado">
                         <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom">
                             {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
@@ -149,7 +149,7 @@
     
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
-                    <mat-select multiple [disabled]="!cuponsTroca.length" 
+                    <mat-select multiple [disabled]="!cuponsTroca.length" id="cupomTrocaSelector"
                         [(ngModel)]="cupomTrocaSelecionado">
                       <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">
                           {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
@@ -161,7 +161,8 @@
 
         <div class="carrinho-step_one-options">
             <button mat-button color="accent" (click)="router.navigate(['/livraria/estoque'])">Continuar comprando</button>
-            <button mat-button color="primary" (click)="finalizarPedido()">Finalizar Pedido</button>
+            <button class="carrinho-step_one-options-btn_finaliza" id="btnFinalizar"
+                mat-button color="primary" (click)="finalizarPedido()">Finalizar Pedido</button>
         </div>
     </div>
 </div>

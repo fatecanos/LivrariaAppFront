@@ -1,6 +1,9 @@
 describe('FLUXO DE VENDA', ()=> {
-    it('RF0031 - Gerenciar carrinho de compra', ()=> {
+    before(()=> {
         cy.visit('http://localhost:4200/livraria/estoque')
+    }),
+
+    it('RF0031 - Gerenciar carrinho de compra', ()=> {
         cy.get('.estoque-container-card')
             .last()
             .find('.estoque-container-card-button')
@@ -66,17 +69,29 @@ describe('FLUXO DE VENDA', ()=> {
             });
     
             cy.get('.painel_login-container-form > button').click();
+            cy.get('.liv-header-right_painel-cart').find('mat-icon').click();
+        } else {
+            cy.get('.liv-header-right_painel-cart').find('mat-icon').click();
         }
-
-        cy.get('.liv-header-right_painel-cart').find('mat-icon').click();
 
         cy.get('#formFieldMyEndereco').click();
         cy.get('mat-option').first().click();
-
-
-        cy.get('#txtValorPago').type(425.00)
     }),
-    it('RF0036 - Selecionar forma de pagamento'),
-    it('RF0036 - Selecionar cupom de troca e cancelamento'),
-    it('RF0037 - Finalizar compra')
+    it('RF0036 - Selecionar forma de pagamento', () => {
+        cy.get('#txtValorPago').clear().type(425.00)
+
+        cy.get('#myCardSelector').first().click();
+        cy.get('.cardOption').last().click();
+    }),
+    it('RF0036 - Selecionar cupom de troca e cancelamento', ()=> {
+        cy.get('#cupomPromoSelector').click().get('mat-option').eq(0).click()
+        cy.get('#cupomTrocaSelector').click().get('mat-option').eq(0).click()
+
+        cy.get('#cupomTrocaSelector').click(-20, -20, { force: true });
+    }),
+    it('RF0037 - Finalizar compra', () => {
+        //cy.get('.carrinho-step_one-options-btn_finaliza').click()
+
+        cy.get('#btnFinalizar').click({ force: true })
+    })
 })
