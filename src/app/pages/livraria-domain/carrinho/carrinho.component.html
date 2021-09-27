@@ -5,6 +5,7 @@
     </div>
     <div class="carrinho-content" *ngIf="!(carrinho$ | async).length">
         <span>Nenhum item foi adicionado no carrinho ainda. :/</span>
+        <button mat-button (click)="router.navigate(['/livraria/estoque'])">Consultar Estoque</button>
     </div>
     <div class="carrinho-table" *ngIf="(carrinho$ | async).length">
         <table>
@@ -42,7 +43,7 @@
                 </div>
                 <br>
                 <div>
-                    <span>Total: </span><span>{{ total+valorFrete | moneyFormatter}}</span>
+                    <span>Total à pagar: </span><span>{{ total+valorFrete | moneyFormatter}}</span>
                 </div>
             </div>
         </div>
@@ -120,10 +121,10 @@
             <div class="carrinho-step_one-valor_frete"
                 *ngIf="isUsuarioAutenticado">
                 <span>Valor Frete:</span><span> {{valorFrete | moneyFormatter}}</span>
-                <button mat-button id="btnCalcularFrete"
+                <!-- <button mat-button id="btnCalcularFrete"
                     (click)="calcularFrete()">
                     Calcular
-                </button>
+                </button> -->
                 <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
             </div>
         </div>
@@ -149,7 +150,7 @@
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
                     <mat-select multiple [disabled]="!cuponsTroca.length" 
-                        [(ngModel)]="cuponsTrocaSelecionado">
+                        [(ngModel)]="cupomTrocaSelecionado">
                       <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">
                           {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
                       </mat-option>

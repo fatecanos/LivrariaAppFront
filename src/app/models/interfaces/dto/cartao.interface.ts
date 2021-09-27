@@ -11,7 +11,8 @@ export interface CartaoFormDTO {
     id: number,
     numeroCartao: string,
     nomeImpressoCartao: string,
-    bandeira: number,
+    bandeira: string,
+    codigoSeguranca: string,
     isNovoCartao: boolean,
     isGravarNovo: boolean,
     valorPago: number

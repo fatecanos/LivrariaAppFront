@@ -16,9 +16,10 @@ export interface CupomPedidoInterface {
 }
 
 export interface PayloadCarrinhoDTO {
-    enderecoId: number;
+    idEndereco: number;
     idCliente: number;
+    valorTotal: number,
     itensPedido: ItemPedido[];
     formasPagamento: FormaPagamentoInterface[];
-    cupom: CupomPedidoInterface[];
+    cupoms: CupomPedidoInterface[];
 }

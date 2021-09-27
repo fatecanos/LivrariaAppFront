@@ -48,4 +48,8 @@ export class CarrinhoService {
     localStorage.setItem('carrinho', JSON.stringify(listaProdutos));
   }
 
+  limparCarrinho() {
+    localStorage.clear();
+  }
+
 }
