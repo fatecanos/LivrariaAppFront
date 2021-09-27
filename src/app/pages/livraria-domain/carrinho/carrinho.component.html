@@ -15,19 +15,19 @@
                 <th>QTDE</th>
             </tr>
             <tr class="carrinho-table-item_line" 
-                *ngFor="let item of (carrinho$ | async)">
+                *ngFor="let item of (carrinho$ | async); let i = index">
                 <td class="carrinho-table-item_line-item">
                     <img [src]="item.produto.url"  alt="item">
                     <span>{{item.produto.titulo}}</span>
                 </td>
                 <td class="carrinho-table-item_line-valor">{{ item.produto.valorVenda | moneyFormatter }}</td>
                 <td>
-                    <button id="menos"
+                    <button class="menos"
                         (click)="minusQuantidade(item.produto.id, inpQtdeCarrinho.value)">-</button>
                     <input 
                         class="carrinho-table-item_line-amount_input" 
                         type="text" [value]="item.produto.quantidadeSelecionada" #inpQtdeCarrinho>
-                    <button  id="mais"
+                    <button class="mais"
                         (click)="plusQuantidade(item.produto.id, inpQtdeCarrinho.value, item.produto.estoque)">+</button>
                 </td>
                 <td class="carrinho-table-item_line-option">
