@@ -79,6 +79,23 @@
             margin-top: 15px;
             padding: 5px;
 
+            &-address_label {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+
+                &-selected {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    span {
+                        margin-top: 15px;
+                    }
+                }
+            }
+
             span {
                 font-weight: bold;
                 margin-bottom: 15px;

@@ -1,4 +1,4 @@
-export interface ItensPedido {
+export interface ItemPedido {
     idLivro: number;
     nomeLivro: string;
     qtdComprada: number;
@@ -6,19 +6,20 @@ export interface ItensPedido {
     valorTotal: number;
 }
 
-export interface FormasPagamento {
+export interface FormaPagamentoInterface {
     idCartao: number;
     valorPago: number;
 }
 
-export interface Cupom {
+export interface CupomPedidoInterface {
     idCupom: number;
 }
 
-export interface PedidoCarrinhoDTO {
-    enderecoId: number;
+export interface PayloadCarrinhoDTO {
+    idEndereco: number;
     idCliente: number;
-    itensPedido: ItensPedido[];
-    formasPagamento: FormasPagamento[];
-    cupom: Cupom[];
+    valorTotal: number,
+    itensPedido: ItemPedido[];
+    formasPagamento: FormaPagamentoInterface[];
+    cupoms: CupomPedidoInterface[];
 }

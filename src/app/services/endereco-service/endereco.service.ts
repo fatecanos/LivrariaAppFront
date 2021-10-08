@@ -25,8 +25,8 @@ export class EnderecoService {
 
   constructor(private http: HttpClient) {}
 
-  salvarNovoEndereco(enderecoDTO: EnderecoDTO): Observable<MessageInterface> {
-    return this.http.post<MessageInterface>(
+  salvarNovoEndereco(enderecoDTO: EnderecoDTO): Observable<EnderecoDTO> {
+    return this.http.post<EnderecoDTO>(
       `${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
       enderecoDTO,
       httpOptions

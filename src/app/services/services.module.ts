@@ -5,11 +5,12 @@ import { CarrinhoService } from "./carrinho-service/carrinho-service.service";
 import { UtilsLivroFormService } from "./utils-livro-service/utils-livro-form.service";
 import { ClienteService } from "./client-service/client-service.service";
 import { EnderecoService } from "./endereco-service/endereco.service";
-import { EstoqueService } from "./estoque-service/estoque.service";
 import { PedidosService } from "./pedidos-service/pedidos.service";
 import { ValidatorService } from "./validator/validator-service.service";
 import { VendasService } from "./vendas-service/vendas.service";
 import { CartoesService } from "./cartoes-service/cartoes.service";
+import { EstoqueService } from "./estoque-service/estoque.service";
+import { CupomService } from "./cupons-service/cupom.service";
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { CartoesService } from "./cartoes-service/cartoes.service";
         CartoesService,
         CarrinhoService,
         VendasService,
-        UtilsLivroFormService
+        UtilsLivroFormService,
+        CupomService
     ]
 })
 export class ServiceModule {

@@ -25,7 +25,7 @@ export class FormularioCartoesComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.cartoesCliente$ = this.cartaoService.getCartoesMockado();
+    this.cartoesCliente$ = this.cartaoService.getCartoes();
 
     this.form = this.formBuilder.group({
         cartoes: this.formBuilder.array([

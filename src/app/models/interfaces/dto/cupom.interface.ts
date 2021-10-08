@@ -1,7 +1,7 @@
 export interface CupomDTO {
     id: number,
-    codigo: string,
-    tipo: TipoCupomEnum,
+    nome: string,
+    tipoCupom: TipoCupomEnum,
     valor: number
 }
 

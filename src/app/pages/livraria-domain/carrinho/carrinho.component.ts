@@ -4,15 +4,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CarrinhoFinalizacaoComponent } from 'src/app/components/dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
-import { PedidoFinalizacaoInterface } from 'src/app/models/interfaces/dialogs/dialog-data.interface';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import { CartaoCreditoDTO, CartaoFormDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { ClienteDTO, EnderecoDTO, TipoEnderecoEnum } from 'src/app/models/interfaces/dto/client.interface';
 import { CupomDTO, TipoCupomEnum } from 'src/app/models/interfaces/dto/cupom.interface';
-import { LivroEstoqueInterface } from 'src/app/models/interfaces/dto/estoque.interface';
+import { CupomPedidoInterface, FormaPagamentoInterface, ItemPedido, PayloadCarrinhoDTO } from 'src/app/models/interfaces/dto/pedido-carrinho.interface';
 import { CarrinhoService } from 'src/app/services/carrinho-service/carrinho-service.service';
+import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 import { ClienteService } from 'src/app/services/client-service/client-service.service';
+import { CorreiosService } from 'src/app/services/correiros-service/correios.service';
+import { CupomService } from 'src/app/services/cupons-service/cupom.service';
+import { EnderecoService } from 'src/app/services/endereco-service/endereco.service';
+import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
 
 @Component({
   templateUrl: './carrinho.component.html',
@@ -23,56 +26,34 @@ export class CarrinhoComponent implements OnInit {
   isUsuarioAutenticado: boolean = false;
   dadosCliente$?: Observable<ClienteDTO>;
   enderecosEntrega: EnderecoDTO[] = [];
-  isMyEndereco: boolean = true;
+
+  flgMyAddress?: boolean;
+  isGravarNovoEndereco: boolean = false;
+
   isLoading: boolean = false;
   cepInput: FormControl = new FormControl('', [Validators.required]);
 
+  enderecoSelecionado?: EnderecoDTO;
+
   //dados venda
-  idCliente: number = 0;
   total: number = 0;
-  enderecoSelecionado: EnderecoDTO | any;
+
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
-  valorFrete: number = 0;
+  valorFrete: number = 40;
 
-  //pagmento
   cartoesSelecionados: FormArray = new FormArray([]);
+  cuponsTroca: CupomDTO[] = [];
+  cuponsPromocionais: CupomDTO[] = [];
 
-  //cupons
-  cuponsForm = new FormArray([]);
+  cupomTrocaSelecionado: CupomDTO[] = [];
+  cupomPromocionalSelecionado?: CupomDTO;
 
-  cuponsTroca: CupomDTO[] = [
-    {
-      id: 1,
-      codigo: '88994',
-      tipo: TipoCupomEnum.TROCA,
-      valor: 103.88
-    },
-    {
-      id: 2,
-      codigo: '09998',
-      tipo: TipoCupomEnum.TROCA,
-      valor: 65.78
-    }
-  ];
   
-  //cupons de promo
-  cuponsPromocionais: CupomDTO[] = [
-    {
-      id: 1,
-      codigo: '09984',
-      tipo: TipoCupomEnum.PROMOCIONAL,
-      valor: 20
-    },
-    {
-      id: 2,
-      codigo: '98809',
-      tipo: TipoCupomEnum.PROMOCIONAL,
-      valor: 33.90
-    }
-  ];
-
   //payload
-  formPedido: FormGroup = new FormGroup({});
+  itensPedido: ItemPedido[] = [];
+  cuponsPedido: CupomPedidoInterface[] = [];
+  enderecoId: number = 0;
+  cartoesPayload: FormaPagamentoInterface[] = [];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -80,14 +61,20 @@ export class CarrinhoComponent implements OnInit {
     private clienteService: ClienteService,
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cupomService: CupomService,
+    private correioService: CorreiosService,
+    private enderecoService: EnderecoService,
+    private cartaoService: CartoesService,
+    private pedidoService: PedidosService
   ) { }
 
   ngOnInit(): void {
+    this.flgMyAddress = true;
+
     this.carrinho$ = this.carrinhoService.obterItens();
     this.atualizaTotais();
     this.isUsuarioAutenticado = !!sessionStorage.getItem('isLogado');
-    this.idCliente = Number.parseInt(sessionStorage.getItem('isLogado') || '0');
 
     this.dadosCliente$ = this.clienteService.getClientById();
 
@@ -97,16 +84,14 @@ export class CarrinhoComponent implements OnInit {
       })
     })
 
-    this.initFormulario();
+    this.initCupons();
   }
 
-  initFormulario() {
-    this.formPedido = this.formBuilder.group({
-      enderecoId: this.formBuilder.control('', Validators.required),
-      idCliente: this.formBuilder.control('', Validators.required),
-      itensPedido: this.formBuilder.array([]),
-      formasPagamento: this.formBuilder.array([]),
-      cupom: this.formBuilder.array([])
+  initCupons() {
+    this.cupomService.obterCuponsCliente()
+    .subscribe(response => {
+      this.cuponsTroca = response.filter(cupom => cupom.tipoCupom == TipoCupomEnum.TROCA)
+      this.cuponsPromocionais = response.filter(cupom => cupom.tipoCupom == TipoCupomEnum.PROMOCIONAL)
     })
   }
 
@@ -114,13 +99,13 @@ export class CarrinhoComponent implements OnInit {
     this.total = 0;
     this.carrinho$?.subscribe(carrinho => {
       carrinho.forEach(item=> {
-        this.total += item.produto.valor*item.quantidade;
+        this.total += item.produto.valorVenda * item.quantidade;
       })
     })
   }
 
-  removerItemCarrinho(item: LivroEstoqueInterface) {
-    this.carrinhoService.removerItem(item.id)
+  removerItemCarrinho(itemId: number) {
+    this.carrinhoService.removerItem(itemId)
     this.carrinho$ = this.carrinhoService.obterItens();
 
     this.atualizaTotais();
@@ -163,17 +148,129 @@ export class CarrinhoComponent implements OnInit {
     console.log(`cartoes selecionados:`, this.cartoesSelecionados);
   }
 
-  addCupom(cupom: CupomDTO) {
-    const cupons = this.formPedido.get('cupons') as FormArray;
-    cupons.push(
-      this.formBuilder.control({
-        idCupom: this.formBuilder.control(cupom.id)
-      })
-    )
+  buscarEnderecoPor(cep: string) {
+    this.isLoading = true;
+    this.correioService.obterEnderecoPorCep(cep).subscribe(res => {
+      this.enderecoSelecionado = {
+        tipoEndereco: {
+            id: 1
+        },
+        tipoLogradouro: "Rua",
+        logradouro: res.logradouro,
+        cep: res.cep,
+        numero: res.siafi,
+        bairro: res.bairro,
+        complemento: res.complemento,
+        cidade: {
+            id: 15,
+        },
+        pais: 'Brasil',
+      }
+      this.isLoading = false;
+    });
   }
 
   finalizarPedido() {
+    this.isLoading = true;
+    //montar itens carrinho
+    this.carrinhoService.obterItens()
+      .subscribe(response => {
+        this.itensPedido = response.map(res => {
+          let aux: ItemPedido;
+          aux = {
+            idLivro: res.produto.id || 0,
+            nomeLivro: res.produto.titulo,
+            qtdComprada: res.produto.quantidadeSelecionada,
+            valorUnitario: res.produto.valorVenda,
+            valorTotal: res.produto.quantidadeSelecionada * res.produto.valorVenda
+          }
+          console.log("Itens Pedido:", this.itensPedido);
+          
+          return aux;
+        })
+      })
+    this.montarCupons();
+    this.montarEndereco();
+    this.montarCartoes();
 
+    let payloadPedido: PayloadCarrinhoDTO = {
+      idEndereco: this.enderecoId,
+      idCliente: Number(sessionStorage.getItem('isLogado')),
+      valorTotal: this.total+ this.valorFrete,
+      itensPedido: this.itensPedido,
+      formasPagamento: this.cartoesPayload,
+      cupoms: this.cuponsPedido
+    }
+    console.log("Payload", payloadPedido);
+    this.pedidoService.gravarPedido(payloadPedido)
+      .subscribe(response => {
+        this.isLoading = false;
+        this.snackBar.open('pedido gravado com sucesso', 'fechar', { duration: 3000 })
+        this.router.navigate(['/clientes/pedidos'])
+      }, err => {
+        this.snackBar.open('erro ao gravar pedido', 'fechar', { duration: 3000 })
+      }, () => {
+        this.carrinhoService.limparCarrinho();
+      })
+  }
+
+
+  montarCartoes() {
+    this.cartoesPayload = [];
+    let cartoes: CartaoFormDTO[] = this.cartoesSelecionados.value;
+
+    cartoes.forEach(cartao => {
+      if(cartao.isNovoCartao) {
+        this.cartaoService.gravar({
+          id: 0,
+          bandeira: cartao.bandeira,
+          isPreferencial: false,
+          codigoSeguranca: cartao.codigoSeguranca,
+          nomeImpressoCartao: cartao.nomeImpressoCartao,
+          numeroCartao: cartao.nomeImpressoCartao
+        }).subscribe(response => {
+          this.cartoesPayload.push({idCartao: response.id, valorPago: cartao.valorPago})
+        })
+      } else {
+        this.cartoesPayload.push({idCartao: cartao.id, valorPago: cartao.valorPago})
+      }
+    })
+    
+  }
+
+  montarCupons() {
+    this.cuponsPedido = [];
+    if(this.cupomPromocionalSelecionado) {
+      this.cuponsPedido.push(
+        { 
+          idCupom: this.cupomPromocionalSelecionado?.id || 0,
+        }
+      )
+    }
+
+    if(this.cupomTrocaSelecionado) {
+      this.cupomTrocaSelecionado.forEach(cupomTroca => {
+        this.cuponsPedido.push({
+          idCupom: cupomTroca.id
+        })
+      })
+    }
+    
+  }
+
+  montarEndereco() {
+    if(this.flgMyAddress && this.enderecoSelecionado) {
+      this.enderecoId = this.enderecoSelecionado.id || 0;
+      return;
+    }
+
+    if(!this.flgMyAddress && this.enderecoSelecionado) {
+      this.enderecoService.salvarNovoEndereco(this.enderecoSelecionado)
+        .subscribe(response => {
+          this.enderecoId = response.id || 0;
+        })
+      return;
+    }
   }
 
 }
