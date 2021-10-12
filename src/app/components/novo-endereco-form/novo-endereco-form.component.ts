@@ -89,6 +89,7 @@ export class NovoEnderecoFormComponent implements OnInit {
       bairro: this.formEndereco?.controls['bairro'].value,
       complemento: this.formEndereco?.controls['complemento'].value,
       pais: this.formEndereco?.controls['pais'].value,
+      
 
       tipoEndereco: {
         id: this.tipoEnderecoSelecionado.id,
@@ -106,7 +107,7 @@ export class NovoEnderecoFormComponent implements OnInit {
         this.snackBar.open(err.error.description, 'fechar')
       }, () => {
         console.log('disparou evento');
-        this.enderecoEnviado.emit(true) 
+        this.enderecoEnviado.emit(true)
       });
   }
 

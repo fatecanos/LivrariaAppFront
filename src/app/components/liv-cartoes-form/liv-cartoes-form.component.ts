@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { BandeiraCartaoClienteDTO, CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
+import { BandeiraCartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { bandeirasMock } from 'src/app/models/mocks/bandeiras-cartao.mock';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 import { InativarCartaoDialogComponent } from '../dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
@@ -22,7 +23,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   idCartaoSelecionado?: number;
 
-  cartoes$?: Observable<CartaoClienteDTO[]>;
+  cartoes$?: Observable<CartaoCreditoDTO[]>;
 
   constructor(
     public dialog: MatDialog,
@@ -57,7 +58,7 @@ export class LivCartoesFormComponent implements OnInit {
 
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
-      let cartao: CartaoClienteDTO = this.novoCartaoForm.value;
+      let cartao: CartaoCreditoDTO = this.novoCartaoForm.value;
       console.log("novo-cartao:", cartao);
 
       //salvar cartao
@@ -72,7 +73,7 @@ export class LivCartoesFormComponent implements OnInit {
     }
   }
 
-  inativarCartao(cartao: CartaoClienteDTO) {
+  inativarCartao(cartao: CartaoCreditoDTO) {
     console.log("Cartao clicado:", cartao);
     const dialogRef = this.dialog.open(InativarCartaoDialogComponent, {
       width: '250px',
