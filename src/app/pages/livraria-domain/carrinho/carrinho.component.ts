@@ -9,7 +9,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import {
   CartaoCreditoDTO,
@@ -75,6 +75,7 @@ export class CarrinhoComponent implements OnInit {
   itensPedido: ItemPedido[] = [];
   cuponsPedido: CupomPedidoInterface[] = [];
   enderecoId: number = 0;
+  endereco$?: Observable<EnderecoDTO>;
   cartoesPayload: FormaPagamentoInterface[] = [];
 
   constructor(
@@ -199,7 +200,7 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
-  finalizarPedido() {
+  async finalizarPedido() {
     this.isLoading = true;
     //montar itens carrinho
     this.carrinhoService.obterItens().subscribe((response) => {
@@ -219,12 +220,14 @@ export class CarrinhoComponent implements OnInit {
       });
     });
     this.montarCupons();
-    this.montarEndereco();
-    this.montarCartoes();
+    await this.montarEndereco();
+    await this.montarCartoes();
+
+
+    this.endereco$?.subscribe((response) => {});
 
     let payloadPedido: PayloadCarrinhoDTO = {
       idEndereco: this.enderecoId,
-      // idCliente: Number(sessionStorage.getItem('isLogado')),
       idCliente: this.idCliente,
       valorTotal: this.total + this.valorFrete,
       itensPedido: this.itensPedido,
@@ -251,7 +254,7 @@ export class CarrinhoComponent implements OnInit {
     );
   }
 
-  montarCartoes() {
+  async montarCartoes() {
     this.cartoesPayload = [];
     let cartoes: CartaoFormDTO[] = this.cartoesSelecionados.value;
 
@@ -298,7 +301,7 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  montarEndereco() {
+  async montarEndereco () {
     if (this.flgMyAddress && this.enderecoSelecionado) {
       this.enderecoId = this.enderecoSelecionado.id || 0;
       this.enderecoSelecionado.salvar = true;
@@ -307,11 +310,14 @@ export class CarrinhoComponent implements OnInit {
 
     if (!this.flgMyAddress && this.enderecoSelecionado) {
       this.enderecoSelecionado.salvar = this.isGravarNovoEndereco;
-      this.enderecoService
-        .salvarNovoEndereco(this.enderecoSelecionado)
-        .subscribe((response) => {
-          this.enderecoId = response.id || 0;
-        });
+      this.endereco$ = this.enderecoService
+        .salvarNovoEndereco(this.enderecoSelecionado);
+        // .subscribe((response) => {
+        //   this.enderecoId = response.id || 0;
+        // });
+
+        //todo: corrigir idEndereco = 0 no payload;
+
       return;
     }
   }
