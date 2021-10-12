@@ -263,7 +263,7 @@ export class CarrinhoComponent implements OnInit {
             isPreferencial: false,
             codigoSeguranca: cartao.codigoSeguranca,
             nomeImpressoCartao: cartao.nomeImpressoCartao,
-            numeroCartao: cartao.nomeImpressoCartao,
+            numeroCartao: cartao.numeroCartao,
             salvar: cartao.isGravarNovo,
           })
           .subscribe((response) => {
