@@ -4,7 +4,7 @@ import { EnderecoDTO } from "./client.interface";
 
 export interface VendaInterface {
     id: string,
-    data: string,
+    dataCriacao: string,
     status: string,
     isCancelamentoSoliciado: boolean,
     isTrocaSocilidado: boolean,

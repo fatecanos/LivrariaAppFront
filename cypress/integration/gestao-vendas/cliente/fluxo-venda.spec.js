@@ -29,7 +29,7 @@ describe('FLUXO DE VENDA', ()=> {
         cy.get('.detalhes-produto-display-valor-button')
             .find('button')
             .click()
-        
+
         cy.get('.carrinho-table-item_line-option').eq(0).find('span').click()
     }),
     it('RF0032 - Definir quantidade de itens no carrinho', ()=> {
@@ -56,18 +56,18 @@ describe('FLUXO DE VENDA', ()=> {
         cy.get('.mais').eq(1).click();
     }),
     it('RF0035 - Selecionar endereço de entrega', ()=> {
-        //login luz@gmail.com abc12345
+        //login gluz@gmail.com abc12345
         if(!sessionStorage.getItem('isLogado')) {
             cy.visit('http://localhost:4200/livraria/login')
 
             cy.get('.painel_login-container').within(()=> {
                 cy.get('#inputEmail')
-                    .type('luz@gmail.com')
-                    
+                    .type('gluz@gmail.com')
+
                 cy.get('#inputSenha')
                     .type('abc12345')
             });
-    
+
             cy.get('.painel_login-container-form > button').click();
             cy.get('.liv-header-right_painel-cart').find('mat-icon').click();
         } else {

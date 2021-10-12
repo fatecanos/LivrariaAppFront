@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class VendasService {
 
-  baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
   constructor(
     private http: HttpClient
@@ -23,7 +23,7 @@ export class VendasService {
     //TODO: Vendas - integrar executar compra
     //this.http.post<any>(`${this.baseUrl}/vendas`, pedido);
     return of({
-     mensagem: 'sucesso' 
+     mensagem: 'sucesso'
     });
   }
 }

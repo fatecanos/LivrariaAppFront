@@ -69,6 +69,8 @@ export class CarrinhoComponent implements OnInit {
   cupomTrocaSelecionado: CupomDTO[] = [];
   cupomPromocionalSelecionado?: CupomDTO;
 
+  idCliente: number = 0;
+
   //payload
   itensPedido: ItemPedido[] = [];
   cuponsPedido: CupomPedidoInterface[] = [];
@@ -90,6 +92,10 @@ export class CarrinhoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.clienteService.getClientById().subscribe((result) => {
+      this.idCliente = result.id;
+    });
+
     this.flgMyAddress = true;
 
     this.carrinho$ = this.carrinhoService.obterItens();
@@ -218,7 +224,8 @@ export class CarrinhoComponent implements OnInit {
 
     let payloadPedido: PayloadCarrinhoDTO = {
       idEndereco: this.enderecoId,
-      idCliente: Number(sessionStorage.getItem('isLogado')),
+      // idCliente: Number(sessionStorage.getItem('isLogado')),
+      idCliente: this.idCliente,
       valorTotal: this.total + this.valorFrete,
       itensPedido: this.itensPedido,
       formasPagamento: this.cartoesPayload,
@@ -278,21 +285,20 @@ export class CarrinhoComponent implements OnInit {
     this.cuponsPedido = [];
     if (this.cupomPromocionalSelecionado) {
       this.cuponsPedido.push({
-        idCupom: this.cupomPromocionalSelecionado?.id || 0,
+        id: this.cupomPromocionalSelecionado?.id || 0,
       });
     }
 
     if (this.cupomTrocaSelecionado) {
       this.cupomTrocaSelecionado.forEach((cupomTroca) => {
         this.cuponsPedido.push({
-          idCupom: cupomTroca.id,
+          id: cupomTroca.id,
         });
       });
     }
   }
 
   montarEndereco() {
-
     if (this.flgMyAddress && this.enderecoSelecionado) {
       this.enderecoId = this.enderecoSelecionado.id || 0;
       this.enderecoSelecionado.salvar = true;

@@ -12,7 +12,7 @@ export interface FormaPagamentoInterface {
 }
 
 export interface CupomPedidoInterface {
-    idCupom: number;
+    id: number;
 }
 
 export interface PayloadCarrinhoDTO {

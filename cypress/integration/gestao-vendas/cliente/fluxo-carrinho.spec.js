@@ -11,12 +11,12 @@ describe("FLUXO CARRINHO", () => {
   });
 
   it("RF0031 - Gerenciar carrinho de compra", () => {
-    //login luz@gmail.com abc12345
+    //login gluz@gmail.com abc12345
     if (!sessionStorage.getItem("isLogado")) {
       cy.visit("http://localhost:4200/livraria/login");
 
       cy.get(".painel_login-container").within(() => {
-        cy.get("#inputEmail").type("luz@gmail.com");
+        cy.get("#inputEmail").type("gluz@gmail.com");
 
         cy.get("#inputSenha").type("abc12345");
       });
