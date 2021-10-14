@@ -20,6 +20,7 @@ import { InativarTelefoneDialogComponent } from './dialogs/inativar-telefone-dia
 import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
 import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 import { NovoEnderecoFormComponent } from './novo-endereco-form/novo-endereco-form.component';
+import { DetalhesPedidoAdminComponent } from './dialogs/detalhes-pedido-admin/detalhes-pedido-admin.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -42,7 +43,8 @@ const maskConfig: Partial<IConfig> = {
     InativarTelefoneDialogComponent,
     InativarCartaoDialogComponent,
     InativarEnderecoDialogComponent,
-    NovoEnderecoFormComponent
+    NovoEnderecoFormComponent,
+    DetalhesPedidoAdminComponent
   ],
   imports: [
     FormsModule,

@@ -5,10 +5,18 @@ import { EnderecoDTO } from "./client.interface";
 export interface VendaInterface {
     id: string,
     dataCriacao: string,
-    status: string,
+    status: StatusVendaEnum,
     isCancelamentoSoliciado: boolean,
     isTrocaSocilidado: boolean,
     isEntregaConcluida: boolean
+}
+
+export enum StatusVendaEnum {
+    PEDIDO_CANCELADO = "PEDIDO CANCELADO",
+    EM_PROCESSAMENTO = "EM PROCESSAMENTO",
+    PAGAMENTO_REALIZADO = "PAGAMENTO REALIZADO",
+    EM_TRANSPORTE = "EM TRANSPORTE",
+    ENTREGUE = "ENTREGUE"
 }
 
 export interface PedidoFinalizadoDTO {

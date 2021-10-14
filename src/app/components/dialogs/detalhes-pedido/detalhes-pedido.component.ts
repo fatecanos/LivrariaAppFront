@@ -23,8 +23,16 @@ export class DetalhesPedidoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //TODO: remover mock
+
+    this.data.idPedido = 1;
+    
     this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data.idPedido);
     this.cliente$ = this.clienteService.getClientById();
+
+    this.detalhes$.subscribe(response => {
+      console.log("resposne detalhes:", response)
+    })
   }
 
 }
