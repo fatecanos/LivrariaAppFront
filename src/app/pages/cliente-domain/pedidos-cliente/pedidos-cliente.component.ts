@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
@@ -18,7 +20,9 @@ export class PedidosClienteComponent implements OnInit {
 
   constructor(
     private service: PedidosService,
-    private matDialogRef: MatDialog
+    private matDialogRef: MatDialog,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +33,26 @@ export class PedidosClienteComponent implements OnInit {
     })
   }
 
+  cancelarPedido(idPedido: number) {
+    console.log('foo', idPedido);
+    this.service.cancelarPedido(idPedido).subscribe(response => {
+      this.snackBar.open('pedido foi cancelado', 'fechar')
+    }, error => {
+      this.snackBar.open('erro ao cancelar pedido', 'fechar')
+    }, () => {
+      this.router.navigate(['clientes/pedidos'])
+    })
+  }
+
   abrirDetalhesPedido(idPedido: number) {
     //TODO: integrar isso
     let modalData: PedidosModalInterface = {
-      idCliente: 1, //falta obter o id do cliente autenticado no sistema
+      idCliente: 1, //TODO: falta obter o id do cliente autenticado no sistema
       idPedido: idPedido
     }
 
     const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
-      width: '700px',
+      width: '900px',
       data: modalData
     });
     dialogRef.afterClosed().subscribe(result => {

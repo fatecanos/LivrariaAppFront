@@ -203,7 +203,7 @@ export class CarrinhoComponent implements OnInit {
   async finalizarPedido() {
     this.isLoading = true;
     //montar itens carrinho
-    this.carrinhoService.obterItens().subscribe((response) => {
+    await this.carrinhoService.obterItens().subscribe((response) => {
       this.itensPedido = response.map((res) => {
         let aux: ItemPedido;
         aux = {
@@ -219,7 +219,8 @@ export class CarrinhoComponent implements OnInit {
         return aux;
       });
     });
-    this.montarCupons();
+
+    await this.montarCupons();
     await this.montarEndereco();
     await this.montarCartoes();
 
@@ -234,7 +235,9 @@ export class CarrinhoComponent implements OnInit {
       formasPagamento: this.cartoesPayload,
       cupoms: this.cuponsPedido,
     };
+
     console.log('Payload', payloadPedido);
+
     this.pedidoService.gravarPedido(payloadPedido).subscribe(
       (response) => {
         this.isLoading = false;
@@ -284,7 +287,7 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
-  montarCupons() {
+async montarCupons() {
     this.cuponsPedido = [];
     if (this.cupomPromocionalSelecionado) {
       this.cuponsPedido.push({
@@ -310,14 +313,11 @@ export class CarrinhoComponent implements OnInit {
 
     if (!this.flgMyAddress && this.enderecoSelecionado) {
       this.enderecoSelecionado.salvar = this.isGravarNovoEndereco;
-      this.endereco$ = this.enderecoService
-        .salvarNovoEndereco(this.enderecoSelecionado);
-        // .subscribe((response) => {
-        //   this.enderecoId = response.id || 0;
-        // });
-
-        //todo: corrigir idEndereco = 0 no payload;
-
+      this.enderecoService
+        .salvarNovoEndereco(this.enderecoSelecionado)
+        .subscribe(response => {
+          console.log("gravando novo endereco:", response);
+        })
       return;
     }
   }

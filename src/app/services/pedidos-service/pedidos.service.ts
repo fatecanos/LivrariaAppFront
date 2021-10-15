@@ -26,4 +26,8 @@ export class PedidosService {
     gravarPedido(pedido: PayloadCarrinhoDTO): Observable<MessageInterface>{
         return this.http.post<MessageInterface>(`${this.baseUrl}/vendas`, pedido)
     }
+
+    cancelarPedido(idPedido: number) {
+        return this.http.put(`${this.baseUrl}/vendas/${idPedido}?cancelarPedido=true`, null)
+    }
 }
