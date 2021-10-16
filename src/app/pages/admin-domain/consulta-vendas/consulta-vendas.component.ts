@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
@@ -24,6 +25,7 @@ export class ConsultaVendasComponent implements OnInit {
   constructor(
     private _snackBar: MatSnackBar,
     private service: VendasService,
+    private snackBar: MatSnackBar,
     private matDialogRef: MatDialog
   ) { }
 
@@ -39,6 +41,17 @@ export class ConsultaVendasComponent implements OnInit {
     }, err => {
       this._snackBar.open("erro ao consultar vendas", 'fechar', {duration: 5000});
     })
+  }
+
+  avancarPedido(idPedido: number) {
+    this.service.avancarStatus(idPedido)
+      .subscribe(response => {
+        this.snackBar.open(response.description, 'fechar')
+      }, error => {
+        this.snackBar.open(error.value.description, 'fechar')
+      }, ()=> {
+        location.reload()
+      })
   }
 
   abrirModalDetalhes(id: number) {

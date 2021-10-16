@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InativarClienteDialogComponent } from './dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
 import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
-import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
 import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
@@ -34,7 +33,6 @@ const maskConfig: Partial<IConfig> = {
     InativarClienteDialogComponent,
     EnderecoSubmitterComponent,
     LivCartoesFormComponent,
-    CarrinhoFinalizacaoComponent,
     DetalhesPedidoComponent,
     InativarLivroDialogComponent,
     DetalhesLivroComponent,

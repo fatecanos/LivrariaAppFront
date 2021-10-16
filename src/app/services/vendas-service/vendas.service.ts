@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { PedidoFinalizadoDTO, VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { environment } from 'src/environments/environment';
 
@@ -19,11 +21,7 @@ export class VendasService {
     return this.http.get<VendaInterface[]>(`${this.baseUrl}/vendas`);
   }
 
-  executarPedido(pedido: PedidoFinalizadoDTO) {
-    //TODO: Vendas - integrar executar compra
-    //this.http.post<any>(`${this.baseUrl}/vendas`, pedido);
-    return of({
-     mensagem: 'sucesso'
-    });
+  avancarStatus(idVenda: number): Observable<MessageInterface> {
+    return this.http.put<MessageInterface>(`${this.baseUrl}/vendas/${idVenda}`, null)
   }
 }

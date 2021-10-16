@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -40,7 +41,7 @@ export class PedidosClienteComponent implements OnInit {
     }, error => {
       this.snackBar.open('erro ao cancelar pedido', 'fechar')
     }, () => {
-      this.router.navigate(['clientes/pedidos'])
+      location.reload()
     })
   }
 
