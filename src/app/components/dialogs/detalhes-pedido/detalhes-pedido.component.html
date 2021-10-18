@@ -17,6 +17,7 @@
     <div class="detalhes-pedido-content">
         <div class="detalhes-pedido-content-item" *ngFor="let itemPedido of detalhesPedido?.itensPedido">
             <div class="detalhes-pedido-content-item-image">
+                <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt=""> -->
                 <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt="">
                 <span>{{ itemPedido?.nomeLivro }}</span>
             </div>
@@ -33,15 +34,15 @@
 
             <div class="detalhes-pedido-content-opcoes">
                 <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
-                    mat-button 
-                    color="primary" 
+                    mat-button
+                    color="primary"
                     (click)="solicitarTroca(itemPedido)">
                     Solicitar Troca
                 </button>
 
-                <button *ngIf="itemPedido?.statusPedido === 'TROCA_AUTORIZADA'"
-                    mat-button 
-                    color="primary" 
+                <button *ngIf="itemPedido?.statusPedido === 'EM_TROCA'"
+                    mat-button
+                    color="primary"
                     (click)="entregarItemParaTroca(itemPedido)">
                     Enviar Item
                 </button>
