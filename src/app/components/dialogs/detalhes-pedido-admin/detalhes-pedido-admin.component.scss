@@ -1,0 +1,46 @@
+.detalhes-pedido {
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+
+        mat-icon {
+            cursor: pointer;
+        }
+    }
+
+    &-content {
+        overflow-y: scroll;
+        max-height: 320px;
+
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+
+            &-image {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+
+                img {
+                    width: 75px;
+                }
+            }
+        }
+    }
+
+    &-descriptions {
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-between;
+
+        &-content {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+    }
+}

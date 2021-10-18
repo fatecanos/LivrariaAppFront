@@ -5,28 +5,57 @@
     </div>
     <h3>Produtos Comprados:</h3>
     <mat-divider></mat-divider>
+
+    <!-- id: number;
+    idLivro: number;
+    nomeLivro: string;
+    qtdComprada: number;
+    valorUnitario: number;
+    valorTotal: number;
+    statusPedido: string; -->
+
     <div class="detalhes-pedido-content">
-        <div class="detalhes-pedido-content-item" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+        <div class="detalhes-pedido-content-item" *ngFor="let itemPedido of detalhesPedido?.itensPedido">
             <div class="detalhes-pedido-content-item-image">
                 <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt="">
-                <span>Harry potter e a pedra filosofal</span>
+                <span>{{ itemPedido?.nomeLivro }}</span>
             </div>
             <div class="detalhes-pedido-content-item-quantidade">
-                <span>10 unidades</span>
+                <span>{{ itemPedido?.qtdComprada }} unidades</span>
             </div>
             <div class="detalhes-pedido-content-item-valor">
-                <span>R$ 30.00</span>
+                <span>{{ (itemPedido?.valorUnitario | currency: "BRL").replace(".", ",") }} </span>
+            </div>
+
+            <div class="detalhes-pedido-content-item-status">
+                <span>{{ itemPedido?.statusPedido }} </span>
+            </div>
+
+            <div class="detalhes-pedido-content-opcoes">
+                <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
+                    mat-button 
+                    color="primary" 
+                    (click)="solicitarTroca(itemPedido)">
+                    Solicitar Troca
+                </button>
+
+                <button *ngIf="itemPedido?.statusPedido === 'TROCA_AUTORIZADA'"
+                    mat-button 
+                    color="primary" 
+                    (click)="entregarItemParaTroca(itemPedido)">
+                    Enviar Item
+                </button>
             </div>
         </div>
     </div>
+
     <div class="detalhes-pedido-descriptions">
         <div class="detalhes-pedido-descriptions-content">
-            <span>Total: 120,00</span>
-            <span>Valor frete: 40,00</span>
-            <span>Data do Pedido: 12/03/2021</span>
+            <span>Total: {{ (detalhesPedido?.valorTotal | currency:'BRL').replace(".", ",") }}</span>
+            <span>Data do Pedido: {{ detalhesPedido?.dataCriacao | date: 'dd/MM/YYYY'}}</span>
         </div>
         <div class="detalhes-pedido-descriptions-status">
-            <span>Status: Em Transporte</span>
+            <span>Status: {{ detalhesPedido?.status }}</span>
         </div>
     </div>
 </div>

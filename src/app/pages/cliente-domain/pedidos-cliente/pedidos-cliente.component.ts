@@ -15,7 +15,7 @@ import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service
 export class PedidosClienteComponent implements OnInit {
 
   dataSource: PedidoInterface[] = [];
-  displayedColumns: string[] = ['numero', 'data', 'status', 'acoes'];
+  displayedColumns: string[] = ['id', 'numero', 'data', 'status', 'acoes'];
 
   pedidos$?: Observable<PedidoInterface[]>;
 
@@ -45,15 +45,16 @@ export class PedidosClienteComponent implements OnInit {
     })
   }
 
-  abrirDetalhesPedido(idPedido: number) {
+  abrirDetalhesPedido(pedido: PedidoInterface) {
     //TODO: integrar isso
     let modalData: PedidosModalInterface = {
-      idCliente: 1, //TODO: falta obter o id do cliente autenticado no sistema
-      idPedido: idPedido
+      idCliente: Number(sessionStorage.getItem('isLogado')),
+      idPedido: pedido.id,
+      pedido: pedido
     }
 
     const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
-      width: '900px',
+      width: '1200px',
       data: modalData
     });
     dialogRef.afterClosed().subscribe(result => {

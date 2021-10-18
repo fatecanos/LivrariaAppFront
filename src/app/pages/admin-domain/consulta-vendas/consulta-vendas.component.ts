@@ -4,8 +4,9 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DetalhesPedidoAdminComponent } from 'src/app/components/dialogs/detalhes-pedido-admin/detalhes-pedido-admin.component';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
-import { PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
+import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
 import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
@@ -18,7 +19,7 @@ export class ConsultaVendasComponent implements OnInit {
   vendas$?: Observable<VendaInterface[]>;
 
   dataSource: VendaInterface[] = [];
-  displayedColumns: string[] = ['numero', 'data', 'status', 'acoes'];
+  displayedColumns: string[] = ['id', 'numero', 'data', 'status', 'acoes'];
 
   filterOptions: Array<any> = ['número', 'status'];
 
@@ -54,14 +55,15 @@ export class ConsultaVendasComponent implements OnInit {
       })
   }
 
-  abrirModalDetalhes(id: number) {
+  abrirModalDetalhes(pedido: PedidoInterface) {
     let modalData: PedidosModalInterface = {
-      idCliente: 1, //falta obter o id do cliente autenticado no sistema
-      idPedido: id
+      idCliente: Number(sessionStorage.getItem('isLogado')),
+      idPedido: pedido.id,
+      pedido: pedido
     }
 
-    const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
-      width: '900px',
+    const dialogRef = this.matDialogRef.open(DetalhesPedidoAdminComponent, {
+      width: '1200px',
       data: modalData
     });
 

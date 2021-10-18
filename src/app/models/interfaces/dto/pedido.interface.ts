@@ -8,13 +8,13 @@ export interface PedidoInterface {
     numero: string;
     status: string;
     dataCriacao: Date;
-    itensPedido: ItensPedido[];
+    itensPedido: ItemPedidoInterface[];
     formasPagamento: FormasPagamento[];
     cupoms: any[];
 }
 
 
-export interface ItensPedido {
+export interface ItemPedidoInterface {
     id: number;
     idLivro: number;
     nomeLivro: string;
@@ -42,5 +42,6 @@ export interface DetalhesPedidoInterface {
 
 export interface PedidosModalInterface {
     idPedido: number,
-    idCliente: number
+    idCliente: number,
+    pedido?: PedidoInterface
 }
