@@ -14,7 +14,7 @@
                 <th>VALOR</th>
                 <th>QTDE</th>
             </tr>
-            <tr class="carrinho-table-item_line" 
+            <tr class="carrinho-table-item_line"
                 *ngFor="let item of (carrinho$ | async); let i = index">
                 <td class="carrinho-table-item_line-item">
                     <img [src]="item.produto.url"  alt="item">
@@ -24,8 +24,8 @@
                 <td>
                     <button class="menos"
                         (click)="minusQuantidade(item.produto.id, inpQtdeCarrinho.value)">-</button>
-                    <input 
-                        class="carrinho-table-item_line-amount_input" 
+                    <input
+                        class="carrinho-table-item_line-amount_input"
                         type="text" [value]="item.produto.quantidadeSelecionada" #inpQtdeCarrinho>
                     <button class="mais"
                         (click)="plusQuantidade(item.produto.id, inpQtdeCarrinho.value, item.produto.estoque)">+</button>
@@ -70,7 +70,7 @@
                 <mat-form-field appearance="fill" *ngIf="flgMyAddress" id="formFieldMyEndereco">
                     <mat-label>Selecione um endereço</mat-label>
                     <mat-select id="matSelectEndereco" [(ngModel)]="enderecoSelecionado">
-                        <mat-option *ngFor="let endereco of enderecosEntrega" 
+                        <mat-option *ngFor="let endereco of enderecosEntrega"
                             [value]="endereco">
                             {{endereco.cep}} - {{endereco.logradouro}}, {{endereco.numero}}
                         </mat-option>
@@ -93,7 +93,7 @@
                         <span>{{ enderecoSelecionado.logradouro}}, {{enderecoSelecionado.pais}}</span>
                     </div>
                     <div *ngIf="!flgMyAddress">
-                        <mat-checkbox [(ngModel)]="isGravarNovoEndereco">Desejo gravar este cartão</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="isGravarNovoEndereco">Desejo gravar este endereço</mat-checkbox>
                     </div>
                 </div>
             </div>
@@ -145,8 +145,8 @@
                             {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
                         </mat-option>
                     </mat-select>
-                </mat-form-field> 
-    
+                </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
                     <mat-select multiple [disabled]="!cuponsTroca.length" id="cupomTrocaSelector"

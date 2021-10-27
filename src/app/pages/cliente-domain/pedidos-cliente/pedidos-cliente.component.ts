@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
@@ -12,13 +15,15 @@ import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service
 export class PedidosClienteComponent implements OnInit {
 
   dataSource: PedidoInterface[] = [];
-  displayedColumns: string[] = ['numero', 'data', 'status', 'acoes'];
+  displayedColumns: string[] = ['id', 'numero', 'data', 'status', 'acoes'];
 
   pedidos$?: Observable<PedidoInterface[]>;
 
   constructor(
     private service: PedidosService,
-    private matDialogRef: MatDialog
+    private matDialogRef: MatDialog,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +34,27 @@ export class PedidosClienteComponent implements OnInit {
     })
   }
 
-  abrirDetalhesPedido(idPedido: number) {
+  cancelarPedido(idPedido: number) {
+    console.log('foo', idPedido);
+    this.service.cancelarPedido(idPedido).subscribe(response => {
+      this.snackBar.open('pedido foi cancelado', 'fechar')
+    }, error => {
+      this.snackBar.open('erro ao cancelar pedido', 'fechar')
+    }, () => {
+      location.reload()
+    })
+  }
+
+  abrirDetalhesPedido(pedido: PedidoInterface) {
     //TODO: integrar isso
     let modalData: PedidosModalInterface = {
-      idCliente: 1, //falta obter o id do cliente autenticado no sistema
-      idPedido: idPedido
+      idCliente: Number(sessionStorage.getItem('isLogado')),
+      idPedido: pedido.id,
+      pedido: pedido
     }
 
     const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
-      width: '700px',
+      width: '1200px',
       data: modalData
     });
     dialogRef.afterClosed().subscribe(result => {

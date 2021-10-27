@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InativarClienteDialogComponent } from './dialogs/inativar-cliente-dialog/inativar-cliente-dialog.component';
 import { EnderecoSubmitterComponent } from './dialogs/endereco-submitter/endereco-submitter.component';
 import { LivCartoesFormComponent } from './liv-cartoes-form/liv-cartoes-form.component';
-import { CarrinhoFinalizacaoComponent } from './dialogs/carrinho-finalizacao/carrinho-finalizacao.component';
 import { DetalhesPedidoComponent } from './dialogs/detalhes-pedido/detalhes-pedido.component';
 import { InativarLivroDialogComponent } from './dialogs/inativar-livro-dialog/inativar-livro-dialog.component';
 import { DetalhesLivroComponent } from './dialogs/detalhes-livro/detalhes-livro.component';
@@ -20,6 +19,7 @@ import { InativarTelefoneDialogComponent } from './dialogs/inativar-telefone-dia
 import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/inativar-cartao-dialog.component';
 import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 import { NovoEnderecoFormComponent } from './novo-endereco-form/novo-endereco-form.component';
+import { DetalhesPedidoAdminComponent } from './dialogs/detalhes-pedido-admin/detalhes-pedido-admin.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -33,7 +33,6 @@ const maskConfig: Partial<IConfig> = {
     InativarClienteDialogComponent,
     EnderecoSubmitterComponent,
     LivCartoesFormComponent,
-    CarrinhoFinalizacaoComponent,
     DetalhesPedidoComponent,
     InativarLivroDialogComponent,
     DetalhesLivroComponent,
@@ -42,7 +41,8 @@ const maskConfig: Partial<IConfig> = {
     InativarTelefoneDialogComponent,
     InativarCartaoDialogComponent,
     InativarEnderecoDialogComponent,
-    NovoEnderecoFormComponent
+    NovoEnderecoFormComponent,
+    DetalhesPedidoAdminComponent
   ],
   imports: [
     FormsModule,

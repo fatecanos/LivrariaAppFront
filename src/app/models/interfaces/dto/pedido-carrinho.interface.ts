@@ -7,7 +7,7 @@ export interface ItemPedido {
 }
 
 export interface FormaPagamentoInterface {
-    idCartao: number;
+    idCartao?: number;
     valorPago: number;
 }
 

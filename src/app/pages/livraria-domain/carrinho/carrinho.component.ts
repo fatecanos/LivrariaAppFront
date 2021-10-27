@@ -9,7 +9,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import {
   CartaoCreditoDTO,
@@ -75,6 +75,7 @@ export class CarrinhoComponent implements OnInit {
   itensPedido: ItemPedido[] = [];
   cuponsPedido: CupomPedidoInterface[] = [];
   enderecoId: number = 0;
+  endereco$?: Observable<EnderecoDTO>;
   cartoesPayload: FormaPagamentoInterface[] = [];
 
   constructor(
@@ -193,15 +194,16 @@ export class CarrinhoComponent implements OnInit {
           id: 15,
         },
         pais: 'Brasil',
+        salvar: this.isGravarNovoEndereco,
       };
       this.isLoading = false;
     });
   }
 
-  finalizarPedido() {
+  async finalizarPedido() {
     this.isLoading = true;
     //montar itens carrinho
-    this.carrinhoService.obterItens().subscribe((response) => {
+    await this.carrinhoService.obterItens().subscribe((response) => {
       this.itensPedido = response.map((res) => {
         let aux: ItemPedido;
         aux = {
@@ -217,20 +219,25 @@ export class CarrinhoComponent implements OnInit {
         return aux;
       });
     });
-    this.montarCupons();
-    this.montarEndereco();
-    this.montarCartoes();
+
+    await this.montarCupons();
+    await this.montarEndereco();
+    await this.montarCartoes();
+
+
+    this.endereco$?.subscribe((response) => {});
 
     let payloadPedido: PayloadCarrinhoDTO = {
       idEndereco: this.enderecoId,
-      // idCliente: Number(sessionStorage.getItem('isLogado')),
       idCliente: this.idCliente,
       valorTotal: this.total + this.valorFrete,
       itensPedido: this.itensPedido,
       formasPagamento: this.cartoesPayload,
       cupoms: this.cuponsPedido,
     };
+
     console.log('Payload', payloadPedido);
+
     this.pedidoService.gravarPedido(payloadPedido).subscribe(
       (response) => {
         this.isLoading = false;
@@ -250,7 +257,7 @@ export class CarrinhoComponent implements OnInit {
     );
   }
 
-  montarCartoes() {
+  async montarCartoes() {
     this.cartoesPayload = [];
     let cartoes: CartaoFormDTO[] = this.cartoesSelecionados.value;
 
@@ -258,12 +265,12 @@ export class CarrinhoComponent implements OnInit {
       if (cartao.isNovoCartao) {
         this.cartaoService
           .gravar({
-            id: 0,
             bandeira: cartao.bandeira,
             isPreferencial: false,
             codigoSeguranca: cartao.codigoSeguranca,
             nomeImpressoCartao: cartao.nomeImpressoCartao,
-            numeroCartao: cartao.nomeImpressoCartao,
+            numeroCartao: cartao.numeroCartao,
+            salvar: cartao.isGravarNovo,
           })
           .subscribe((response) => {
             this.cartoesPayload.push({
@@ -280,7 +287,7 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
-  montarCupons() {
+async montarCupons() {
     this.cuponsPedido = [];
     if (this.cupomPromocionalSelecionado) {
       this.cuponsPedido.push({
@@ -297,18 +304,20 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  montarEndereco() {
+  async montarEndereco () {
     if (this.flgMyAddress && this.enderecoSelecionado) {
       this.enderecoId = this.enderecoSelecionado.id || 0;
+      this.enderecoSelecionado.salvar = true;
       return;
     }
 
     if (!this.flgMyAddress && this.enderecoSelecionado) {
+      this.enderecoSelecionado.salvar = this.isGravarNovoEndereco;
       this.enderecoService
         .salvarNovoEndereco(this.enderecoSelecionado)
-        .subscribe((response) => {
-          this.enderecoId = response.id || 0;
-        });
+        .subscribe(response => {
+          console.log("gravando novo endereco:", response);
+        })
       return;
     }
   }

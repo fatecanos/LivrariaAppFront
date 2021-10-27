@@ -1,12 +1,33 @@
 import { ItemCarrinhoInterface } from "./carrinho.interface";
 
 export interface PedidoInterface {
-    id: number,
-    numero: string,
-    data: string,
-    status: string,
-    isPodeTrocar: boolean,
-    isPodeCancelar: boolean
+    id: number;
+    idEndereco: number;
+    idCliente: number;
+    valorTotal: number;
+    numero: string;
+    status: string;
+    dataCriacao: Date;
+    itensPedido: ItemPedidoInterface[];
+    formasPagamento: FormasPagamento[];
+    cupoms: any[];
+}
+
+
+export interface ItemPedidoInterface {
+    id: number;
+    idLivro: number;
+    nomeLivro: string;
+    qtdComprada: number;
+    valorUnitario: number;
+    valorTotal: number;
+    statusPedido: string;
+}
+
+export interface FormasPagamento {
+    id: number;
+    idCartao: number;
+    valorPago: number;
 }
 
 export interface DetalhesPedidoInterface {
@@ -21,5 +42,6 @@ export interface DetalhesPedidoInterface {
 
 export interface PedidosModalInterface {
     idPedido: number,
-    idCliente: number
+    idCliente: number,
+    pedido?: PedidoInterface
 }

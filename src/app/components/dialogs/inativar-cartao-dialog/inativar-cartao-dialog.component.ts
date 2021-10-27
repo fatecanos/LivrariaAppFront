@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartaoClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
+import { CartaoCreditoDTO } from 'src/app/models/interfaces/dto/cartao.interface';
 import { CartoesService } from 'src/app/services/cartoes-service/cartoes.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class InativarCartaoDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) public data: CartaoClienteDTO,
+    @Inject(MAT_DIALOG_DATA) public data: CartaoCreditoDTO,
     private service: CartoesService,
     private snackService: MatSnackBar
   ) { }
@@ -21,15 +21,15 @@ export class InativarCartaoDialogComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+
   inativarCartao() {
     console.log('dados modal:',this.data.id);
-    
-    this.service.removerCartao(this.data.id).subscribe(res => {
+
+    this.service.removerCartao(this.data.id || 0).subscribe(res => {
       this.snackService.open('cartão foi removido com sucesso', 'fechar', {duration: 3000})
     }, err => {
       this.snackService.open('falha ao remover cartão', 'fechar', {duration: 3000})
-    }, 
+    },
     ()=> {
       this.dialogRef.close();
     })

@@ -9,7 +9,6 @@ import { ClienteDomainComponent } from "./cliente-domain.component";
 import { ClienteDomainRouting } from "./cliente-domain.routing";
 import { PedidosClienteComponent } from './pedidos-cliente/pedidos-cliente.component';
 import { MeusCuponsComponent } from './meus-cupons/meus-cupons.component';
-import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
     imports: [

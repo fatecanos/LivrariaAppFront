@@ -1,23 +1,13 @@
 <div class="detalhes-pedido">
     <div class="detalhes-pedido-header">
-        <h2>Pedido #099918823</h2>
+        <h2>Pedido Admin #{{ detalhesPedido?.numero }}</h2>
         <mat-icon (click)="dialogRef.close()">close</mat-icon>
     </div>
     <h3>Produtos Comprados:</h3>
     <mat-divider></mat-divider>
-
-    <!-- id: number;
-    idLivro: number;
-    nomeLivro: string;
-    qtdComprada: number;
-    valorUnitario: number;
-    valorTotal: number;
-    statusPedido: string; -->
-
     <div class="detalhes-pedido-content">
         <div class="detalhes-pedido-content-item" *ngFor="let itemPedido of detalhesPedido?.itensPedido">
             <div class="detalhes-pedido-content-item-image">
-                <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt=""> -->
                 <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt="">
                 <span>{{ itemPedido?.nomeLivro }}</span>
             </div>
@@ -33,18 +23,25 @@
             </div>
 
             <div class="detalhes-pedido-content-opcoes">
-                <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
-                    mat-button
-                    color="primary"
-                    (click)="solicitarTroca(itemPedido)">
-                    Solicitar Troca
+                <button *ngIf="itemPedido?.statusPedido === 'TROCA_SOLICITADA'"
+                    mat-button 
+                    color="primary" 
+                    (click)="aprovarTroca(itemPedido)">
+                    Aprovar Solicitação
+                </button>
+
+                <button *ngIf="itemPedido?.statusPedido === 'TROCA_SOLICITADA'"
+                    mat-button 
+                    color="warn" 
+                    (click)="recusarTroca(itemPedido)">
+                    Recusar Solicitação
                 </button>
 
                 <button *ngIf="itemPedido?.statusPedido === 'EM_TROCA'"
-                    mat-button
-                    color="primary"
-                    (click)="entregarItemParaTroca(itemPedido)">
-                    Enviar Item
+                    mat-button 
+                    color="accent" 
+                    (click)="confirmarRecebimentoTroca(itemPedido)">
+                    Confirmar recebimento troca
                 </button>
             </div>
         </div>
