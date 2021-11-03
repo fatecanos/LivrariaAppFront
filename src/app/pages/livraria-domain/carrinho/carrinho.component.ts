@@ -166,10 +166,11 @@ export class CarrinhoComponent implements OnInit {
 
   calcularFrete() {
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-      this.valorFrete = 40;
-    }, 4000);
+    this.correioService
+      .obterValorFrete(this.enderecoSelecionado?.cep || '0')
+      .then(response => {
+        console.log();
+      })
   }
 
   obterCartoesSelecionados(cartoes: FormArray) {

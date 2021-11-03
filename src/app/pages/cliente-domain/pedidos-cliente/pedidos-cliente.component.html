@@ -3,9 +3,9 @@
     <h2>Pedidos</h2>
     <mat-divider></mat-divider>
 
-    <span *ngIf="!dataSource.length">Nenhum pedido encontrado</span>
+    <span *ngIf="!dataSource">Nenhum pedido encontrado</span>
 
-    <table mat-table class="pedidos-cliente-table" matSort [dataSource]="dataSource" *ngIf="dataSource.length">
+    <table mat-table class="pedidos-cliente-table" matSort [dataSource]="dataSource" *ngIf="dataSource">
       <!-- Position Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
@@ -43,6 +43,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator #paginator
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10]">
+    </mat-paginator>
     <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="selecione os pedidos"></mat-paginator> -->
   </div>
 </div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
@@ -13,11 +15,13 @@ import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service
   styleUrls: ['./pedidos-cliente.component.scss']
 })
 export class PedidosClienteComponent implements OnInit {
-
-  dataSource: PedidoInterface[] = [];
   displayedColumns: string[] = ['id', 'numero', 'data', 'status', 'acoes'];
 
   pedidos$?: Observable<PedidoInterface[]>;
+
+  dataSource = new MatTableDataSource<PedidoInterface>();
+
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   constructor(
     private service: PedidosService,
@@ -30,7 +34,8 @@ export class PedidosClienteComponent implements OnInit {
     this.pedidos$ = this.service.getPedidos();
 
     this.pedidos$.subscribe(response => {
-      this.dataSource = response;
+      this.dataSource = new MatTableDataSource<PedidoInterface>(response)
+      this.dataSource.paginator = this.paginator || null;
     })
   }
 
@@ -61,7 +66,7 @@ export class PedidosClienteComponent implements OnInit {
       this.pedidos$ = this.service.getPedidos();
 
       this.pedidos$.subscribe(response => {
-        this.dataSource = response;
+        this.dataSource = new MatTableDataSource<PedidoInterface>(response)
       })
     })
   }

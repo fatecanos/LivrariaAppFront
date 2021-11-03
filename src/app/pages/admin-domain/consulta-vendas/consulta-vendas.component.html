@@ -23,9 +23,9 @@
     </div>
 
     <div class="consulta_vendas-content">
-      <span *ngIf="!dataSource.length">Nenhuma venda encontrada</span>
+      <span *ngIf="!dataSource">Nenhuma venda encontrada</span>
       <table mat-table [dataSource]="dataSource"
-        *ngIf="dataSource.length"
+        *ngIf="dataSource"
         class="mat-elevation-z8">
 
           <ng-container matColumnDef="id">
@@ -73,5 +73,10 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+      <mat-paginator #paginator
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10]">
+      </mat-paginator>
   </div>
 </div>
