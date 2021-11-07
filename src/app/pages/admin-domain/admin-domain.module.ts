@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ComponentsModule } from "src/app/components/components.module";
 import { MaterialModule } from "src/app/material/material.module";
@@ -14,6 +14,8 @@ import { ConsultaLivrosComponent } from './consulta-livros/consulta-livros.compo
 import { GestaoEstoqueComponent } from './gestao-estoque/gestao-estoque.component';
 import { IConfig, NgxMaskModule } from "ngx-mask";
 import { GestaoCuponsComponent } from './gestao-cupons/gestao-cupons.component';
+import { GoogleChartsModule } from "angular-google-charts";
+import { HttpClientModule } from "@angular/common/http";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -28,7 +30,9 @@ const maskConfig: Partial<IConfig> = {
         FormsModule,
         ReactiveFormsModule,
         ServiceModule,
-        NgxMaskModule.forRoot(maskConfig)
+        NgxMaskModule.forRoot(maskConfig),
+        GoogleChartsModule,
+        HttpClientModule
     ],
     declarations: [
         ConsultaClientesComponent,
@@ -39,7 +43,8 @@ const maskConfig: Partial<IConfig> = {
         ConsultaLivrosComponent,
         GestaoEstoqueComponent,
         GestaoCuponsComponent
-    ]
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AdminDomainModule {
 

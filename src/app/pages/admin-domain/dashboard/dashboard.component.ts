@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faturamentoMock } from './mock';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

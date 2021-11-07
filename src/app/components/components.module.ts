@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LivHeaderComponent } from './liv-header/liv-header.component';
 import { LivFooterComponent } from './liv-footer/liv-footer.component';
@@ -20,6 +20,10 @@ import { InativarCartaoDialogComponent } from './dialogs/inativar-cartao-dialog/
 import { InativarEnderecoDialogComponent } from './dialogs/inativar-endereco-dialog/inativar-endereco-dialog.component';
 import { NovoEnderecoFormComponent } from './novo-endereco-form/novo-endereco-form.component';
 import { DetalhesPedidoAdminComponent } from './dialogs/detalhes-pedido-admin/detalhes-pedido-admin.component';
+import { LivFaturamentoChartComponent } from './liv-faturamento-chart/liv-faturamento-chart.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { LivGeneroChartComponent } from './liv-genero-chart/liv-genero-chart.component';
+import { LivRankChartComponent } from './liv-rank-chart/liv-rank-chart.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -42,7 +46,10 @@ const maskConfig: Partial<IConfig> = {
     InativarCartaoDialogComponent,
     InativarEnderecoDialogComponent,
     NovoEnderecoFormComponent,
-    DetalhesPedidoAdminComponent
+    DetalhesPedidoAdminComponent,
+    LivFaturamentoChartComponent,
+    LivGeneroChartComponent,
+    LivRankChartComponent
   ],
   imports: [
     FormsModule,
@@ -51,7 +58,8 @@ const maskConfig: Partial<IConfig> = {
     RouterModule,
     NgxMaskModule.forRoot(maskConfig),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    GoogleChartsModule
   ],
   exports: [
     LivHeaderComponent,
@@ -61,7 +69,11 @@ const maskConfig: Partial<IConfig> = {
     EnderecoSubmitterComponent,
     LivCartoesFormComponent,
     LivTelefonesManagementComponent,
-    NovoEnderecoFormComponent
-  ]
+    NovoEnderecoFormComponent,
+    LivFaturamentoChartComponent,
+    LivGeneroChartComponent,
+    LivRankChartComponent
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class ComponentsModule { }

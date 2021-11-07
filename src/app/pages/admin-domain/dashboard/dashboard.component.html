@@ -2,5 +2,27 @@
     <div class="dashboard-header">
         <h2>Dashboard</h2>
         <mat-divider></mat-divider>
+        
+        <form action="" class="dashboard-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Data início:</mat-label>
+                <input matInput type="date">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Data fim:</mat-label>
+                <input matInput type="date">
+            </mat-form-field>
+
+            <div class="dashboard-form-button">
+                <button mat-button>Filtrar</button>
+            </div>
+        </form>
+
+        <liv-faturamento-chart></liv-faturamento-chart>
+    </div>
+    <div class="dashboard-content">
+        <liv-genero-chart></liv-genero-chart>
+        <liv-rank-chart></liv-rank-chart>
     </div>
 </div>
