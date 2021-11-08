@@ -2,6 +2,9 @@
     margin: 0 auto;
     max-width: 800px;
     min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
     &-header {
 
@@ -23,8 +26,8 @@
     }
 
     &-content {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
+        liv-genero-chart {
+            width: 100%;
+        }
     }
 }

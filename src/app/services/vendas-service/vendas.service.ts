@@ -26,17 +26,10 @@ export class VendasService {
   }
 
   obterFaturamento(dataInicio: Date, dataFim: Date): Observable<FaturamentoMensal[]> {
-    console.log('rodando consulta de faturamento...');
-
-    console.log("Data inicio:", dataInicio);
-    console.log("Data fim:", dataFim);
-
-    var today = new Date();
     var lastDayOfMonth = new Date(dataFim.getFullYear(), dataFim.getMonth()+1, 0).getDate();
-
     
-    let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()}-${dataInicio.getDate()}`
-    let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()}-${lastDayOfMonth}`
+    let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()+1}-${dataInicio.getDate()}`
+    let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()+1}-${lastDayOfMonth}`
 
     return this.http.get<FaturamentoMensal[]>(`${this.baseUrl}/vendas/faturamentoporperiodo`+
       `?dataInicio=${dataInicioAux}&dataFim=${dataFimAux}`)
