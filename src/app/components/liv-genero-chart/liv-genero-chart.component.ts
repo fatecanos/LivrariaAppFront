@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({
   selector: 'liv-genero-chart',
@@ -9,20 +10,22 @@ export class LivGeneroChartComponent implements OnInit {
 
   title = 'Popularidade por gênero';
   type = 'PieChart';
-  data = [
-     ['Masculino', 60.0],
-     ['Feminino', 20.8]
-  ];
+  data: any;
   columnNames = ['Browser', 'Percentage'];
   options = {          
   };
   width = 550;
   height = 400;
 
-  constructor() { }
+  constructor(private service: VendasService) { }
 
   ngOnInit(): void {
-    
+    this.service.obterPopularidadePorGenero().subscribe(response => {
+      this.data = [
+        ['Masculino', response.masculino],
+        ['Feminino', response.feminino]
+      ]
+    })
   }
 
 }

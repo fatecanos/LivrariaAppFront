@@ -1,5 +1,5 @@
 <div>
-    <google-chart #chart
+    <google-chart #chart *ngIf="data.length"
         [title]="title"
         [type]="type"
         [data]="data"
@@ -8,4 +8,5 @@
         [width]="width"
         [height]="height">
     </google-chart>
+    <span *ngIf="!data.length">Nenhum dado de faturamento foi encontrado</span>
 </div>

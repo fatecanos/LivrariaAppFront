@@ -24,6 +24,8 @@ import { LivFaturamentoChartComponent } from './liv-faturamento-chart/liv-fatura
 import { GoogleChartsModule } from 'angular-google-charts';
 import { LivGeneroChartComponent } from './liv-genero-chart/liv-genero-chart.component';
 import { LivRankChartComponent } from './liv-rank-chart/liv-rank-chart.component';
+import { VendasService } from '../services/vendas-service/vendas.service';
+import { ServiceModule } from '../services/services.module';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -59,7 +61,8 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
     ReactiveFormsModule,
     FormsModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    ServiceModule
   ],
   exports: [
     LivHeaderComponent,

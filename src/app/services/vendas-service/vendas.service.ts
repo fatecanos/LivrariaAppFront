@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { FaturamentoMensal, PopularidadeGenero } from 'src/app/models/interfaces/dto/graficos.interface';
 import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
-import { PedidoFinalizadoDTO, VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
+import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -23,5 +23,25 @@ export class VendasService {
 
   avancarStatus(idVenda: number): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(`${this.baseUrl}/vendas/${idVenda}`, null)
+  }
+
+  obterFaturamento(dataInicio: Date, dataFim: Date): Observable<FaturamentoMensal[]> {
+    console.log('rodando consulta de faturamento...');
+
+    console.log("Data inicio:", dataInicio);
+    console.log("Data fim:", dataFim);
+    
+
+    let ultimoDiaRangeTwo = new Date(dataFim.getFullYear(), dataFim.getMonth()+1, 0).getDay()
+    
+    let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()}-${dataInicio.getDay()}`
+    let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()}-${ultimoDiaRangeTwo}`
+
+    return this.http.get<FaturamentoMensal[]>(`${this.baseUrl}/vendas/faturamentoporperiodo`+
+      `?dataInicio=${dataInicioAux}&dataFim=${dataFimAux}`)
+  }
+
+  obterPopularidadePorGenero(): Observable<PopularidadeGenero> {
+    return this.http.get<PopularidadeGenero>(`${this.baseUrl}/vendas/vendasporgenero`)
   }
 }
