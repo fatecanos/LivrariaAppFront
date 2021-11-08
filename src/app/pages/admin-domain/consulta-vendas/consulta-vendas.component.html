@@ -24,7 +24,7 @@
 
     <div class="consulta_vendas-content">
       <span *ngIf="!dataSource">Nenhuma venda encontrada</span>
-      <table mat-table [dataSource]="dataSource"
+      <table mat-table [dataSource]="dataSource" id="tabelaVendasAdmin"
         *ngIf="dataSource"
         class="mat-elevation-z8">
 
