@@ -4,9 +4,6 @@ import axios from "axios";
 import { Observable } from "rxjs";
 import { EnderecoCorreioInterface } from "./correio.interface";
 
-// const ApiNodeCorreios = require('node-correios');
-// const correios = new ApiNodeCorreios()
-
 @Injectable({providedIn: 'root'})
 export class CorreiosService {
 

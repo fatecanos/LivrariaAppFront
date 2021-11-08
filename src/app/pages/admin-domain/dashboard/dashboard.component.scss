@@ -2,6 +2,9 @@
     margin: 0 auto;
     max-width: 800px;
     min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
     &-header {
 
@@ -12,6 +15,19 @@
 
         mat-divider {
             margin-bottom: 35px;
+        }
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &-content {
+        liv-genero-chart {
+            width: 100%;
         }
     }
 }

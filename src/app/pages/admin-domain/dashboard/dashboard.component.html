@@ -1,6 +1,32 @@
 <div class="dashboard">
+    
     <div class="dashboard-header">
         <h2>Dashboard</h2>
         <mat-divider></mat-divider>
+        
+        <div class="dashboard-form">
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Selecione a largura do gráfico:</mat-label>
+                <mat-date-range-input
+                    [formGroup]="rangeDatas"
+                    [rangePicker]="campaignOnePicker"
+                    [comparisonStart]="rangeDatas.value.start"
+                    [comparisonEnd]="rangeDatas.value.end">
+                    <input matStartDate placeholder="início" formControlName="start">
+                    <input matEndDate placeholder="fim" formControlName="end">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+                <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+            </mat-form-field>
+
+            <button mat-button color="accent" (click)="buscarFaturamento()">Filtrar</button>
+        </div>
+
+        <liv-faturamento-chart [faturamento]="(faturamentoMensal | async)"></liv-faturamento-chart>
+    </div>
+
+    <div class="dashboard-content">
+        <liv-genero-chart></liv-genero-chart>
+        <!-- <liv-rank-chart></liv-rank-chart> -->
     </div>
 </div>

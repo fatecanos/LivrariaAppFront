@@ -26,7 +26,7 @@ import { CupomService } from "./cupons-service/cupom.service";
         CarrinhoService,
         VendasService,
         UtilsLivroFormService,
-        CupomService
+        CupomService,
     ]
 })
 export class ServiceModule {

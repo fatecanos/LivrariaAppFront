@@ -74,7 +74,7 @@ export class CarrinhoComponent implements OnInit {
   //payload
   itensPedido: ItemPedido[] = [];
   cuponsPedido: CupomPedidoInterface[] = [];
-  enderecoId: number = 0;
+  enderecoId?: number;
   endereco$?: Observable<EnderecoDTO>;
   cartoesPayload: FormaPagamentoInterface[] = [];
 
@@ -229,7 +229,7 @@ export class CarrinhoComponent implements OnInit {
     this.endereco$?.subscribe((response) => {});
 
     let payloadPedido: PayloadCarrinhoDTO = {
-      idEndereco: this.enderecoId,
+      idEndereco: this.enderecoId || 0,
       idCliente: this.idCliente,
       valorTotal: this.total + this.valorFrete,
       itensPedido: this.itensPedido,
@@ -307,7 +307,7 @@ async montarCupons() {
 
   async montarEndereco () {
     if (this.flgMyAddress && this.enderecoSelecionado) {
-      this.enderecoId = this.enderecoSelecionado.id || 0;
+      this.enderecoId = this.enderecoSelecionado.id;
       this.enderecoSelecionado.salvar = true;
       return;
     }
