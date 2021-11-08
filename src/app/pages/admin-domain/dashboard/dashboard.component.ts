@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private vendasService: VendasService) {    
     this.rangeDatas = new FormGroup({  
-      start: new FormControl(new Date(new Date().getFullYear()-1, 0, 1), Validators.required),
+      start: new FormControl(new Date(new Date().getFullYear()-1, 9, 1), Validators.required),
       end: new FormControl(new Date(), Validators.required),
     });
   }
