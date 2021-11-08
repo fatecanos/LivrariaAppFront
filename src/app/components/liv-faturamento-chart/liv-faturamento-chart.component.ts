@@ -11,9 +11,9 @@ export class LivFaturamentoChartComponent implements OnChanges {
   @Input() faturamento: FaturamentoMensal[] = [];
 
   title = 'Faturamento';
-  type = 'BarChart';
+  type = 'ColumnChart';
   data: any;
-  columnNames = ['Data', 'Faturamento(R$)'];
+  columnNames = ['Data', 'Faturamento'];
   options = { };
   width = 800;
   height = 500;

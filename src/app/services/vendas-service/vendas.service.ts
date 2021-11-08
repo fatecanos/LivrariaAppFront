@@ -30,12 +30,13 @@ export class VendasService {
 
     console.log("Data inicio:", dataInicio);
     console.log("Data fim:", dataFim);
-    
 
-    let ultimoDiaRangeTwo = new Date(dataFim.getFullYear(), dataFim.getMonth()+1, 0).getDay()
+    var today = new Date();
+    var lastDayOfMonth = new Date(dataFim.getFullYear(), dataFim.getMonth()+1, 0).getDate();
+
     
-    let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()}-${dataInicio.getDay()}`
-    let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()}-${ultimoDiaRangeTwo}`
+    let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()}-${dataInicio.getDate()}`
+    let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()}-${lastDayOfMonth}`
 
     return this.http.get<FaturamentoMensal[]>(`${this.baseUrl}/vendas/faturamentoporperiodo`+
       `?dataInicio=${dataInicioAux}&dataFim=${dataFimAux}`)
@@ -45,3 +46,6 @@ export class VendasService {
     return this.http.get<PopularidadeGenero>(`${this.baseUrl}/vendas/vendasporgenero`)
   }
 }
+
+
+
