@@ -158,6 +158,13 @@
                 display: flex;
                 flex-direction: row;
                 gap: 8px;
+
+                &-promo {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: column;
+                }
             }
         }
 

@@ -26,6 +26,7 @@ import { LivGeneroChartComponent } from './liv-genero-chart/liv-genero-chart.com
 import { LivRankChartComponent } from './liv-rank-chart/liv-rank-chart.component';
 import { VendasService } from '../services/vendas-service/vendas.service';
 import { ServiceModule } from '../services/services.module';
+import { LivFaturamentoProdutosComponent } from './liv-faturamento-produtos/liv-faturamento-produtos.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -51,7 +52,8 @@ const maskConfig: Partial<IConfig> = {
     DetalhesPedidoAdminComponent,
     LivFaturamentoChartComponent,
     LivGeneroChartComponent,
-    LivRankChartComponent
+    LivRankChartComponent,
+    LivFaturamentoProdutosComponent
   ],
   imports: [
     FormsModule,
@@ -75,7 +77,8 @@ const maskConfig: Partial<IConfig> = {
     NovoEnderecoFormComponent,
     LivFaturamentoChartComponent,
     LivGeneroChartComponent,
-    LivRankChartComponent
+    LivRankChartComponent,
+    LivFaturamentoProdutosComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

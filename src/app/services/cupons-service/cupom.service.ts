@@ -17,4 +17,13 @@ export class CupomService {
     const id = Number(sessionStorage.getItem('isLogado'));
     return this.http.get<CupomDTO[]>(`${this.baseURL}/cupom/${id}`)
   }
+
+  //localhost:8080/cupom/consultarpromocionais
+  obterTodosCuponsPromocionais(): Observable<CupomDTO[]>{
+    return this.http.get<CupomDTO[]>(`${this.baseURL}/cupom/consultarpromocionais`)
+  }
+
+  buscarCupomPorCodigo(codigo: string): Observable<CupomDTO> {
+    return this.http.get<CupomDTO>(`${this.baseURL}/cupom/pesquisarcodigo/${codigo}`)
+  }
 }

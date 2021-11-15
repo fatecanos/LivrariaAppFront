@@ -137,15 +137,13 @@
             <mat-divider></mat-divider>
 
             <div class="carrinho-step_one-cupom-painel">
-                <mat-form-field>
-                    <mat-label>Cupons Promocionais:</mat-label>
-                    <mat-select [disabled]="!cuponsPromocionais.length" id="cupomPromoSelector"
-                        [(ngModel)]="cupomPromocionalSelecionado">
-                        <mat-option *ngFor="let cupom of cuponsPromocionais" [value]="cupom">
-                            {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div class="carrinho-step_one-cupom-painel-promo">
+                    <mat-form-field>
+                        <mat-label>Cupom Promocional:</mat-label>
+                        <input matInput placeholder="Digite o código do cupom" [formControl]="codCupomPromoInput">
+                    </mat-form-field>
+                    <button mat-button (click)="adicionarCupomPromocional()">+ Adicionar</button>
+                </div>
 
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
@@ -157,6 +155,10 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+        </div>
+        
+        <div class="carrinho-step_one-cupom">
+            <span *ngIf="cupomPromocionalSelecionado">Desconto de: {{ cupomPromocionalSelecionado.valor | currency:'BRL'}}</span>
         </div>
 
         <div class="carrinho-step_one-options">

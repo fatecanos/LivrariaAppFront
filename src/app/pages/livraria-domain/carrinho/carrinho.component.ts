@@ -64,10 +64,11 @@ export class CarrinhoComponent implements OnInit {
 
   cartoesSelecionados: FormArray = new FormArray([]);
   cuponsTroca: CupomDTO[] = [];
-  cuponsPromocionais: CupomDTO[] = [];
 
   cupomTrocaSelecionado: CupomDTO[] = [];
   cupomPromocionalSelecionado?: CupomDTO;
+
+  codCupomPromoInput: FormControl = new FormControl('', Validators.min(3))
 
   idCliente: number = 0;
 
@@ -119,9 +120,6 @@ export class CarrinhoComponent implements OnInit {
       this.cuponsTroca = response.filter(
         (cupom) => cupom.tipoCupom == TipoCupomEnum.TROCA
       );
-      this.cuponsPromocionais = response.filter(
-        (cupom) => cupom.tipoCupom == TipoCupomEnum.PROMOCIONAL
-      );
     });
   }
 
@@ -171,6 +169,23 @@ export class CarrinhoComponent implements OnInit {
       .then(response => {
         console.log();
       })
+  }
+
+  adicionarCupomPromocional() {
+    if(this.codCupomPromoInput.valid) {
+      this.cupomService.buscarCupomPorCodigo(this.codCupomPromoInput.value)
+        .subscribe(response => {
+          this.cupomPromocionalSelecionado = response
+        }, err => {
+          this.snackBar.open(`erro ao validar cupom`, 'fechar', {
+            duration: 3000,
+          })
+        }, () => {
+          this.snackBar.open(`cupom adicionado`, 'fechar', {
+            duration: 3000,
+          })
+        })
+    }
   }
 
   obterCartoesSelecionados(cartoes: FormArray) {
