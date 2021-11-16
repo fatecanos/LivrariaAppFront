@@ -19,10 +19,22 @@
                 <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
             </mat-form-field>
 
+            <mat-form-field appearance="fill">
+                <mat-label>Produtos:</mat-label>
+                <mat-select multiple [(ngModel)]="produtosSelecionados">
+                  <mat-option *ngFor="let produto of produtos" [value]="produto">
+                      {{ produto.titulo }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
             <button mat-button color="accent" (click)="buscarFaturamento()">Filtrar</button>
         </div>
 
-        <liv-faturamento-chart [faturamento]="(faturamentoMensal | async)"></liv-faturamento-chart>
+        <div>
+            <liv-faturamento-produtos [dadosFaturamentoProdutos]="(faturamentoPorProdutos | async)"></liv-faturamento-produtos>
+            <liv-faturamento-chart [faturamento]="(faturamentoMensal | async)"></liv-faturamento-chart>
+        </div>
     </div>
 
     <div class="dashboard-content">

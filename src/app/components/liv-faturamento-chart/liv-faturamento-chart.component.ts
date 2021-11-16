@@ -10,7 +10,7 @@ import { faturamentoMock } from 'src/app/pages/admin-domain/dashboard/mock';
 export class LivFaturamentoChartComponent implements OnChanges {
   @Input() faturamento: FaturamentoMensal[] = [];
 
-  title = 'Faturamento';
+  title = 'Faturamento Total por Mês';
   type = 'ColumnChart';
   data: any;
   columnNames = ['Data', 'Faturamento'];
@@ -21,7 +21,7 @@ export class LivFaturamentoChartComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.faturamento.length) {
+    if(this.faturamento?.length) {
       this.data = this.faturamento.map(response => {
         return [response.data, response.faturamento]
       })

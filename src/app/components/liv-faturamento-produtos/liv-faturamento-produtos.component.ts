@@ -1,43 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FaturamentoProduto } from 'src/app/models/interfaces/dto/graficos.interface';
+import { mockResponseFaturamentoProd } from './mock';
 
 @Component({
-  selector: 'app-liv-faturamento-produtos',
-  templateUrl: './liv-faturamento-produtos.component.html',
-  styleUrls: ['./liv-faturamento-produtos.component.scss']
+   selector: 'liv-faturamento-produtos',
+   templateUrl: './liv-faturamento-produtos.component.html',
+   styleUrls: ['./liv-faturamento-produtos.component.scss']
 })
-export class LivFaturamentoProdutosComponent implements OnInit {
+export class LivFaturamentoProdutosComponent implements OnChanges {
 
-  title = 'Average Temperatures of Cities';
+   @Input() dadosFaturamentoProdutos: FaturamentoProduto[] = mockResponseFaturamentoProd;
+
+   title = 'Faturamento mensal por produto';
    type = 'LineChart';
-   data = [
-      ["Jan",  7.0, -0.2, -0.9, 3.9],
-      ["Feb",  6.9, 0.8, 0.6, 4.2],
-      ["Mar",  9.5,  5.7, 3.5, 5.7],
-      ["Apr",  14.5, 11.3, 8.4, 8.5],
-      ["May",  18.2, 17.0, 13.5, 11.9],
-      ["Jun",  21.5, 22.0, 17.0, 15.2],
-      ["Jul",  25.2, 24.8, 18.6, 17.0],
-      ["Aug",  26.5, 24.1, 17.9, 16.6],
-      ["Sep",  23.3, 20.1, 14.3, 14.2],
-      ["Oct",  18.3, 14.1, 9.0, 10.3],
-      ["Nov",  13.9,  8.6, 3.9, 6.6],
-      ["Dec",  9.6,  2.5,  1.0, 4.8]
-   ];
-   columnNames = ["Month", "Tokyo", "New York","Berlin", "Paris"];
-   options = {   
+
+   data: any[] = [];
+   columnNames: Array<string> = [];
+   options = {
       hAxis: {
-         title: 'Month'
+         title: 'Mes/Ano'
       },
-      vAxis:{
-         title: 'Temperature'
+      vAxis: {
+         title: 'Faturamento(R$)'
       },
+      curveType: 'function'
    };
-   width = 550;
-   height = 400;
+   width = 900;
+   height = 700;
 
-  constructor() { }
+   ngOnChanges(changes: SimpleChanges): void {
+      console.log(this.dadosFaturamentoProdutos);
+      
+      let newArrData = [];
 
-  ngOnInit(): void {
-  }
+      newArrData = this.dadosFaturamentoProdutos?.map((response, i) => {
+         let auxFiltered = this.dadosFaturamentoProdutos.filter((data) => {
+            return data.data === response.data
+         })
+         let values = auxFiltered.map(response => { 
+            return response.faturamento
+         })
+         if(i === this.dadosFaturamentoProdutos.length-1) {
+            this.columnNames = ['Mês/Ano', ...auxFiltered.map(response => {
+               return response.nomeLivro
+            })]
+         }
+         return [`${response.data}`, ...values]
+      })
+      
+      console.log(`Array tratado`, newArrData);
+      console.log("Array de colunas:", this.columnNames);
+      
+      this.data = newArrData;
+   }
 
 }

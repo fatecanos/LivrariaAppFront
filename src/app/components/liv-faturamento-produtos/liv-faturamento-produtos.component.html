@@ -1,5 +1,5 @@
 <div class="liv-faturamento-produtos">
-    <google-chart #chart
+    <google-chart #chart *ngIf="data"
         [title]="title"
         [type]="type"
         [data]="data"
@@ -8,4 +8,5 @@
         [width]="width"
         [height]="height">
     </google-chart>
+    <span *ngIf="!data">carregando...</span>
 </div>

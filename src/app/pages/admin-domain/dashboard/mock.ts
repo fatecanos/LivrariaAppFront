@@ -1,5 +1,7 @@
 //params: data inicio; data fim;
 
+import { LivroDTO } from "src/app/models/interfaces/dto/livro-dto.interface"
+
 export const faturamentoMock = [
     {
         data: 'janeiro/2020',
@@ -30,3 +32,14 @@ export const faturamentoMock = [
         faturamento: 56700.90
     }
 ]
+
+export const livrosIniciais: any[] = [
+    {
+      id: 7,
+      titulo: "Horizonte d'Versos"
+    },
+    {
+      id: 9,
+      titulo: "The road of the avenger Wind Signs"
+    },
+  ]
