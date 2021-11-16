@@ -21,13 +21,19 @@ export class VendasService {
     return this.http.get<VendaInterface[]>(`${this.baseUrl}/vendas`);
   }
 
+  obterVendasComFiltro(ft: string): Observable<VendaInterface[]> {
+    console.log('me diz o filtro', ft);
+
+    return this.http.get<VendaInterface[]>(`${this.baseUrl}/vendas?filtro=${ft}`);
+  }
+
   avancarStatus(idVenda: number): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(`${this.baseUrl}/vendas/${idVenda}`, null)
   }
 
   obterFaturamento(dataInicio: Date, dataFim: Date): Observable<FaturamentoMensal[]> {
     var lastDayOfMonth = new Date(dataFim.getFullYear(), dataFim.getMonth()+1, 0).getDate();
-    
+
     let dataInicioAux = `${dataInicio.getFullYear()}-${dataInicio.getMonth()+1}-${dataInicio.getDate()}`
     let dataFimAux = `${dataFim.getFullYear()}-${dataFim.getMonth()+1}-${lastDayOfMonth}`
 

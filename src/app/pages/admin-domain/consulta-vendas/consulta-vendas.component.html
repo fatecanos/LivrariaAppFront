@@ -5,9 +5,18 @@
     </div>
 
     <div class="consulta_vendas-header-filtro">
+
+      <mat-form-field>
+        <mat-label>Propriedade</mat-label>
+        <select matNativeControl #opcaoFiltro [(ngModel)]="selectedFilterOption">
+          <option value="status">Status</option>
+          <option value="codigo">Codigo</option>
+        </select>
+      </mat-form-field>
+
       <mat-form-field *ngIf="selectedFilterOption === 'codigo'">
         <mat-label>Filtro de busca:</mat-label>
-        <input type="text" matInput placeholder="codigo">
+        <input type="text" matInput placeholder="Código" (keyup)="filtrar($event)">
       </mat-form-field>
 
       <mat-form-field *ngIf="selectedFilterOption === 'status'">
@@ -23,13 +32,7 @@
       </mat-form-field>
 
 
-      <mat-form-field>
-        <mat-label>Propriedade</mat-label>
-        <select matNativeControl #opcaoFiltro [(ngModel)]="selectedFilterOption">
-          <option value="status">Status</option>
-          <option value="codigo">Codigo</option>
-        </select>
-      </mat-form-field>
+
 
       <button mat-button (click)="filtrarVendas()">Pesquisar</button>
     </div>
