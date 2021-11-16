@@ -26,6 +26,7 @@ export class ConsultaVendasComponent implements OnInit {
 
   filterOptions: Array<any> = ['número', 'status'];
   selectedFilterOption: string = 'codigo';
+  selecStatusPedido: string = "";
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -87,9 +88,18 @@ export class ConsultaVendasComponent implements OnInit {
     });
   }
 
-  filtrarVendas() {
-    console.log('click');
-    this.service.obterVendas();
+  filtrarVendasStatus() {
+    this.service.obterVendasComFiltro(this.selecStatusPedido).subscribe(
+      (response) => {
+        this.dataSource = new MatTableDataSource<VendaInterface>(response);
+        this.dataSource.paginator = this.paginator || null;
+      },
+      (err) => {
+        this._snackBar.open('erro ao consultar vendas', 'fechar', {
+          duration: 5000,
+        });
+      }
+    );
   }
 
   filtrar(event: any) {
