@@ -36,8 +36,8 @@ export class LivCartoesFormComponent implements OnInit {
 
     this.novoCartaoForm = this.formBuilder.group({
       id: [''],
-      numero: ['', { validators: [Validators.required] }],
-      nome: ['', { validators: [Validators.required] }],
+      numeroCartao: ['', { validators: [Validators.required] }],
+      nomeImpressoCartao: ['', { validators: [Validators.required] }],
       bandeira: ['', { validators: [Validators.required] }],
       codigoSeguranca: ['', { validators: [Validators.required]}],
       isPreferencial: [false, { validators: [Validators.required] }]
