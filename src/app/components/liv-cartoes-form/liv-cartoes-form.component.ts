@@ -62,14 +62,14 @@ export class LivCartoesFormComponent implements OnInit {
       console.log("novo-cartao:", cartao);
 
       //salvar cartao
-      // this.service.gravar(cartao).subscribe(response => {
-      //   this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
-      //   this.isNovoCartaoForm = false;
-      // }, err => {
-      //   this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
-      // }, () => {
-      //   this.init();
-      // })
+      this.service.gravar(cartao).subscribe(response => {
+        this.snackService.open('cartão gravado com sucesso', 'fechar', { duration: 3000 })
+        this.isNovoCartaoForm = false;
+      }, err => {
+        this.snackService.open('falha ao gravar cartão', 'fechar', { duration: 3000 })
+      }, () => {
+        this.init();
+      })
     }
   }
 

@@ -20,7 +20,7 @@
                 <mat-label>Bandeira:</mat-label>
                 <mat-select formControlName="bandeira" class="matSelectBandeira">
                     <mat-option *ngFor="let bandeiraCartao of bandeirasCartao; let i = index;"
-                        [value]="bandeiraCartao">
+                        [value]="bandeiraCartao.descricao">
                         {{ bandeiraCartao.descricao }}
                     </mat-option>
                 </mat-select>

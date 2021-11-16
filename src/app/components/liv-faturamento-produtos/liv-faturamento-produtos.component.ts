@@ -37,9 +37,12 @@ export class LivFaturamentoProdutosComponent implements OnChanges {
          let auxFiltered = this.dadosFaturamentoProdutos.filter((data) => {
             return data.data === response.data
          })
+         console.log("Meses encontrados", auxFiltered);
+
          let values = auxFiltered.map(response => { 
             return response.faturamento
          })
+
          if(i === this.dadosFaturamentoProdutos.length-1) {
             this.columnNames = ['Mês/Ano', ...auxFiltered.map(response => {
                return response.nomeLivro
