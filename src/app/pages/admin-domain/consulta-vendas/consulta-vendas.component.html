@@ -5,23 +5,6 @@
     </div>
 
     <div class="consulta_vendas-header-filtro">
-      <mat-form-field *ngIf="selectedFilterOption === 'codigo'">
-        <mat-label>Filtro de busca:</mat-label>
-        <input type="text" matInput placeholder="codigo">
-      </mat-form-field>
-
-      <mat-form-field *ngIf="selectedFilterOption === 'status'">
-        <mat-label>Status Filtro:</mat-label>
-        <select matNativeControl [(ngModel)]="selectedFilterOption">
-          <option value="PAGAMENTO_APROVADO">PAGAMENTO APROVADO</option>
-          <option value="PAGAMENTO_RECUSADO">PAGAMENTO RECUSADO</option>
-          <option value="EM_PROCESSAMENTO">EM PROCESSAMENTO</option>
-          <option value="EM_TRANSPORTE">EM TRANSPORTE</option>
-          <option value="ENTREGUE">ENTREGUE</option>
-          <option value="CANCELADO">CANCELADO</option>
-        </select>
-      </mat-form-field>
-
 
       <mat-form-field>
         <mat-label>Propriedade</mat-label>
@@ -31,7 +14,24 @@
         </select>
       </mat-form-field>
 
-      <button mat-button (click)="filtrarVendas('teste')">Pesquisar</button>
+      <mat-form-field *ngIf="selectedFilterOption === 'codigo'">
+        <mat-label>Filtro de busca:</mat-label>
+        <input type="text" matInput placeholder="Código" (keyup)="filtrar($event)">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="selectedFilterOption === 'status'">
+        <mat-label>Status Filtro:</mat-label>
+        <select matNativeControl [(ngModel)]="selecStatusPedido">
+          <option value="PAGAMENTO_REALIZADO">PAGAMENTO APROVADO</option>
+          <option value="PAGAMENTO_REPROVADO">PAGAMENTO RECUSADO</option>
+          <option value="EM_PROCESSAMENTO">EM PROCESSAMENTO</option>
+          <option value="EM_TRANSPORTE">EM TRANSPORTE</option>
+          <option value="ENTREGUE">ENTREGUE</option>
+          <option value="PEDIDO_CANCELADO">CANCELADO</option>
+        </select>
+      </mat-form-field>
+
+      <button mat-button (click)="filtrarVendasStatus()">Pesquisar</button>
     </div>
 
     <div class="consulta_vendas-content">
