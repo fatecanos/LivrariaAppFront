@@ -22,8 +22,6 @@ export class VendasService {
   }
 
   obterVendasComFiltro(ft: string): Observable<VendaInterface[]> {
-    console.log('me diz o filtro', ft);
-
     return this.http.get<VendaInterface[]>(`${this.baseUrl}/vendas?filtro=${ft}`);
   }
 
