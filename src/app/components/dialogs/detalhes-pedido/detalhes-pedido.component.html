@@ -33,6 +33,12 @@
             </div>
 
             <div class="detalhes-pedido-content-opcoes">
+                <mat-form-field class="detalhes-pedido-content-opcoes-input"
+                    *ngIf="itemPedido?.statusPedido === 'ENTREGUE'">
+                    <mat-label>Quantidade Troca:</mat-label>
+                    <input matInput [formControl]="quantidadeTroca">
+                </mat-form-field>
+
                 <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
                     mat-button
                     color="primary"

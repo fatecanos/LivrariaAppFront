@@ -32,7 +32,9 @@
         </div>
 
         <div>
-            <liv-faturamento-produtos [dadosFaturamentoProdutos]="(faturamentoPorProdutos | async)"></liv-faturamento-produtos>
+            <liv-faturamento-produtos (atualizar)="buscarFaturamento()"
+                [dadosFaturamentoProdutos]="(faturamentoPorProdutos | async)" 
+                [qtdeColunas]="produtosSelecionados?.length"></liv-faturamento-produtos>
             <liv-faturamento-chart [faturamento]="(faturamentoMensal | async)"></liv-faturamento-chart>
         </div>
     </div>

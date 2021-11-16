@@ -21,13 +21,13 @@
 
       <mat-form-field *ngIf="selectedFilterOption === 'status'">
         <mat-label>Status Filtro:</mat-label>
-        <select matNativeControl>
-          <option value="1">PAGAMENTO APROVADO</option>
-          <option value="1">PAGAMENTO RECUSADO</option>
-          <option value="1">EM PROCESSAMENTO</option>
-          <option value="1">EM TRANSPORTE</option>
-          <option value="1">ENTREGUE</option>
-          <option value="1">CENCELADO</option>
+        <select matNativeControl [(ngModel)]="selectedFilterOption">
+          <option value="PAGAMENTO_APROVADO">PAGAMENTO APROVADO</option>
+          <option value="PAGAMENTO_RECUSADO">PAGAMENTO RECUSADO</option>
+          <option value="EM_PROCESSAMENTO">EM PROCESSAMENTO</option>
+          <option value="EM_TRANSPORTE">EM TRANSPORTE</option>
+          <option value="ENTREGUE">ENTREGUE</option>
+          <option value="CANCELADO">CANCELADO</option>
         </select>
       </mat-form-field>
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FaturamentoProduto } from 'src/app/models/interfaces/dto/graficos.interface';
 import { mockResponseFaturamentoProd } from './mock';
 
@@ -10,6 +10,9 @@ import { mockResponseFaturamentoProd } from './mock';
 export class LivFaturamentoProdutosComponent implements OnChanges {
 
    @Input() dadosFaturamentoProdutos: FaturamentoProduto[] = mockResponseFaturamentoProd;
+   @Input() qtdeColunas: number = 1;
+
+   @Output() atualizar = new EventEmitter<string>();
 
    title = 'Faturamento mensal por produto';
    type = 'LineChart';
@@ -34,27 +37,30 @@ export class LivFaturamentoProdutosComponent implements OnChanges {
       let newArrData = [];
 
       newArrData = this.dadosFaturamentoProdutos?.map((response, i) => {
-         let auxFiltered = this.dadosFaturamentoProdutos.filter((data) => {
+
+         let datas = this.dadosFaturamentoProdutos.filter((data) => {
             return data.data === response.data
          })
-         console.log("Meses encontrados", auxFiltered);
 
-         let values = auxFiltered.map(response => { 
+         console.log("Meses encontrados", datas);
+
+         let faturamentosPorData = datas.map(response => { 
             return response.faturamento
          })
 
-         if(i === this.dadosFaturamentoProdutos.length-1) {
-            this.columnNames = ['Mês/Ano', ...auxFiltered.map(response => {
+         if(i === this.dadosFaturamentoProdutos.length-1) { //estamos na ultima posição?
+            this.columnNames = ['Mês/Ano', ...datas.map(response => { //montar array de titulos-colunas
                return response.nomeLivro
             })]
          }
-         return [`${response.data}`, ...values]
+         return [`${response.data}`, ...faturamentosPorData]
       })
       
       console.log(`Array tratado`, newArrData);
-      console.log("Array de colunas:", this.columnNames);
-      
-      this.data = newArrData;
+      console.log("Array de colunas:", this.columnNames.slice(0, this.columnNames.length/this.qtdeColunas));
+
+      this.data = newArrData.slice(0, newArrData.length/this.qtdeColunas);
+      this.atualizar.emit('atualiza')
    }
 
 }
