@@ -5,14 +5,14 @@
         <form [formGroup]="novoCartaoForm">
             <mat-form-field class="cartoes_form-novo-nome">
                 <mat-label>Nome no cartão:</mat-label>
-                <input matInput formControlName="nome" id="txtNomeCartao"
+                <input matInput formControlName="nomeImpressoCartao" id="txtNomeCartao"
                     placeholder="Nome Completo" type="text">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Número cartão:</mat-label>
-                <input matInput formControlName="numero" id="txtNumeroCartao"
-                    placeholder="0000.0000.0000.0000" 
+                <input matInput formControlName="numeroCartao" id="txtNumeroCartao"
+                    placeholder="0000.0000.0000.0000"
                     mask="0000.0000.0000.0000" type="text">
             </mat-form-field>
 
@@ -56,7 +56,7 @@
                     </mat-icon>
                     <span>{{ idCartaoSelecionado === cartao.id? 'Preferencial': ''}}</span>
                 </div>
-                <button mat-button 
+                <button mat-button
                     color="warn" class="btnInativarCartao"
                     (click)="inativarCartao(cartao)">
                     Inativar Cartão
@@ -78,13 +78,13 @@
                 <input matInput disabled type="text" [value]="cartao.bandeira">
             </mat-form-field>
             <mat-divider></mat-divider>
-            
+
         </div>
     </div>
 
     <div class="cartoes_form-button">
-        <button mat-button 
-            (click)="isNovoCartaoForm=true" 
+        <button mat-button
+            (click)="isNovoCartaoForm=true"
             id="btnMaisCartao">+ Cartão</button>
         <button mat-button>Atualizar</button>
     </div>
