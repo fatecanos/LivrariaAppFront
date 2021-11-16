@@ -3,6 +3,36 @@
     <h2>Pedidos</h2>
     <mat-divider></mat-divider>
 
+    <div class="pedidos-cliente-header-filtro">
+
+      <mat-form-field>
+        <mat-label>Propriedade</mat-label>
+        <select matNativeControl #opcaoFiltro [(ngModel)]="selectedFilterOption">
+          <option value="status">Status</option>
+          <option value="codigo">Codigo</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="selectedFilterOption === 'codigo'">
+        <mat-label>Filtro de busca:</mat-label>
+        <input type="text" matInput placeholder="Código" (keyup)="filtrar($event)">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="selectedFilterOption === 'status'">
+        <mat-label>Status Filtro:</mat-label>
+        <select matNativeControl [(ngModel)]="selecStatusPedido">
+          <option value="PAGAMENTO_REALIZADO">PAGAMENTO APROVADO</option>
+          <option value="PAGAMENTO_REPROVADO">PAGAMENTO RECUSADO</option>
+          <option value="EM_PROCESSAMENTO">EM PROCESSAMENTO</option>
+          <option value="EM_TRANSPORTE">EM TRANSPORTE</option>
+          <option value="ENTREGUE">ENTREGUE</option>
+          <option value="PEDIDO_CANCELADO">CANCELADO</option>
+        </select>
+    </mat-form-field>
+
+      <button mat-button (click)="filtrarVendasStatus()">Pesquisar</button>
+    </div>
+
     <span *ngIf="!dataSource">Nenhum pedido encontrado</span>
 
     <table mat-table class="pedidos-cliente-table" matSort [dataSource]="dataSource" *ngIf="dataSource">

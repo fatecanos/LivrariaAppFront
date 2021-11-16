@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
+import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
+import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
 @Component({
   templateUrl: './pedidos-cliente.component.html',
@@ -23,10 +25,15 @@ export class PedidosClienteComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
+  filterOptions: Array<any> = ['número', 'status'];
+  selectedFilterOption: string = 'codigo';
+  selecStatusPedido: string = "";
+
   constructor(
     private service: PedidosService,
     private matDialogRef: MatDialog,
     private snackBar: MatSnackBar,
+    private vendasService: VendasService,
     private router: Router
   ) { }
 
@@ -69,6 +76,34 @@ export class PedidosClienteComponent implements OnInit {
         this.dataSource = new MatTableDataSource<PedidoInterface>(response)
       })
     })
+  }
+
+  filtrar(event: any) {
+    this.vendasService.obterVendasComFiltro(event.target.value).subscribe(
+      (response) => {
+        this.dataSource = new MatTableDataSource<any>(response);
+        this.dataSource.paginator = this.paginator || null;
+      },
+      (err) => {
+        this.snackBar.open('erro ao consultar vendas', 'fechar', {
+          duration: 5000,
+        });
+      }
+    );
+  }
+
+  filtrarVendasStatus() {
+    this.vendasService.obterVendasComFiltro(this.selecStatusPedido).subscribe(
+      (response) => {
+        this.dataSource = new MatTableDataSource<any>(response);
+        this.dataSource.paginator = this.paginator || null;
+      },
+      (err) => {
+        this.snackBar.open('erro ao consultar vendas', 'fechar', {
+          duration: 5000,
+        });
+      }
+    );
   }
 
 }

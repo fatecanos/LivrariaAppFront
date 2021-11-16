@@ -13,6 +13,11 @@
         mat-divider {
             margin-bottom: 35px;
         }
+
+        &-filtro {
+            display: flex;
+            gap: 8px;
+        }
     }
 
     &-table {
