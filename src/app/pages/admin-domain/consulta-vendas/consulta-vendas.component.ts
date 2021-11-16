@@ -24,6 +24,7 @@ export class ConsultaVendasComponent implements OnInit {
   displayedColumns: string[] = ['id', 'numero', 'data', 'status', 'acoes'];
 
   filterOptions: Array<any> = ['número', 'status'];
+  selectedFilterOption: string = 'codigo';
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -76,6 +77,10 @@ export class ConsultaVendasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(()=> {
       this.initData();
     })
+  }
+
+  filtrarVendas(codigo: string) {
+    console.log(codigo);
   }
 
 }

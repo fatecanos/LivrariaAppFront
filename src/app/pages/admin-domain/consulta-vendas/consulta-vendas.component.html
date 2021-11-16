@@ -5,21 +5,33 @@
     </div>
 
     <div class="consulta_vendas-header-filtro">
-      <mat-form-field>
+      <mat-form-field *ngIf="selectedFilterOption === 'codigo'">
         <mat-label>Filtro de busca:</mat-label>
-        <input type="email" matInput placeholder="Ex. pat@example.com">
+        <input type="text" matInput placeholder="codigo">
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Propriedade</mat-label>
+      <mat-form-field *ngIf="selectedFilterOption === 'status'">
+        <mat-label>Status Filtro:</mat-label>
         <select matNativeControl>
-          <option value="status">Status</option>
-          <option value="data"> </option>
-          <option value="valor">Valor</option>
+          <option value="1">PAGAMENTO APROVADO</option>
+          <option value="1">PAGAMENTO RECUSADO</option>
+          <option value="1">EM PROCESSAMENTO</option>
+          <option value="1">EM TRANSPORTE</option>
+          <option value="1">ENTREGUE</option>
+          <option value="1">CENCELADO</option>
         </select>
       </mat-form-field>
 
-      <button mat-button>Pesquisar</button>
+
+      <mat-form-field>
+        <mat-label>Propriedade</mat-label>
+        <select matNativeControl #opcaoFiltro [(ngModel)]="selectedFilterOption">
+          <option value="status">Status</option>
+          <option value="codigo">Codigo</option>
+        </select>
+      </mat-form-field>
+
+      <button mat-button (click)="filtrarVendas($event)">Pesquisar</button>
     </div>
 
     <div class="consulta_vendas-content">
