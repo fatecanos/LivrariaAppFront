@@ -63,7 +63,7 @@ export class EnderecoService {
 
   atualizar(endereco: EnderecoDTO): Observable<MessageInterface> {
     return this.http
-      .put<MessageInterface>(`${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`, 
+      .put<MessageInterface>(`${this.baseUrl}/endereco/${Number(sessionStorage.getItem('isLogado'))}`,
           endereco, httpOptions)
   }
 }

@@ -79,7 +79,7 @@ export class NovoEnderecoFormComponent implements OnInit {
     });
   }
 
-  salvarNovoEndereco() {
+  criarNovoEndereco() {
     let enderecoDTO: EnderecoDTO = {
       nome: this.formEndereco?.controls['nome'].value,
       tipoLogradouro: this.selectedTipoLogradouro,
@@ -89,16 +89,15 @@ export class NovoEnderecoFormComponent implements OnInit {
       bairro: this.formEndereco?.controls['bairro'].value,
       complemento: this.formEndereco?.controls['complemento'].value,
       pais: this.formEndereco?.controls['pais'].value,
-      
-
       tipoEndereco: {
         id: this.tipoEnderecoSelecionado.id,
       },
-
       cidade: {
         id: this.selectedCidade.id,
       },
+      salvar: true,
     };
+
     this.enderecoService
       .salvarNovoEndereco(enderecoDTO)
       .subscribe((message) => {
