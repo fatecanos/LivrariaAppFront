@@ -59,6 +59,7 @@ export class LivCartoesFormComponent implements OnInit {
   enviarNovoCartao() {
     if(this.novoCartaoForm.valid) {
       let cartao: CartaoCreditoDTO = this.novoCartaoForm.value;
+      cartao.salvar = true;
       console.log("novo-cartao:", cartao);
 
       //salvar cartao
