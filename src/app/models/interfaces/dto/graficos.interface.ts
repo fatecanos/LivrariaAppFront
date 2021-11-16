@@ -14,3 +14,10 @@ export interface FaturamentoProduto {
     data: string;
     faturamento: number;
 }
+
+export interface RankCliente {
+    idCliente: number,
+    nomeCliente: string,
+    cpfCliente: string,
+    comprasRealizadas: number
+}

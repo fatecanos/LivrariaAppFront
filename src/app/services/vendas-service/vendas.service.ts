@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { FaturamentoMensal, FaturamentoProduto, PopularidadeGenero } from 'src/app/models/interfaces/dto/graficos.interface';
+import { FaturamentoMensal, FaturamentoProduto, PopularidadeGenero, RankCliente } from 'src/app/models/interfaces/dto/graficos.interface';
 import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
 import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { environment } from 'src/environments/environment';
@@ -42,6 +42,10 @@ export class VendasService {
   obterFaturamentoPorProdutos(headers: HttpHeaders): Observable<FaturamentoProduto[]> {
     return this.http.get<FaturamentoProduto[]>
       (`${this.baseUrl}/itenspedidos/faturamentoporperiodo`, { headers })
+  }
+
+  obterRankClientes(): Observable<RankCliente[]>{
+    return this.http.get<RankCliente[]>(`${this.baseUrl}/vendas/rankclientes`)
   }
 }
 

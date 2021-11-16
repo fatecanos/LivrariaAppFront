@@ -1,12 +1,15 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { FaturamentoMensal, FaturamentoProduto } from 'src/app/models/interfaces/dto/graficos.interface';
 import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
+import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
-import { livrosIniciais } from './mock';
+import { livrosIniciais, rankingMock } from './mock';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +17,10 @@ import { livrosIniciais } from './mock';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  dataSource = new MatTableDataSource<any>();
+  displayedColumns: string[] = ['posicao', 'id', 'nome', 'cpf', 'quantidade'];
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
 
   rangeDatas: FormGroup;
   produtosSelecionados: LivroDTO[] = [];
@@ -36,6 +43,17 @@ export class DashboardComponent implements OnInit {
     this.produtosSelecionados = livrosIniciais
     this.livrosService.getEstoque().subscribe(res => this.produtos = res)
     this.buscarFaturamento();
+    this.buscarRanking()
+  }
+
+  buscarRanking() {
+    this.vendasService.obterRankClientes().subscribe(res => {
+      let aux = res.sort((a, b)=> {return b.comprasRealizadas - a.comprasRealizadas })
+      this.dataSource = new MatTableDataSource<any>(aux)
+      this.dataSource.paginator = this.paginator || null;
+    })
+
+    
   }
 
   buscarFaturamento() {

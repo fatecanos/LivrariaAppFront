@@ -20,6 +20,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSortModule } from '@angular/material/sort';
 
 
 const material_components = [
@@ -43,7 +44,8 @@ const material_components = [
   MatBadgeModule,
   MatCheckboxModule,
   MatPaginatorModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatSortModule
 ];
 
 @NgModule({
