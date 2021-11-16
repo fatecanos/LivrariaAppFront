@@ -48,3 +48,13 @@
         }
     }
 }
+
+.nome-livro {
+    display: flex;
+    flex-direction: column;
+
+    &-qtde-trocada {
+        color: #888585;
+        font-size: 12px;
+    }
+}

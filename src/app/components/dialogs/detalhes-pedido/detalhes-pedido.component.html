@@ -19,7 +19,10 @@
             <div class="detalhes-pedido-content-item-image">
                 <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt=""> -->
                 <img src="https://naturestore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/produto-sem-imagem.gif" alt="">
-                <span>{{ itemPedido?.nomeLivro }}</span>
+                <div class="nome-livro">
+                    <span>{{ itemPedido?.nomeLivro }}</span>
+                    <span class="nome-livro-qtde-trocada">(Quantidade Trocada: {{ itemPedido?.quantidadeTrocada }})</span>
+                </div>
             </div>
             <div class="detalhes-pedido-content-item-quantidade">
                 <span>{{ itemPedido?.qtdComprada }} unidades</span>
@@ -36,11 +39,11 @@
                 <mat-form-field class="detalhes-pedido-content-opcoes-input"
                     *ngIf="itemPedido?.statusPedido === 'ENTREGUE'">
                     <mat-label>Quantidade Troca:</mat-label>
-                    <input matInput [formControl]="quantidadeTroca">
+                    <input matInput [(ngModel)]="quantidadeTroca">
                 </mat-form-field>
 
                 <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
-                    mat-button
+                    mat-button [disabled]="quantidadeTroca <= 0"
                     color="primary"
                     (click)="solicitarTroca(itemPedido)">
                     Solicitar Troca

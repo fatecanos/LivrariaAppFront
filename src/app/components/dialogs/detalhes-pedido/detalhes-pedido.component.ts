@@ -20,7 +20,7 @@ export class DetalhesPedidoComponent implements OnInit {
 
   detalhesPedido?: PedidoInterface;
 
-  quantidadeTroca: FormControl = new FormControl([1, [Validators.required, Validators.min(1)]])
+  quantidadeTroca: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<PedidosModalInterface>,
@@ -40,7 +40,7 @@ export class DetalhesPedidoComponent implements OnInit {
   }
 
   solicitarTroca(itemPedido: ItemPedidoInterface) {
-    this.pedidoSerice.solicitarTroca(itemPedido).subscribe(response => {
+    this.pedidoSerice.solicitarTroca(itemPedido, this.quantidadeTroca).subscribe(response => {
       this.snack.open(`${response.description}`, 'fechar')
     }, error => {
       this.snack.open(`erro ao solicitar troca, favor entrar em contato com o administrador.`, 'fechar')

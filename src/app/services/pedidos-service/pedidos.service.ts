@@ -43,10 +43,11 @@ export class PedidosService {
   }
 
   solicitarTroca(
-    itemPedido: ItemPedidoInterface
+    itemPedido: ItemPedidoInterface,
+    qtde: number
   ): Observable<MessageInterface> {
     return this.http.put<MessageInterface>(
-      `${this.baseUrl}/itenspedidos/solicitartroca/${itemPedido.id}`,
+      `${this.baseUrl}/itenspedidos/solicitartroca/${itemPedido.id}?qtdTrocada=${qtde}`,
       null
     );
   }
