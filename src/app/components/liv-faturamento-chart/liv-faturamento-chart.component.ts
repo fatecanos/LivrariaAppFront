@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { GoogleChartComponent } from 'angular-google-charts';
 import { FaturamentoMensal } from 'src/app/models/interfaces/dto/graficos.interface';
 import { faturamentoMock } from 'src/app/pages/admin-domain/dashboard/mock';
 
@@ -14,11 +15,15 @@ export class LivFaturamentoChartComponent implements OnChanges {
   type = 'ColumnChart';
   data: any;
   columnNames = ['Data', 'Faturamento'];
-  options = { };
+  options = { 
+    vAxis: { format: "R$ #,##0.00" }
+  };
   width = 800;
   height = 500;
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(this.faturamento?.length) {

@@ -24,7 +24,8 @@ export class LivFaturamentoProdutosComponent implements OnChanges {
          title: 'Mes/Ano'
       },
       vAxis: {
-         title: 'Faturamento(R$)'
+         title: 'Faturamento(R$)',
+         format: "R$ #,##0.00"
       },
       curveType: 'function'
    };

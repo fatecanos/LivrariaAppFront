@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ItemEstoqueDTO } from 'src/app/models/interfaces/dto/estoque.interface';
+import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import { EstoqueService } from 'src/app/services/estoque-service/estoque.service';
 
 @Component({
@@ -9,14 +13,32 @@ import { EstoqueService } from 'src/app/services/estoque-service/estoque.service
 })
 export class GestaoEstoqueComponent implements OnInit {
 
-  private livrosEstoque?: ItemEstoqueDTO[];
+  livrosEstoque$?: Observable<LivroDTO[]>;
+  livros: LivroDTO[] = []
 
   constructor(
-    private livroService: EstoqueService
+    private livroService: EstoqueService,
+    private router: Router,
+    private snack: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.livroService.getEstoque
+    this.init()
+  }
+
+  init() {
+    this.livrosEstoque$ = this.livroService.getEstoque();
+    this.livrosEstoque$.subscribe(res => this.livros = res)
+  }
+
+  atualizarEstoque(livro: LivroDTO, qtde: number) {
+    livro.estoque = qtde
+    this.livroService.atualizarEstoque(livro).subscribe(res => {
+      this.snack.open(`Estoque atualizado com sucesso!`, 'fechar')
+      this.init()
+    }, err => {
+      this.snack.open(`falha ao atualizar estoque!`, 'fechar')
+    })
   }
 
 }

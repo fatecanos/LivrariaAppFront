@@ -28,4 +28,8 @@ export class EstoqueService {
   obterLivrosGestaoEstoque(): Observable<ItemEstoqueDTO[]> {
     return this.http.get<any[]>(`${this.baseUrl}/gestao-estoque`);
   }
+
+  atualizarEstoque(livro: LivroDTO) {
+    return this.http.put<any>(`${this.baseUrl}/livros/reporestoque`, livro)
+  }
 }

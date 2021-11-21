@@ -54,6 +54,13 @@
                     font-weight: normal;
                 }
             }
+
+            &-message {
+                span {
+                    font-size: 1.2em;
+                    color: #807d7d;
+                }
+            }
         }
     }
 }

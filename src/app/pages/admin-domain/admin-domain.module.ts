@@ -16,7 +16,7 @@ import { IConfig, NgxMaskModule } from "ngx-mask";
 import { GestaoCuponsComponent } from './gestao-cupons/gestao-cupons.component';
 import { GoogleChartsModule } from "angular-google-charts";
 import { HttpClientModule } from "@angular/common/http";
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import { VendasService } from "src/app/services/vendas-service/vendas.service";
 
@@ -48,7 +48,10 @@ const maskConfig: Partial<IConfig> = {
         GestaoEstoqueComponent,
         GestaoCuponsComponent
     ],
-    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+    providers: [
+        {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    ]
 })
 export class AdminDomainModule {
 

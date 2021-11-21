@@ -9,4 +9,8 @@
         [height]="height">
     </google-chart>
     <span *ngIf="!data?.length">Nenhum dado de faturamento foi encontrado</span>
+
+    <script>
+        google.charts.load('current', {packages: ['corechart'],'language': 'pt'})
+    </script>
 </div>

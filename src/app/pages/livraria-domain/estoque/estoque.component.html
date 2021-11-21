@@ -18,8 +18,11 @@
                 <span>{{livro.valor | currency:'BRL':true:'1.2-2'}}</span>
             </div>
             <div class="estoque-container-card-button">
-                <button mat-button color="primary" id="livroCard"
+                <button mat-button color="primary" id="livroCard" *ngIf="livro.estoque"
                     (click)="goToDetails(livro.id)">Comprar</button>
+            </div>
+            <div *ngIf="!livro.estoque" class="estoque-container-card-message">
+                <span>Produto indisponível em estoque</span>
             </div>
         </mat-card>
             
