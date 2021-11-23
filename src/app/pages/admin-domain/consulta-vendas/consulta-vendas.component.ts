@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoAdminComponent } from 'src/app/components/dialogs/detalhes-pedido-admin/detalhes-pedido-admin.component';
-import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
+
 import {
   PedidoInterface,
   PedidosModalInterface,
@@ -27,6 +26,8 @@ export class ConsultaVendasComponent implements OnInit {
   filterOptions: Array<any> = ['número', 'status'];
   selectedFilterOption: string = 'codigo';
   selecStatusPedido: string = "";
+
+  isLoading: boolean = false;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
@@ -66,7 +67,7 @@ export class ConsultaVendasComponent implements OnInit {
         this.snackBar.open(error.value.description, 'fechar');
       },
       () => {
-        location.reload();
+        this.initData()
       }
     );
   }

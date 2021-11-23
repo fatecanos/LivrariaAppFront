@@ -19,8 +19,7 @@ export class DetalhesPedidoComponent implements OnInit {
   cliente$?: Observable<ClienteDTO>;
 
   detalhesPedido?: PedidoInterface;
-
-  quantidadeTroca: number = 0;
+  qtdeTroca?: number[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<PedidosModalInterface>,
@@ -33,14 +32,18 @@ export class DetalhesPedidoComponent implements OnInit {
   ngOnInit(): void {
     this.data.idPedido = this.data.idPedido;
     
-    this.detalhes$ = this.pedidoSerice.obterDetalhesPedidoMockado(this.data.idPedido);
+    this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data.idPedido);
     this.cliente$ = this.clienteService.getClientById();
 
     this.detalhesPedido = this.data.pedido;
+
+    this.qtdeTroca = this.detalhesPedido?.itensPedido.map(res => {
+      return 0
+    })
   }
 
-  solicitarTroca(itemPedido: ItemPedidoInterface) {
-    this.pedidoSerice.solicitarTroca(itemPedido, this.quantidadeTroca).subscribe(response => {
+  solicitarTroca(itemPedido: ItemPedidoInterface, qtdeParaTroca: number) {
+    this.pedidoSerice.solicitarTroca(itemPedido, qtdeParaTroca).subscribe(response => {
       this.snack.open(`${response.description}`, 'fechar')
     }, error => {
       this.snack.open(`erro ao solicitar troca, favor entrar em contato com o administrador.`, 'fechar')

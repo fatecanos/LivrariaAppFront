@@ -15,21 +15,24 @@
     statusPedido: string; -->
 
     <div class="detalhes-pedido-content">
-        <div class="detalhes-pedido-content-item" *ngFor="let itemPedido of detalhesPedido?.itensPedido">
+        <div class="detalhes-pedido-content-item" 
+            *ngFor="let itemPedido of detalhesPedido?.itensPedido; let i = index">
             <div class="detalhes-pedido-content-item-image">
                 <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt=""> -->
                 <img src="https://naturestore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/produto-sem-imagem.gif" alt="">
                 <div class="nome-livro">
                     <span>{{ itemPedido?.nomeLivro }}</span>
                     <span class="nome-livro-qtde-trocada">(Quantidade Trocada: {{ itemPedido?.quantidadeTrocada }})</span>
+                    <span>{{ (itemPedido?.valorUnitario | currency: "BRL").replace(".", ",") }} </span>
+                    <span>{{ itemPedido?.qtdComprada }} unidades compradas</span>
                 </div>
             </div>
-            <div class="detalhes-pedido-content-item-quantidade">
+            <!-- <div class="detalhes-pedido-content-item-quantidade">
                 <span>{{ itemPedido?.qtdComprada }} unidades</span>
-            </div>
-            <div class="detalhes-pedido-content-item-valor">
+            </div> -->
+            <!-- <div class="detalhes-pedido-content-item-valor">
                 <span>{{ (itemPedido?.valorUnitario | currency: "BRL").replace(".", ",") }} </span>
-            </div>
+            </div> -->
 
             <div class="detalhes-pedido-content-item-status">
                 <span>{{ itemPedido?.statusPedido }} </span>
@@ -37,15 +40,15 @@
 
             <div class="detalhes-pedido-content-opcoes">
                 <mat-form-field class="detalhes-pedido-content-opcoes-input"
-                    *ngIf="itemPedido?.statusPedido === 'ENTREGUE'">
+                    *ngIf="itemPedido?.qtdComprada > itemPedido?.quantidadeTrocada">
                     <mat-label>Quantidade Troca:</mat-label>
-                    <input matInput [(ngModel)]="quantidadeTroca">
+                    <input matInput mask="0000" [(ngModel)]="qtdeTroca[i]">
                 </mat-form-field>
 
-                <button *ngIf="itemPedido?.statusPedido === 'ENTREGUE'"
-                    mat-button [disabled]="quantidadeTroca <= 0"
+                <button *ngIf="itemPedido?.qtdComprada > itemPedido?.quantidadeTrocada"
+                    mat-button [disabled]="qtdeTroca[i] <= 0"
                     color="primary"
-                    (click)="solicitarTroca(itemPedido)">
+                    (click)="solicitarTroca(itemPedido, qtdeTroca[i])">
                     Solicitar Troca
                 </button>
 

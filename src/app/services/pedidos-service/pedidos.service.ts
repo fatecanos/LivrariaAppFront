@@ -25,7 +25,7 @@ export class PedidosService {
     );
   }
 
-  obterDetalhesPedidoMockado(id: number) {
+  obterDetalhesPedido(id: number) {
     return this.http.get<DetalhesPedidoInterface>(
       `${this.baseUrl}/pedidos/${id}`
     );

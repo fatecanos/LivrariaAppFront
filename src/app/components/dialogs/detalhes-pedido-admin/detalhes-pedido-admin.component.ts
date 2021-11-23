@@ -30,7 +30,7 @@ export class DetalhesPedidoAdminComponent implements OnInit {
   ngOnInit(): void {
     this.data.idPedido = this.data.idPedido;
     
-    this.detalhes$ = this.pedidoSerice.obterDetalhesPedidoMockado(this.data.idPedido);
+    this.detalhes$ = this.pedidoSerice.obterDetalhesPedido(this.data.idPedido);
     this.cliente$ = this.clienteService.getClientById();
 
     this.detalhesPedido = this.data.pedido;

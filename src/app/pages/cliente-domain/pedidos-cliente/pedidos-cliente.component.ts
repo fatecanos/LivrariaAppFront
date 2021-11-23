@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 
@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DetalhesPedidoComponent } from 'src/app/components/dialogs/detalhes-pedido/detalhes-pedido.component';
 import { PedidoInterface, PedidosModalInterface } from 'src/app/models/interfaces/dto/pedido.interface';
-import { VendaInterface } from 'src/app/models/interfaces/dto/venda.interface';
 import { PedidosService } from 'src/app/services/pedidos-service/pedidos.service';
 import { VendasService } from 'src/app/services/vendas-service/vendas.service';
 
@@ -66,8 +65,8 @@ export class PedidosClienteComponent implements OnInit {
     }
 
     const dialogRef = this.matDialogRef.open(DetalhesPedidoComponent, {
-      width: '1200px',
-      data: modalData
+      width: '1800px',
+      data: modalData,
     });
     dialogRef.afterClosed().subscribe(result => {
       this.pedidos$ = this.service.getPedidos();

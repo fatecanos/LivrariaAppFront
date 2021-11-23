@@ -22,6 +22,7 @@ export interface ItemPedidoInterface {
     valorUnitario: number;
     valorTotal: number;
     statusPedido: string;
+    quantidadeTrocada?: number;
 }
 
 export interface FormasPagamento {
@@ -37,7 +38,7 @@ export interface DetalhesPedidoInterface {
     subTotal: number,
     frete: number,
     data: Date,
-    status: string
+    status: string,
 }
 
 export interface PedidosModalInterface {
