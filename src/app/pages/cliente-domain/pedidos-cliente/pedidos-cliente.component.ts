@@ -78,7 +78,7 @@ export class PedidosClienteComponent implements OnInit {
   }
 
   filtrar(event: any) {
-    this.vendasService.obterVendasComFiltro(event.target.value).subscribe(
+    this.service.obterVendasComFiltro(event.target.value).subscribe(
       (response) => {
         this.dataSource = new MatTableDataSource<any>(response);
         this.dataSource.paginator = this.paginator || null;
@@ -92,7 +92,7 @@ export class PedidosClienteComponent implements OnInit {
   }
 
   filtrarVendasStatus() {
-    this.vendasService.obterVendasComFiltro(this.selecStatusPedido).subscribe(
+    this.service.obterVendasComFiltro(this.selecStatusPedido).subscribe(
       (response) => {
         this.dataSource = new MatTableDataSource<any>(response);
         this.dataSource.paginator = this.paginator || null;

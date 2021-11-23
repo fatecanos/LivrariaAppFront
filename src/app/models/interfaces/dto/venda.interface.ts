@@ -9,6 +9,7 @@ export interface VendaInterface {
     isCancelamentoSoliciado: boolean,
     isTrocaSocilidado: boolean,
     isEntregaConcluida: boolean
+    
 }
 
 export enum StatusVendaEnum {

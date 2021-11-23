@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ClienteDTO } from 'src/app/models/interfaces/dto/client.interface';
 import { LoginDTO } from 'src/app/models/interfaces/dto/login.interface';
 import { MessageInterface } from 'src/app/models/interfaces/dto/message.interface';
+import { NotificationDTO } from 'src/app/models/interfaces/dto/notification.interface';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -32,5 +33,10 @@ export class LoginService {
 
   logout() {
     this.http.get(`${this.baseUrl}/login/logout`, httpOptions);
+  }
+
+  notificationService(): Observable<NotificationDTO[]>{
+    const id = Number(sessionStorage.getItem('isLogado'));
+    return this.http.get<NotificationDTO[]>(`${this.baseUrl}/notificacao/${id}`);
   }
 }
