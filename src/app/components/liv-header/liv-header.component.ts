@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login-service/login-service.servi
 })
 export class LivHeaderComponent {
   showPainel: boolean = false;
+  showNotifications: boolean = false;
 
   constructor(
     private router: Router,
@@ -48,5 +49,14 @@ export class LivHeaderComponent {
   logout() {
     sessionStorage.clear();
     location.reload();
+  }
+
+  getNotifications(){
+    this.loginService.notificationService().subscribe(response => {
+
+      console.log(`response: $response`);
+
+
+    });
   }
 }
