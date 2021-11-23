@@ -25,6 +25,11 @@ export class PedidosService {
     );
   }
 
+  obterVendasComFiltro(ft: string): Observable<PedidoInterface[]> {
+    return this.http.get<PedidoInterface[]>(`${this.baseUrl}/vendas/${sessionStorage.getItem('isLogado')}?filtro=${ft}`);
+  }
+
+
   obterDetalhesPedidoMockado(id: number) {
     return this.http.get<DetalhesPedidoInterface>(
       `${this.baseUrl}/pedidos/${id}`
