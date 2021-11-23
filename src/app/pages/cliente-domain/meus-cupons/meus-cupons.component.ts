@@ -16,10 +16,11 @@ export class MeusCuponsComponent implements OnInit {
   constructor(private cuponsService: CupomService) { }
 
   ngOnInit(): void {
-    this.cuponsService.obterTodosCuponsPromocionais()
-      .subscribe(response => {
-        this.cuponsPromocionais = response
-      });
+    // this.cuponsService.obterTodosCuponsPromocionais()
+    //   .subscribe(response => {
+    //     this.cuponsPromocionais = response
+    //   });
+
     this.cuponsService.obterCuponsCliente().subscribe((response) => {
       this.cuponsTroca = response.filter(
         (cupom) => cupom.tipoCupom == TipoCupomEnum.TROCA
@@ -28,7 +29,7 @@ export class MeusCuponsComponent implements OnInit {
   }
 
   copiarCupom(codigo: string) {
-    
+
   }
 
 }
