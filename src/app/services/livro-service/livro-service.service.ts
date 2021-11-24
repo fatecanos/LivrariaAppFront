@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LivroService {
-  baseUrl: string = environment.urlMock;
+  baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 

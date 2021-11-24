@@ -57,6 +57,7 @@ export class ConsultaLivrosComponent implements OnInit {
     const data: DataDialogInterface = {
       id: id
     }
+    
     const dialogRef = this.dialog.open(DetalhesLivroComponent, {
       width: '1200px',
       data: data
