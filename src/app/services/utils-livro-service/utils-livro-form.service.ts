@@ -19,6 +19,6 @@ export class UtilsLivroFormService {
 
   obterGruposPrecificacao(): Observable<GrupoPrecificacaoInterface[]>{
     return this.http
-      .get<GrupoPrecificacaoInterface[]>(`${this.baseUrl}/livros/grupo-precificacao`);
+      .get<GrupoPrecificacaoInterface[]>(`${this.baseUrl}/livros/grupoprecificacao`);
   }
 }
