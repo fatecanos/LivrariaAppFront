@@ -1,146 +1,150 @@
 .liv-header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80px;
+
+  &-left_logo {
+    img {
+      width: 66%;
+      cursor: pointer;
+    }
+  }
+
+  &-search_bar {
     display: flex;
-    justify-content: space-between;
-    min-height: 80px;
+    align-items: center;
 
-    &-left_logo {
-
-        img {
-            width: 66%;
-            cursor: pointer;
-        }
-    }
-
-    &-search_bar {
-        display: flex;
-        align-items: center;
-
-        input {
-            width: 40vw;
-            height: 24px;
-            font-size: 0.9em;
-            border: 1px solid #6363;
-            border-radius: 3px 0 0 3px;
-        }
-
-        button {
-            height: 30px;
-        }
-    }
-
-    &-right_painel {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        &-account {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            font-size: 0.8em;
-            cursor: pointer;
-            padding: 3px;
-
-            &-account {
-                display: flex;
-                align-items: center;
-                flex-direction: row;
-            }
-
-            mat-icon {
-                transform: rotate(90deg);
-            }
-        }
-
-        &-account:hover {
-            position: relative;
-            border: 1px solid #fac515;
-            overflow: hidden;
-            outline: 0;
-        }
-
-        &-cart {
-            margin-left: 30px;
-            margin-right: 25px;
-            margin-top: 15px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 25px;
-
-
-            mat-icon {
-                cursor: pointer;
-                font-size: 1.8em;
-                margin: 0 auto;
-            }
-
-            mat-icon:hover {
-                color: #fac515;
-            }
-
-            a {
-                text-decoration: none;
-                text-transform: none;
-                text-transform: none;
-                color: #000;
-                cursor: pointer;
-            }
-
-            a:hover {
-                color: #fac515;
-            }
-
-        }
-    }
-}
-
-.dialog-absolute {
-    width: 100%;
-    position: absolute;
-    flex-direction: row;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    z-index: 2;
-
-    &-item {
-        padding: 5px;
-        margin-right: 30px;
-        background-color: #fff;
-        border: 1px solid #6363;
-        width: 220px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        a {
-            cursor: pointer;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &-notification {
-      padding: 5px;
-      margin-right: 30px;
-      background-color: #fff;
+    input {
+      width: 40vw;
+      height: 24px;
+      font-size: 0.9em;
       border: 1px solid #6363;
-      width: 220px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    button {
+      height: 30px;
+    }
+  }
+
+  &-right_painel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-account {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      font-size: 0.8em;
+      cursor: pointer;
+      padding: 3px;
+
+      &-account {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      mat-icon {
+        transform: rotate(90deg);
+      }
+    }
+
+    &-account:hover {
+      position: relative;
+      border: 1px solid #fac515;
+      overflow: hidden;
+      outline: 0;
+    }
+
+    &-cart {
+      margin-left: 30px;
+      margin-right: 25px;
+      margin-top: 15px;
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      mat-icon {
+        cursor: pointer;
+        font-size: 1.8em;
+        margin: 0 auto;
+      }
+
+      mat-icon:hover {
+        color: #fac515;
+      }
 
       a {
-          cursor: pointer;
+        text-decoration: none;
+        text-transform: none;
+        text-transform: none;
+        color: #000;
+        cursor: pointer;
       }
 
       a:hover {
-          text-decoration: underline;
+        color: #fac515;
       }
+    }
+  }
+}
+
+.dialog-absolute {
+  width: 100%;
+  position: absolute;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 2;
+
+  &-item {
+    padding: 5px;
+    margin-right: 30px;
+    background-color: #fff;
+    border: 1px solid #6363;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-notification {
+    padding: 5px;
+    margin-right: 30px;
+    background-color: #fff;
+    border: 1px solid #6363;
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      cursor: pointer;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-notification-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
