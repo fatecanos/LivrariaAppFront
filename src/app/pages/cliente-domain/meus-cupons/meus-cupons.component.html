@@ -1,8 +1,9 @@
 <div class="meus-cupons">
     <div class="meus-cupons-header">
-        <h1>Meus Cupons</h1>
+        <h1>Meus Cupons de Troca</h1>
         <mat-divider></mat-divider>
     </div>
+    <span *ngIf="!cuponsPromocionais.length">Nenhum cupom de troca associado a esta conta.</span>
     <div class="meus-cupons-lista" *ngFor="let cupom of cuponsPromocionais; let i = index">
         <mat-card class="meus-cupons-lista-card">
             <div class="meus-cupons-lista-card-code">

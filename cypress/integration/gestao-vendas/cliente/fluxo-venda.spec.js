@@ -1,118 +1,88 @@
-describe('FLUXO DE VENDA', ()=> {
-    before(()=> {
-        cy.visit('http://localhost:4200/livraria/estoque')
-    }),
+describe('Fluxo de venda - ()', function() {
 
-    it('RF0031 - Gerenciar carrinho de compra', ()=> {
-        cy.get('.estoque-container-card')
-            .last()
-            .find('.estoque-container-card-button')
-            .click()
-        cy.wait(500)
+    it('deve executar login', ()=> {
+     
+        cy.viewport(1366, 632)
+
+        cy.visit('http://localhost:4200/')
         
-        cy.get('.detalhes-produto-display-valor-button')
-            .find('button')
-            .click()
-        cy.wait(500)
-
-        cy.visit('http://localhost:4200/livraria/estoque')
-        cy.get('.estoque-container-card')
-            .eq(3)
-            .find('.estoque-container-card-button')
-            .click()
-        cy.wait(500)
-
-        cy.get('.detalhes-produto-display-valor-button')
-            .find('button')
-            .click()
-        cy.wait(500)
-
-        cy.visit('http://localhost:4200/livraria/estoque')
-        cy.wait(500)
-
-        cy.get('.estoque-container-card')
-            .eq(2)
-            .find('.estoque-container-card-button')
-            .click()
-        cy.wait(500)
-
-        cy.get('.detalhes-produto-display-valor-button')
-            .find('button')
-            .click()
-
-        cy.wait(500)
-
-        cy.get('.carrinho-table-item_line-option').eq(0).find('span').click()
-
-        cy.wait(1500)
+        cy.visit('http://localhost:4200/')
+        
+        cy.get('liv-header > .mat-toolbar > .liv-header-right_painel > #btnPainel > .liv-header-right_painel-account-login').click()
+        
+        cy.get('liv-header > .dialog-absolute > .dialog-absolute-item > .mat-focus-indicator > .mat-button-wrapper').click()
+        
+        cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #inputEmail').type('lucasman@gmail.com')
+        
+        cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #inputSenha').type('lucas')
+        
+        cy.get('.app-root > .ng-star-inserted > .ng-star-inserted > .painel_login > .painel_login-container').click()
+    
+        cy.wait(3000)
+        
     }),
-    it('RF0032 - Definir quantidade de itens no carrinho', ()=> {
-        cy.get('.mais').eq(0).click();cy.wait(500)
-        cy.get('.mais').eq(0).click();cy.wait(500)
-        cy.get('.mais').eq(0).click();cy.wait(500)
 
-        cy.get('.menos').eq(0).click();cy.wait(500)
-        cy.get('.menos').eq(0).click();cy.wait(500)
-        cy.get('.menos').eq(0).click();cy.wait(500)
-
-        cy.get('.mais').eq(0).click();cy.wait(500)
-        cy.get('.mais').eq(0).click();cy.wait(500)
-
-        cy.get('.mais').eq(1).click();cy.wait(500)
-        cy.get('.mais').eq(1).click();cy.wait(500)
-        cy.get('.mais').eq(1).click();cy.wait(500)
-
-        cy.get('.menos').eq(1).click();cy.wait(500)
-        cy.get('.menos').eq(1).click();cy.wait(500)
-        cy.get('.menos').eq(1).click();cy.wait(500)
-
-        cy.get('.mais').eq(1).click();cy.wait(500)
-        cy.get('.mais').eq(1).click();cy.wait(500)
-    }),
-    it('RF0035 - Selecionar endereço de entrega', ()=> {
-        //login gluz@gmail.com abc12345
-        if(!sessionStorage.getItem('isLogado')) {
-            cy.visit('http://localhost:4200/livraria/login')
-
-            cy.get('.painel_login-container').within(()=> {
-                cy.get('#inputEmail')
-                    .type('gluz@gmail.com')
-
-                cy.get('#inputSenha')
-                    .type('abc12345')
-            });cy.wait(500)
-
-            cy.get('.painel_login-container-form > button').click();cy.wait(500)
-            cy.get('.liv-header-right_painel-cart').find('mat-icon').click();cy.wait(500)
-        } else {
-            cy.get('.liv-header-right_painel-cart').find('mat-icon').click();cy.wait(500)
-        }
-
-        cy.get('#formFieldMyEndereco').click();cy.wait(500)
-        cy.get('mat-option').first().click();cy.wait(500)
-    }),
-    it('RF0036 - Selecionar forma de pagamento', () => {
-        cy.get('#txtValorPago').clear().type(425.00)
-        cy.wait(500)
-
-        cy.get('#myCardSelector').first().click();
-        cy.wait(500)
-        cy.get('.cardOption').last().click();
-        cy.wait(500)
-    }),
-    it.skip('RF0036 - Selecionar cupom de troca e cancelamento', ()=> {
-        cy.get('#cupomPromoSelector').click().get('mat-option').eq(0).click()
-        cy.wait(500)
-        cy.get('#cupomTrocaSelector').click().get('mat-option').eq(0).click()
-        cy.wait(500)
-
-        cy.get('#cupomTrocaSelector').click(-20, -20, { force: true });
-        cy.wait(500)
-    }),
-    it('RF0037 - Finalizar compra', () => {
-        //cy.get('.carrinho-step_one-options-btn_finaliza').click()
-
-        cy.get('#btnFinalizar').click({ force: true })
-        cy.wait(500)
+    it('deve executar venda - happy path :3 ', function() {
+    
+       cy.get('.ng-star-inserted > .painel_login > .painel_login-container > .painel_login-container-form > .mat-focus-indicator').click()
+    
+       cy.get('liv-header > .mat-toolbar > .liv-header-right_painel > .liv-header-right_painel-cart > .mat-icon:nth-child(1)').click()
+    
+       cy.get('.ng-star-inserted > .carrinho > .carrinho-content > .mat-focus-indicator > .mat-button-wrapper').click()
+    
+       cy.get('.estoque-container > .mat-card:nth-child(2) > .estoque-container-card-button > #livroCard > .mat-button-wrapper').click()
+    
+       cy.get('.detalhes-produto > .detalhes-produto-display > .detalhes-produto-display-valor > .detalhes-produto-display-valor-button > #addCarrinho').click()
+    
+       cy.get('.carrinho > .carrinho-table > .carrinho-step_one-options > #btnContinuaCompra > .mat-button-wrapper').click()
+    
+       cy.get('.estoque > .estoque-container > .mat-card:nth-child(5) > .estoque-container-card-button > #livroCard').click()
+    
+       cy.get('.detalhes-produto-display > .detalhes-produto-display-valor > .detalhes-produto-display-valor-button > #addCarrinho > .mat-button-wrapper').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(2) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(2) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(2) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(2) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.carrinho-table > table > .carrinho-table-item_line:nth-child(3) > td > .mais').click()
+    
+       cy.get('.mat-form-field-infix > #matSelectEndereco > .mat-select-trigger > #mat-select-value-9 > .mat-select-placeholder').click()
+    
+       cy.get('#cdk-overlay-0 > .mat-select-panel-wrap > #matSelectEndereco-panel > #mat-option-5 > .mat-option-text').eq(0).click()
+    
+       cy.get('.mat-form-field-infix > #myCardSelector > .mat-select-trigger > #mat-select-value-11 > .mat-select-placeholder').click()
+    
+       cy.get('#cdk-overlay-1 > .mat-select-panel-wrap > #myCardSelector-panel > #mat-option-8 > .mat-option-text').click()
+    
+       cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #txtValorPago').click()
+    
+       cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #txtValorPago').clear().type('1890')
+    
+       cy.get('.carrinho > .carrinho-table > .carrinho-step_one-options > #btnFinalizar > .mat-button-wrapper').click()
+    
+       cy.get('.ng-tns-c111-18 > .mat-simple-snackbar > .mat-simple-snackbar-action > .mat-focus-indicator > .mat-button-wrapper').click()
+    
     })
-})
+   
+   })
+   

@@ -7,7 +7,7 @@
     <input type="text"><button mat-button color="accent">Pesquisar</button>
   </div>
   <div class="liv-header-right_painel">
-    <a *ngIf="!isLogado" class="liv-header-right_painel-account" (click)="showPainel = !showPainel">
+    <a *ngIf="!isLogado" class="liv-header-right_painel-account" id="btnPainel" (click)="showPainel = !showPainel">
       <span class="liv-header-right_painel-account-login">
         Olá, faça seu login
       </span>

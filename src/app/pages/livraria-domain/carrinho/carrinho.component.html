@@ -162,7 +162,10 @@
         </div>
 
         <div class="carrinho-step_one-options">
-            <button mat-button color="accent" (click)="router.navigate(['/livraria/estoque'])">Continuar comprando</button>
+            <button mat-button color="accent" (click)="router.navigate(['/livraria/estoque'])" 
+                id="btnContinuaCompra">
+                Continuar comprando
+            </button>
             <button class="carrinho-step_one-options-btn_finaliza" id="btnFinalizar"
                 mat-button color="primary" (click)="finalizarPedido()">Finalizar Pedido</button>
         </div>

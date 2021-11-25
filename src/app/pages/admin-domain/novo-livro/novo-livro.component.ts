@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LivroDTO } from 'src/app/models/interfaces/dto/livro-dto.interface';
 import {
@@ -26,7 +27,8 @@ export class NovoLivroComponent implements OnInit {
     private snack: MatSnackBar,
     private service: UtilsLivroFormService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +82,7 @@ export class NovoLivroComponent implements OnInit {
           this.snackBar.open(`Livro cadastrado com sucesso`, `fechar`, {
             duration: 3000,
           });
+          this.router.navigate(['/admin/consulta-livros'])
         },
         (error) => {
           this.snackBar.open(error.error.description, `fechar`, {

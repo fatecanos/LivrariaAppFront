@@ -18,7 +18,7 @@ export class ConsultaLivrosComponent implements OnInit {
   disableSelect = new FormControl(false);
 
   dataSource: LivroDTO[] = [];
-  displayedColumns: string[] = ['titulo', 'isbn', 'editora', 'ano', 'opcoes'];
+  displayedColumns: string[] = ['titulo', 'isbn', 'editora', 'ano' ];
 
   livros$?: Observable<LivroDTO[]>;
 
