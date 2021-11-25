@@ -116,6 +116,10 @@ export class CarrinhoComponent implements OnInit {
     this.initCupons();
   }
 
+  // get isValido() {
+    
+  // }
+
   initCupons() {
     this.cupomService.obterCuponsCliente().subscribe((response) => {
       this.cuponsTroca = response.filter(
@@ -165,6 +169,24 @@ export class CarrinhoComponent implements OnInit {
 
   calcularFrete() {
     this.isLoading = true;
+    
+    this.carrinhoService.obterItens().subscribe((response) => {
+      this.itensPedido = response.map((res) => {
+        let aux: ItemPedido;
+        aux = {
+          idLivro: res.produto.id || 0,
+          nomeLivro: res.produto.titulo,
+          qtdComprada: res.produto.quantidadeSelecionada,
+          valorUnitario: res.produto.valorVenda,
+          valorTotal:
+            res.produto.quantidadeSelecionada * res.produto.valorVenda,
+        };
+        console.log('Itens Pedido:', this.itensPedido);
+
+        return aux;
+      });
+    });
+
     setTimeout(()=> {
       this.valorFrete = ((this.itensPedido.length+1) * 5) + 40
       this.isLoading = false;
@@ -306,9 +328,11 @@ export class CarrinhoComponent implements OnInit {
       }
     });
 
-    this.somatoriaEmCartoes = this.cartoesPayload.map(cartao => {
-      return cartao.valorPago
-    }).reduce((cartaoPrev, cartaoCurr) => cartaoPrev + cartaoCurr)
+    if(this.cartoesPayload.length) {
+      this.somatoriaEmCartoes = this.cartoesPayload.map(cartao => {
+        return cartao.valorPago
+      }).reduce((cartaoPrev, cartaoCurr) => cartaoPrev + cartaoCurr)
+    }
   }
 
   async montarCupons() {

@@ -122,23 +122,27 @@
   }
 
   &-notification {
-    padding: 5px;
+    padding: 10px;
     margin-right: 30px;
     background-color: #fff;
     border: 1px solid #6363;
-    width: 220px;
+    width: 300px;
+    gap: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 50px;
+    height: auto;
     align-items: center;
 
     a {
-      cursor: pointer;
+      font-size: 0.93em;
+      text-decoration: none;
+      text-transform: none;
+      cursor: default;
     }
 
-    a:hover {
-      text-decoration: underline;
+    &-icon {
+      color: rgb(247, 218, 125);
     }
   }
 
