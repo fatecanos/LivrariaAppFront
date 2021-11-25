@@ -70,7 +70,7 @@
                 <mat-form-field appearance="fill" *ngIf="flgMyAddress" id="formFieldMyEndereco">
                     <mat-label>Selecione um endereço</mat-label>
                     <mat-select id="matSelectEndereco" [(ngModel)]="enderecoSelecionado">
-                        <mat-option *ngFor="let endereco of enderecosEntrega"
+                        <mat-option *ngFor="let endereco of enderecosEntrega" (click)="calcularFrete()"
                             [value]="endereco">
                             {{endereco.cep}} - {{endereco.logradouro}}, {{endereco.numero}}
                         </mat-option>
@@ -121,10 +121,6 @@
             <div class="carrinho-step_one-valor_frete"
                 *ngIf="isUsuarioAutenticado">
                 <span>Valor Frete:</span><span> {{valorFrete | moneyFormatter}}</span>
-                <button mat-button id="btnCalcularFrete"
-                    (click)="calcularFrete()">
-                    Calcular
-                </button>
                 <mat-spinner diameter="30" *ngIf="isLoading"></mat-spinner>
             </div>
         </div>

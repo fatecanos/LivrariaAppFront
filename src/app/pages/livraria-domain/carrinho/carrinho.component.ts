@@ -3,16 +3,14 @@ import {
   FormArray,
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ItemCarrinhoInterface } from 'src/app/models/interfaces/dto/carrinho.interface';
 import {
-  CartaoCreditoDTO,
   CartaoFormDTO,
 } from 'src/app/models/interfaces/dto/cartao.interface';
 import {
@@ -55,6 +53,9 @@ export class CarrinhoComponent implements OnInit {
   cepInput: FormControl = new FormControl('', [Validators.required]);
 
   enderecoSelecionado?: EnderecoDTO;
+
+  somatoriaEmCupons: number = 0;
+  somatoriaEmCartoes: number = 0;
 
   //dados venda
   total: number = 0;
@@ -164,11 +165,11 @@ export class CarrinhoComponent implements OnInit {
 
   calcularFrete() {
     this.isLoading = true;
-    this.correioService
-      .obterValorFrete(this.enderecoSelecionado?.cep || '0')
-      .then(response => {
-        console.log();
-      })
+    setTimeout(()=> {
+      this.valorFrete = ((this.itensPedido.length+1) * 5) + 40
+      this.isLoading = false;
+    }, 1000)
+    
   }
 
   adicionarCupomPromocional() {
@@ -240,13 +241,15 @@ export class CarrinhoComponent implements OnInit {
     await this.montarEndereco();
     await this.montarCartoes();
 
-
     this.endereco$?.subscribe((response) => {});
+
+    const trocoCupomAux = this.somatoriaEmCupons? (this.somatoriaEmCupons - (this.somatoriaEmCartoes - this.total)): 0;
 
     let payloadPedido: PayloadCarrinhoDTO = {
       idEndereco: this.enderecoId || 0,
       idCliente: this.idCliente,
       valorTotal: this.total + this.valorFrete,
+      trocoCupom: trocoCupomAux,
       itensPedido: this.itensPedido,
       formasPagamento: this.cartoesPayload,
       cupoms: this.cuponsPedido,
@@ -263,9 +266,10 @@ export class CarrinhoComponent implements OnInit {
         this.router.navigate(['/clientes/pedidos']);
       },
       (err) => {
-        this.snackBar.open('erro ao gravar pedido', 'fechar', {
+        this.snackBar.open(err.error.description, 'fechar', {
           duration: 3000,
         });
+        this.isLoading = false
       },
       () => {
         this.carrinhoService.limparCarrinho();
@@ -301,13 +305,18 @@ export class CarrinhoComponent implements OnInit {
         });
       }
     });
+
+    this.somatoriaEmCartoes = this.cartoesPayload.map(cartao => {
+      return cartao.valorPago
+    }).reduce((cartaoPrev, cartaoCurr) => cartaoPrev + cartaoCurr)
   }
 
-async montarCupons() {
+  async montarCupons() {
     this.cuponsPedido = [];
     if (this.cupomPromocionalSelecionado) {
       this.cuponsPedido.push({
         id: this.cupomPromocionalSelecionado?.id || 0,
+        valor: this.cupomPromocionalSelecionado.valor
       });
     }
 
@@ -315,8 +324,15 @@ async montarCupons() {
       this.cupomTrocaSelecionado.forEach((cupomTroca) => {
         this.cuponsPedido.push({
           id: cupomTroca.id,
+          valor: cupomTroca.valor
         });
       });
+    }
+
+    if(this.cuponsPedido.length) {
+      this.somatoriaEmCupons = this.cuponsPedido.map(cupom => {
+        return cupom.valor
+      }).reduce((valorPrev, valorCurr) => valorPrev + valorCurr)
     }
   }
 

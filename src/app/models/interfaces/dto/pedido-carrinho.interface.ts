@@ -13,12 +13,14 @@ export interface FormaPagamentoInterface {
 
 export interface CupomPedidoInterface {
     id: number;
+    valor: number;
 }
 
 export interface PayloadCarrinhoDTO {
     idEndereco: number;
     idCliente: number;
     valorTotal: number,
+    trocoCupom: number;
     itensPedido: ItemPedido[];
     formasPagamento: FormaPagamentoInterface[];
     cupoms: CupomPedidoInterface[];
