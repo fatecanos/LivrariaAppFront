@@ -52,8 +52,6 @@ export class CarrinhoComponent implements OnInit {
   isLoading: boolean = false;
   cepInput: FormControl = new FormControl('', [Validators.required]);
 
-  enderecoSelecionado?: EnderecoDTO;
-
   somatoriaEmCupons: number = 0;
   somatoriaEmCartoes: number = 0;
 
@@ -63,10 +61,13 @@ export class CarrinhoComponent implements OnInit {
   carrinho$?: Observable<ItemCarrinhoInterface[]>;
   valorFrete: number = 40;
 
+  //PAYLOAD
   cartoesSelecionados: FormArray = new FormArray([]);
-  cuponsTroca: CupomDTO[] = [];
-
+  enderecoSelecionado?: EnderecoDTO;
   cupomTrocaSelecionado: CupomDTO[] = [];
+
+  cuponsTroca: CupomDTO[] = [];
+  
   cupomPromocionalSelecionado?: CupomDTO;
 
   codCupomPromoInput: FormControl = new FormControl('', Validators.min(3))
@@ -116,9 +117,10 @@ export class CarrinhoComponent implements OnInit {
     this.initCupons();
   }
 
-  // get isValido() {
-    
-  // }
+  get isFormularioValido() {
+    return this.cartoesSelecionados.length &&
+    this.enderecoSelecionado;
+  }
 
   initCupons() {
     this.cupomService.obterCuponsCliente().subscribe((response) => {
@@ -241,6 +243,7 @@ export class CarrinhoComponent implements OnInit {
 
   async finalizarPedido() {
     this.isLoading = true;
+
     //montar itens carrinho
     await this.carrinhoService.obterItens().subscribe((response) => {
       this.itensPedido = response.map((res) => {
@@ -279,24 +282,28 @@ export class CarrinhoComponent implements OnInit {
 
     console.log('Payload', payloadPedido);
 
-    this.pedidoService.gravarPedido(payloadPedido).subscribe(
-      (response) => {
-        this.isLoading = false;
-        this.snackBar.open('pedido gravado com sucesso', 'fechar', {
-          duration: 3000,
-        });
-        this.router.navigate(['/clientes/pedidos']);
-      },
-      (err) => {
-        this.snackBar.open(err.error.description, 'fechar', {
-          duration: 3000,
-        });
-        this.isLoading = false
-      },
-      () => {
-        this.carrinhoService.limparCarrinho();
-      }
-    );
+    if(this.isFormularioValido) {
+      this.pedidoService.gravarPedido(payloadPedido).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.snackBar.open('pedido gravado com sucesso', 'fechar', {
+            duration: 3000,
+          });
+          this.router.navigate(['/clientes/pedidos']);
+        },
+        (err) => {
+          this.snackBar.open(err.error.description, 'fechar', {
+            duration: 3000,
+          });
+          this.isLoading = false
+        },
+        () => {
+          this.carrinhoService.limparCarrinho();
+        }
+      )
+    } else {
+      this.snackBar.open(`formulário inválido, favor verificar todos os campos`, 'fechar', { duration: 3000, verticalPosition: 'top' })
+    }
   }
 
   async montarCartoes() {
