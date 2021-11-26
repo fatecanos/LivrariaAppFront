@@ -33,7 +33,7 @@
     <div class="liv-header-right_painel-cart">
       <mat-icon (click)="navigateToCart()">shopping_cart</mat-icon>
 
-      <mat-icon (click)="showNotifications = !showNotifications">notifications_active</mat-icon>
+      <mat-icon (click)="showNotifications = !showNotifications" *ngIf="isLogado">notifications_active</mat-icon>
 
       <a (click)="logout()" *ngIf="isLogado">Sair</a>
     </div>
