@@ -64,9 +64,9 @@ describe('Gestão de Livros - Modulo', () => {
     cy.wait(500)
     cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-11').type('23')
     cy.wait(500)
-    cy.get('.mat-form-field-infix > #mat-select-14 > .mat-select-trigger > #mat-select-value-15 > .mat-select-placeholder').click()
+    cy.get('#selectorGrupoPrecificacao').click()
  
-    cy.get('#cdk-overlay-5 > .mat-select-panel-wrap > #mat-select-14-panel > #mat-option-31 > .mat-option-text').click()
+    cy.get('.grupoPrecoOption').first().click()
     cy.wait(500)
     
     cy.get('#cdk-overlay-3 > .mat-select-panel-wrap > #mat-select-10-panel > #mat-option-22 > .mat-option-text').click()
@@ -90,8 +90,11 @@ describe('Gestão de Livros - Modulo', () => {
     cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-13')
       .type('https://firebasestorage.googleapis.com/v0/b/projeto-les-3addc.appspot.com/o/book_covers%2Fharry_potter.jpg?alt=media&token=0a2619ef-aed9-4002-b850-a5f89fc55aa8')
     cy.wait(500)
+    
+    cy.get('#txtValorCompra').type('98.90')
+    
     cy.get('.novo-livro > .novo-livro-container > .novo-livro-container-options > .mat-focus-indicator > .mat-button-wrapper').click()
-  
+
   });
 })
    

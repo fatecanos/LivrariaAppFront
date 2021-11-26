@@ -96,12 +96,20 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Grupo de Precificação:</mat-label>
-            <mat-select formControlName="grupoPrecificacao">
-              <mat-option *ngFor="let grupo of gruposPrecificacao$ | async" [value]="grupo.id">{{grupo.descricao}}
+            <mat-select formControlName="grupoPrecificacao" id="selectorGrupoPrecificacao">
+              <mat-option *ngFor="let grupo of gruposPrecificacao$ | async" class="grupoPrecoOption"
+                [value]="grupo.id">{{grupo.descricao}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Valor de Compra:</mat-label>
+            <input matInput formControlName="valorCompra" type="number" id="txtValorCompra">
+          </mat-form-field>
         </div>
+        
+        
 
         <div class="novo-livro-container-form-row-grupo">
           <h4>Código de Barras:</h4>

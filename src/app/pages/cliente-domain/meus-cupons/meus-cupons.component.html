@@ -3,7 +3,7 @@
         <h1>Meus Cupons de Troca</h1>
         <mat-divider></mat-divider>
     </div>
-    <span *ngIf="!cuponsPromocionais.length">Nenhum cupom de troca associado a esta conta.</span>
+    <span *ngIf="!cuponsTroca.length">Nenhum cupom de troca associado a esta conta.</span>
     <div class="meus-cupons-lista" *ngFor="let cupom of cuponsPromocionais; let i = index">
         <mat-card class="meus-cupons-lista-card">
             <div class="meus-cupons-lista-card-code">
@@ -32,16 +32,10 @@
         <mat-card class="meus-cupons-lista-card">
             <div class="meus-cupons-lista-card-code">
                 <span class="meus-cupons-lista-card-code-number">
-                    cupom de troca
-                </span>
-                <span class="meus-cupons-lista-card-code-content">
-                    #{{ cupom.codigo }}
+                    cupom de troca - {{i+1}}
                 </span>
             </div>
             <div class="meus-cupons-lista-card-description">
-                <div class="meus-cupons-lista-card-description-header">
-                    <button mat-button>Copiar!</button>
-                </div>
                 <div class="meus-cupons-lista-card-description-middle">
                     <span>{{cupom.nome}}</span>
                 </div>
