@@ -15,6 +15,6 @@ export class NotificacaoService {
 
   obterNotificacoes(): Observable<NotificacaoInterface[]>{
     const id = Number(sessionStorage.getItem('isLogado'));
-    return this.http.get<NotificacaoInterface[]>(`${this.baseUrl}/notificacoes/${id}`)
+    return this.http.get<NotificacaoInterface[]>(`${this.baseUrl}/notificacao/${id}`)
   }
 }

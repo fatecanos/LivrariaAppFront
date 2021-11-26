@@ -32,9 +32,6 @@ export class LivHeaderComponent {
     this.notificacaoService.obterNotificacoes().subscribe(res => {
       this.notificacoes = res
     })
-
-    //TODO: reverte
-    this.notificacoes = notificacoesMock
   }
 
   navigateToClientRegister() {
