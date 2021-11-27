@@ -23,6 +23,7 @@ export interface ItemPedidoInterface {
     valorTotal: number;
     statusPedido: string;
     quantidadeTrocada?: number;
+    url: string;
 }
 
 export interface FormasPagamento {

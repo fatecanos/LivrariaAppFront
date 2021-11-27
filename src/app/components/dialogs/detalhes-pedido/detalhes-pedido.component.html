@@ -18,8 +18,8 @@
         <div class="detalhes-pedido-content-item" 
             *ngFor="let itemPedido of detalhesPedido?.itensPedido; let i = index">
             <div class="detalhes-pedido-content-item-image">
-                <!-- <img src="https://images-na.ssl-images-amazon.com/images/I/81PHloIwKnL.jpg" alt=""> -->
-                <img src="https://naturestore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/produto-sem-imagem.gif" alt="">
+                <img *ngIf="itemPedido.url" src="itemPedido.url">
+                <img *ngIf="!itemPedido.url" src="https://naturestore.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/produto-sem-imagem.gif" alt="">
                 <div class="nome-livro">
                     <span>{{ itemPedido?.nomeLivro }}</span>
                     <span class="nome-livro-qtde-trocada">(Quantidade Trocada: {{ itemPedido?.quantidadeTrocada }})</span>
