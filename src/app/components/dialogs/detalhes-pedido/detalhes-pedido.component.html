@@ -38,7 +38,7 @@
                 <span>{{ itemPedido?.statusPedido }} </span>
             </div>
 
-            <div class="detalhes-pedido-content-opcoes">
+            <div class="detalhes-pedido-content-opcoes" *ngIf="detalhesPedido?.status === 'ENTREGUE'">
                 <mat-form-field class="detalhes-pedido-content-opcoes-input"
                     *ngIf="itemPedido?.qtdComprada > itemPedido?.quantidadeTrocada">
                     <mat-label>Quantidade Troca:</mat-label>
