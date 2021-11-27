@@ -2,6 +2,7 @@ describe('Solicitaçao de troca', function() {
 
     it('deve renderizar pagina de login', ()=> {
         cy.visit('http://localhost:4200/livraria/login')
+        cy.wait(2000)
     }),
 
     it('deve executar login de usuario', ()=> {
@@ -12,7 +13,7 @@ describe('Solicitaçao de troca', function() {
             cy.get('#inputSenha')
                 .type('lucas')
         });
-
+        cy.wait(2000)
         cy.get('.painel_login-container-form > button').click();
     }),
 

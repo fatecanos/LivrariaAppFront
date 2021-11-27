@@ -182,6 +182,7 @@ export class CarrinhoComponent implements OnInit {
           valorUnitario: res.produto.valorVenda,
           valorTotal:
             res.produto.quantidadeSelecionada * res.produto.valorVenda,
+          url: res.produto.url
         };
         console.log('Itens Pedido:', this.itensPedido);
 
@@ -255,9 +256,8 @@ export class CarrinhoComponent implements OnInit {
           valorUnitario: res.produto.valorVenda,
           valorTotal:
             res.produto.quantidadeSelecionada * res.produto.valorVenda,
+          url: res.produto.url
         };
-        console.log('Itens Pedido:', this.itensPedido);
-
         return aux;
       });
     });

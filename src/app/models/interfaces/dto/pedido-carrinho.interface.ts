@@ -4,6 +4,7 @@ export interface ItemPedido {
     qtdComprada: number;
     valorUnitario: number;
     valorTotal: number;
+    url: string;
 }
 
 export interface FormaPagamentoInterface {
