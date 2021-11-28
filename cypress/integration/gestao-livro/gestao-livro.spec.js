@@ -69,31 +69,19 @@ describe('Gestão de Livros - Modulo', () => {
     cy.get('.grupoPrecoOption').first().click()
     cy.wait(500)
     
-    cy.get('#cdk-overlay-3 > .mat-select-panel-wrap > #mat-select-10-panel > #mat-option-22 > .mat-option-text').click()
+    cy.get('#valorDeCompraId').type('98.90')
     cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-12').click()
+
+    cy.get('#txtCodigoBarras').type('2424524242424442')
     cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-12').type('23445366664544434')
+
+    cy.get('#txtUrlImagem').type('https://www.lojadobolseiro.com.br/uploads/images/2021/06/120-livro-o-hobbit-anotado-j-r-r-tolkien-1623293634.jpg')
     cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-13').click()
-    cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-14').click()
-    cy.wait(500)
-    cy.get('.ng-star-inserted > .novo-livro > .novo-livro-container > .novo-livro-container-form > .novo-livro-container-form-detalhes-livro').click()
-    cy.wait(500)
-    cy.get('.novo-livro-container-form-row-grupo:nth-child(5) > .mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix').click()
-    cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-14').type('23')
-    cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-13').click()
-    cy.wait(500)
-    cy.get('.mat-form-field > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix > #mat-input-13')
-      .type('https://firebasestorage.googleapis.com/v0/b/projeto-les-3addc.appspot.com/o/book_covers%2Fharry_potter.jpg?alt=media&token=0a2619ef-aed9-4002-b850-a5f89fc55aa8')
+
+    cy.get('#txtQuantidadeEstoque').type('23')
     cy.wait(500)
     
-    cy.get('#txtValorCompra').type('98.90')
-    
-    cy.get('.novo-livro > .novo-livro-container > .novo-livro-container-options > .mat-focus-indicator > .mat-button-wrapper').click()
+    cy.get('#btnEnviarLivro').click()
 
   });
 })

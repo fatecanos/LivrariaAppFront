@@ -9,7 +9,7 @@
       </mat-error>
     </mat-form-field>
     <button mat-button (click)="alterarTelefone(telefoneGroup)" class="btnAtualizaTel">Atualizar</button>
-    <button mat-button color="warn" (click)="inativarTelefone(telefoneGroup)" class="btnRemoveTel">Excluir</button>
+    <button mat-button color="warn" (click)="inativarTelefone(telefoneGroup)" class="btnRemoverTelefone">Excluir</button>
   </div>
   <div class="telefones-management-content" *ngIf="!telefones?.length">
     <span>Nenhum Telefone foi encontrado</span>

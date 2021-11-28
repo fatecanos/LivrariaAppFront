@@ -1,7 +1,7 @@
 import { CategoriaInterface } from './utils-livro-form.interface';
 
 export interface LivroDTO {
-  id?: number;
+  id: number;
   titulo: string;
   autor: string;
   ano: string;

@@ -29,6 +29,10 @@ export class GestaoEstoqueComponent implements OnInit {
   init() {
     this.livrosEstoque$ = this.livroService.getEstoque();
     this.livrosEstoque$.subscribe(res => this.livros = res)
+
+    this.livros = this.livros.sort((livroCurr, livroPrev) => {
+      return livroCurr.id - livroPrev.id
+    })
   }
 
   atualizarEstoque(livro: LivroDTO, qtde: number) {

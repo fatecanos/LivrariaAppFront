@@ -13,8 +13,8 @@
             <div class="gestao-estoque-container-control">
                 <div class="gestao-estoque-container-content-qtde">
                     <h4>Quantidade</h4>
-                    <input type="text" #estoque [value]="element.estoque">
-                    <button mat-button color="accent" 
+                    <input type="text" #estoque [value]="element.estoque" class="txtQuantidadeEstoque">
+                    <button mat-button color="accent" class="btnAtualizarEstoque"
                         (click)="atualizarEstoque(element, estoque.value)">Atualizar Quantidade</button>
                 </div>    
             </div>
