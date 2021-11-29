@@ -66,7 +66,7 @@ describe('Fluxo de venda - Cupom Promocional', function() {
 
        cy.get('#txtCupomPromocional').type(`${codigoCupom}`)
        cy.wait(TEMPO)
-       cy.get('#btnAddCupom')
+       cy.get('#btnAddCupom').click()
        cy.wait(TEMPO)
      }),
 

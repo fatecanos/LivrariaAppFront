@@ -38,7 +38,6 @@ describe('Casos de erro - Carrinho', function () {
               cy.wait(TEMPO)
             });
         }
-        cy.visit('http://localhost:4200/livraria/carrinho')
 
         cy.get('.comboEnderecoPerfil').eq(0).click()
         cy.wait(TEMPO)

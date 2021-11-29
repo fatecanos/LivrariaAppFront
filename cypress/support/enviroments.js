@@ -1,6 +1,6 @@
 export const usuarioDump = {
-    email: 'lucasman@gmail.com',
-    senha: 'lucas'
+    email: 'gluz@gmail.com',
+    senha: 'abc12345'
 }
 
-export const DURACAO = 0
+export const DURACAO = 100

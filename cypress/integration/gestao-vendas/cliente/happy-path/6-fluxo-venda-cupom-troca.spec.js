@@ -39,8 +39,11 @@ describe('Fluxo de venda - Cupom Promocional', function() {
 
      it('adicionar endereco anexado ao perfil', ()=> {
         cy.get('#cbEnderecoPerfil').click()
+        cy.wait(TEMPO)
         cy.get('#slcEnderecoPerfil').click()
+        cy.wait(TEMPO)
         cy.get('.enderecoPerfilOption').eq(0).click()
+        cy.wait(TEMPO)
      }),
    
     it('adicionar 2 cartões do perfil', ()=> {

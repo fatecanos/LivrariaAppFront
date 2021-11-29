@@ -60,8 +60,19 @@ describe('Fluxo de venda - Mais de um cartão', function() {
         cy.wait(TEMPO)
      }),
 
+     it('deve adicionar um cupom promocional', () => {
+      let codigoCupom = prompt('Digite o codigo do cupom:')
+      cy.wait(3000)
+
+      cy.get('#txtCupomPromocional').type(`${codigoCupom}`)
+      cy.wait(TEMPO)
+      cy.get('#btnAddCupom').click()
+      cy.wait(TEMPO)
+     }),
+
      it('finalizar pedido', ()=> {
         cy.get('#btnFinalizar').click()
+        cy.pause()
         cy.wait(TEMPO)
      })
 })

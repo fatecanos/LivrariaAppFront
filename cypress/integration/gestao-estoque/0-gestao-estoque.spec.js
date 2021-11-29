@@ -1,12 +1,13 @@
 const { clear } = require("console")
 
 describe('Gestão de estoque', function() {
+    const qtde = 5;
 
-    it('atualizar estoque de 10 produtos', function() {
+    it(`atualizar estoque de ${qtde} produtos`, function() {
       cy.visit('http://localhost:4200/admin/estoque')
-      cy.wait(1000)
+      cy.wait(500)
 
-      for(let i = 0; i <= 10; i++) {
+      for(let i = 0; i <= qtde; i++) {
          cy.get('.txtQuantidadeEstoque').eq(i).clear().type(30)
          cy.wait(500)
    
