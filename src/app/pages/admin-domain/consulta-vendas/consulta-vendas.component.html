@@ -64,12 +64,12 @@
             <th mat-header-cell *matHeaderCellDef>Opções </th>
             <td mat-cell *matCellDef="let element">
 
-                <button mat-button (click)="avancarPedido(element.id)"
+                <button mat-button (click)="avancarPedido(element.id)" class="btnConfirmarEntrega"
                   color="primary" *ngIf="element.status === 'EM_TRANSPORTE'">
                   Confirmar entrega
                 </button>
 
-                <button mat-button (click)="avancarPedido(element.id)"
+                <button mat-button (click)="avancarPedido(element.id)" class="btnDespacharPedido"
                   color="primary" *ngIf="element.status === 'PAGAMENTO_REALIZADO'">
                   Despachar Pedido
                 </button>

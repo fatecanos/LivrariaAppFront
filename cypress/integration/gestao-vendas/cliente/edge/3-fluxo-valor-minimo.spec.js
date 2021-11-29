@@ -1,5 +1,5 @@
-describe('Fluxo de venda - Simples', function() {
-    const TEMPO = 1000;
+describe('Fluxo de venda - Mais de um cartão', function() {
+    const TEMPO = 2000;
     it('adiciona um item ao carrinho de compras', function() {
         cy.visit('http://localhost:4200/livraria/carrinho')
         cy.wait(TEMPO)
@@ -39,17 +39,26 @@ describe('Fluxo de venda - Simples', function() {
         cy.get('.enderecoPerfilOption').eq(0).click()
      }),
    
-     it('adicionar cartao do perfil', ()=> {
+     it('adicionar 2 cartões do perfil', ()=> {
         cy.get('#myCardSelector').click()
         cy.wait(TEMPO)
         cy.get('.cardOption').eq(0).click()
         cy.wait(TEMPO)
-        cy.get('#idValorCartao').clear().type(1200)
+        cy.get('#txtValorPago').clear().type(8)
+        cy.wait(TEMPO)
+
+        cy.get('#btnMaisCartao').click()
+
+        cy.get('.seletorBandeira').eq(1).click()
+        cy.get('.cardOption').click()
+        cy.wait(TEMPO)
+        cy.get('.inputValorPago').eq(1).clear().type(8)
         cy.wait(TEMPO)
      }),
 
      it('finalizar pedido', ()=> {
         cy.get('#btnFinalizar').click()
+        cy.wait(TEMPO)
      })
 })
    

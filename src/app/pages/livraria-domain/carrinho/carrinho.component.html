@@ -58,7 +58,7 @@
                 <mat-radio-group [(ngModel)]="flgMyAddress"
                     (change)="enderecoSelecionado = undefined; isGravarNovoEndereco = false"
                     class="carrinho-content-adress_selector-radio">
-                    <mat-radio-button [value]="true" id="cbEnderecoPerfil">
+                    <mat-radio-button [value]="true" id="cbEnderecoPerfil" class="comboEnderecoPerfil">
                         Escolher entre os meus endereços de entrega
                     </mat-radio-button>
                     <mat-radio-button [value]="false" id="cbNovoEndereco">

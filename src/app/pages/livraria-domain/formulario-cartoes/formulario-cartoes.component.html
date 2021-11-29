@@ -21,7 +21,7 @@
                         <mat-radio-button [value]="false">
                             Meus Cartões
                         </mat-radio-button>
-                        <mat-radio-button [value]="true">
+                        <mat-radio-button [value]="true" id="cbNovoCartaoOption">
                             Novo Cartão de Crédito
                         </mat-radio-button>
                     </mat-radio-group>
@@ -40,7 +40,7 @@
                 <div class="finalizacao-pedido-content-form-meus_cartoes">
                     <mat-form-field *ngIf="!form.get('cartoes').controls[index].get('isNovoCartao').value">
                         <mat-label>Meus cartões:</mat-label>
-                        <mat-select id="myCardSelector">
+                        <mat-select id="myCardSelector" class="seletorBandeira">
                             <mat-option (click)="patchFormGroup(index, cartaoCliente)" class="cardOption"
                                 *ngFor="let cartaoCliente of (cartoesCliente$ | async)" value="cartaoCliente">
                                 {{ cartaoCliente?.bandeira }} - {{ cartaoCliente?.numeroCartao | hiddenCardNumber }}
@@ -54,26 +54,26 @@
                         <mat-form-field>
                             <mat-label>Nome:</mat-label>
                             <input matInput formControlName="nomeImpressoCartao"
-                                placeholder="Nome no cartão">
+                                placeholder="Nome no cartão" id="txtNomeNoCartao">
                         </mat-form-field>
 
                         <mat-form-field>
                             <mat-label>Número:</mat-label>
                             <input matInput formControlName="numeroCartao"
                                 mask="0000.0000.0000.0000"
-                                placeholder="Nome no cartão">
+                                placeholder="Nome no cartão" id="txtNumeroNoCartao">
                         </mat-form-field>
 
                         <mat-form-field>
                             <mat-label>CVV:</mat-label>
                             <input matInput formControlName="codigoSeguranca"
-                                placeholder="Código de segurança">
+                                placeholder="Código de segurança" id="txtCodigoNoCartao">
                         </mat-form-field>
 
                         <mat-form-field>
                             <mat-label>Bandeira</mat-label>
-                            <mat-select formControlName="bandeira">
-                                <mat-option (click)="patchFornGroup(index, cartaoCliente)"
+                            <mat-select formControlName="bandeira" id="selectorBandeira">
+                                <mat-option (click)="patchFornGroup(index, cartaoCliente)" class="slcBandeiraOption"
                                     *ngFor="let bandeira of bandeiras" [value]="bandeira.descricao">
                                     {{ bandeira.descricao }}
                                 </mat-option>
@@ -85,21 +85,21 @@
                         <mat-form-field>
                             <mat-label>Valor:</mat-label>
                             <input matInput type="number" formControlName="valorPago" id="txtValorPago"
-                                placeholder="Digite o valor pago neste cartão" id="idValorCartao">
+                                placeholder="Digite o valor pago neste cartão" class="inputValorPago">
                         </mat-form-field>
                     </div>
                 </div>
                 <div [formGroupName]="index">
                     <mat-checkbox 
                         *ngIf="form.get('cartoes').controls[index].get('isNovoCartao').value"
-                        formControlName="isGravarNovo">Desejo gravar este cartão</mat-checkbox>
+                        formControlName="isGravarNovo" id="cbDesejoGravarCartao">Desejo gravar este cartão</mat-checkbox>
                 </div>
 
             </div>
         </form>
             
         <div>
-            <button color="primary" mat-button (click)="addCartao()">+ Cartão</button>
+            <button color="primary" mat-button (click)="addCartao()" id="btnMaisCartao">+ Cartão</button>
         </div>
     </div>
 </div>

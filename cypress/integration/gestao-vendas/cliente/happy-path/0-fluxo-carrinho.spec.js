@@ -71,5 +71,6 @@ describe("GESTÃO DO CARRINHO DE COMPRAS", () => {
     cy.wait(TEMPO)
 
     cy.get(".carrinho-table-item_line-option > span").first().click();
+    cy.wait(TEMPO)
   });
 });
