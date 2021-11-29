@@ -1,5 +1,7 @@
-describe("Despachar pedido", function () {
-  const TEMPO = 1000;
+import { DURACAO } from "../../../../support/enviroments";
+
+describe("Gestão de Vendas - Despachar pedido e comfirmar entrega", function () {
+  const TEMPO = DURACAO;
 
   it('Deve renderizar tela de consulta de vendas', function() {
     cy.visit('http://localhost:4200/admin/venda')

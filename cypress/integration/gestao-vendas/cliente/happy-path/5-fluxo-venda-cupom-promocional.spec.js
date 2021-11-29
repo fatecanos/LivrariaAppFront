@@ -1,6 +1,6 @@
 import { DURACAO, usuarioDump } from "../../../../support/enviroments";
 
-describe('Fluxo de venda - Mais de um cartão', function() {
+describe('Fluxo de venda - Cupom Promocional', function() {
     const TEMPO = DURACAO;
     const USER = usuarioDump;
 
@@ -48,7 +48,7 @@ describe('Fluxo de venda - Mais de um cartão', function() {
         cy.wait(TEMPO)
         cy.get('.cardOption').eq(0).click()
         cy.wait(TEMPO)
-        cy.get('#txtValorPago').clear().type(8)
+        cy.get('#txtValorPago').clear().type(80)
         cy.wait(TEMPO)
 
         cy.get('#btnMaisCartao').click()
@@ -56,8 +56,18 @@ describe('Fluxo de venda - Mais de um cartão', function() {
         cy.get('.seletorBandeira').eq(1).click()
         cy.get('.cardOption').click()
         cy.wait(TEMPO)
-        cy.get('.inputValorPago').eq(1).clear().type(8)
+        cy.get('.inputValorPago').eq(1).clear().type(300)
         cy.wait(TEMPO)
+     }),
+
+     it('deve adicionar um cupom promocional', () => {
+       let codigoCupom = prompt('Digite o codigo do cupom:')
+       cy.wait(3000)
+
+       cy.get('#txtCupomPromocional').type(`${codigoCupom}`)
+       cy.wait(TEMPO)
+       cy.get('#btnAddCupom')
+       cy.wait(TEMPO)
      }),
 
      it('finalizar pedido', ()=> {

@@ -1,5 +1,9 @@
+import { DURACAO, usuarioDump } from "../../../../support/enviroments";
+
 describe('Fluxo de venda - Mais de um cartão', function() {
-    const TEMPO = 2000;
+    const TEMPO = DURACAO;
+    const USER = usuarioDump;
+
     it('adiciona um item ao carrinho de compras', function() {
         cy.visit('http://localhost:4200/livraria/carrinho')
         cy.wait(TEMPO)
@@ -18,10 +22,10 @@ describe('Fluxo de venda - Mais de um cartão', function() {
            cy.wait(TEMPO)
  
            cy.get(".painel_login-container").within(() => {
-             cy.get("#inputEmail").type("gluz@gmail.com");
+             cy.get("#inputEmail").type(USER.email);
              cy.wait(TEMPO)
  
-             cy.get("#inputSenha").type("abc12345");
+             cy.get("#inputSenha").type(USER.senha);
              cy.wait(TEMPO)
           });
     

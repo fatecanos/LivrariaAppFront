@@ -1,5 +1,9 @@
+import { DURACAO, usuarioDump } from "../../support/enviroments";
+
 describe('Gestao de Acesso - Modulo', ()=> {
-    const TEMPO = 1000;
+    const TEMPO = DURACAO;
+    const USER = usuarioDump;
+
     it('deve renderizar pagina de login', ()=> {
         cy.visit('http://localhost:4200/livraria/login')
         cy.wait(TEMPO)
@@ -7,11 +11,11 @@ describe('Gestao de Acesso - Modulo', ()=> {
     it('deve executar login de usuario', ()=> {
         cy.get('.painel_login-container').within(()=> {
             cy.get('#inputEmail')
-                .type('lucasman@gmail.com')
+                .type(USER.email)
             cy.wait(TEMPO)
 
             cy.get('#inputSenha')
-                .type('lucas')
+                .type(USER.senha)
             cy.wait(TEMPO)
         });
 

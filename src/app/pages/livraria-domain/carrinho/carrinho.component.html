@@ -136,16 +136,17 @@
                 <div class="carrinho-step_one-cupom-painel-promo">
                     <mat-form-field>
                         <mat-label>Cupom Promocional:</mat-label>
-                        <input matInput placeholder="Digite o código do cupom" [formControl]="codCupomPromoInput">
+                        <input matInput placeholder="Digite o código do cupom" id="txtCupomPromocional"
+                            [formControl]="codCupomPromoInput">
                     </mat-form-field>
-                    <button mat-button (click)="adicionarCupomPromocional()">+ Adicionar</button>
+                    <button mat-button (click)="adicionarCupomPromocional()" id="btnAddCupom">+ Adicionar</button>
                 </div>
 
                 <mat-form-field>
                     <mat-label>Cupons de Troca:</mat-label>
                     <mat-select multiple [disabled]="!cuponsTroca.length" id="cupomTrocaSelector"
                         [(ngModel)]="cupomTrocaSelecionado">
-                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom">
+                      <mat-option *ngFor="let cupom of cuponsTroca" [value]="cupom" class="cupomTrocaOption">
                           {{cupom.nome}} - {{ cupom.valor | currency:'BRL':true:'1.2-2'}}
                       </mat-option>
                     </mat-select>

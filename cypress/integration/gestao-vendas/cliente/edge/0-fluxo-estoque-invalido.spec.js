@@ -1,5 +1,7 @@
+import { DURACAO } from "../../../../support/enviroments";
+
 describe('Casos de erro - Carrinho', function () {
-    const TEMPO = 500;
+    const TEMPO = DURACAO;
 
     it('deve adicionar quantidade que excede o estoque', function () {
 

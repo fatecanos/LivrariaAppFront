@@ -1,6 +1,9 @@
+import { DURACAO, usuarioDump } from "../../../../support/enviroments";
+
 describe("GESTÃO DO CARRINHO DE COMPRAS", () => {
   it("RF0031 - Gerenciar carrinho de compra deslogado", () => {
-    let TEMPO = 1000;
+    let TEMPO = DURACAO;
+    const USER = usuarioDump;
 
     cy.visit("http://localhost:4200/livraria/estoque");
     cy.wait(TEMPO)
@@ -23,9 +26,9 @@ describe("GESTÃO DO CARRINHO DE COMPRAS", () => {
       cy.visit("http://localhost:4200/livraria/login");
 
       cy.get(".painel_login-container").within(() => {
-        cy.get("#inputEmail").type("gluz@gmail.com");
+        cy.get("#inputEmail").type(USER.email);
 
-        cy.get("#inputSenha").type("abc12345");
+        cy.get("#inputSenha").type(USER.senha);
       });
 
       cy.get(".painel_login-container-form > button").click();

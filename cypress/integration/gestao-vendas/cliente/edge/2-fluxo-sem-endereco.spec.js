@@ -1,5 +1,8 @@
+import { DURACAO, usuarioDump } from "../../../../support/enviroments";
+
 describe('Casos de erro - Carrinho', function () {
-    const TEMPO = 500;
+    const TEMPO = DURACAO;
+    const USER = usuarioDump;
 
     it('deve fazer login', () => {
         cy.visit('http://localhost:4200/')
@@ -8,10 +11,10 @@ describe('Casos de erro - Carrinho', function () {
             cy.wait(TEMPO)
   
             cy.get(".painel_login-container").within(() => {
-              cy.get("#inputEmail").type("gluz@gmail.com");
+              cy.get("#inputEmail").type(USER.email);
               cy.wait(TEMPO)
   
-              cy.get("#inputSenha").type("abc12345");
+              cy.get("#inputSenha").type(USER.senha);
               cy.wait(TEMPO)
 
               cy.get('.painel_login-container-form > button').click();

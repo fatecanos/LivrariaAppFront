@@ -1,5 +1,8 @@
+import { DURACAO, usuarioDump } from "../../support/enviroments";
+
 describe('Gestão de Clientes - Modulo', function() {
-    const TEMPO = 1000;
+    const TEMPO = DURACAO;
+    const USER = usuarioDump;
 
     it('RF0021 - Deve cadastrar um cliente', function() {
 
@@ -52,9 +55,9 @@ describe('Gestão de Clientes - Modulo', function() {
             cy.visit("http://localhost:4200/livraria/login");
       
             cy.get(".painel_login-container").within(() => {
-              cy.get("#inputEmail").type("gluz@gmail.com");
+              cy.get("#inputEmail").type(USER.email);
       
-              cy.get("#inputSenha").type("abc12345");
+              cy.get("#inputSenha").type(USER.senha);
             });
       
             cy.get(".painel_login-container-form > button").click();
