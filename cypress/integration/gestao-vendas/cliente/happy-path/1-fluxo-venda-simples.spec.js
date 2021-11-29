@@ -45,7 +45,6 @@ describe('Fluxo de venda - Simples', function() {
    
      it('adicionar cartao do perfil', ()=> {
         cy.get('#myCardSelector').click()
-        cy.wait(TEMPO)
         cy.get('.cardOption').eq(0).click()
         cy.wait(TEMPO)
         cy.get('#txtValorPago').clear().type(1200)

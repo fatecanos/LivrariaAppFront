@@ -3,4 +3,4 @@ export const usuarioDump = {
     senha: 'lucas'
 }
 
-export const DURACAO = 2000
+export const DURACAO = 0
